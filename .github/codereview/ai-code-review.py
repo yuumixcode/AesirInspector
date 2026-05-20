@@ -125,7 +125,7 @@ def gen_prompt(diff_content):
     except FileNotFoundError:
         raise FileNotFoundError(f"Prompt file not found: {prompt_file}")
     except Exception as e:
-        raise RuntimeError(f"Error reading prompt file: {e}")
+        raise RuntimeError(f"Error reading prompt file: {e}") from e
 
 
 def check_codely_installed():
@@ -204,8 +204,8 @@ def call_codely_for_review(diff_content, codely_token):
         if tmp_path:
             try:
                 os.unlink(tmp_path)
-            except OSError:
-                pass
+            except OSError as e:
+                print(f"Warning: failed to delete temp file {tmp_path}: {e}")
 
 
 def send_to_github_pr(info, ai_review, owner_repo, pr_number, github_token):
