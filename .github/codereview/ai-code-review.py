@@ -125,7 +125,7 @@ def gen_prompt(diff_content):
     except FileNotFoundError:
         raise FileNotFoundError(f"Prompt file not found: {prompt_file}")
     except Exception as e:
-        raise Exception(f"Error reading prompt file: {e}")
+        raise RuntimeError(f"Error reading prompt file: {e}")
 
 
 def check_codely_installed():
@@ -149,11 +149,12 @@ def call_codely_for_review(diff_content, codely_token):
 
     prompt = gen_prompt(diff_content)
 
-    with tempfile.NamedTemporaryFile(mode='w', suffix='.md', delete=False, encoding='utf-8') as f:
-        f.write(prompt)
-        tmp_path = f.name
-
+    tmp_path = None
     try:
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.md', delete=False, encoding='utf-8') as f:
+            tmp_path = f.name
+            f.write(prompt)
+
         codely_cmd = ['codely', '-p', f'@{tmp_path}', '-y']
 
         env = os.environ.copy()
@@ -200,7 +201,11 @@ def call_codely_for_review(diff_content, codely_token):
         return error_info, f"Codely AI 调用异常: {str(e)}", {"error": str(e)}
 
     finally:
-        os.unlink(tmp_path)
+        if tmp_path:
+            try:
+                os.unlink(tmp_path)
+            except OSError:
+                pass
 
 
 def send_to_github_pr(info, ai_review, owner_repo, pr_number, github_token):

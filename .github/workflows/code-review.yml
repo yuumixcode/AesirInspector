@@ -16,6 +16,7 @@ jobs:
 
     env:
       PR_NUMBER: ${{ github.event.pull_request.number }}
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
     steps:
       - name: Checkout code
@@ -50,4 +51,4 @@ jobs:
           path: |
             ai_review_codely.txt
             response_codely.json
-          retention-days: 180
+          retention-days: 90
