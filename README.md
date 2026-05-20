@@ -1,6 +1,6 @@
 # Aesir Inspector
 
-[![license](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE.md)
+[English](Documentation~/en/README.md) | [![license](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE.md)
 
 `Aesir Inspector` 是一个 Unity 编辑器扩展库，旨在提供双语 Inspector UI、安全编辑器工具集、脚本文档生成器等功能。**可选集成 Odin Inspector** 以获得增强的 Inspector 渲染和样式优化。
 

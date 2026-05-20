@@ -1,6 +1,6 @@
 # Aesir Inspector
 
-[![license](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE.md)
+[中文](../../README.md) | [![license](https://img.shields.io/badge/license-MIT-green.svg)](../../LICENSE.md)
 
 `Aesir Inspector` is a Unity editor extension library designed to provide bilingual Inspector UI, safe editor tooling, script documentation generation, and more. **Optional integration with Odin Inspector** for enhanced Inspector rendering and styling.
 
