@@ -115,7 +115,7 @@ Aesir Inspector/
 
 ## 编码规范
 
-请务必在提交代码前阅读并遵循以下规范。详细规范参见 `Runtime/CodeStyle/AESIR_INSPECTOR_CODE_STYLE.cs` 和 `Documentation~/development.md`。
+请务必在提交代码前阅读并遵循以下规范。详细规范参见 `Runtime/Unity/CodeStyle/AesirInspectorCodeStyle.cs` 和 `Documentation~/development.md`。
 
 ### 注释规范
 

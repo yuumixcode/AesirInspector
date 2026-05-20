@@ -27,7 +27,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install Python dependencies
-        run: pip install requests jinja2
+        run: pip install -r .github/codereview/requirements.txt
 
       - name: Install Codely CLI
         run: |
@@ -40,7 +40,7 @@ jobs:
           FEISHU_WEBHOOK_URL: ${{ secrets.FEISHU_WEBHOOK_URL }}
         run: |
           echo "Starting AI code review for PR #${{ github.event.pull_request.number }}"
-          python codereview/ai-code-review.py
+          python .github/codereview/ai-code-review.py
 
       - name: Upload review artifacts
         if: always()

@@ -3,6 +3,7 @@ import sys
 import json
 import subprocess
 import argparse
+import tempfile
 import requests
 import re
 import time
@@ -142,60 +143,19 @@ def check_codely_installed():
         return False
 
 
-def install_codely():
-    """安装codely CLI工具"""
-    if check_codely_installed():
-        print("Codely CLI 已安装")
-        return True
-
-    print("正在安装 Codely CLI...")
-
-    install_cmd = [
-        'curl', '-fsSL', 'https://codesearch-plugins.tos-cn-shanghai.volces.com/codely-cli/install.sh'
-    ]
-    bash_cmd = ['bash']
-
-    try:
-        curl_process = subprocess.run(
-            install_cmd, shell=False, check=False, text=True,
-            stdout=subprocess.PIPE, stderr=subprocess.PIPE
-        )
-
-        if curl_process.returncode != 0:
-            print(f"下载安装脚本失败: {curl_process.stderr}")
-            return False
-
-        bash_process = subprocess.run(
-            bash_cmd, shell=False, check=False, text=True,
-            input=curl_process.stdout, stdout=subprocess.PIPE, stderr=subprocess.PIPE
-        )
-
-        if bash_process.returncode == 0:
-            print("Codely CLI 安装成功")
-            return True
-        else:
-            print(f"Codely CLI 安装失败: {bash_process.stderr}")
-            return False
-
-    except Exception as e:
-        print(f"安装 Codely CLI 异常: {str(e)}")
-        return False
-
-
 def call_codely_for_review(diff_content, codely_token):
     """使用codely进行代码审查"""
     request_start_time = time.time()
 
-    codely_available = check_codely_installed()
-    if not codely_available:
-        error_info = {"error": "Codely CLI 未安装或不可用"}
-        return error_info, "Codely CLI 未安装或不可用，请先安装 Codely CLI", {"error": "Codely CLI not available"}
-
     prompt = gen_prompt(diff_content)
 
-    codely_cmd = ['codely', '-p', prompt, '-y']
+    with tempfile.NamedTemporaryFile(mode='w', suffix='.md', delete=False, encoding='utf-8') as f:
+        f.write(prompt)
+        tmp_path = f.name
 
     try:
+        codely_cmd = ['codely', '-p', f'@{tmp_path}', '-y']
+
         env = os.environ.copy()
         if codely_token:
             env['CODELY_TOKEN'] = codely_token
@@ -238,6 +198,9 @@ def call_codely_for_review(diff_content, codely_token):
     except Exception as e:
         error_info = {"error": str(e)}
         return error_info, f"Codely AI 调用异常: {str(e)}", {"error": str(e)}
+
+    finally:
+        os.unlink(tmp_path)
 
 
 def send_to_github_pr(info, ai_review, owner_repo, pr_number, github_token):
@@ -433,11 +396,19 @@ def main():
 
     print("使用 Codely AI 做代码审查")
 
-    if not install_codely():
-        print("Codely CLI 安装失败，审查终止")
+    if not check_codely_installed():
+        print("Codely CLI 未安装或不可用。请先安装：curl -fsSL https://codesearch-plugins.tos-cn-shanghai.volces.com/codely-cli/install.sh | bash")
         return 1
 
     info_codely, ai_review_codely, response_json_codely = call_codely_for_review(filtered_diff, codely_token)
+
+    if "error" in info_codely:
+        print(f"代码审查执行失败: {ai_review_codely}")
+        with open("ai_review_codely.txt", "w", encoding="utf-8") as f:
+            f.write(ai_review_codely)
+        with open("response_codely.json", "w", encoding="utf-8") as f:
+            json.dump(response_json_codely, f, indent=2, ensure_ascii=False)
+        return 1
 
     with open("ai_review_codely.txt", "w", encoding="utf-8") as f:
         f.write(ai_review_codely)
