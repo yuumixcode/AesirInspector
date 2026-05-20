@@ -77,7 +77,17 @@ Aesir Inspector/
 | **禁止 XML 注释** | 不使用 `/// <summary>`、`/// <param>`、`/// <returns>` 等 XML 文档注释 |
 | **复杂逻辑用 `[Summary]`** | 仅在命名无法充分表达意图的复杂地方使用 `[Summary("...")]` 解释"为什么" |
 | **命名即文档** | 方法、字段、属性的命名应清晰表达意图，无需额外注释 |
+| **类必须 `[Summary]`** | 所有类（class / struct / interface）必须具备 `[Summary("...")]`，解释"为什么" |
 | **唯一例外** | `AesirInspectorCodeStyle.cs` 作为风格示例文件，同时保留 XML 注释和 `[Summary]` |
+
+#### 免除规范的模块
+
+以下模块为展示/示例用途，不适用通用注释规范，使用 `//` 单行/多行注释进行特殊性补充即可：
+
+- `Runtime/Unity/CodeStyle/` — 代码风格示例文件
+- `Editor/Odin Integration/AttributeOverviewPro/Data/` — 属性数据类
+- `Editor/Odin Integration/AttributeOverviewPro/AttributePanels/` — Panel SO 定义
+- `Editor/Odin Integration/AttributeOverviewPro/UsageExamples/` — 示例 SO
 
 ```csharp
 // ✅ 自文档化：命名清晰传达意图，无需注释
