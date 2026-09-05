@@ -9,6 +9,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.14.1] - 2026-09-05
+
+### Fixed
+
+- **Compile errors when importing into projects without Odin Inspector / 无 Odin Inspector 的项目导入后编译报错**: restored the `ODIN_INSPECTOR` defineConstraints on all 7 asmdefs (Runtime, Editor, Tests, Samples) so the assemblies are skipped entirely with zero errors when Odin is absent; behavior is unchanged when Odin is installed.
+
+### Changed
+
+- The Unity-based export was retired (the `Tools → Aesir → Inspector → Export Package` menu was removed); maintainer exports are unified on the .NET toolchain — local `Scripts/export-package.sh`, CI via GitHub Actions / 弃用 Unity 内置导出方案，维护者导出统一为 .NET 工具链。
+- `AesirInspectorVersion.Version` is now in sync (`0.14.1`); it had been left at `0.4.0-pre.1` / `AesirInspectorVersion.Version` 同步为 `0.14.1`。
+
 ## [0.14.0] - 2026-09-05
 
 ### ⚠ BREAKING CHANGES (Read before upgrading / 升级前必读)
