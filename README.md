@@ -30,6 +30,7 @@ AesirInspector/                        # 仓库根目录 = Unity 工程根目录
 │           ├── Documentation~/        # 包文档（英文 README / CHANGELOG、开发者指南等）
 │           └── package.json           # UPM 包描述（cn.runestone.aesir-inspector）
 ├── Packages/                          # 工程依赖清单（manifest.json）
+├── Scripts/                           # 导出与发布脚本（export-package.sh）
 ├── ProjectSettings/                   # Unity 工程设置
 ├── LICENSE.md                         # 仓库级许可（MIT）
 ├── CONTRIBUTING.md                    # 贡献指南
@@ -71,7 +72,15 @@ AesirInspector/                        # 仓库根目录 = Unity 工程根目录
 
 ## 导出 .unitypackage
 
-在 Project 窗口选中 `Assets/Runestone/AesirInspector`，右键 **Export Package…** 即可导出包含全部资源的 `.unitypackage`。
+每次版本更新后运行导出脚本，生成 `Builds/AesirInspector-<version>.unitypackage`：
+
+```bash
+./Scripts/export-package.sh            # 仅导出到 Builds/
+./Scripts/export-package.sh --release  # 导出 + 打 tag 推送 + 创建 GitHub Release（附 .unitypackage 与 CHANGELOG 说明）
+```
+
+- 版本号取自包内 `package.json`；Unity 路径默认按 `ProjectSettings/ProjectVersion.txt` 自动拼接，可用环境变量 `UNITY_PATH` 覆盖
+- 也可在 Unity 中通过 `Tools → Aesir → Inspector → Export Package` 手动导出
 
 ## 包文档
 
