@@ -1,0 +1,81 @@
+# 一键导出 .unitypackage（无需 Unity / 无需许可证授权）：
+#   - 手动触发（workflow_dispatch）：仅上传构建产物（Artifact）
+#   - 推送 v* 标签：创建 GitHub Release 并附上 AesirInspector-<version>.unitypackage
+#
+# 工具说明（Guardingpearsoftware/public-unity-package-exporter，MIT）：
+#   - 固定 commit，按 SHA 拉取，防止上游变更导致构建漂移
+#   - 依赖已提交的 .meta 文件解析 GUID；隐藏目录（Samples~ / Documentation~）无
+#     目录级 .meta，必须显式排除（与 AssetDatabase.ExportPackage 行为一致）
+#   - 已于 2026-09-05 与 Unity 导出结果做过逐字节比对：430 个文件条目的
+#     asset / asset.meta / pathname 完全一致；差异仅为 Unity 额外写入的 50 个
+#     文件夹条目（文件夹 GUID 导入时由 Unity 重新生成，本包无任何引用，无影响）
+name: Export Package
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  TOOL_REPO: https://github.com/Guardingpearsoftware/public-unity-package-exporter
+  TOOL_COMMIT: 91d0bcbd9169f36eff01ce07a8ff3b7a64c6a252
+  PACKAGE_DIR: Assets/Runestone/AesirInspector
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Install UnityPackageExporter (pinned commit)
+        run: |
+          git init "$RUNNER_TEMP/exporter"
+          git -C "$RUNNER_TEMP/exporter" remote add origin "$TOOL_REPO"
+          git -C "$RUNNER_TEMP/exporter" fetch --depth 1 origin "$TOOL_COMMIT"
+          git -C "$RUNNER_TEMP/exporter" checkout FETCH_HEAD
+          dotnet publish -c Release -o "$RUNNER_TEMP/exporter/bin" "$RUNNER_TEMP/exporter/UnityPackageExporter"
+
+      - name: Export .unitypackage
+        run: |
+          VERSION=$(jq -r .version "$PACKAGE_DIR/package.json")
+          OUT="AesirInspector-${VERSION}.unitypackage"
+          echo "VERSION=$VERSION" >> "$GITHUB_ENV"
+          echo "OUT=$OUT" >> "$GITHUB_ENV"
+          dotnet "$RUNNER_TEMP/exporter/bin/UnityPackageExporter.dll" . "$OUT" \
+            -a "$PACKAGE_DIR/**" \
+            -e "Library/**" \
+            -e "**/.*" \
+            -e "**/Samples~/**" \
+            -e "**/Documentation~/**" \
+            --skip-dependency-check \
+            -v Warning
+
+      - name: Sanity check
+        run: |
+          ENTRIES=$(tar -tzf "$OUT" | grep -c '/pathname$')
+          echo "Package entries: $ENTRIES"
+          test "$ENTRIES" -gt 100
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.OUT }}
+          path: ${{ env.OUT }}
+          if-no-files-found: error
+
+      - name: Attach to GitHub Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1 || \
+            gh release create "$GITHUB_REF_NAME" --title "$GITHUB_REF_NAME" --generate-notes
+          gh release upload "$GITHUB_REF_NAME" "$OUT" --clobber
