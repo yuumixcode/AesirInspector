@@ -97,6 +97,18 @@ AesirInspector/                        # 仓库根目录 = Unity 工程根目录
 - **Unity**：2022.3.62f3c1 或更高版本
 - **Odin Inspector**：3.3.x 或更高版本（硬依赖）
 
+## 参考链接
+
+本仓库引用的第三方开源项目：
+
+| 项目 | 作者 | 许可 | 用途 |
+|------|------|------|------|
+| [JakePineOdinTools](https://github.com/JakePineGames/JakePineOdinTools) | Jake Pine | MIT | Odin 自动 Tooltip 与源码文件分析工具（`SourceFileAnalyzerUtility`）的来源，集成时已简化 |
+| [public-unity-package-exporter](https://github.com/Guardingpearsoftware/public-unity-package-exporter) | Guarding Pear Software | MIT | `.unitypackage` 导出工具，供 `Scripts/export-package.sh` 与 CI 使用 |
+| [Unity-Improved-Timers](https://github.com/adammyhre/Unity-Improved-Timers) | Git-Amend | MIT（附加条款） | 扩展包管理器中提供安装的第三方扩展包 |
+
+包内第三方组件的许可声明另见 [Third Party Notices.md](Assets/Runestone/AesirInspector/Third%20Party%20Notices.md)。
+
 ## 许可协议
 
 本项目采用 MIT 协议开源，详情请参阅 [LICENSE.md](LICENSE.md)。
