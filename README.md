@@ -72,15 +72,15 @@ AesirInspector/                        # 仓库根目录 = Unity 工程根目录
 
 ## 导出 .unitypackage
 
-每次版本更新后运行导出脚本，生成 `Builds/AesirInspector-<version>.unitypackage`：
+每次版本更新后运行导出脚本，生成 `Builds/AesirInspector-<version>.unitypackage`（纯 .NET 实现，无需启动 Unity，与 CI 同一方案）：
 
 ```bash
-./Scripts/export-package.sh            # 仅导出到 Builds/
-./Scripts/export-package.sh --release  # 导出 + 打 tag 推送 + 创建 GitHub Release（附 .unitypackage 与 CHANGELOG 说明）
+./Scripts/export-package.sh
 ```
 
-- 版本号取自包内 `package.json`；Unity 路径默认按 `ProjectSettings/ProjectVersion.txt` 自动拼接，可用环境变量 `UNITY_PATH` 覆盖
-- 也可在 Unity 中通过 `Tools → Aesir → Inspector → Export Package` 手动导出
+- 首次运行自动安装 .NET 8 SDK 到 `~/.dotnet`（用户目录，免 sudo），并缓存导出工具（固定 commit）
+- 版本号取自包内 `package.json`
+- 发布 Release：推送 `v*` 标签（如 `git tag v0.14.1 && git push origin v0.14.1`），GitHub Actions 自动导出并创建 GitHub Release（Release Notes 取自包内 CHANGELOG）
 
 ## 包文档
 
