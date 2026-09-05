@@ -116,8 +116,13 @@ InitTestScene*.unity*
 # Auto-generated cache in Assets folder
 /[Aa]ssets/[Ss]ceneDependencyCache*
 
-# 团结引擎 AI Codely CLI（本地工具链全部不上传，仅保留项目根目录的记忆文档 CODELY.md）
-.codely-cli/
+# 团结引擎 AI Codely CLI（本地工具链默认全部忽略；仅保留 TJGenerators 扩展——与 Codely Bridge 强绑定，
+# 以及 MCP 配置 .codely-cli/settings.json；项目记忆文档 CODELY.md 在仓库根目录，不在本目录内）
+.codely-cli/**
+!.codely-cli/settings.json
+!.codely-cli/extensions/
+!.codely-cli/extensions/TJGenerators/
+!.codely-cli/extensions/TJGenerators/**
 .codely.packages/
 .codely/
 .codelyignore
