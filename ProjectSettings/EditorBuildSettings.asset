@@ -1,0 +1,10 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes: []
+  m_configObjects:
+    RunLab.AesirInspector.AesirInspectorLanguageSettingsSO: {fileID: 11400000, guid: 75eace2feb1254a07932867c5e4fb935, type: 2}
+    RunLab.AesirInspector.AesirInspectorProjectSettingsSO: {fileID: 11400000, guid: fca32fbb4d5fa4a3e95c60266da1e356, type: 2}
