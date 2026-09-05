@@ -2,8 +2,7 @@
   "name": "Runestone.AesirInspector.Samples.PluginConfig",
   "rootNamespace": "",
   "references": [
-    "Runestone.AesirInspector",
-    "Runestone.AesirInspector.OdinInspector"
+    "Runestone.AesirInspector"
   ],
   "includePlatforms": [],
   "excludePlatforms": [],
@@ -11,9 +10,7 @@
   "overrideReferences": false,
   "precompiledReferences": [],
   "autoReferenced": false,
-  "defineConstraints": [
-    "ODIN_INSPECTOR"
-  ],
+  "defineConstraints": [],
   "versionDefines": [],
   "noEngineReferences": false
 }

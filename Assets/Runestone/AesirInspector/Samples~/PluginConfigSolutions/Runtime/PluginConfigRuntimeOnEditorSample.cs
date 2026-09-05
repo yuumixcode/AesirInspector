@@ -1,4 +1,3 @@
-using Runestone.AesirInspector.OdinIntegration;
 using UnityEngine;
 #if UNITY_EDITOR
 #endif

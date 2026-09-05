@@ -12,34 +12,27 @@
 graph TB
     Dev[开发者] --> AICode[AI Coding Agent]
     AICode --> AI[Aesir Inspector<br/>Agent Context Layer]
-    Dev --> Editor[Tuanjie Editor]
+    Dev --> Editor[Unity Editor]
     Editor --> PKG[Aesir Inspector Package]
     PKG --> Odin[Odin Inspector<br/>Optional Dependency]
-    PKG --> Unity[Unity/Tuanjie API]
+    PKG --> Unity[Unity API]
 ```
 
 ### Assembly Dependency
 
 ```mermaid
 graph LR
-    RT[Runestone.AesirInspector] -->|"无依赖"| None[ ]
+    RT[Runestone.AesirInspector] -.->|"Odin 硬依赖"| Odin[Sirenix / Odin Inspector]
     ED[Runestone.AesirInspector.Editor] -->|引用| RT
-    OW[Runestone.AesirInspector.OdinInspector] -->|引用| RT
-    OWE[Runestone.AesirInspector.Editor.OdinInspector] -->|引用| RT
-    OWE -->|引用| ED
-    OWE -->|引用| OW
-    OW -.->|ODIN_INSPECTOR| Odin
-    OWE -.->|ODIN_INSPECTOR| Odin
+    ED -.->|"Odin 硬依赖"| Odin
 ```
 
-### Odin Isolation
+### Odin Hard Dependency
 
-核心程序集（`Runtime/Unity/`、`Editor/Unity/`）零 Odin 依赖。Odin 增强代码全部放在 `OdinInspector/` 子目录，对应程序集声明 `defineConstraints: ODIN_INSPECTOR`：
+Odin Inspector 是硬依赖：程序集不设 `defineConstraints`，代码直接使用 Sirenix API，不保留任何 `#if ODIN_INSPECTOR` 条件编译分支。未安装 Odin Inspector 时编译失败，属于预期行为。
 
-- **Odin 未安装**：编译符号缺失，OdinInspector 程序集整体跳过编译，核心功能照常运行。
-- **Odin 已安装**：导入器自动添加 `ODIN_INSPECTOR` 编译符号，增强程序集生效。
-
-核心程序集内确需编辑器增强的少量分支，使用 `#if ODIN_INSPECTOR` 条件编译直接调用 `Sirenix` API，不经过任何桥接层。
+- Runtime 程序集 `Runestone.AesirInspector` 使用 `Sirenix.Utilities` 等运行时 API。
+- Editor 程序集 `Runestone.AesirInspector.Editor` 额外使用 `Sirenix.OdinInspector.Editor`（Drawer、Processor、MenuEditorWindow）。
 
 ### Bilingual System Data Flow
 
@@ -102,10 +95,10 @@ sequenceDiagram
 
 以下模块为展示/示例用途，不适用通用注释规范，使用 `//` 单行/多行注释进行特殊性补充即可：
 
-- `Runtime/Unity/CodeStyle/` — 代码风格示例文件
-- `Editor/OdinInspector/AttributeOverviewPro/Data/` — 属性数据类
-- `Editor/OdinInspector/AttributeOverviewPro/AttributePanels/` — Panel SO 定义
-- `Editor/OdinInspector/AttributeOverviewPro/UsageExamples/` — 示例 SO
+- `Runtime/CodeStyle/` — 代码风格示例文件
+- `Editor/AttributeOverviewPro/Data/` — 属性数据类
+- `Editor/AttributeOverviewPro/AttributePanels/` — Panel SO 定义
+- `Editor/AttributeOverviewPro/UsageExamples/` — 示例 SO
 
 ### Methods
 
@@ -113,7 +106,6 @@ sequenceDiagram
 
 ### Odin Inspector 规范
 
-- Odin 依赖代码**必须**放在 `OdinInspector/` 子目录
 - Processor：`internal sealed`，与目标类**同文件**定义，无需 XML / `[Summary]`
 - Processor 需 `nameof` 引用私有成员时，定义为**嵌套类**（仍 `internal`）
 - Drawer：继承 `OdinAttributeDrawer`，独立存于 `Drawers/` 目录
@@ -122,9 +114,9 @@ sequenceDiagram
 
 | 类别 | 命名规则 | 目录 | 示例 |
 |---|---|---|---|
-| Runtime | `XxxUtility` | `Runtime/Unity/Utilities/` | `PathUtility` |
-| Editor 安全封装 | `XxxSafeEditorUtility` | `Runtime/Unity/Utilities/` | `HierarchySafeEditorUtility` |
-| Editor-Only | `XxxEditorUtility` | `Editor/Unity/` | `PackageManagerEditorUtility` |
+| Runtime | `XxxUtility` | `Runtime/Utilities/` | `PathUtility` |
+| Editor 安全封装 | `XxxSafeEditorUtility` | `Runtime/Utilities/` | `HierarchySafeEditorUtility` |
+| Editor-Only | `XxxEditorUtility` | `Editor/` | `PackageManagerEditorUtility` |
 
 ### SafeEditorUtility Pattern
 
@@ -164,41 +156,30 @@ AesirInspectorLanguageSettingsSO.OnLanguageChanged -= Internal_OnLanguageChanged
 
 ## Modules
 
-### Runtime/Unity/ — Core Runtime
+### Runtime/ — Runtime
 
 | Component | Directory | Key Types |
 |-----------|-----------|-----------|
 | Common | `Common/` | `AesirInspectorVersion`, `AesirInspectorPaths`, `AesirInspectorWebLinks`, `AesirInspectorSettings`, `IAesirInspectorReset` |
 | Debug | `Debug/` | `AesirInspectorDebug`, `AesirInspectorDebugSettings` |
 | ScriptDocGenerator | `ScriptDocGenerator/` | `ITypeData`, `MemberData`, `FieldData`, `PropertyData`, `MethodData`, `ConstructorData`, `EventData`, `ParameterData`, `TypeData`, `SummaryAttribute` |
-| Utilities | `Utilities/` | `ScriptableObjectSafeEditorUtility`, `MonoScriptSafeEditorUtility`, `PathUtility`, `PathSafeEditorUtility`, `HierarchyUtility`, `HierarchySafeEditorUtility`, `ProjectSafeEditorUtility`, `UrlUtility`, `ReflectionUtility`, `PredefinedAssemblyUtility`, `PlayerLoopUtility`, `RegexUtility` |
+| Utilities | `Utilities/` | `ScriptableObjectSafeEditorUtility`, `MonoScriptSafeEditorUtility`, `PathUtility`, `PathSafeEditorUtility`, `HierarchyUtility`, `HierarchySafeEditorUtility`, `ProjectSafeEditorUtility`, `UrlUtility`, `ReflectionUtility`, `PredefinedAssemblyUtility`, `PlayerLoopUtility`, `RegexUtility`, `OdinCodeHighlighter` |
 | CodeStyle | `CodeStyle/` | `AesirInspectorCodeStyle`（代码风格可编译示例） |
+| Attributes | `Attributes/` | `BilingualTitleAttribute`, `BilingualButtonAttribute` 等双语特性 |
+| Inspector | `Inspector/` | `BilingualDisplayAsStringControl`, `BilingualHeaderControl`, `HorizontalSeparateControl` |
+| Localization | `Localization/` | `BilingualData`, `AesirInspectorLanguageSettingsSO` |
 
-### Editor/Unity/ — Core Editor
+### Editor/ — Editor
 
 | Component | Directory | Key Types |
 |-----------|-----------|-----------|
 | Core | `Core/` | `AesirInspectorInstallationChecker`, `AesirInspectorMenuItems` |
-| MiniTools | `MiniTools/` | `QuickCreateSOMenuItem` |
-
-### Runtime/OdinInspector/ — Odin Runtime
-
-| Component | Directory | Key Types |
-|-----------|-----------|-----------|
-| Attributes | `Attributes/` | `BilingualTitleAttribute`, `BilingualButtonAttribute` 等双语特性 |
-| Inspector | `Inspector/` | `BilingualDisplayAsStringControl`, `BilingualHeaderControl`, `HorizontalSeparateControl` |
-| Localization | `Localization/` | `BilingualData`, `AesirInspectorLanguageSettingsSO` |
-| Utilities | `Utilities/` | `OdinCodeHighlighter` |
-
-### Editor/OdinInspector/ — Odin Editor
-
-| Component | Directory | Key Types |
-|-----------|-----------|-----------|
+| Common | `Common/` | `AesirInspectorModuleAssetMarkerSO` |
+| MiniTools | `MiniTools/` | `QuickCreateSOMenuItem`, MenuItem Viewer, Syntax Highlighter |
 | AttributeOverviewPro | `AttributeOverviewPro/` | Data-Panel-Example 三件套架构 |
 | AttributeProcessors | `AttributeProcessors/` | OdinAttributeProcessor 实现 |
 | Drawers | `Drawers/` | 双语 Drawer |
 | ExtensionManager | `ExtensionManager/` | 一键安装/移除推荐包 |
-| MiniTools | `MiniTools/` | MenuItem Viewer, Syntax Highlighter |
 | ScriptDocGenerator | `ScriptDocGenerator/` | 文档生成器编辑器逻辑、`XmlSummaryTool`（`SummaryAttributeTool/`） |
 | Windows | `Windows/` | Getting Started, Preferences |
 
@@ -206,21 +187,21 @@ AesirInspectorLanguageSettingsSO.OnLanguageChanged -= Internal_OnLanguageChanged
 
 ## Architecture Decisions
 
-### ADR-001: Conditional Compilation Isolation
+### ADR-001: Odin Hard Dependency
 
-Odin 增强代码全部隔离在 `OdinInspector/` 子目录，对应程序集通过 `defineConstraints: ODIN_INSPECTOR` 自动启用/禁用；核心程序集内的少量分支使用 `#if ODIN_INSPECTOR` 条件编译。
+Odin Inspector 是硬依赖：程序集不设 `defineConstraints`，不保留 `#if ODIN_INSPECTOR` 条件编译分支，直接使用 Sirenix API。
 
 <details>
 <summary>Consequences</summary>
 
 **优点**：
-- 核心程序集零 Odin 依赖，可在无 Odin 环境下独立运行和分发
-- 无桥接间接层，Odin 可用时直接调用，无性能开销
-- Odin 集成的启用/禁用完全由编译符号驱动，无运行时判断
+- 无条件编译分支，代码路径单一，可读性和维护成本显著降低
+- 无桥接间接层，直接调用 Odin API，无性能开销
+- 依赖关系清晰：缺少 Odin 时立即编译失败，而非静默降级
 
 **缺点**：
-- 核心程序集内的 `#if ODIN_INSPECTOR` 分支需同时维护两种编译路径
-- 条件编译分支散落时增加阅读成本，需严格控制使用范围
+- 无 Odin 环境下无法编译，未安装 Odin 的项目不能使用本包
+- Odin 版本升级可能带来 API 破坏性变更，需同步适配
 
 </details>
 
@@ -243,21 +224,21 @@ Attribute 只承载数据，Drawer 负责渲染逻辑，Processor 负责动态�
 
 </details>
 
-### ADR-003: Core/Integration Assembly Separation
+### ADR-003: Runtime/Editor Assembly Separation
 
-核心程序集（`Runtime/Unity/`、`Editor/Unity/`）零 Odin 依赖；OdinInspector 程序集通过 `ODIN_INSPECTOR` 编译约束自动启用/禁用。
+仅保留两个程序集：`Runestone.AesirInspector`（Runtime）与 `Runestone.AesirInspector.Editor`（Editor），按 Unity 平台边界拆分，不再按 Odin 依赖拆分。
 
 <details>
 <summary>Consequences</summary>
 
 **优点**：
-- 核心程序集可在任何 Unity/Tuanjie 项目中使用，无需 Odin 授权
-- `ODIN_INSPECTOR` 编译约束确保 Odin 代码不会在无 Odin 环境下编译报错
-- 程序集边界清晰，依赖方向单向（OdinInspector → Core），避免循环引用
+- 程序集数量从 4 个减为 2 个，结构与 asmdef 维护成本降低
+- 平台边界（Runtime/Editor）符合 Unity 包标准布局，依赖方向单向（Editor → Runtime）
+- 命名空间与程序集一一对应（`Runestone.AesirInspector` / `Runestone.AesirInspector.Editor`），降低认知成本
 
 **缺点**：
-- 4 个程序集增加了项目结构和 asmdef 文件的复杂度
-- 新增跨程序集的功能时，需考虑代码应放在 Core 还是 OdinInspector
+- Runtime 程序集包含 Odin 运行时依赖，用户项目必须安装 Odin
+- 单一 Runtime 程序集体量更大，无法按模块裁剪引用
 
 </details>
 
@@ -286,21 +267,21 @@ Runtime 工具类使用 `XxxSafeEditorUtility` 模式：`void` 方法加 `[Condi
 
 ### Add Bilingual Attribute
 
-1. **Attribute**: `Runtime/OdinInspector/Attributes/Bilingual{Name}Attribute.cs` — 命名 `Bilingual{OdinOriginalName}Attribute`，必须 `[DontApplyToListElements]`，公共类必须 `[Summary]`，禁止 XML 注释
-2. **Drawer**: `Editor/OdinInspector/Drawers/Bilingual{Name}AttributeDrawer.cs` — 继承 `OdinAttributeDrawer<TAttribute>`，读取 `AesirInspectorLanguageSettingsSO.CurrentLanguage`，无需 XML / `[Summary]`
+1. **Attribute**: `Runtime/Attributes/Bilingual{Name}Attribute.cs` — 命名 `Bilingual{OdinOriginalName}Attribute`，必须 `[DontApplyToListElements]`，公共类必须 `[Summary]`，禁止 XML 注释
+2. **Drawer**: `Editor/Drawers/Bilingual{Name}AttributeDrawer.cs` — 继承 `OdinAttributeDrawer<TAttribute>`，读取 `AesirInspectorLanguageSettingsSO.CurrentLanguage`，无需 XML / `[Summary]`
 3. **Processor** (可选): 与被处理类同文件，`internal sealed`，无需 XML / `[Summary]`
 4. **AttributeOverviewPro** (可选): 创建 Data-Panel-Example 三件套
 
 ### Add Inspector Control
 
-1. **文件**: `Runtime/OdinInspector/Inspector/{Name}Control.cs`
+1. **文件**: `Runtime/Inspector/{Name}Control.cs`
 2. **命名**: `{Purpose}Control`
 3. **双语**: 使用 `BilingualData` + `AesirInspectorLanguageSettingsSO.CurrentLanguage`
 4. **Editor 功能**: 通过 `SafeEditorUtility` 模式调用
 
 ### Add Odin Drawer
 
-1. **文件**: `Editor/OdinInspector/Drawers/{Name}Drawer.cs`
+1. **文件**: `Editor/Drawers/{Name}Drawer.cs`
 2. **继承**: `OdinAttributeDrawer<TAttribute>`
 3. **双语**: 通过 `AesirInspectorLanguageSettingsSO` 获取当前语言，订阅 `OnLanguageChanged` 事件
 4. **无需** XML / `[Summary]`

@@ -9,6 +9,65 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.14.0] - 2026-09-05
+
+### ⚠ BREAKING CHANGES (Read before upgrading / 升级前必读)
+
+> **Architecture restructure / 架构重构**: Odin Inspector is upgraded to a **hard dependency**; the Unity/Odin dual-assembly isolation architecture is removed.
+> The 4 assemblies are merged into 2, with directories and namespaces fully restructured — follow the migration guide below to update code references.
+> 程序集从 4 个合并为 2 个，目录与命名空间全面重构，升级后需按下方迁移指南更新代码引用。
+
+#### Migration Guide / 迁移指南
+
+| Scope / 范围 | Before / 旧 | After / 新 |
+|---|---|---|
+| Assemblies (Runtime) | `Runestone.AesirInspector` + `Runestone.AesirInspector.OdinInspector` | `Runestone.AesirInspector` |
+| Assemblies (Editor) | `Runestone.AesirInspector.Editor` + `Runestone.AesirInspector.Editor.OdinInspector` | `Runestone.AesirInspector.Editor` |
+| Namespaces (Runtime) | `Runestone.AesirInspector` / `Runestone.AesirInspector.OdinIntegration` | `Runestone.AesirInspector` |
+| Namespaces (Editor) | `Runestone.AesirInspector.Editor` / `Runestone.AesirInspector.OdinIntegration.Editor` | `Runestone.AesirInspector.Editor` |
+| Directories (Runtime) | `Runtime/Unity/` + `Runtime/OdinInspector/` | `Runtime/` |
+| Directories (Editor) | `Editor/Unity/` + `Editor/OdinInspector/` | `Editor/` |
+| Conditional compilation | `#if ODIN_INSPECTOR` | Removed; Sirenix APIs used directly |
+| defineConstraints | `ODIN_INSPECTOR` | Removed |
+
+#### Code-side replace examples / 代码侧替换示例
+
+```csharp
+// Before / 旧
+using Runestone.AesirInspector.OdinIntegration;
+using Runestone.AesirInspector.OdinIntegration.Editor;
+
+// After / 新
+using Runestone.AesirInspector;
+using Runestone.AesirInspector.Editor;
+```
+
+```jsonc
+// asmdef references — Before / 旧
+"references": [
+  "Runestone.AesirInspector.OdinInspector",
+  "Runestone.AesirInspector.Editor.OdinInspector"
+]
+
+// After / 新
+"references": [
+  "Runestone.AesirInspector",
+  "Runestone.AesirInspector.Editor"
+]
+```
+
+### Changed
+
+- **Standard Unity Package layout**: single-level flat `Runtime/` and `Editor/` — Runtime: Attributes, Inspector, Localization, Utilities, ScriptDocGenerator, Common, Debug, CodeStyle; Editor: AttributeOverviewPro, AttributeProcessors, Common, Core, Drawers, ExtensionManager, MiniTools, ScriptDocGenerator, Windows
+- **Odin Inspector as a hard dependency**: removed `ODIN_INSPECTOR` defineConstraints and all `#if ODIN_INSPECTOR` conditional compilation (4 guards now keep the Odin branch only); compilation fails outright without Odin
+- **Assembly merge**: `Runestone.AesirInspector.OdinInspector` merged into `Runestone.AesirInspector`; `Runestone.AesirInspector.Editor.OdinInspector` merged into `Runestone.AesirInspector.Editor`
+- **Tests restructured**: `Tests/Editor/OdinInspector/` flattened to `Tests/Editor/`; both test assemblies' references updated (keeping the `UNITY_INCLUDE_TESTS` constraint and Sirenix precompiled references)
+- **Docs fully synced**: README (zh/en), development.md, CONTRIBUTING, and Third Party Notices updated for the new architecture
+- **Docs trimmed**: removed `Documentation~/aesir-inspector.md` (duplicated the README) and the in-package `CONTRIBUTING.md` copy (the repo-root documents are the source of truth)
+- **Docs now consistently reference the Unity engine**; Tuanjie wording removed
+
+---
+
 ## [0.13.0] - 2026-09-03
 
 ### Changed

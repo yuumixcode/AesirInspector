@@ -25,7 +25,7 @@
    - **复现步骤**：详细描述如何触发该 Bug。
    - **预期行为**：你期望发生什么。
    - **实际行为**：实际发生了什么。
-   - **环境信息**：Unity/Tuanjie 版本、Odin Inspector 版本（如适用）、操作系统。
+   - **环境信息**：Unity 版本、Odin Inspector 版本、操作系统。
    - **截图/日志**：如有可能，附上截图或错误日志。
 
 ### 建议功能
@@ -47,9 +47,9 @@
 
 ### 前置要求
 
-- **Tuanjie Editor** 2022.3.62f3c1 或更高版本（Unity 2022.3 fork）
+- **Unity Editor** 2022.3.62f3c1 或更高版本
 - **Git**：用于版本控制
-- **Odin Inspector** 3.3.x 或更高（可选依赖，用于开发 OdinInspector 增强功能）
+- **Odin Inspector** 3.3.x 或更高（硬依赖）
 
 ### 克隆项目
 
@@ -57,14 +57,11 @@
 git clone git@github.com:yuumixcode/AesirInspector.git
 ```
 
-本仓库本身即一个 Unity 工程项目，克隆后直接用 Tuanjie Editor 打开仓库根目录即可。包源码位于 `Assets/Runestone/AesirInspector/`。
+本仓库本身即一个 Unity 工程项目，克隆后直接用 Unity 打开仓库根目录即可。包源码位于 `Assets/Runestone/AesirInspector/`。
 
-### Odin Inspector 集成
+### Odin Inspector
 
-Odin Inspector 是可选依赖：
-
-- **不安装 Odin**：核心功能正常编译运行，OdinInspector 程序集因 `defineConstraints` 不满足而被自动跳过。
-- **安装 Odin**：导入后会自动添加 `ODIN_INSPECTOR` 编译符号，启用 OdinInspector 增强程序集。
+Odin Inspector 是硬依赖，未安装时包无法编译。请先通过 Odin 官方安装器为项目安装 Odin 3.3.x+。
 
 ## 项目结构
 
@@ -73,34 +70,28 @@ AesirInspector/                        # 仓库根目录 = Unity 工程根目录
 ├── Assets/
 │   └── Runestone/
 │       └── AesirInspector/            # Aesir Inspector 包
-│           ├── Runtime/
-│           │   ├── Unity/             # 核心运行时 (Runestone.AesirInspector)
-│           │   │   ├── Common/        # 版本、路径、设置、接口等基础类型
-│           │   │   ├── Debug/         # AesirInspectorDebug 日志系统
-│           │   │   ├── ScriptDocGenerator/  # 文档生成器运行时模型
-│           │   │   ├── Utilities/     # 安全编辑器工具集
-│           │   │   └── CodeStyle/     # 代码风格指南（可编译示例）
-│           │   └── OdinInspector/     # Odin 运行时 (ODIN_INSPECTOR)
-│           │       ├── Attributes/    # 双语特性
-│           │       ├── Inspector/     # 双语 Inspector Control
-│           │       ├── Localization/  # 本地化数据与语言设置
-│           │       └── Utilities/     # OdinCodeHighlighter 等
-│           ├── Editor/
-│           │   ├── Unity/             # 核心编辑器 (Runestone.AesirInspector.Editor)
-│           │   │   ├── Core/          # 安装检测、菜单管理
-│           │   │   └── MiniTools/     # QuickCreateSO
-│           │   └── OdinInspector/     # Odin 编辑器 (ODIN_INSPECTOR)
-│           │       ├── AttributeOverviewPro/  # 特性总览窗口
-│           │       ├── AttributeProcessors/   # OdinAttributeProcessor
-│           │       ├── Common/
-│           │       ├── Drawers/       # 双语 Drawer
-│           │       ├── ExtensionManager/      # 扩展包管理器
-│           │       ├── MiniTools/     # MenuItem Viewer, Syntax Highlighter
-│           │       ├── ScriptDocGenerator/    # 文档生成器与 Summary 工具
-│           │       └── Windows/       # Getting Started, Preferences
+│           ├── Runtime/               # 运行时程序集 (Runestone.AesirInspector)
+│           │   ├── Common/            # 版本、路径、设置、接口等基础类型
+│           │   ├── Debug/             # AesirInspectorDebug 日志系统
+│           │   ├── ScriptDocGenerator/  # 文档生成器运行时模型
+│           │   ├── Utilities/         # 安全编辑器工具集与 OdinCodeHighlighter
+│           │   ├── Attributes/        # 双语特性
+│           │   ├── Inspector/         # 双语 Inspector Control
+│           │   ├── Localization/      # 本地化数据与语言设置
+│           │   └── CodeStyle/         # 代码风格指南（可编译示例）
+│           ├── Editor/                # 编辑器程序集 (Runestone.AesirInspector.Editor)
+│           │   ├── Core/              # 安装检测、菜单管理
+│           │   ├── Common/            # 模块资产标记
+│           │   ├── MiniTools/         # QuickCreateSO, MenuItem Viewer, Syntax Highlighter
+│           │   ├── AttributeOverviewPro/  # 特性总览窗口
+│           │   ├── AttributeProcessors/   # OdinAttributeProcessor
+│           │   ├── Drawers/           # 双语 Drawer
+│           │   ├── ExtensionManager/  # 扩展包管理器
+│           │   ├── ScriptDocGenerator/    # 文档生成器与 Summary 工具
+│           │   └── Windows/           # Getting Started, Preferences
 │           ├── Tests/
-│           │   ├── Editor/OdinInspector/  # 编辑器模式测试
-│           │   └── Runtime/               # 运行时模式测试
+│           │   ├── Editor/            # 编辑器模式测试
+│           │   └── Runtime/           # 运行时模式测试
 │           ├── Samples~/              # 使用示例
 │           ├── Documentation~/        # 用户文档与开发者指南
 │           └── package.json
@@ -111,16 +102,14 @@ AesirInspector/                        # 仓库根目录 = Unity 工程根目录
 
 ### 程序集说明
 
-| 程序集 | Odin 依赖 | 说明 |
-|--------|-----------|------|
-| `Runestone.AesirInspector` | 无 | 核心运行时，不允许引用 Odin API |
-| `Runestone.AesirInspector.Editor` | 无 | 核心编辑器 |
-| `Runestone.AesirInspector.OdinInspector` | `ODIN_INSPECTOR` | Odin 运行时增强 |
-| `Runestone.AesirInspector.Editor.OdinInspector` | `ODIN_INSPECTOR` | Odin 编辑器增强 |
+| 程序集 | 说明 |
+|--------|------|
+| `Runestone.AesirInspector` | 运行时（Odin 硬依赖，直接使用 Sirenix API） |
+| `Runestone.AesirInspector.Editor` | 编辑器（额外使用 Sirenix.OdinInspector.Editor） |
 
 ## 编码规范
 
-请务必在提交代码前阅读并遵循以下规范。详细规范参见 `Runtime/Unity/CodeStyle/AesirInspectorCodeStyle.cs` 和 `Documentation~/development.md`（位于 `Assets/Runestone/AesirInspector/` 下）。
+请务必在提交代码前阅读并遵循以下规范。详细规范参见 `Runtime/CodeStyle/AesirInspectorCodeStyle.cs` 和 `Documentation~/development.md`（位于 `Assets/Runestone/AesirInspector/` 下）。
 
 ### 注释规范
 
@@ -160,8 +149,7 @@ public void ApplyDamage(float amount) { }
 - **严禁**对 `UnityEngine.Object` 派生类使用 `?.` / `??`。
 - 私有方法对应公开方法时，增加 `Internal_` 前缀。
 - `#if UNITY_EDITOR` 包裹编辑器专用代码。
-- Odin 依赖代码**必须**放在 `OdinInspector/` 子目录。
-- 核心程序集**不允许**直接引用 Odin API — Odin 相关程序集通过 `defineConstraints: ODIN_INSPECTOR` 与 `#if ODIN_INSPECTOR` 条件编译隔离。
+- Odin Inspector 为硬依赖，可直接使用 Sirenix API，无需条件编译守卫。
 
 ### 事件规范
 
@@ -180,9 +168,9 @@ public void ApplyDamage(float amount) { }
 
 | 类别 | 命名规则 | 目录 |
 |------|----------|------|
-| Runtime | `XxxUtility` | `Runtime/Unity/Utilities/` |
-| Editor 安全封装 | `XxxSafeEditorUtility` | `Runtime/Unity/Utilities/` |
-| Editor-Only | `XxxEditorUtility` | `Editor/Unity/` |
+| Runtime | `XxxUtility` | `Runtime/Utilities/` |
+| Editor 安全封装 | `XxxSafeEditorUtility` | `Runtime/Utilities/` |
+| Editor-Only | `XxxEditorUtility` | `Editor/` |
 
 ## 提交 Pull Request
 
@@ -222,8 +210,6 @@ public void ApplyDamage(float amount) { }
 - [ ] 未引入 XML 文档注释（使用 `[Summary]` 或自文档化命名替代）
 - [ ] 未对 `UnityEngine.Object` 派生类使用 `?.` / `??`
 - [ ] 编辑器专用代码已用 `#if UNITY_EDITOR` 包裹
-- [ ] Odin 依赖代码放置在 `OdinInspector/` 子目录
-- [ ] 核心程序集未直接引用 Odin API
 - [ ] 已添加必要的单元测试
 - [ ] 所有测试通过
 - [ ] 提交信息简洁且使用现在时态

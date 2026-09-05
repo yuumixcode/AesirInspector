@@ -7,6 +7,7 @@
 ### Feedback
 
 ### Project
-- [2026-09-05 14:51:50] [project] AesirInspector naming trap: since 0.9.0 the Odin assemblies/dirs are renamed to `OdinInspector` but the NAMESPACES still use `OdinIntegration` — Runtime namespace `Runestone.AesirInspector.OdinIntegration` vs assembly `Runestone.AesirInspector.OdinInspector`; Editor namespace `Runestone.AesirInspector.OdinIntegration.Editor` vs assembly `Runestone.AesirInspector.Editor.OdinInspector`. **Why:** the rename covered asmdefs/dirs only; renaming one but not the other breaks compilation (bit me when fixing Samples~ on 2026-09-05). **How to apply:** in .asmdef `references` use assembly names (`...OdinInspector`), in C# `using`/`namespace` use `...OdinIntegration`; verify with grep before assuming they match.
+- [2026-09-05 15:17:19] [project] AesirInspector assembly scheme (since 0.14.0, 2026-09-05): exactly two assemblies — Runtime `Runestone.AesirInspector` (namespace Runestone.AesirInspector) and Editor `Runestone.AesirInspector.Editor` (namespace Runestone.AesirInspector.Editor); Odin Inspector is a hard dependency (no ODIN_INSPECTOR defineConstraints, no #if guards, Sirenix APIs used directly). **Why:** 0.14.0 merged the former Unity/OdinInspector split assemblies and unified the old `Runestone.AesirInspector.OdinIntegration(.Editor)` namespaces into the base namespaces. **How to apply:** new code uses only these two namespaces/asmdefs; pre-0.14 code needs the migration table in CHANGELOG 0.14.0.
+
 ### Reference
 

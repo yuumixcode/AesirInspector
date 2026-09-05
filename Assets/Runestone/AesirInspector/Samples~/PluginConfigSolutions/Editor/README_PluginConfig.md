@@ -43,7 +43,7 @@ https://docs.unity3d.com/ScriptReference/PlayerSettings.SetPreloadedAssets.html
 
 使用 `ScriptableSingleton`，配置类继承自 `ScriptableSingleton<T>`，同时添加 `[FilePath]` 属性来指定配置文件的存储路径。
 
-其中 `Location` 枚举设置为 `FilePathAttribute.Location.PreferencesFolder`。此时代表的根路径是在 `Tuanjie/Editor-5.x/` 目录下。
+其中 `Location` 枚举设置为 `FilePathAttribute.Location.PreferencesFolder`。此时代表的根路径是在 `Unity/Editor-5.x/` 目录下。
 
 本质是一个  `ScriptableObject` ，内部有一个静态单例可以直接获取到实例对象，便于在 Unity 编辑器内部显示。
 
@@ -52,7 +52,7 @@ https://docs.unity3d.com/ScriptReference/PlayerSettings.SetPreloadedAssets.html
 Sample 的案例路径如下：
 
 ```markdown
-~/Library/Preferences/Tuanjie/Editor-5.x/PreferencesResources/ScriptableSingletonInPreferencesSample.asset
+~/Library/Preferences/Unity/Editor-5.x/PreferencesResources/ScriptableSingletonInPreferencesSample.asset
 ```
 
 ## 二、支持跨项目调用，不需要在 Unity 编辑器中直接查看和调试，仅 Editor 程序集调用

@@ -1,20 +1,20 @@
 # Aesir Inspector
 
 [English](Assets/Runestone/AesirInspector/Documentation~/README_EN.md) | [![license](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE.md)
-[![Version](https://img.shields.io/badge/version-0.13.0-blue.svg)](Assets/Runestone/AesirInspector/CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.14.0-blue.svg)](Assets/Runestone/AesirInspector/CHANGELOG.md)
 [![Install via Git URL](https://img.shields.io/badge/UPM-Git%20URL-blueviolet.svg)](#通过-git-url-安装)
 
-本仓库是一个 **Unity（团结引擎 Tuanjie）工程项目仓库**，托管编辑器扩展包 **Aesir Inspector** —— 提供双语 Inspector 特性、脚本文档生成器、XML Summary 同步工具、安全编辑器工具集与扩展包管理器，可选集成 Odin Inspector。
+本仓库是一个 **Unity 工程项目仓库**，托管编辑器扩展包 **Aesir Inspector** —— 提供双语 Inspector 特性、脚本文档生成器、XML Summary 同步工具、安全编辑器工具集与扩展包管理器，基于 Odin Inspector（硬依赖）实现增强能力。
 
 包本体位于 `Assets/Runestone/AesirInspector/`，是一个完整、自包含的 Unity Custom Package，因此本仓库同时支持三种使用方式：
 
 | 使用方式 | 说明 |
 |------|------|
-| **直接开发** | 用 Tuanjie Editor 打开仓库根目录即可开发与运行单元测试 |
-| **Git URL 导入** | 任意 Unity / Tuanjie 项目通过 UPM Git URL 安装本包（见下文） |
+| **直接开发** | 用 Unity Editor 打开仓库根目录即可开发与运行单元测试 |
+| **Git URL 导入** | 任意 Unity 项目通过 UPM Git URL 安装本包（见下文） |
 | **导出分发包** | 将包目录导出为 `.unitypackage`，或整目录复制分发 |
 
-> ⚠️ **可选依赖 [Odin Inspector](https://odininspector.com/)**：不安装 Odin 时核心功能正常编译运行；安装 Odin 3.3.x+ 后自动添加 `ODIN_INSPECTOR` 编译符号，启用增强程序集（双语特性、Attribute Overview Pro 等）。
+> ⚠️ **硬依赖 [Odin Inspector](https://odininspector.com/)**：需先安装 Odin 3.3.x+，未安装时本包无法编译。
 
 ## 仓库结构
 
@@ -23,8 +23,8 @@ AesirInspector/                        # 仓库根目录 = Unity 工程根目录
 ├── Assets/
 │   └── Runestone/
 │       └── AesirInspector/            # Aesir Inspector 自定义包
-│           ├── Editor/                # 编辑器程序集（Core + OdinInspector 增强）
-│           ├── Runtime/               # 运行时程序集（Core + OdinInspector 增强）
+│           ├── Editor/                # 编辑器程序集（Runestone.AesirInspector.Editor）
+│           ├── Runtime/               # 运行时程序集（Runestone.AesirInspector）
 │           ├── Tests/                 # 单元测试（Editor / Runtime）
 │           ├── Samples~/              # 示例（UPM Samples 标签页按需导入）
 │           ├── Documentation~/        # 包文档（英文 README / CHANGELOG、开发者指南等）
@@ -66,7 +66,7 @@ AesirInspector/                        # 仓库根目录 = Unity 工程根目录
    git clone git@github.com:yuumixcode/AesirInspector.git
    ```
 
-2. 用 Tuanjie Editor（2022.3.62f3c1 或更高版本）打开仓库根目录。
+2. 用 Unity（2022.3.62f3c1 或更高版本）打开仓库根目录。
 3. 包源码位于 `Assets/Runestone/AesirInspector/`；单元测试位于 `Tests/Editor/` 与 `Tests/Runtime/`，通过 Test Runner 运行。
 
 ## 导出 .unitypackage
@@ -85,8 +85,8 @@ AesirInspector/                        # 仓库根目录 = Unity 工程根目录
 
 ## 环境依赖
 
-- **Unity / Tuanjie**：2022.3.62f3c1 或更高版本
-- **Odin Inspector**：3.3.x 或更高版本（可选依赖）
+- **Unity**：2022.3.62f3c1 或更高版本
+- **Odin Inspector**：3.3.x 或更高版本（硬依赖）
 
 ## 许可协议
 

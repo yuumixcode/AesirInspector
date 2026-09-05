@@ -1,7 +1,7 @@
 # Aesir Inspector
 
 [English](Documentation~/README_EN.md) | [![license](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE.md)
-[![Version](https://img.shields.io/badge/version-0.13.0-blue.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.14.0-blue.svg)](CHANGELOG.md)
 [![Install via Git URL](https://img.shields.io/badge/UPM-Git%20URL-blueviolet.svg)](#安装说明)
 
 > 📦 **本包是 [Unity-Aesir-Packages](https://github.com/yuumixcode/Unity-Aesir-Packages) monorepo 的一部分**。本包**不依赖**其他 Aesir 子包（独立可装）。
@@ -18,7 +18,7 @@
 
 - **编辑器工具开发者**：正在开发自定义 Inspector 工具，需要双语（中/英）UI 显示支持的开发者。
 - **跨国/跨地区协作团队**：团队成员语言背景不同，需要在 Inspector 面板中同时展示中英文信息以降低沟通成本。
-- **Unity 编辑器用户**：希望获得安全编辑器工具、文档生成器、Summary 同步工具等实用功能的开发者，无需安装 Odin Inspector。
+- **Unity 编辑器用户**：希望获得安全编辑器工具、文档生成器、Summary 同步工具等实用功能的开发者。
 - **Odin Inspector 用户**：已有 Odin Inspector 并希望获得更丰富的属性装饰器与增强 Inspector 体验的开发者。
 - **代码规范倡导者**：希望团队遵循统一的代码风格与注释标准，提升项目可维护性。
 
@@ -55,14 +55,12 @@ Aesir Inspector 会在编辑器加载时自动检测安装方式（UPM / Assets 
 
 ## 环境依赖
 
-- **Unity**: 2022.3.2t3 (Tuanjie) 或更高版本。
-- **Odin Inspector**: 3.3.x 或更高版本（可选依赖；导入后会自动添加 `ODIN_INSPECTOR` 编译符号，启用 OdinInspector 增强程序集）。
+- **Unity**: 2022.3 或更高版本。
+- **Odin Inspector**: 3.3.x 或更高版本（**硬依赖**；未安装时本包无法编译）。
 
 ## 核心功能
 
-> **📌 提示**：标注 ⚡ 的功能需要安装 Odin Inspector。
-
-### 1. 特性总览 (Attribute Overview Pro) ⚡
+### 1. 特性总览 (Attribute Overview Pro)
 
 以可搜索的树形菜单展示所有已注册的 Odin Inspector 与 Aesir Inspector 特性面板，每个特性提供实时预览与示例代码。
 
@@ -72,7 +70,7 @@ Aesir Inspector 会在编辑器加载时自动检测安装方式（UPM / Assets 
 - **代码预览**：选中特性即可查看对应的示例源代码，快速了解用法。
 - 通过 `Tools → Aesir → Inspector → Attribute Overview Pro` 菜单打开。
 
-### 2. 脚本文档生成器 (Script Doc Generator) ⚡
+### 2. 脚本文档生成器 (Script Doc Generator)
 
 通过反射分析 C# 类型信息，生成结构化的 API 文档，支持增量生成与个性化扩展。
 
@@ -189,7 +187,7 @@ public void Reset() { }
 
 最后，输出阶段会自动检测 Header 中是否已包含 `using Runestone.AesirInspector;`，若未包含则自动添加。
 
-### 4. 迷你工具集 (Mini Tools) ⚡
+### 4. 迷你工具集 (Mini Tools)
 
 整合常用编辑器小工具，通过 `Tools → Aesir → Inspector → Mini Tools` 菜单打开统一窗口。
 
@@ -199,7 +197,7 @@ public void Reset() { }
 | **Syntax Highlighter** | 基于 Odin 内置语法高亮处理器的可视化面板，输入源码即可测试高亮效果并输出富文本标记 |
 | **Quick Create SO** | 在 Project 窗口右键 MonoScript 即可快速生成 ScriptableObject 资源文件，支持多选批量创建 |
 
-### 5. 扩展包管理器 (Extension Package Manager) ⚡
+### 5. 扩展包管理器 (Extension Package Manager)
 
 快捷安装推荐的 Aesir 系列和其他常用开源 Unity Packages，基于 Git URL 方式。
 
@@ -209,7 +207,7 @@ public void Reset() { }
 
 ## 基础设施
 
-### 6. 双语 UI 特性 (Bilingual Attributes) ⚡
+### 6. 双语 UI 特性 (Bilingual Attributes)
 
 提供了一套完整的双语属性装饰器与 Inspector Control，支持在 Inspector 面板中同时显示中文和英文信息。主要面向以下场景：
 
@@ -226,12 +224,13 @@ public void Reset() { }
 - `BilingualHeaderControl` 双语头部信息控件
 - `HorizontalSeparateControl` 水平分隔线控件
 
-### 7. Odin 隔离机制
+### 7. Odin 集成
 
-Odin 增强代码全部隔离在 `OdinInspector/` 子目录，对应程序集通过 `defineConstraints: ODIN_INSPECTOR` 自动启用/禁用，核心程序集不依赖 Odin：
+Odin Inspector 为硬依赖，本包直接使用 Sirenix（Odin）API 提供全部增强能力：
 
-- **未安装 Odin**：`ODIN_INSPECTOR` 编译符号缺失，OdinInspector 程序集整体跳过编译，核心功能照常运行。
-- **已安装 Odin**：导入后自动添加 `ODIN_INSPECTOR` 编译符号，启用双语特性、Attribute Overview Pro 等增强功能。
+- 双语特性、Inspector Control、Attribute Drawer 与 Processor 直接基于 Odin Attribute/Drawer 体系实现。
+- 特性总览（Attribute Overview Pro）与扩展包管理器基于 Odin MenuEditorWindow / EditorWindow 构建。
+- 未安装 Odin Inspector 时本包无法编译，请先通过 [odininspector.com](https://odininspector.com/) 安装 Odin 3.3.x+。
 
 ### 8. 安全编辑器工具 (Safe Editor Utilities)
 
