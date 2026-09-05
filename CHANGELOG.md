@@ -8,6 +8,65 @@
 
 ---
 
+## [0.14.0] - 2026-09-05
+
+### ⚠ BREAKING CHANGES（破坏性变更 · 升级前必读 / Read before upgrading）
+
+> **架构重构 / Architecture restructure**：Odin Inspector 升级为**硬依赖**，移除 Unity/Odin 双程序集隔离架构。
+> 程序集从 4 个合并为 2 个，目录与命名空间全面重构，升级后需按下方迁移指南更新代码引用。
+> **Odin Inspector is now a hard dependency.** The 4 assemblies are merged into 2, with directories and namespaces fully restructured.
+
+#### 迁移指南 / Migration Guide
+
+| 范围 / Scope | 旧 / Before | 新 / After |
+|---|---|---|
+| 程序集（Runtime） | `Runestone.AesirInspector` + `Runestone.AesirInspector.OdinInspector` | `Runestone.AesirInspector` |
+| 程序集（Editor） | `Runestone.AesirInspector.Editor` + `Runestone.AesirInspector.Editor.OdinInspector` | `Runestone.AesirInspector.Editor` |
+| 命名空间（Runtime） | `Runestone.AesirInspector` / `Runestone.AesirInspector.OdinIntegration` | `Runestone.AesirInspector` |
+| 命名空间（Editor） | `Runestone.AesirInspector.Editor` / `Runestone.AesirInspector.OdinIntegration.Editor` | `Runestone.AesirInspector.Editor` |
+| 目录（Runtime） | `Runtime/Unity/` + `Runtime/OdinInspector/` | `Runtime/` |
+| 目录（Editor） | `Editor/Unity/` + `Editor/OdinInspector/` | `Editor/` |
+| 条件编译 | `#if ODIN_INSPECTOR` | 移除，直接使用 Sirenix API |
+| defineConstraints | `ODIN_INSPECTOR` | 移除 |
+
+#### 代码侧替换示例 / Code-side replace examples
+
+```csharp
+// 旧 / Before
+using Runestone.AesirInspector.OdinIntegration;
+using Runestone.AesirInspector.OdinIntegration.Editor;
+
+// 新 / After
+using Runestone.AesirInspector;
+using Runestone.AesirInspector.Editor;
+```
+
+```jsonc
+// asmdef references 旧 / Before
+"references": [
+  "Runestone.AesirInspector.OdinInspector",
+  "Runestone.AesirInspector.Editor.OdinInspector"
+]
+
+// 新 / After
+"references": [
+  "Runestone.AesirInspector",
+  "Runestone.AesirInspector.Editor"
+]
+```
+
+### Changed
+
+- **标准 Unity Package 布局**：`Runtime/` 与 `Editor/` 单层扁平结构 —— Runtime：Attributes、Inspector、Localization、Utilities、ScriptDocGenerator、Common、Debug、CodeStyle；Editor：AttributeOverviewPro、AttributeProcessors、Common、Core、Drawers、ExtensionManager、MiniTools、ScriptDocGenerator、Windows
+- **Odin Inspector 硬依赖**：移除 `ODIN_INSPECTOR` defineConstraints 与全部 `#if ODIN_INSPECTOR` 条件编译（4 处守卫保留 Odin 分支），未安装 Odin 时将直接编译失败
+- **程序集合并**：`Runestone.AesirInspector.OdinInspector` 并入 `Runestone.AesirInspector`，`Runestone.AesirInspector.Editor.OdinInspector` 并入 `Runestone.AesirInspector.Editor`
+- **Tests 重构**：`Tests/Editor/OdinInspector/` 平铺为 `Tests/Editor/`，两个测试程序集引用同步更新（保持 `UNITY_INCLUDE_TESTS` 约束与 Sirenix 预编译引用）
+- **文档全面同步**：README（中英）、development.md、CONTRIBUTING、Third Party Notices 按新架构更新
+- **文档精简**：删除与 README 内容重复的 `Documentation~/aesir-inspector.md`，删除包内 `CONTRIBUTING.md` 副本（以仓库根目录文档为准）
+- **文档口径统一为 Unity 引擎**，移除团结/Tuanjie 表述
+
+---
+
 ## [0.13.0] - 2026-09-03
 
 ### Changed

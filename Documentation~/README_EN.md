@@ -1,7 +1,7 @@
 # Aesir Inspector
 
 [中文](../README.md) | [![license](https://img.shields.io/badge/license-MIT-green.svg)](../LICENSE.md)
-[![Version](https://img.shields.io/badge/version-0.13.0-blue.svg)](../CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.14.0-blue.svg)](../CHANGELOG.md)
 [![Install via Git URL](https://img.shields.io/badge/UPM-Git%20URL-blueviolet.svg)](#installation)
 
 > 📦 **This package is part of the [Unity-Aesir-Packages](https://github.com/yuumixcode/Unity-Aesir-Packages) monorepo**. This package does **not** depend on other Aesir sub-packages (installable independently).
@@ -18,7 +18,7 @@
 
 - **Editor tool developers**: developers building custom Inspector tools who need bilingual (Chinese/English) UI display support.
 - **Cross-region / cross-locale teams**: teams with diverse language backgrounds that need both Chinese and English shown in the Inspector panel to reduce communication cost.
-- **Unity editor users**: developers who want safe editor utilities, a documentation generator, Summary sync tools, etc., without installing Odin Inspector.
+- **Unity editor users**: developers who want safe editor utilities, a documentation generator, Summary sync tools, etc.
 - **Odin Inspector users**: developers who already use Odin Inspector and want richer attribute decorators and an enhanced Inspector experience.
 - **Code standards advocates**: teams that want consistent code style and documentation standards to improve maintainability.
 
@@ -56,14 +56,12 @@ Aesir Inspector automatically detects how it was installed (UPM / Assets folder)
 
 ## Requirements
 
-- **Unity**: 2022.3.2t3 (Tuanjie) or newer.
-- **Odin Inspector**: 3.3.x or newer (optional dependency; after import the `ODIN_INSPECTOR` define symbol is added automatically, enabling the OdinInspector enhancement assemblies).
+- **Unity**: 2022.3 or newer.
+- **Odin Inspector**: 3.3.x or newer (**hard dependency**; the package will not compile without it).
 
 ## Core Features
 
-> **📌 Note**: features marked with ⚡ require Odin Inspector.
-
-### 1. Attribute Overview Pro ⚡
+### 1. Attribute Overview Pro
 
 A searchable tree menu that shows all registered Odin Inspector and Aesir Inspector attribute panels, with live previews and sample code for each attribute.
 
@@ -73,7 +71,7 @@ A searchable tree menu that shows all registered Odin Inspector and Aesir Inspec
 - **Code preview**: selecting an attribute also shows the corresponding sample source code.
 - Open via `Tools → Aesir → Inspector → Attribute Overview Pro`.
 
-### 2. Script Doc Generator ⚡
+### 2. Script Doc Generator
 
 Analyzes C# type information via reflection to generate structured API documentation, with incremental generation and personal extension support.
 
@@ -190,7 +188,7 @@ public void Reset() { }
 
 Finally, the output phase checks whether the Header already contains `using Runestone.AesirInspector;` and adds it if missing.
 
-### 4. Mini Tools ⚡
+### 4. Mini Tools
 
 A collection of handy editor utilities, opened from `Tools → Aesir → Inspector → Mini Tools`.
 
@@ -200,7 +198,7 @@ A collection of handy editor utilities, opened from `Tools → Aesir → Inspect
 | **Syntax Highlighter** | A visual panel over Odin's built-in syntax highlighter; paste source to test highlighting and export rich-text markup |
 | **Quick Create SO** | Right-click a MonoScript in the Project window to quickly create a ScriptableObject asset; supports multi-select batch creation |
 
-### 5. Extension Package Manager ⚡
+### 5. Extension Package Manager
 
 Quickly install recommended Aesir-family and other popular open-source Unity Packages via Git URL.
 
@@ -210,7 +208,7 @@ Quickly install recommended Aesir-family and other popular open-source Unity Pac
 
 ## Infrastructure
 
-### 6. Bilingual Attributes ⚡
+### 6. Bilingual Attributes
 
 A complete set of bilingual property decorators and Inspector controls that display Chinese and English side by side in the Inspector. Built for:
 
@@ -227,12 +225,13 @@ Available decorators and controls:
 - `BilingualHeaderControl` — bilingual header control
 - `HorizontalSeparateControl` — horizontal separator control
 
-### 7. Odin Isolation
+### 7. Odin Integration
 
-All Odin enhancement code is isolated inside the `OdinInspector/` folders, and the corresponding assemblies are automatically enabled/disabled via `defineConstraints: ODIN_INSPECTOR`, so core assemblies never depend on Odin:
+Odin Inspector is a hard dependency — the package uses Sirenix (Odin) APIs directly for all of its enhanced capabilities:
 
-- **Without Odin**: the `ODIN_INSPECTOR` define symbol is missing, so the OdinInspector assemblies are skipped entirely and core features keep working.
-- **With Odin**: the symbol is added automatically after import, enabling bilingual attributes, Attribute Overview Pro, and other enhancements.
+- Bilingual attributes, Inspector controls, attribute drawers, and processors are built directly on Odin's attribute/drawer system.
+- Attribute Overview Pro and the Extension Package Manager are built on Odin's menu editor window and editor window infrastructure.
+- The package will not compile without Odin Inspector; install Odin 3.3.x+ from [odininspector.com](https://odininspector.com/) first.
 
 ### 8. Safe Editor Utilities
 

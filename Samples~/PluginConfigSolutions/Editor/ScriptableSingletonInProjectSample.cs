@@ -1,5 +1,4 @@
 using System.IO;
-using Runestone.AesirInspector.OdinIntegration;
 using Sirenix.OdinInspector;
 using UnityEditor;
 using FilePathAttribute = UnityEditor.FilePathAttribute;

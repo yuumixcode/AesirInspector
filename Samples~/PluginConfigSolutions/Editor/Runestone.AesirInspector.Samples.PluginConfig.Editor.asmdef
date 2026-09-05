@@ -4,7 +4,6 @@
   "references": [
     "Runestone.AesirInspector",
     "Runestone.AesirInspector.Editor",
-    "Runestone.AesirInspector.OdinInspector",
     "Runestone.AesirInspector.Samples.PluginConfig"
   ],
   "includePlatforms": [
@@ -15,9 +14,7 @@
   "overrideReferences": false,
   "precompiledReferences": [],
   "autoReferenced": false,
-  "defineConstraints": [
-    "ODIN_INSPECTOR"
-  ],
+  "defineConstraints": [],
   "versionDefines": [],
   "noEngineReferences": false
 }

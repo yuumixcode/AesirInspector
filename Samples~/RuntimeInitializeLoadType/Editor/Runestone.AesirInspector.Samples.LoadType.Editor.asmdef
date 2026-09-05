@@ -3,8 +3,7 @@
   "rootNamespace": "",
   "references": [
     "Runestone.AesirInspector",
-    "Runestone.AesirInspector.Editor",
-    "Runestone.AesirInspector.OdinInspector"
+    "Runestone.AesirInspector.Editor"
   ],
   "includePlatforms": [
     "Editor"
@@ -14,9 +13,7 @@
   "overrideReferences": false,
   "precompiledReferences": [],
   "autoReferenced": false,
-  "defineConstraints": [
-    "ODIN_INSPECTOR"
-  ],
+  "defineConstraints": [],
   "versionDefines": [],
   "noEngineReferences": false
 }
