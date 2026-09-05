@@ -8,6 +8,6 @@ namespace Runestone.AesirInspector
         /// <summary>
         /// 当前版本号，与 package.json 保持同步
         /// </summary>
-        public const string Version = "0.4.0-pre.1";
+        public const string Version = "0.14.1";
     }
 }
