@@ -1,4 +1,5 @@
 using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace Runestone.AesirInspector.Editor
 {
@@ -8,25 +9,30 @@ namespace Runestone.AesirInspector.Editor
     [AesirExample]
     internal class DisableIfExampleSO : AttributeExampleSO<DisableIfExampleSO>
     {
-        [Title("Controls")]
+        [Title("Parameter: Condition (bool)")]
         public bool isToggled;
 
-        [EnumToggleButtons]
-        public InfoMessageType someEnum;
-
-        [Title("No Parameters")]
         [DisableIf("isToggled")]
         public int disabledWhenToggled;
 
-        [Title("Parameter: Value")]
+        [Title("Parameter: Condition (Enum), Value")]
+        [EnumToggleButtons]
+        public InfoMessageType someEnum;
+
         [DisableIf("someEnum", InfoMessageType.Info)]
         public string disabledWhenInfo = "Disabled when someEnum is Info";
 
         [DisableIf("someEnum", InfoMessageType.Error)]
         public string disabledWhenError = "Disabled when someEnum is Error";
 
+        [Title("Parameter: Condition (Object Reference)")]
+        public UnityEngine.Object someObject;
+
+        [DisableIf("someObject")]
+        public Vector3 disabledWhenNotNull;
+
         [Title("Expression (@)")]
-        [DisableIf("@this.isToggled || this.someEnum == InfoMessageType.Warning")]
+        [DisableIf("@this.isToggled && this.someObject != null || this.someEnum == InfoMessageType.Error")]
         public string disabledWithExpression = "Complex condition with expression";
 
         public override void AesirInspectorReset()
@@ -36,6 +42,8 @@ namespace Runestone.AesirInspector.Editor
             disabledWhenToggled = 0;
             disabledWhenInfo = "Disabled when someEnum is Info";
             disabledWhenError = "Disabled when someEnum is Error";
+            someObject = null;
+            disabledWhenNotNull = Vector3.zero;
             disabledWithExpression = "Complex condition with expression";
         }
     }
