@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace Runestone.AesirInspector.Editor
 {
+    /// <summary>
+    /// OnValueChanged 特性的案例 SO。
+    /// </summary>
     [AesirExample]
     public class OnValueChangedExampleSO : AttributeExampleSO<OnValueChangedExampleSO>
     {
@@ -10,12 +13,13 @@ namespace Runestone.AesirInspector.Editor
         [OnValueChanged("OnValueChange")]
         public int value;
 
-        [Title("Usage Examples")]
-        [OnValueChanged("OnShaderChange")]
+        [Title("Parameter: IncludeChildren")]
+        [OnValueChanged("CreateMaterial", false)]
         public Shader shader;
 
+        [Title("Parameter: IncludeChildren")]
         [ReadOnly]
-        [InlineEditor(InlineEditorModes.LargePreview)]
+        [InlineEditor(InlineEditorModes.LargePreview, InlineEditorObjectFieldModes.Boxed)]
         public Material material;
 
         void OnValueChange()
@@ -23,14 +27,12 @@ namespace Runestone.AesirInspector.Editor
             Debug.Log("Value changed to: " + value);
         }
 
-        void OnShaderChange()
+        void CreateMaterial()
         {
             if (material != null)
             {
-                DestroyImmediate(material);
-                material = null;
+                Object.DestroyImmediate(material);
             }
-
             if (shader != null)
             {
                 material = new Material(shader);
@@ -43,7 +45,7 @@ namespace Runestone.AesirInspector.Editor
             shader = null;
             if (material != null)
             {
-                DestroyImmediate(material);
+                Object.DestroyImmediate(material);
                 material = null;
             }
         }

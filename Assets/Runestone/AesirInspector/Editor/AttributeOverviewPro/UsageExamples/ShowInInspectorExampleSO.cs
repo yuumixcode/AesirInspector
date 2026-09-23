@@ -1,6 +1,6 @@
 using Sirenix.OdinInspector;
+using UnityEngine;
 
-#pragma warning disable CS0414 // 字段已被赋值，但它的值从未被使用
 namespace Runestone.AesirInspector.Editor
 {
     /// <summary>
@@ -11,19 +11,44 @@ namespace Runestone.AesirInspector.Editor
     {
         [Title("Usage with Private Fields")]
         [ShowInInspector]
-        int _privateField = 10;
+        private int myPrivateInt;
 
         [Title("Usage with Properties")]
         [ShowInInspector]
-        public int PropertyExample { get; set; } = 20;
+        public int MyPropertyInt { get; set; }
 
+        [Title("Usage with Properties")]
         [ShowInInspector]
-        public string ReadOnlyProperty => "I am a read-only property";
+        public int ReadOnlyProperty => myPrivateInt;
+
+        [Title("Usage with Static Members")]
+        [ShowInInspector]
+        public static bool StaticProperty { get; set; }
+
+        [Title("Usage with Serialized Backing Field")]
+        [SerializeField]
+        [HideInInspector]
+        private int evenNumber;
+
+        [Title("Usage with Serialized Backing Field")]
+        [ShowInInspector]
+        public int EvenNumber
+        {
+            get
+            {
+                return evenNumber;
+            }
+            set
+            {
+                evenNumber = value - value % 2;
+            }
+        }
 
         public override void AesirInspectorReset()
         {
-            _privateField = 10;
-            PropertyExample = 20;
+            myPrivateInt = 0;
+            MyPropertyInt = 0;
+            evenNumber = 0;
         }
     }
 }

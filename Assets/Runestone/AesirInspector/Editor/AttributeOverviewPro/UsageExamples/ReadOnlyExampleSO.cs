@@ -11,8 +11,17 @@ namespace Runestone.AesirInspector.Editor
     {
         [Title("No Parameters")]
         [ReadOnly]
-        public string readOnlyField = "This field is read-only in the inspector";
+        public string MyString = "This is displayed as text";
 
+        [Title("No Parameters")]
+        [ReadOnly]
+        public int MyInt = 9001;
+
+        [Title("Usage with Collections")]
+        [ReadOnly]
+        public int[] MyIntList = new int[7] { 1, 2, 3, 4, 5, 6, 7 };
+
+        [Title("Usage with Collections")]
         [ReadOnly]
         public List<int> readOnlyList = new List<int> { 1, 2, 3 };
 
@@ -23,7 +32,9 @@ namespace Runestone.AesirInspector.Editor
 
         public override void AesirInspectorReset()
         {
-            readOnlyField = "This field is read-only in the inspector";
+            MyString = "This is displayed as text";
+            MyInt = 9001;
+            MyIntList = new int[7] { 1, 2, 3, 4, 5, 6, 7 };
             readOnlyList = new List<int> { 1, 2, 3 };
         }
     }
