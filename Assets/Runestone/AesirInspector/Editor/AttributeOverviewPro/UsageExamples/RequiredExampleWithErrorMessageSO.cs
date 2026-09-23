@@ -2,12 +2,17 @@ using Sirenix.OdinInspector;
 
 namespace Runestone.AesirInspector.Editor
 {
+    /// <summary>
+    /// Required 特性 ErrorMessage 参数的案例 SO。
+    /// </summary>
     [AesirExample]
     public class RequiredExampleWithErrorMessageSO : AttributeExampleSO<RequiredExampleWithErrorMessageSO>
     {
         [Title("Member Reference ($)")]
+        [InfoBox("Use $ to indicate a member string as message.", InfoMessageType.Info)]
         public string customError = "My custom error message from field";
 
+        [Title("Member Reference ($)")]
         [Required("$customError")]
         public string referenceExample;
 

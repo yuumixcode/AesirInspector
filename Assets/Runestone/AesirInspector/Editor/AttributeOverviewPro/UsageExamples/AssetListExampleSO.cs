@@ -4,18 +4,26 @@ using UnityEngine;
 
 namespace Runestone.AesirInspector.Editor
 {
+    /// <summary>
+    /// AssetList 特性的案例 SO。
+    /// </summary>
     [AesirExample]
     public class AssetListExampleSO : AttributeExampleSO<AssetListExampleSO>
     {
         [FoldoutGroup("No Parameters")]
         [AssetList]
+        [PreviewField(70f, ObjectFieldAlignment.Center)]
         public Texture2D singleObject;
 
         [FoldoutGroup("Parameter: Path")]
         [AssetList(Path = "/Plugins/Sirenix/")]
         public List<ScriptableObject> assetList;
 
-        [FoldoutGroup("Parameter: AutoPopulate + Path")]
+        [FoldoutGroup("Parameter: Path")]
+        [AssetList(Path = "Plugins/Sirenix/")]
+        public ScriptableObject singleObjectWithPath;
+
+        [FoldoutGroup("Parameter: AutoPopulate, Path")]
         [AssetList(AutoPopulate = true, Path = "Plugins/Sirenix/")]
         public List<ScriptableObject> autoPopulatedWhenInspected;
 
@@ -35,6 +43,7 @@ namespace Runestone.AesirInspector.Editor
         {
             singleObject = null;
             assetList = null;
+            singleObjectWithPath = null;
             autoPopulatedWhenInspected = null;
             gameObjectsWithTag = null;
             gameObjectsWithLayerNames = null;

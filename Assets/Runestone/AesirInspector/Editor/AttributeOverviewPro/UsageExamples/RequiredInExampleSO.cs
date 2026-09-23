@@ -1,8 +1,10 @@
 using Sirenix.OdinInspector;
-using UnityEngine;
 
 namespace Runestone.AesirInspector.Editor
 {
+    /// <summary>
+    /// RequiredIn 特性的案例 SO。
+    /// </summary>
     [AesirExample]
     public class RequiredInExampleSO : AttributeExampleSO<RequiredInExampleSO>
     {
@@ -10,20 +12,52 @@ namespace Runestone.AesirInspector.Editor
         [DisplayAsString(12)]
         [HideLabel]
         public string info =
-            "RequiredIn attribute is specific to prefabs. It will only show validation errors when the object is a certain kind of prefab (e.g., Asset, Instance in Scene, etc.).";
+            "RequiredIn is specific to prefabs. It only shows validation errors when the inspected object is a certain kind of prefab (for example a regular prefab asset or a prefab instance in a scene).";
 
+        [Title("Parameter: PrefabKind")]
+        [RequiredIn(PrefabKind.InstanceInScene, ErrorMessage = "Error messages can be customized. Odin expressions is supported.")]
+        public string instanceInScene = "Instances of prefabs in scenes";
+
+        [Title("Parameter: PrefabKind")]
+        [RequiredIn(PrefabKind.InstanceInPrefab)]
+        public string instanceInPrefab = "Instances of prefabs nested inside other prefabs";
+
+        [Title("Parameter: PrefabKind")]
+        [RequiredIn(PrefabKind.Regular)]
+        public string regular = "Regular prefab assets";
+
+        [Title("Parameter: PrefabKind")]
+        [RequiredIn(PrefabKind.Variant)]
+        public string variant = "Prefab variant assets";
+
+        [Title("Parameter: PrefabKind")]
+        [RequiredIn(PrefabKind.NonPrefabInstance)]
+        public string nonPrefabInstance = "Non-prefab component or gameobject instances in scenes";
+
+        [Title("Parameter: PrefabKind")]
+        [RequiredIn(PrefabKind.PrefabInstance)]
+        public string prefabInstance = "Instances of regular prefabs, and prefab variants in scenes or nested in other prefabs";
+
+        [Title("Parameter: PrefabKind")]
         [RequiredIn(PrefabKind.PrefabAsset)]
-        [InfoBox("This field is required if this object is a Prefab Asset.")]
-        public GameObject requiredInPrefabAsset;
+        public string prefabAsset = "Prefab assets and prefab variant assets";
 
-        [RequiredIn(PrefabKind.InstanceInScene)]
-        [InfoBox("This field is required if this object is a Prefab Instance in a Scene.")]
-        public GameObject requiredInPrefabInstance;
+        [Title("Parameter: PrefabKind")]
+        [RequiredIn(PrefabKind.PrefabInstanceAndNonPrefabInstance)]
+        public string prefabInstanceAndNonPrefabInstance = "Prefab instances, as well as non-prefab instances";
 
         public override void AesirInspectorReset()
         {
-            requiredInPrefabAsset = null;
-            requiredInPrefabInstance = null;
+            info =
+                "RequiredIn is specific to prefabs. It only shows validation errors when the inspected object is a certain kind of prefab (for example a regular prefab asset or a prefab instance in a scene).";
+            instanceInScene = "Instances of prefabs in scenes";
+            instanceInPrefab = "Instances of prefabs nested inside other prefabs";
+            regular = "Regular prefab assets";
+            variant = "Prefab variant assets";
+            nonPrefabInstance = "Non-prefab component or gameobject instances in scenes";
+            prefabInstance = "Instances of regular prefabs, and prefab variants in scenes or nested in other prefabs";
+            prefabAsset = "Prefab assets and prefab variant assets";
+            prefabInstanceAndNonPrefabInstance = "Prefab instances, as well as non-prefab instances";
         }
     }
 }

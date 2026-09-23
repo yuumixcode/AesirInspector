@@ -4,19 +4,16 @@ using UnityEngine;
 
 namespace Runestone.AesirInspector.Editor
 {
+    /// <summary>
+    /// AssetList 特性 CustomFilterMethod 参数的案例 SO。
+    /// </summary>
     [AesirExample]
-    public class AssetListExampleWithCustomFilterMethodSO :
-        AttributeExampleSO<AssetListExampleWithCustomFilterMethodSO>
+    public class AssetListExampleWithCustomFilterMethodSO : AttributeExampleSO<AssetListExampleWithCustomFilterMethodSO>
     {
         [Title("Parameter: CustomFilterMethod (GameObject obj)")]
         [AssetList(CustomFilterMethod = "$HasRigidbodyComponent")]
         [InlineButton("LogRigidbodyPrefabs", "Output Info")]
         public List<GameObject> rigidbodyPrefabs;
-
-        public override void AesirInspectorReset()
-        {
-            rigidbodyPrefabs = null;
-        }
 
         bool HasRigidbodyComponent(GameObject obj) => obj.GetComponent<Rigidbody>() != null;
 
@@ -32,6 +29,11 @@ namespace Runestone.AesirInspector.Editor
                     }
                 }
             }
+        }
+
+        public override void AesirInspectorReset()
+        {
+            rigidbodyPrefabs = null;
         }
     }
 }

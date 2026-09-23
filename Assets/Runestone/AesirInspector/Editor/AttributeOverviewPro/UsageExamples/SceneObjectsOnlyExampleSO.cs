@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Runestone.AesirInspector.Editor
 {
+    /// <summary>
+    /// SceneObjectsOnly 特性的案例 SO。
+    /// </summary>
     [AesirExample]
     public class SceneObjectsOnlyExampleSO : AttributeExampleSO<SceneObjectsOnlyExampleSO>
     {
@@ -11,15 +14,17 @@ namespace Runestone.AesirInspector.Editor
         [SceneObjectsOnly]
         public List<GameObject> onlySceneObjects;
 
+        [Title("No Parameters")]
         [SceneObjectsOnly]
         public GameObject someSceneObject;
 
+        [Title("No Parameters")]
         [SceneObjectsOnly]
         public MeshRenderer someMeshRenderer;
 
         public override void AesirInspectorReset()
         {
-            onlySceneObjects = new List<GameObject>();
+            onlySceneObjects = null;
             someSceneObject = null;
             someMeshRenderer = null;
         }
