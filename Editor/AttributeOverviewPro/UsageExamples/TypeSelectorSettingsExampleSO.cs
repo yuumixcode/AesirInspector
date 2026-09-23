@@ -1,8 +1,13 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Sirenix.OdinInspector;
 
 namespace Runestone.AesirInspector.Editor
 {
+    /// <summary>
+    /// TypeSelectorSettings 特性的案例 SO。
+    /// </summary>
     [AesirExample]
     public class TypeSelectorSettingsExampleSO : AttributeExampleSO<TypeSelectorSettingsExampleSO>
     {
@@ -10,27 +15,62 @@ namespace Runestone.AesirInspector.Editor
         [ShowInInspector]
         public Type Default;
 
-        [Title("Parameter: PreferNamespaces")]
-        [TypeSelectorSettings(PreferNamespaces = true, ShowCategories = false, ShowNoneItem = false)]
+        [Title("Parameter: ShowCategories")]
+        [LabelText("On")]
         [ShowInInspector]
-        public Type PreferNamespacesOn;
+        [TypeSelectorSettings(ShowCategories = true)]
+        public Type ShowCategories_On;
 
         [Title("Parameter: ShowCategories")]
-        [TypeSelectorSettings(ShowCategories = true, PreferNamespaces = false, ShowNoneItem = false)]
+        [LabelText("Off")]
         [ShowInInspector]
-        public Type ShowCategoriesOn;
+        [TypeSelectorSettings(ShowCategories = false)]
+        public Type ShowCategories_Off;
+
+        [Title("Parameter: PreferNamespaces")]
+        [LabelText("On")]
+        [ShowInInspector]
+        [TypeSelectorSettings(PreferNamespaces = true, ShowCategories = true)]
+        public Type PreferNamespaces_On;
+
+        [Title("Parameter: PreferNamespaces")]
+        [LabelText("Off")]
+        [ShowInInspector]
+        [TypeSelectorSettings(PreferNamespaces = false, ShowCategories = true)]
+        public Type PreferNamespaces_Off;
 
         [Title("Parameter: ShowNoneItem")]
-        [TypeSelectorSettings(ShowNoneItem = true, PreferNamespaces = false, ShowCategories = false)]
+        [LabelText("On")]
         [ShowInInspector]
-        public Type ShowNoneItemOn;
+        [TypeSelectorSettings(ShowNoneItem = true)]
+        public Type ShowNoneItem_On;
+
+        [Title("Parameter: ShowNoneItem")]
+        [LabelText("Off")]
+        [ShowInInspector]
+        [TypeSelectorSettings(ShowNoneItem = false)]
+        public Type ShowNoneItem_Off;
+
+        [Title("Parameter: FilterTypesFunction (Type type)")]
+        [ShowInInspector]
+        [TypeSelectorSettings(FilterTypesFunction = "TypeFilter", ShowCategories = false)]
+        public Type CustomTypeFilterExample;
+
+        private bool TypeFilter(Type type)
+        {
+            return type.GetInterfaces().Any((Type i) => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IEnumerable<>));
+        }
 
         public override void AesirInspectorReset()
         {
             Default = null;
-            PreferNamespacesOn = null;
-            ShowCategoriesOn = null;
-            ShowNoneItemOn = null;
+            ShowCategories_On = null;
+            ShowCategories_Off = null;
+            PreferNamespaces_On = null;
+            PreferNamespaces_Off = null;
+            ShowNoneItem_On = null;
+            ShowNoneItem_Off = null;
+            CustomTypeFilterExample = null;
         }
     }
 }

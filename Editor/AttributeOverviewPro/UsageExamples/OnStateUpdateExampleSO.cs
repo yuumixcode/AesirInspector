@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
 
@@ -9,16 +10,31 @@ namespace Runestone.AesirInspector.Editor
     [AesirExample]
     internal class OnStateUpdateExampleSO : AttributeExampleSO<OnStateUpdateExampleSO>
     {
-        [Title("Controls")]
-        public bool ToggleField;
+        [Title("Expression (@)")]
+        [OnStateUpdate("@#(list).State.Expanded = $value")]
+        public bool ExpandList;
+
+        [Title("Expression (@)")]
+        [OnStateUpdate("@$property.State.Expanded = ExpandList")]
+        public List<string> list;
+
+        [Title("Expression (@)")]
+        public bool ToggleMyInt;
+
+        [Title("Expression (@)")]
+        [OnStateUpdate("@$property.State.Visible = ToggleMyInt")]
+        public int MyInt;
+
+        [Title("Expression (@)")]
+        public bool ToggleField = true;
 
         [Title("Expression (@)")]
         [OnStateUpdate("@$property.State.Visible = ToggleField")]
-        public string VisibleIfToggled;
+        public string VisibleIfToggled = "Hello";
 
         [Title("Parameter: Action (InspectorProperty property)")]
         [OnStateUpdate("UpdateState")]
-        public int DisabledIfZero;
+        public int DisabledIfZero = 1;
 
         void UpdateState(InspectorProperty property)
         {
@@ -27,6 +43,10 @@ namespace Runestone.AesirInspector.Editor
 
         public override void AesirInspectorReset()
         {
+            ExpandList = false;
+            list = null;
+            ToggleMyInt = false;
+            MyInt = 0;
             ToggleField = true;
             VisibleIfToggled = "Hello";
             DisabledIfZero = 1;

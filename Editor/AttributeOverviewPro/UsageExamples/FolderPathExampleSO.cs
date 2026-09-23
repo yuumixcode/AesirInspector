@@ -2,31 +2,63 @@ using Sirenix.OdinInspector;
 
 namespace Runestone.AesirInspector.Editor
 {
+    /// <summary>
+    /// FolderPath 特性的案例 SO。
+    /// </summary>
     [AesirExample]
     public class FolderPathExampleSO : AttributeExampleSO<FolderPathExampleSO>
     {
-        [Title("No Parameters")]
+        [FoldoutGroup("No Parameters")]
         [FolderPath]
-        public string path;
+        public string UnityProjectPath;
 
-        [Title("Parameter: AbsolutePath")]
+        [FoldoutGroup("Parameter: AbsolutePath")]
         [FolderPath(AbsolutePath = true)]
-        public string absolutePath;
+        public string AbsolutePath;
 
-        [Title("Parameter: ParentFolder")]
+        [FoldoutGroup("Parameter: ParentFolder")]
+        [FolderPath(ParentFolder = "Assets/Plugins/Sirenix")]
+        public string RelativeToParentPath;
+
+        [FoldoutGroup("Parameter: ParentFolder")]
+        [FolderPath(ParentFolder = "Assets/Resources")]
+        public string ResourcePath;
+
+        [FoldoutGroup("Parameter: ParentFolder")]
         [FolderPath(ParentFolder = "Assets/Runestone")]
         public string relativePath;
 
-        [Title("Parameter: RequireExistingPath")]
+        [FoldoutGroup("Parameter: RequireExistingPath")]
         [FolderPath(RequireExistingPath = true)]
-        public string existingPath;
+        public string ExistingPath;
+
+        [FoldoutGroup("Parameter: UseBackslashes")]
+        [FolderPath(UseBackslashes = true)]
+        public string Backslashes;
+
+        [FoldoutGroup("Member Reference ($)")]
+        [FolderPath(ParentFolder = "$DynamicParent")]
+        public string DynamicFolderPath;
+
+        [FoldoutGroup("Member Reference ($)")]
+        public string DynamicParent = "Assets/Plugins/Sirenix";
+
+        [FoldoutGroup("Lists")]
+        [FolderPath(ParentFolder = "Assets/Plugins/Sirenix")]
+        public string[] ListOfFolders;
 
         public override void AesirInspectorReset()
         {
-            path = "";
-            absolutePath = "";
+            UnityProjectPath = "";
+            AbsolutePath = "";
+            RelativeToParentPath = "";
+            ResourcePath = "";
             relativePath = "";
-            existingPath = "";
+            ExistingPath = "";
+            Backslashes = "";
+            DynamicFolderPath = "";
+            DynamicParent = "Assets/Plugins/Sirenix";
+            ListOfFolders = new string[0];
         }
     }
 }
