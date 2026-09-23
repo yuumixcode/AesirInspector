@@ -9,13 +9,16 @@ namespace Runestone.AesirInspector.Editor
     [AesirExample]
     internal class PropertyOrderExampleSO : AttributeExampleSO<PropertyOrderExampleSO>
     {
-        [Title("No Parameters")]
+        [Title("Parameter: Order")]
         [PropertyOrder(1)]
         public string second = "I am drawn second (Order = 1)";
 
+        [Title("Parameter: Order")]
         [PropertyOrder(-1)]
+        [InfoBox("PropertyOrder is used to change the order of properties in the inspector.", InfoMessageType.Info)]
         public string first = "I am drawn first, even though I'm defined later in code (Order = -1)";
 
+        [Title("Parameter: Order")]
         [PropertyOrder(10)]
         public string third = "I am drawn last (Order = 10)";
 

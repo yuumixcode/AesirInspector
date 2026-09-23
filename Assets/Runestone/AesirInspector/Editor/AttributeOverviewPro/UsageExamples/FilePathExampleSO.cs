@@ -2,41 +2,77 @@ using Sirenix.OdinInspector;
 
 namespace Runestone.AesirInspector.Editor
 {
+    /// <summary>
+    /// FilePath 特性的案例 SO。
+    /// </summary>
     [AesirExample]
     public class FilePathExampleSO : AttributeExampleSO<FilePathExampleSO>
     {
-        [Title("No Parameters")]
+        [FoldoutGroup("No Parameters")]
         [FilePath]
-        public string path;
+        public string UnityProjectPath;
 
-        [Title("Parameter: Extensions")]
+        [FoldoutGroup("Parameter: Extensions")]
+        [FilePath(Extensions = "cs")]
+        public string ScriptFiles;
+
+        [FoldoutGroup("Parameter: Extensions")]
         [FilePath(Extensions = "cs, lua")]
         public string scriptPath;
 
-        [Title("Parameter: AbsolutePath")]
+        [FoldoutGroup("Parameter: AbsolutePath")]
         [FilePath(AbsolutePath = true)]
-        public string absolutePath;
+        public string AbsolutePath;
 
-        [Title("Parameter: ParentFolder")]
-        [FilePath(ParentFolder = "Assets/Runestone")]
-        public string relativePath;
+        [FoldoutGroup("Parameter: ParentFolder")]
+        [FilePath(ParentFolder = "Assets/Plugins/Sirenix")]
+        public string RelativeToParentPath;
 
-        [Title("Parameter: RequireExistingPath")]
+        [FoldoutGroup("Parameter: ParentFolder")]
+        [FilePath(ParentFolder = "Assets/Resources")]
+        public string ResourcePath;
+
+        [FoldoutGroup("Parameter: RequireExistingPath")]
         [FilePath(RequireExistingPath = true)]
-        public string existingPath;
+        public string ExistingPath;
 
-        [Title("Parameter: IncludeFileExtension (False)")]
+        [FoldoutGroup("Parameter: UseBackslashes")]
+        [FilePath(UseBackslashes = true)]
+        public string Backslashes;
+
+        [FoldoutGroup("Parameter: IncludeFileExtension")]
         [FilePath(IncludeFileExtension = false)]
         public string noExtensionPath;
 
+        [FoldoutGroup("Member Reference ($)")]
+        [FilePath(ParentFolder = "$DynamicParent", Extensions = "$DynamicExtensions")]
+        public string DynamicFilePath;
+
+        [FoldoutGroup("Member Reference ($)")]
+        public string DynamicParent = "Assets/Plugins/Sirenix";
+
+        [FoldoutGroup("Member Reference ($)")]
+        public string DynamicExtensions = "cs, unity, jpg";
+
+        [FoldoutGroup("Lists")]
+        [FilePath(ParentFolder = "Assets/Plugins/Sirenix/Demos/Odin Inspector")]
+        public string[] ListOfFiles;
+
         public override void AesirInspectorReset()
         {
-            path = "";
+            UnityProjectPath = "";
+            ScriptFiles = "";
             scriptPath = "";
-            absolutePath = "";
-            relativePath = "";
-            existingPath = "";
+            AbsolutePath = "";
+            RelativeToParentPath = "";
+            ResourcePath = "";
+            ExistingPath = "";
+            Backslashes = "";
             noExtensionPath = "";
+            DynamicFilePath = "";
+            DynamicParent = "Assets/Plugins/Sirenix";
+            DynamicExtensions = "cs, unity, jpg";
+            ListOfFiles = new string[0];
         }
     }
 }

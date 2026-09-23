@@ -3,25 +3,31 @@ using UnityEngine;
 
 namespace Runestone.AesirInspector.Editor
 {
+    /// <summary>
+    /// ColorPalette 特性的案例 SO。
+    /// </summary>
     [AesirExample]
-    public class
-        ColorPaletteExampleWithPaletteNameSO : AttributeExampleSO<ColorPaletteExampleWithPaletteNameSO>
+    public class ColorPaletteExampleWithPaletteNameSO : AttributeExampleSO<ColorPaletteExampleWithPaletteNameSO>
     {
+        [Title("Literal String Example")]
+        [ColorPalette("Sepia")]
+        public Color literalStringExample = Color.white;
+
         [Title("Field Name Example")]
         [ColorPalette("$SepiaPaletteName")]
-        public Color fieldNameExample;
+        public Color fieldNameExample = Color.white;
 
         [Title("Attribute Expression Example")]
         [ColorPalette("@UseTropical ? TropicalPaletteName : SepiaPaletteName")]
-        public Color attributeExpressionExample;
+        public Color attributeExpressionExample = Color.white;
 
         [Title("Property Name Example")]
         [ColorPalette("$PaletteNameProperty")]
-        public Color propertyNameExample;
+        public Color propertyNameExample = Color.white;
 
         [Title("Method Name Example")]
         [ColorPalette("$GetPaletteName")]
-        public Color methodNameExample;
+        public Color methodNameExample = Color.white;
 
         public string SepiaPaletteName = "Sepia";
         public string TropicalPaletteName = "Tropical";
@@ -34,6 +40,7 @@ namespace Runestone.AesirInspector.Editor
             SepiaPaletteName = "Sepia";
             TropicalPaletteName = "Tropical";
             UseTropical = false;
+            literalStringExample = Color.white;
             fieldNameExample = Color.white;
             attributeExpressionExample = Color.white;
             propertyNameExample = Color.white;

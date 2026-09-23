@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace Runestone.AesirInspector.Editor
 {
+    /// <summary>
+    /// InlineEditor 特性的案例 SO。
+    /// </summary>
     [AesirExample]
     public class InlineEditorExampleSO : AttributeExampleSO<InlineEditorExampleSO>
     {
@@ -11,37 +14,52 @@ namespace Runestone.AesirInspector.Editor
         public Material material;
 
         [FoldoutGroup("Parameter: InlineEditorModes")]
-        [Title("FullEditor")]
-        [InlineEditor(InlineEditorModes.FullEditor)]
-        public Material fullEditor;
+        [InlineEditor(InlineEditorModes.GUIOnly, InlineEditorObjectFieldModes.Boxed)]
+        public Material guiOnly;
 
         [FoldoutGroup("Parameter: InlineEditorModes")]
-        [Title("GUIAndHeader")]
-        [InlineEditor(InlineEditorModes.GUIAndHeader)]
+        [InlineEditor(InlineEditorModes.GUIAndHeader, InlineEditorObjectFieldModes.Boxed)]
         public Material guiAndHeader;
 
         [FoldoutGroup("Parameter: InlineEditorModes")]
-        [Title("LargePreview")]
-        [InlineEditor(InlineEditorModes.LargePreview)]
+        [InlineEditor(InlineEditorModes.FullEditor, InlineEditorObjectFieldModes.Boxed)]
+        public Material fullEditor;
+
+        [FoldoutGroup("Parameter: InlineEditorModes")]
+        [InlineEditor(InlineEditorModes.SmallPreview, InlineEditorObjectFieldModes.Boxed)]
+        public Material[] smallPreviewList = new Material[3];
+
+        [FoldoutGroup("Parameter: InlineEditorModes")]
+        [InlineEditor(InlineEditorModes.LargePreview, InlineEditorObjectFieldModes.Boxed)]
         public Mesh mesh;
 
         [FoldoutGroup("Parameter: InlineEditorObjectFieldModes")]
-        [Title("Foldout")]
+        [InlineEditor(InlineEditorObjectFieldModes.Boxed)]
+        public Material boxedMode;
+
+        [FoldoutGroup("Parameter: InlineEditorObjectFieldModes")]
         [InlineEditor(InlineEditorObjectFieldModes.Foldout)]
         public Material foldoutMode;
 
         [FoldoutGroup("Parameter: InlineEditorObjectFieldModes")]
-        [Title("Hidden")]
+        [InlineEditor(InlineEditorObjectFieldModes.CompletelyHidden)]
+        public Material completelyHiddenMode;
+
+        [FoldoutGroup("Parameter: InlineEditorObjectFieldModes")]
         [InlineEditor(InlineEditorObjectFieldModes.Hidden)]
         public Material hiddenMode;
 
         public override void AesirInspectorReset()
         {
             material = null;
-            fullEditor = null;
+            guiOnly = null;
             guiAndHeader = null;
+            fullEditor = null;
+            smallPreviewList = new Material[3];
             mesh = null;
+            boxedMode = null;
             foldoutMode = null;
+            completelyHiddenMode = null;
             hiddenMode = null;
         }
     }
