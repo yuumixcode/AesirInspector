@@ -4,27 +4,34 @@ using UnityEngine;
 
 namespace Runestone.AesirInspector.Editor
 {
+    /// <summary>
+    /// AssetsOnly 特性的案例 SO。
+    /// </summary>
     [AesirExample]
     public class AssetsOnlyExampleSO : AttributeExampleSO<AssetsOnlyExampleSO>
     {
         [Title("No Parameters")]
         [AssetsOnly]
-        public GameObject somePrefab;
+        public List<GameObject> OnlyPrefabs;
 
+        [Title("No Parameters")]
         [AssetsOnly]
-        public Material materialAsset;
+        public GameObject SomePrefab;
 
+        [Title("No Parameters")]
         [AssetsOnly]
-        public MeshRenderer someMeshRendererOnPrefab;
+        public Material MaterialAsset;
 
+        [Title("No Parameters")]
         [AssetsOnly]
-        public List<GameObject> prefabs;
+        public MeshRenderer SomeMeshRendererOnPrefab;
 
         public override void AesirInspectorReset()
         {
-            somePrefab = null;
-            materialAsset = null;
-            someMeshRendererOnPrefab = null;
+            OnlyPrefabs = null;
+            SomePrefab = null;
+            MaterialAsset = null;
+            SomeMeshRendererOnPrefab = null;
         }
     }
 }

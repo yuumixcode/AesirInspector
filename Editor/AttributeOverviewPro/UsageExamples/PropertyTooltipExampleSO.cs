@@ -1,29 +1,36 @@
 using Sirenix.OdinInspector;
 
-#pragma warning disable CS0414 // 字段已被赋值，但它的值从未被使用
 namespace Runestone.AesirInspector.Editor
 {
+    /// <summary>
+    /// PropertyTooltip 特性的案例 SO。
+    /// </summary>
     [AesirExample]
     public class PropertyTooltipExampleSO : AttributeExampleSO<PropertyTooltipExampleSO>
     {
         [Title("No Parameters")]
-        [PropertyTooltip("This is a simple tooltip.")]
-        public int simpleTooltip;
+        [PropertyTooltip("This is tooltip on an int property.")]
+        public int MyInt;
 
         [Title("Member Reference ($)")]
-        [PropertyTooltip("Supports $ reference: $TooltipText")]
-        public int referencedTooltip;
+        [PropertyTooltip("$Tooltip")]
+        public string Tooltip = "Dynamic tooltip.";
 
         [Title("Expression (@)")]
         [PropertyTooltip("@\"Current Time: \" + DateTime.Now.ToString()")]
         public int expressionTooltip;
 
-        string _tooltipText = "This is a tooltip from a member variable.";
+        [Title("Usage on Methods")]
+        [Button]
+        [PropertyTooltip("Button Tooltip")]
+        private void ButtonWithTooltip()
+        {
+        }
 
         public override void AesirInspectorReset()
         {
-            simpleTooltip = 0;
-            referencedTooltip = 0;
+            MyInt = 0;
+            Tooltip = "Dynamic tooltip.";
             expressionTooltip = 0;
         }
     }
