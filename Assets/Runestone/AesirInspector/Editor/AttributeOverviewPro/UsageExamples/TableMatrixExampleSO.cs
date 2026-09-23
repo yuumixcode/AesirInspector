@@ -1,47 +1,69 @@
 using Sirenix.OdinInspector;
+using Sirenix.Serialization;
+using UnityEngine;
 
 namespace Runestone.AesirInspector.Editor
 {
     [AesirExample]
     public class TableMatrixExampleSO : OdinAttributeExampleSO<TableMatrixExampleSO>
     {
-        [Title("No Parameters")]
+        [OdinSerialize]
+        [FoldoutGroup("No Parameters")]
         [TableMatrix]
         public string[,] matrix = new string[2, 3];
 
-        [Title("Parameter: Transpose")]
+        [OdinSerialize]
+        [FoldoutGroup("Parameter: Transpose")]
         [TableMatrix(Transpose = true)]
         public string[,] transposedMatrix = new string[2, 3];
 
-        [Title("Parameter: IsReadOnly")]
+        [OdinSerialize]
+        [FoldoutGroup("Parameter: IsReadOnly")]
         [TableMatrix(IsReadOnly = true)]
         public string[,] readOnlyMatrix = new string[2, 3];
 
-        [Title("Parameter: ResizableColumns")]
+        [OdinSerialize]
+        [FoldoutGroup("Parameter: ResizableColumns")]
         [TableMatrix(ResizableColumns = false)]
         public string[,] fixedColumnsMatrix = new string[2, 3];
 
-        [Title("Parameter: HorizontalTitle")]
+        [OdinSerialize]
+        [FoldoutGroup("Parameter: HorizontalTitle")]
         [TableMatrix(HorizontalTitle = "Horizontal Title")]
         public string[,] horizontalTitleMatrix = new string[2, 3];
 
-        [Title("Parameter: VerticalTitle")]
+        [OdinSerialize]
+        [FoldoutGroup("Parameter: VerticalTitle")]
         [TableMatrix(VerticalTitle = "Vertical Title")]
         public string[,] verticalTitleMatrix = new string[2, 3];
 
-        [Title("Parameter: RowHeight")]
+        [OdinSerialize]
+        [FoldoutGroup("Parameter: RowHeight")]
         [TableMatrix(RowHeight = 40)]
         public string[,] rowHeightMatrix = new string[2, 3];
 
-        [Title("Parameter: SquareCells")]
+        [OdinSerialize]
+        [FoldoutGroup("Parameter: SquareCells")]
         [TableMatrix(SquareCells = true)]
         public string[,] squareCellsMatrix = new string[2, 3];
 
-        [Title("Parameter: HideColumnIndices")]
+        [OdinSerialize]
+        [FoldoutGroup("Parameter: SquareCells")]
+        [TableMatrix(HorizontalTitle = "Square Celled Matrix", SquareCells = true)]
+        public Texture2D[,] squareCelledTextureMatrix = new Texture2D[8, 4];
+
+        [OdinSerialize]
+        [FoldoutGroup("Parameter: SquareCells")]
+        [TableMatrix(SquareCells = true)]
+        public Mesh[,] prefabMatrix = new Mesh[8, 4];
+
+        [OdinSerialize]
+        [FoldoutGroup("Parameter: HideColumnIndices")]
         [TableMatrix(HideColumnIndices = true)]
         public string[,] hideColumnIndicesMatrix = new string[2, 3];
 
-        [Title("Parameter: HideRowIndices")]
+        [OdinSerialize]
+        [FoldoutGroup("Parameter: HideRowIndices")]
         [TableMatrix(HideRowIndices = true)]
         public string[,] hideRowIndicesMatrix = new string[2, 3];
 
@@ -55,6 +77,8 @@ namespace Runestone.AesirInspector.Editor
             verticalTitleMatrix = new string[2, 3];
             rowHeightMatrix = new string[2, 3];
             squareCellsMatrix = new string[2, 3];
+            squareCelledTextureMatrix = new Texture2D[8, 4];
+            prefabMatrix = new Mesh[8, 4];
             hideColumnIndicesMatrix = new string[2, 3];
             hideRowIndicesMatrix = new string[2, 3];
         }
