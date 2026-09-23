@@ -16,11 +16,17 @@ namespace Runestone.AesirInspector.Editor
         [Indent(2)]
         public int B;
 
+        [Title("Parameter: IndentLevel")]
         [Indent(3)]
         public int C;
 
+        [Title("Parameter: IndentLevel")]
         [Indent(4)]
         public int D;
+
+        [Title("Parameter: IndentLevel")]
+        [Indent(0)]
+        public int F;
 
         [Title("Parameter: IndentLevel (Negative)")]
         [Indent(-1)]
@@ -32,6 +38,7 @@ namespace Runestone.AesirInspector.Editor
             B = 0;
             C = 0;
             D = 0;
+            F = 0;
             G = 0;
         }
     }

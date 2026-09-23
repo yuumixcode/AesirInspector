@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace Runestone.AesirInspector.Editor
 {
+    /// <summary>
+    /// TypeRegistryItem 特性的案例 SO。
+    /// </summary>
     [AesirExample]
     public class TypeRegistryItemExampleSO : AttributeExampleSO<TypeRegistryItemExampleSO>
     {
@@ -17,14 +20,9 @@ namespace Runestone.AesirInspector.Editor
 
         [Title("Using TypeRegistryItem Attribute")]
         [ShowInInspector]
-        [PolymorphicDrawerSettings(ShowBaseType = true)]
+        [PolymorphicDrawerSettings(ShowBaseType = false)]
+        [InlineProperty]
         public Base PaintingItem;
-
-        public override void AesirInspectorReset()
-        {
-            BasicItem = null;
-            PaintingItem = null;
-        }
 
         public abstract class BasicClass { }
 
@@ -43,31 +41,54 @@ namespace Runestone.AesirInspector.Editor
             public float Number;
         }
 
-        [TypeRegistryItem(Name = BASE_ITEM_NAME, Icon = SdfIconType.Tools, CategoryPath = CATEGORY_PATH,
-            Priority = int.MinValue)]
+        public struct ColorPaletteItem
+        {
+            public Color Color;
+
+            public float Remaining;
+
+            public ColorPaletteItem(Color color, float remaining)
+            {
+                Color = color;
+                Remaining = remaining;
+            }
+        }
+
+        [TypeRegistryItem(null, null, SdfIconType.None, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0, Name = BASE_ITEM_NAME, Icon = SdfIconType.Tools, CategoryPath = CATEGORY_PATH, Priority = int.MinValue)]
         public abstract class Base { }
 
-        [TypeRegistryItem(Name = "Brush", CategoryPath = PATH, Icon = SdfIconType.BrushFill,
-            Priority = int.MinValue)]
+        [TypeRegistryItem(null, null, SdfIconType.None, 0.3f, 0.1f, 0f, 0f, 0.8f, 0.3f, 0f, 0f, 0, Name = "Brush", CategoryPath = PATH, Icon = SdfIconType.BrushFill, Priority = int.MinValue)]
         public class InheritorA : Base
         {
             public Color Color = Color.red;
+
             public float PaintRemaining = 0.4f;
         }
 
-        [TypeRegistryItem(Name = "Paint Bucket", CategoryPath = PATH, Icon = SdfIconType.PaintBucket,
-            Priority = int.MinValue)]
+        [TypeRegistryItem(null, null, SdfIconType.None, 0f, 0.3f, 0.1f, 0f, 0f, 0.8f, 0.3f, 0f, 0, Name = "Paint Bucket", CategoryPath = PATH, Icon = SdfIconType.PaintBucket, Priority = int.MinValue)]
         public class InheritorB : Base
         {
             public Color Color = Color.green;
+
             public float PaintRemaining = 0.8f;
         }
 
-        [TypeRegistryItem(Name = "Palette", CategoryPath = PATH, Icon = SdfIconType.PaletteFill,
-            Priority = int.MinValue)]
+        [TypeRegistryItem(null, null, SdfIconType.None, 0f, 0.1f, 0.3f, 0f, 0f, 0.3f, 0.8f, 0f, 0, Name = "Palette", CategoryPath = PATH, Icon = SdfIconType.PaletteFill, Priority = int.MinValue)]
         public class InheritorC : Base
         {
-            public Color[] Colors = { Color.blue, Color.red, Color.green, Color.white };
+            public ColorPaletteItem[] Colors = new ColorPaletteItem[4]
+            {
+                new ColorPaletteItem(Color.blue, 0.8f),
+                new ColorPaletteItem(Color.red, 0.5f),
+                new ColorPaletteItem(Color.green, 1f),
+                new ColorPaletteItem(Color.white, 0.6f)
+            };
+        }
+
+        public override void AesirInspectorReset()
+        {
+            BasicItem = null;
+            PaintingItem = null;
         }
     }
 }

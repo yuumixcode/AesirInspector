@@ -12,11 +12,27 @@ namespace Runestone.AesirInspector.Editor
     {
         [Title("Parameter: Action (Before Field)")]
         [OnInspectorGUI("DrawLabelBefore", false)]
-        public string FieldWithLabel;
+        public string FieldWithLabel = "Hello";
 
         [Title("Parameter: Action (After Field)")]
         [OnInspectorGUI("DrawButtonAfter")]
         public int FieldWithButton;
+
+        [Title("Parameter: Action, Append")]
+        [OnInspectorGUI("DrawPreview", true)]
+        public Texture2D Texture;
+
+        [Title("Parameter: Prepend, Append")]
+        [OnInspectorGUI("DrawLabelBefore", "DrawButtonAfter")]
+        public float FieldWithBoth;
+
+        [Title("No Parameters (On Method)")]
+        [OnInspectorGUI]
+        void DrawCustomGUI()
+        {
+            var rect = EditorGUILayout.GetControlRect(false, 2);
+            EditorGUI.DrawRect(rect, Color.grey);
+        }
 
         void DrawLabelBefore()
         {
@@ -31,18 +47,22 @@ namespace Runestone.AesirInspector.Editor
             }
         }
 
-        [Title("No Parameters (On Method)")]
-        [OnInspectorGUI]
-        void DrawCustomGUI()
+        void DrawPreview()
         {
-            var rect = EditorGUILayout.GetControlRect(false, 2);
-            EditorGUI.DrawRect(rect, Color.grey);
+            if (!(Texture == null))
+            {
+                GUILayout.BeginVertical(GUI.skin.box);
+                GUILayout.Label(Texture);
+                GUILayout.EndVertical();
+            }
         }
 
         public override void AesirInspectorReset()
         {
             FieldWithLabel = "Hello";
             FieldWithButton = 0;
+            Texture = null;
+            FieldWithBoth = 0f;
         }
     }
 }
