@@ -1,19 +1,80 @@
+using System;
 using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace Runestone.AesirInspector.Editor
 {
+    /// <summary>
+    /// ToggleGroup 特性的案例 SO。
+    /// </summary>
     [AesirExample]
     public class ToggleGroupExampleSO : AttributeExampleSO<ToggleGroupExampleSO>
     {
+        [Serializable]
+        public class MyToggleObject
+        {
+            public bool Enabled;
+
+            [HideInInspector]
+            public string Title;
+
+            public int A;
+
+            public int B;
+        }
+
+        [Serializable]
+        public class MyToggleA : MyToggleObject
+        {
+            public float C;
+
+            public float D;
+
+            public float F;
+        }
+
+        [Serializable]
+        public class MyToggleB : MyToggleObject
+        {
+            public string Text;
+        }
+
+        [Serializable]
+        public class MyToggleC
+        {
+            [ToggleGroup("Enabled", "$Label")]
+            public bool Enabled;
+
+            [ToggleGroup("Enabled")]
+            public float Test;
+
+            public string Label => Test.ToString();
+        }
+
         [Title("No Parameters")]
-        [ToggleGroup(nameof(Toggle1))]
-        public bool Toggle1;
+        [ToggleGroup("MyToggle")]
+        public bool MyToggle;
 
-        [ToggleGroup(nameof(Toggle1))]
-        public int field1;
+        [ToggleGroup("MyToggle")]
+        public float A;
 
-        [ToggleGroup(nameof(Toggle1))]
-        public int field2;
+        [HideLabel]
+        [ToggleGroup("MyToggle")]
+        [Multiline]
+        public string B;
+
+        [Title("Member Reference ($)")]
+        [ToggleGroup("EnableGroupOne", "$GroupOneTitle")]
+        public bool EnableGroupOne = true;
+
+        [ToggleGroup("EnableGroupOne")]
+        public string GroupOneTitle = "One";
+
+        [ToggleGroup("EnableGroupOne")]
+        public float GroupOneA;
+
+        [ToggleGroup("EnableGroupOne")]
+        public float GroupOneB;
 
         [Title("Parameter: ToggleGroupTitle")]
         [ToggleGroup(nameof(Toggle2), "Custom Title")]
@@ -22,19 +83,19 @@ namespace Runestone.AesirInspector.Editor
         [ToggleGroup(nameof(Toggle2))]
         public int field3;
 
+        [Title("Parameter: ToggleGroupTitle")]
+        [ToggleGroup(nameof(Toggle4), "Toggle 4")]
+        public bool Toggle4;
+
+        [ToggleGroup(nameof(Toggle4))]
+        public int field5;
+
         [Title("Parameter: Order")]
         [ToggleGroup(nameof(Toggle3), 10)]
         public bool Toggle3;
 
         [ToggleGroup(nameof(Toggle3))]
         public int field4;
-
-        [Title("Parameter: Order")]
-        [ToggleGroup(nameof(Toggle4), "Toggle 4")]
-        public bool Toggle4;
-
-        [ToggleGroup(nameof(Toggle4))]
-        public int field5;
 
         [Title("Parameter: CollapseOthersOnExpand")]
         [ToggleGroup(nameof(Toggle5), CollapseOthersOnExpand = true)]
@@ -43,19 +104,72 @@ namespace Runestone.AesirInspector.Editor
         [ToggleGroup(nameof(Toggle5))]
         public int field6;
 
+        [Title("Combining With Other Attributes")]
+        [Toggle("Enabled")]
+        public MyToggleObject Three = new MyToggleObject();
+
+        [Title("Combining With Other Attributes")]
+        [Toggle("Enabled")]
+        public MyToggleA Four = new MyToggleA();
+
+        [Title("Combining With Other Attributes")]
+        [Toggle("Enabled")]
+        public MyToggleB Five = new MyToggleB();
+
+        [Title("Combining With Other Attributes")]
+        public MyToggleC[] ToggleList = new MyToggleC[3]
+        {
+            new MyToggleC
+            {
+                Test = 2f,
+                Enabled = true
+            },
+            new MyToggleC
+            {
+                Test = 5f
+            },
+            new MyToggleC
+            {
+                Test = 7f
+            }
+        };
+
         public override void AesirInspectorReset()
         {
-            Toggle1 = false;
+            MyToggle = false;
+            A = 0f;
+            B = null;
+            EnableGroupOne = true;
+            GroupOneTitle = "One";
+            GroupOneA = 0f;
+            GroupOneB = 0f;
             Toggle2 = false;
-            Toggle3 = false;
-            Toggle4 = false;
-            Toggle5 = false;
-            field1 = 0;
-            field2 = 0;
             field3 = 0;
-            field4 = 0;
+            Toggle4 = false;
             field5 = 0;
+            Toggle3 = false;
+            field4 = 0;
+            Toggle5 = false;
             field6 = 0;
+            Three = new MyToggleObject();
+            Four = new MyToggleA();
+            Five = new MyToggleB();
+            ToggleList = new MyToggleC[3]
+            {
+                new MyToggleC
+                {
+                    Test = 2f,
+                    Enabled = true
+                },
+                new MyToggleC
+                {
+                    Test = 5f
+                },
+                new MyToggleC
+                {
+                    Test = 7f
+                }
+            };
         }
     }
 }

@@ -2,17 +2,37 @@ using Sirenix.OdinInspector;
 
 namespace Runestone.AesirInspector.Editor
 {
+    /// <summary>
+    /// ButtonGroup 特性的案例 SO。
+    /// </summary>
     [AesirExample]
     public class ButtonGroupExampleWithGroupNameSO : AttributeExampleSO<ButtonGroupExampleWithGroupNameSO>
     {
+        [Title("No Parameters")]
+        [ButtonGroup]
+        void DefaultGroupA() { }
+
+        [Title("No Parameters")]
+        [ButtonGroup]
+        void DefaultGroupB() { }
+
+        [Title("Parameter: Group")]
+        [ButtonGroup("My Button Group", 0f)]
+        void NamedGroupButtonA() { }
+
+        [Title("Parameter: Group")]
+        [ButtonGroup("My Button Group", 0f)]
+        void NamedGroupButtonB() { }
+
         [Title("Member Reference ($)")]
         public string groupNameField = "Custom Group";
 
+        [Title("Member Reference ($)")]
         [ButtonGroup("$groupNameField")]
         void ReferenceMethod() { }
 
         [Title("Expression (@)")]
-        [ButtonGroup("@\"Group_\" + System.DateTime.Now.DayOfWeek")]
+        [ButtonGroup("@\"Group_\" + groupNameField")]
         void ExpressionMethod() { }
 
         public override void AesirInspectorReset()
