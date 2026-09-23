@@ -3,9 +3,41 @@ using Sirenix.OdinInspector;
 
 namespace Runestone.AesirInspector.Editor
 {
+    /// <summary>
+    /// EnumToggleButtons 特性的案例 SO。
+    /// </summary>
     [AesirExample]
     public class EnumToggleButtonsExampleSO : AttributeExampleSO<EnumToggleButtonsExampleSO>
     {
+        public enum SomeEnum
+        {
+            First,
+            Second,
+            Third,
+            Fourth,
+            AndSoOn
+        }
+
+        public enum SomeEnumWithIcons
+        {
+            [LabelText(SdfIconType.TextLeft)]
+            TextLeft,
+            [LabelText(SdfIconType.TextCenter)]
+            TextCenter,
+            [LabelText(SdfIconType.TextRight)]
+            TextRight
+        }
+
+        public enum SomeEnumWithIconsAndNames
+        {
+            [LabelText("Align Left", SdfIconType.TextLeft)]
+            TextLeft,
+            [LabelText("Align Center", SdfIconType.TextCenter)]
+            TextCenter,
+            [LabelText("Align Right", SdfIconType.TextRight)]
+            TextRight
+        }
+
         [Flags]
         public enum SomeBitmaskEnum
         {
@@ -15,48 +47,46 @@ namespace Runestone.AesirInspector.Editor
             All = A | B | C
         }
 
-        public enum SomeEnum
-        {
-            First,
-            Second,
-            Third,
-            Fourth
-        }
-
-        public enum SomeEnumWithIcons
-        {
-            [LabelText(SdfIconType.TextLeft)]
-            Left,
-
-            [LabelText(SdfIconType.TextCenter)]
-            Center,
-
-            [LabelText(SdfIconType.TextRight)]
-            Right
-        }
-
         [Title("No Parameters")]
         [EnumToggleButtons]
         public SomeEnum someEnumField;
 
+        [Title("No Parameters")]
         [EnumToggleButtons]
         [HideLabel]
         public SomeEnum wideEnumField;
 
-        [Title("Bitmask Support")]
+        [Title("Bitmask Enum")]
+        public SomeBitmaskEnum defaultEnumBitmask;
+
+        [Title("Bitmask Enum")]
         [EnumToggleButtons]
         public SomeBitmaskEnum bitmaskEnumField;
 
-        [Title("Icons Support")]
+        [Title("Bitmask Enum")]
         [EnumToggleButtons]
+        [HideLabel]
+        public SomeBitmaskEnum enumFieldWide;
+
+        [Title("Icon Enum")]
+        [EnumToggleButtons]
+        [HideLabel]
         public SomeEnumWithIcons enumWithIcons;
+
+        [Title("Icon Enum")]
+        [EnumToggleButtons]
+        [HideLabel]
+        public SomeEnumWithIconsAndNames enumWithIconsAndNames;
 
         public override void AesirInspectorReset()
         {
             someEnumField = SomeEnum.First;
             wideEnumField = SomeEnum.First;
+            defaultEnumBitmask = 0;
             bitmaskEnumField = 0;
-            enumWithIcons = SomeEnumWithIcons.Center;
+            enumFieldWide = 0;
+            enumWithIcons = SomeEnumWithIcons.TextLeft;
+            enumWithIconsAndNames = SomeEnumWithIconsAndNames.TextLeft;
         }
     }
 }
