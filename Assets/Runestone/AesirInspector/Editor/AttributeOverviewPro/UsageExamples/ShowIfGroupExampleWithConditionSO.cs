@@ -5,27 +5,26 @@ namespace Runestone.AesirInspector.Editor
     [AesirExample]
     public class ShowIfGroupExampleWithConditionSO : AttributeExampleSO<ShowIfGroupExampleWithConditionSO>
     {
-        [Title("Controls")]
+        [Title("Parameter: Condition (Field)")]
         public bool showGroup = true;
 
-        [FoldoutGroup("Field Name Example")]
         [ShowIfGroup("Show", Condition = "showGroup")]
-        [FoldoutGroup("Show/Field Name Example")]
+        [FoldoutGroup("Show/Field")]
         public string fieldNameExample;
 
-        [FoldoutGroup("Property Name Example")]
+        [Title("Parameter: Condition (Property)")]
         [ShowIfGroup("Show", Condition = "ShowGroupProperty")]
-        [FoldoutGroup("Show/Property Name Example")]
+        [FoldoutGroup("Show/Property")]
         public string propertyNameExample;
 
-        [FoldoutGroup("Method Name Example")]
+        [Title("Parameter: Condition (Method)")]
         [ShowIfGroup("Show", Condition = "GetShowState")]
-        [FoldoutGroup("Show/Method Name Example")]
+        [FoldoutGroup("Show/Method")]
         public string methodNameExample;
 
-        [FoldoutGroup("Expression (@)")]
+        [Title("Expression (@)")]
         [ShowIfGroup("Show", Condition = "@showGroup")]
-        [FoldoutGroup("Show/Attribute Expression Example")]
+        [FoldoutGroup("Show/Expression")]
         public string attributeExpressionExample;
 
         public bool ShowGroupProperty => showGroup;

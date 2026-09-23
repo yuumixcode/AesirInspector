@@ -7,6 +7,8 @@ namespace Runestone.AesirInspector.Editor
     public class HideInPlayModeExampleSO : AttributeExampleSO<HideInPlayModeExampleSO>
     {
         [Title("No Parameters")]
+        public int alwaysVisible;
+
         [HideInPlayMode]
         public GameObject gameObject;
 
@@ -18,6 +20,7 @@ namespace Runestone.AesirInspector.Editor
 
         public override void AesirInspectorReset()
         {
+            alwaysVisible = 0;
             gameObject = null;
             material = null;
             someValue = 0;

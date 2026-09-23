@@ -6,12 +6,12 @@ namespace Runestone.AesirInspector.Editor
     public class HideInInlineEditorsExampleSO : AttributeExampleSO<HideInInlineEditorsExampleSO>
     {
         [Title("No Parameters")]
-        [InlineEditor]
+        [InfoBox("The marked member is hidden when this object is drawn inside an inline editor, and visible when the object is inspected directly. Use the pen icon of an inline editor to open a dedicated inspector and compare.", InfoMessageType.Info)]
+        [InlineEditor(InlineEditorModes.GUIOnly, InlineEditorObjectFieldModes.Boxed, Expanded = true)]
         [HideInInlineEditors]
         public HideMonoScriptExampleSO hiddenInlineEditor;
 
-        [Title("Without HideInlineEditor")]
-        [InlineEditor]
+        [InlineEditor(InlineEditorModes.GUIOnly, InlineEditorObjectFieldModes.Boxed, Expanded = true)]
         public HideMonoScriptExampleSO shownInlineEditor;
 
         public override void AesirInspectorReset()

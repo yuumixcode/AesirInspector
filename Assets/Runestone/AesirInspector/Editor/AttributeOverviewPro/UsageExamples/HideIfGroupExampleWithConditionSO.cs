@@ -5,27 +5,26 @@ namespace Runestone.AesirInspector.Editor
     [AesirExample]
     public class HideIfGroupExampleWithConditionSO : AttributeExampleSO<HideIfGroupExampleWithConditionSO>
     {
-        [Title("Controls")]
+        [Title("Parameter: Condition (Field)")]
         public bool hideGroup = true;
 
-        [FoldoutGroup("Field Name Example")]
         [HideIfGroup("Hidden", Condition = "hideGroup")]
-        [FoldoutGroup("Hidden/Field Name Example")]
+        [FoldoutGroup("Hidden/Field")]
         public string fieldNameExample;
 
-        [FoldoutGroup("Property Name Example")]
+        [Title("Parameter: Condition (Property)")]
         [HideIfGroup("Hidden", Condition = "HideGroupProperty")]
-        [FoldoutGroup("Hidden/Property Name Example")]
+        [FoldoutGroup("Hidden/Property")]
         public string propertyNameExample;
 
-        [FoldoutGroup("Method Name Example")]
+        [Title("Parameter: Condition (Method)")]
         [HideIfGroup("Hidden", Condition = "GetHiddenState")]
-        [FoldoutGroup("Hidden/Method Name Example")]
+        [FoldoutGroup("Hidden/Method")]
         public string methodNameExample;
 
-        [FoldoutGroup("Expression (@)")]
+        [Title("Expression (@)")]
         [HideIfGroup("Hidden", Condition = "@hideGroup")]
-        [FoldoutGroup("Hidden/Attribute Expression Example")]
+        [FoldoutGroup("Hidden/Expression")]
         public string attributeExpressionExample;
 
         public bool HideGroupProperty => hideGroup;
