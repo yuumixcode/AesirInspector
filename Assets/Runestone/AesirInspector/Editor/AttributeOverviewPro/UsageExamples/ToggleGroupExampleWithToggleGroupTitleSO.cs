@@ -2,19 +2,30 @@ using Sirenix.OdinInspector;
 
 namespace Runestone.AesirInspector.Editor
 {
+    /// <summary>
+    /// ToggleGroup 特性的案例 SO。
+    /// </summary>
     [AesirExample]
-    public class
-        ToggleGroupExampleWithToggleGroupTitleSO : AttributeExampleSO<
-        ToggleGroupExampleWithToggleGroupTitleSO>
+    public class ToggleGroupExampleWithToggleGroupTitleSO : AttributeExampleSO<ToggleGroupExampleWithToggleGroupTitleSO>
     {
-        [Title("Member Reference ($)")]
+        [Title("Member Reference ($) : Field")]
         public string toggleTitleField = "Dynamic Toggle Title";
 
+        [Title("Member Reference ($) : Field")]
         [ToggleGroup(nameof(Toggle1), "$toggleTitleField")]
         public bool Toggle1;
 
         [ToggleGroup(nameof(Toggle1))]
         public int referenceExample;
+
+        [Title("Member Reference ($) : Property")]
+        [ToggleGroup(nameof(Toggle3), "$TitleFromProperty")]
+        public bool Toggle3;
+
+        [ToggleGroup(nameof(Toggle3))]
+        public float Test;
+
+        public string TitleFromProperty => "Test: " + Test;
 
         [Title("Expression (@)")]
         [ToggleGroup(nameof(Toggle2), "@\"Dynamic_\" + System.DateTime.Now.DayOfWeek")]
@@ -27,8 +38,10 @@ namespace Runestone.AesirInspector.Editor
         {
             toggleTitleField = "Dynamic Toggle Title";
             Toggle1 = false;
-            Toggle2 = false;
             referenceExample = 0;
+            Toggle3 = false;
+            Test = 0f;
+            Toggle2 = false;
             expressionExample = 0;
         }
     }

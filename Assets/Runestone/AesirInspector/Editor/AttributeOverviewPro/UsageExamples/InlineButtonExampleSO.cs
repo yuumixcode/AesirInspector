@@ -3,30 +3,37 @@ using UnityEngine;
 
 namespace Runestone.AesirInspector.Editor
 {
+    /// <summary>
+    /// InlineButton 特性的案例 SO。
+    /// </summary>
     [AesirExample]
     public class InlineButtonExampleSO : AttributeExampleSO<InlineButtonExampleSO>
     {
         [FoldoutGroup("No Parameters")]
+        [InlineButton("A")]
+        public int defaultLabelButton;
+
+        [FoldoutGroup("Parameter: Label")]
         [InlineButton("OnButtonClick", "Click Me")]
         public int inlineButton;
 
         [FoldoutGroup("Multiple Buttons")]
         [InlineButton("A")]
-        [InlineButton("B", "Custom Name")]
+        [InlineButton("B", "Custom Button Name")]
         public int multiButtons;
 
-        [FoldoutGroup("Parameter: SdfIcon")]
+        [FoldoutGroup("Parameter: Icon")]
         [InlineButton("C", SdfIconType.Dice6Fill, "Random")]
         public int iconButton;
 
-        [FoldoutGroup("Advanced Usage")]
-        public bool showButton;
+        [FoldoutGroup("Parameter: ShowIf")]
+        public bool showButton = true;
 
-        [FoldoutGroup("Advanced Usage")]
+        [FoldoutGroup("Parameter: ShowIf")]
         [InlineButton("C", "Conditional", ShowIf = "showButton")]
         public int conditionalButton;
 
-        [FoldoutGroup("Advanced Usage")]
+        [FoldoutGroup("Parameter: ButtonColor, TextColor")]
         [InlineButton("C", "Colored", ButtonColor = "lightgreen", TextColor = "darkblue")]
         public int coloredButton;
 
@@ -37,6 +44,7 @@ namespace Runestone.AesirInspector.Editor
 
         public override void AesirInspectorReset()
         {
+            defaultLabelButton = 0;
             inlineButton = 0;
             multiButtons = 0;
             iconButton = 0;
