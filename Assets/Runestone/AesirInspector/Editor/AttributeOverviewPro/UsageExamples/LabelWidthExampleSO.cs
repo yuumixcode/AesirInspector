@@ -2,29 +2,33 @@ using Sirenix.OdinInspector;
 
 namespace Runestone.AesirInspector.Editor
 {
+    /// <summary>
+    /// LabelWidth 特性的案例 SO。
+    /// </summary>
     [AesirExample]
     public class LabelWidthExampleSO : AttributeExampleSO<LabelWidthExampleSO>
     {
-        [Title("Standard Property")]
-        public int defaultWidth;
+        [Title("No Parameters")]
+        public int DefaultWidth;
 
         [Title("Parameter: Width (Fixed)")]
-        [LabelWidth(50)]
-        public int thinLabel;
+        [LabelWidth(50f)]
+        public int Thin;
 
-        [LabelWidth(200)]
-        public int wideLabel;
+        [Title("Parameter: Width (Fixed)")]
+        [LabelWidth(250f)]
+        public int Wide;
 
         [Title("Parameter: Width (Relative)")]
-        [LabelWidth(0.5f)]
-        public int proportionalLabel;
+        [LabelWidth(-50f)]
+        public int relativeLabel;
 
         public override void AesirInspectorReset()
         {
-            defaultWidth = 0;
-            thinLabel = 0;
-            wideLabel = 0;
-            proportionalLabel = 0;
+            DefaultWidth = 0;
+            Thin = 0;
+            Wide = 0;
+            relativeLabel = 0;
         }
     }
 }
