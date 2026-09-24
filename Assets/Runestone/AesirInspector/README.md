@@ -62,7 +62,7 @@ Aesir Inspector 会在编辑器加载时自动检测安装方式（UPM / Assets 
 
 ## 核心功能
 
-### 1. 特性总览 (Attribute Overview Pro)
+### 1. 特性总览 (Attribute Overview Ultra)
 
 以可搜索的树形菜单展示所有已注册的 Odin Inspector 与 Aesir Inspector 特性面板，每个特性提供实时预览与示例代码。
 
@@ -70,7 +70,8 @@ Aesir Inspector 会在编辑器加载时自动检测安装方式（UPM / Assets 
 - **搜索定位**：支持模糊搜索，快速找到目标特性。
 - **实时预览**：选中特性即可在右侧面板查看效果与参数配置。
 - **代码预览**：选中特性即可查看对应的示例源代码，快速了解用法。
-- 通过 `Tools → Aesir → Inspector → Attribute Overview Pro` 菜单打开。
+- **零资产污染**：面板与示例均为内存实例，用户调试状态经状态银行（UltraStateBank）持久化，Project 中不生成任何子资产。
+- 通过 `Tools → Aesir → Inspector → Attribute Overview Ultra` 菜单打开。
 
 ### 2. 迷你工具集 (Mini Tools)
 
@@ -114,7 +115,7 @@ Aesir Inspector 会在编辑器加载时自动检测安装方式（UPM / Assets 
 Odin Inspector 为硬依赖，本包直接使用 Sirenix（Odin）API 提供全部增强能力：
 
 - 双语特性、Inspector Control、Attribute Drawer 与 Processor 直接基于 Odin Attribute/Drawer 体系实现。
-- 特性总览（Attribute Overview Pro）与扩展包管理器基于 Odin MenuEditorWindow / EditorWindow 构建。
+- 特性总览（Attribute Overview Ultra）与扩展包管理器基于 Odin MenuEditorWindow / EditorWindow 构建。
 - 未安装 Odin Inspector 时本包无法编译，请先通过 [odininspector.com](https://odininspector.com/) 安装 Odin 3.3.x+。
 
 ### 6. 安全编辑器工具 (Safe Editor Utilities)

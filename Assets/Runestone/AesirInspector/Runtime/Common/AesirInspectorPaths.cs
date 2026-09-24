@@ -16,40 +16,17 @@ namespace Runestone.AesirInspector
         public const string PreferencesAssetsFolderPath = EditorDefaultResourcesPath + "/Preferences";
 
         /// <summary>
-        /// Attribute Overview Pro 数据库资产存放文件夹路径
+        /// Attribute Overview 数据资产存放文件夹路径（仅 Ultra 状态银行，无 Pro 资产）。
         /// </summary>
-        public const string AttributeOverviewDatabasePath =
-            EditorDefaultResourcesPath + "/Attribute Overview Pro";
-
-        /// <summary>
-        /// [已弃用] PanelSO 现作为数据库子资产存储。仅保留用于旧资产迁移清理。
-        /// </summary>
-        public const string AttributePanelsPath =
-            EditorDefaultResourcesPath + "/Attribute Overview Pro/Panels";
-
-        /// <summary>
-        /// [已弃用] ExampleSO 现按序列化方式分别存入 Unity/Odin 容器。仅保留用于旧资产迁移清理。
-        /// </summary>
-        public const string AttributeExamplesPath =
-            EditorDefaultResourcesPath + "/Attribute Overview Pro/Attribute Examples";
-
-        /// <summary>
-        /// Unity 原生序列化的 ExampleSO 容器文件路径。
-        /// </summary>
-        public const string AttributeExamplesUnityPath =
-            AttributeOverviewDatabasePath + "/UnityExamples.asset";
-
-        /// <summary>
-        /// Odin 序列化的 ExampleSO 容器文件路径。
-        /// </summary>
-        public const string AttributeExamplesOdinPath = AttributeOverviewDatabasePath + "/OdinExamples.asset";
+        public const string AttributeOverviewDataPath =
+            EditorDefaultResourcesPath + "/Attribute Overview";
 
         /// <summary>
         /// Attribute Overview Ultra 状态银行资产路径。
-        /// 存储面板选中记录与示例调试状态快照，替代 Pro 的示例子资产持久化。
+        /// 存储面板选中记录与示例调试状态快照。
         /// </summary>
         public const string AttributeOverviewUltraStateBankPath =
-            AttributeOverviewDatabasePath + "/UltraStateBank.asset";
+            AttributeOverviewDataPath + "/UltraStateBank.asset";
 
         /// <summary>
         /// MiniTools 资源的存放路径

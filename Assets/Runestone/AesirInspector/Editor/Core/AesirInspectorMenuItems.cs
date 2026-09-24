@@ -47,24 +47,14 @@ namespace Runestone.AesirInspector.Editor
         public const string PreferencesWindowName = "Preferences";
 
         /// <summary>
-        /// 打开 Attribute Overview Pro 窗口的菜单路径。
-        /// </summary>
-        public const string AttributeOverviewPro = ToolsAesirInspectorRoot + "/Attribute Overview Pro";
-
-        /// <summary>
-        /// Attribute Overview Pro 菜单项优先级。
-        /// </summary>
-        public const int AttributeOverviewProOrder = -900;
-
-        /// <summary>
         /// 打开 Attribute Overview Ultra 窗口的菜单路径。
         /// </summary>
         public const string AttributeOverviewUltra = ToolsAesirInspectorRoot + "/Attribute Overview Ultra";
 
         /// <summary>
-        /// Attribute Overview Ultra 菜单项优先级（紧邻 Pro 上方）。
+        /// Attribute Overview Ultra 菜单项优先级。
         /// </summary>
-        public const int AttributeOverviewUltraOrder = -901;
+        public const int AttributeOverviewUltraOrder = -900;
 
         /// <summary>
         /// Attribute Overview Ultra 窗口标题。

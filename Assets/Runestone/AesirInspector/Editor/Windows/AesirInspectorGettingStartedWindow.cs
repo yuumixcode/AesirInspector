@@ -71,7 +71,7 @@ namespace Runestone.AesirInspector.Editor
             if (GUILayout.Button(
                     AesirInspectorLanguageSettingsSO.CurrentIsEnglish
                         ? "Initialize Aesir Inspector"
-                        : "初始化 Aesir Inspector (生成 100+ 案例资产)", GUILayout.Height(40)))
+                        : "初始化 Aesir Inspector (构建面板与案例)", GUILayout.Height(40)))
             {
                 InitAesirInspector();
             }
@@ -81,15 +81,12 @@ namespace Runestone.AesirInspector.Editor
         {
             try
             {
-                // 初始化 Database (内部已包含 Panels 和 Examples 的生成及进度条)
-                var database = AttributeOverviewDatabaseSO.Instance;
-                if (database == null)
-                {
-                    Debug.LogError("Failed to get AttributeOverviewDatabaseSO instance.");
-                    return;
-                }
-
-                database.Initialize();
+                // Attribute Overview Ultra 为零资产生成：确保状态银行可用，
+                // 并完成一次全量面板构建冒烟（覆盖全部 Data 构造器与示例银行路由）
+                var bank = UltraStateBankSO.LoadOrCreateBank();
+                var database = new UltraPanelDatabase(bank);
+                database.BuildAllPanels();
+                database.ReleaseAll();
 
                 AesirInspectorProjectSettingsSO.Instance.IsInitialized = true;
                 Debug.Log("Aesir Inspector initialized successfully!");
@@ -119,8 +116,8 @@ namespace Runestone.AesirInspector.Editor
                 },
                 new SummaryDetailGroup
                 {
-                    summary = "Attribute Overview Pro",
-                    details = "以可搜索的树形菜单展示所有已注册的 Odin Inspector 特性面板。"
+                    summary = "Attribute Overview Ultra",
+                    details = "以可搜索的树形菜单展示所有已注册的 Odin Inspector 特性面板；示例为内存实例，调试状态经状态银行持久化，零资产污染。"
                 },
                 new SummaryDetailGroup
                 {
