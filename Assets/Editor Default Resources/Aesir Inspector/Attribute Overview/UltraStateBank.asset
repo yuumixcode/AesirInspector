@@ -164,7 +164,7 @@ MonoBehaviour:
       SerializationNodes: []
   - key: ExampleState/HideLabelExampleSO
     typeName: Runestone.AesirInspector.Editor.HideLabelExampleSO
-    checksum: FDEE82F74D415D1FD4E9ADC21C053CAD67B1C38DAE4802F159AA94230867D8B6
+    checksum: BD1A997654105A0375C9FDED5A814BCF52033FAA1D26967C4EA49664B079CFFD
     kind: 1
     selectionValue: 
     state:
@@ -188,6 +188,81 @@ MonoBehaviour:
       - Name: b
         Entry: 3
         Data: 0
+      - Name: WideColor1
+        Entry: 7
+        Data: UnityEngine.Color, UnityEngine.CoreModule
+      - Name: 
+        Entry: 4
+        Data: 0.85
+      - Name: 
+        Entry: 4
+        Data: 0.44
+      - Name: 
+        Entry: 4
+        Data: 0.22
+      - Name: 
+        Entry: 4
+        Data: 1
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: WideColor2
+        Entry: 7
+        Data: UnityEngine.Color, UnityEngine.CoreModule
+      - Name: 
+        Entry: 4
+        Data: 0.72
+      - Name: 
+        Entry: 4
+        Data: 0.16
+      - Name: 
+        Entry: 4
+        Data: 0.16
+      - Name: 
+        Entry: 4
+        Data: 1
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: WideVector1
+        Entry: 7
+        Data: UnityEngine.Vector3, UnityEngine.CoreModule
+      - Name: 
+        Entry: 4
+        Data: 1
+      - Name: 
+        Entry: 4
+        Data: 2
+      - Name: 
+        Entry: 4
+        Data: 3
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: WideVector2
+        Entry: 7
+        Data: UnityEngine.Vector4, UnityEngine.CoreModule
+      - Name: 
+        Entry: 4
+        Data: 1
+      - Name: 
+        Entry: 4
+        Data: 2
+      - Name: 
+        Entry: 4
+        Data: 3
+      - Name: 
+        Entry: 4
+        Data: 4
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: WideString
+        Entry: 1
+        Data: This string field has no label and spans the full width
+      - Name: WideMultilineTextField
+        Entry: 1
+        Data: 
   - key: PanelSelection/DetailInfoBoxAttributePanelSO
     typeName: DetailInfoBoxBilingualExampleSO
     checksum: 
@@ -727,7 +802,7 @@ MonoBehaviour:
       SerializationNodes: []
   - key: ExampleState/InlineButtonExampleSO
     typeName: Runestone.AesirInspector.Editor.InlineButtonExampleSO
-    checksum: 8C8D50536CCD324E3131FD59D4F214E39C530B44C79895B497B1F1838DF42ED0
+    checksum: C4BB23B3CBCEF05026B7CC5CDEBAE51C76980FE02DBD027911D3BE86C1068E71
     kind: 1
     selectionValue: 
     state:
@@ -739,6 +814,9 @@ MonoBehaviour:
       PrefabModificationsReferencedUnityObjects: []
       PrefabModifications: []
       SerializationNodes:
+      - Name: defaultLabelButton
+        Entry: 3
+        Data: 0
       - Name: inlineButton
         Entry: 3
         Data: 0
@@ -773,7 +851,7 @@ MonoBehaviour:
       SerializationNodes: []
   - key: ExampleState/ButtonExampleSO
     typeName: Runestone.AesirInspector.Editor.ButtonExampleSO
-    checksum: 891B5DA20AF0B418707B8C387DA941A4A7706EE9A40DBB95A32F994F01ABDA6C
+    checksum: A14941A6A766ECF43DAF4630CC5389523C7715DD77E40E8D8FF2ABC4A6DC9F89
     kind: 1
     selectionValue: 
     state:
@@ -785,6 +863,9 @@ MonoBehaviour:
       PrefabModificationsReferencedUnityObjects: []
       PrefabModifications: []
       SerializationNodes:
+      - Name: Toggle
+        Entry: 5
+        Data: false
       - Name: dynamicButtonName
         Entry: 1
         Data: Click Me!

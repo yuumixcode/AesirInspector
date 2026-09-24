@@ -34,8 +34,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - **Attribute Overview Ultra window**: replaces the asset database with TypeCache scanning and CreateInstance in-memory panels; menu tree, search, category browsing and code preview are on par with Pro, plus narrow-window defenses (draggable menu width + unified horizontal scrolling) and example debug-state snapshots persisted with SHA256 checksum and type-name double validation / **Attribute Overview Ultra 特性总览窗口**：TypeCache 扫描 + 内存实例化，树形菜单与代码预览对齐 Pro，新增窄窗防线与状态银行快照持久化。
+- **Directory structure identical to Odin's official window**: categories, multi-category registration (an attribute can appear in several categories, e.g. Button in both Groups and Buttons), display names (official nice-name rule, e.g. `Assets Only`, `GUIColor`) and ordering (official CategoryComparer) are all read directly from Odin's official registry (`AttributeExampleUtilities`), requiring zero maintenance across Odin upgrades / **目录结构与 Odin 官方完全一致**：分类归属、多分类、显示名与分类排序全部直读 Odin 官方注册表，随 Odin 升级零维护。
+- **Aesir Customs category**: added panels for the bilingual attributes (Bilingual Title / Bilingual Button / Bilingual Info Box / Bilingual Text) with full parameter tables and examples, pinned to the top of the menu / **Aesir Customs 分类**：新增双语特性面板，置于菜单首位。
 
 ### Changed
+
+- Merged the duplicated OnInspectorInit and OnInspectorDispose examples: their "Basic Usage" and "Action" cases demonstrated exactly the same parameters, so each was merged into a single case (all unique usages kept). Other attributes' "With" variants are kept to separate basic from advanced parameters / 收敛 OnInspectorInit 与 OnInspectorDispose 的重复案例（演示参数完全相同，合并为单一案例），其余特性的 With 变体保留以区分简单/进阶参数。
 
 - The tool panel UI no longer uses the bilingual attributes; plain Odin attributes with Chinese text are used instead / 工具面板 UI 移除双语特性，改为纯 Odin 特性（仅中文文本）。
 - Removed `AesirInspectorModuleAssetMarkerSO` (its only consumer was Script Doc Generator, replaced by the tool's own `ScriptDocGeneratorAssetMarkerSO`) / 移除 `AesirInspectorModuleAssetMarkerSO`。

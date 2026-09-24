@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
@@ -12,29 +11,11 @@ namespace Runestone.AesirInspector.Editor
     /// Attribute Overview Ultra 的内存面板注册中心。
     /// 替代 Pro 的资产数据库：TypeCache 扫描面板类型 → CreateInstance 内存实例化；
     /// 示例由各 Data 构造器经 UltraStateBankSO 银行路由取得内存单例（含用户调试状态恢复）。
+    /// 目录结构（分类/显示名/排序）由 AesirAttributeRegistry 从 Odin 官方注册表提供。
     /// 全程零 AssetDatabase 写操作。
     /// </summary>
     public class UltraPanelDatabase
     {
-        /// <summary>
-        /// 分类展示顺序（与 Pro 窗口一致，Essentials 首位）。
-        /// </summary>
-        internal static readonly AesirAttributeCategory[] CategoryOrder =
-        {
-            AesirAttributeCategory.Essentials,
-            AesirAttributeCategory.Buttons,
-            AesirAttributeCategory.Collections,
-            AesirAttributeCategory.Groups,
-            AesirAttributeCategory.Conditionals,
-            AesirAttributeCategory.Numbers,
-            AesirAttributeCategory.TypeSpecifics,
-            AesirAttributeCategory.Validation,
-            AesirAttributeCategory.Misc,
-            AesirAttributeCategory.Meta,
-            AesirAttributeCategory.Unity,
-            AesirAttributeCategory.Debug
-        };
-
         readonly UltraStateBankSO _bank;
 
         List<AbstractAttributePanelSO> _panels;
@@ -70,22 +51,6 @@ namespace Runestone.AesirInspector.Editor
                 panel.Initialize();
                 _panels.Add(panel);
             }
-        }
-
-        /// <summary>
-        /// 获取面板所属分类；无标记返回 None。
-        /// </summary>
-        public static AesirAttributeCategory CategoryOf(AbstractAttributePanelSO panel) =>
-            panel.GetType().GetCustomAttribute<AttributeCategoryAttribute>()?.Category ??
-            AesirAttributeCategory.None;
-
-        /// <summary>
-        /// 面板是否属于指定分类（Flags 语义，与 Pro 的 FilterPanels 一致）。
-        /// </summary>
-        public static bool MatchesCategory(AbstractAttributePanelSO panel, AesirAttributeCategory category)
-        {
-            var attr = panel.GetType().GetCustomAttribute<AttributeCategoryAttribute>();
-            return attr != null && attr.Category.HasFlagFast(category);
         }
 
         /// <summary>

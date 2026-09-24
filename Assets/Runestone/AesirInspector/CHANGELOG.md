@@ -35,8 +35,12 @@
 ### Added
 
 - **Attribute Overview Ultra 特性总览窗口**：以 TypeCache 扫描 + CreateInstance 内存实例化替代资产数据库；树形菜单、搜索、分类浏览与代码预览与 Pro 对齐，并新增窄窗防线（可拖拽菜单宽度 + 内容整体横向滚动）、示例调试状态快照持久化（SHA256 校验和 + 类型名双校验）。/ **Attribute Overview Ultra window**: replaces the asset database with TypeCache scanning and CreateInstance in-memory panels; menu tree, search, category browsing and code preview are on par with Pro, plus narrow-window defenses (draggable menu width + unified horizontal scrolling) and example debug-state snapshots persisted with SHA256 checksum and type-name double validation.
+- **目录结构与 Odin 官方完全一致**：分类归属、多分类（同一特性可同时出现在多个分类，如 Button 同时在 Groups 与 Buttons）、显示名（官方 nice name 规则，如 `Assets Only`、`GUIColor`）与分类排序（官方 CategoryComparer：Essentials 首位，Misc/Meta/Unity/Debug 靠后）全部直读 Odin 官方注册表（`AttributeExampleUtilities`），随 Odin 升级零维护。/ **Directory structure identical to Odin's official window**: categories, multi-category registration (an attribute can appear in several categories, e.g. Button in both Groups and Buttons), display names (official nice-name rule) and ordering (official CategoryComparer) are all read directly from Odin's official registry, requiring zero maintenance across Odin upgrades.
+- **Aesir Customs 分类**：新增双语特性面板（Bilingual Title / Bilingual Button / Bilingual Info Box / Bilingual Text），含完整参数表与示例，置于菜单首位。/ **Aesir Customs category**: added panels for the bilingual attributes (Bilingual Title / Bilingual Button / Bilingual Info Box / Bilingual Text) with full parameter tables and examples, pinned to the top of the menu.
 
 ### Changed
+
+- 收敛 OnInspectorInit 与 OnInspectorDispose 的重复案例：两个特性各自的"Basic Usage"与"Action"案例演示参数完全相同，已合并为单一案例（保留全部独有写法），其余特性的 With 变体保留以区分简单/进阶参数。/ Merged the duplicated OnInspectorInit and OnInspectorDispose examples: their "Basic Usage" and "Action" cases demonstrated exactly the same parameters, so each was merged into a single case (all unique usages kept). Other attributes' "With" variants are kept to separate basic from advanced parameters.
 
 - 工具面板 UI 移除双语特性，改为纯 Odin 特性（仅中文文本）。/ The tool panel UI no longer uses the bilingual attributes; plain Odin attributes with Chinese text are used instead.
 - 移除 `AesirInspectorModuleAssetMarkerSO`（其唯一使用者为 Script Doc Generator，由工具自带的 `ScriptDocGeneratorAssetMarkerSO` 替代）。/ Removed `AesirInspectorModuleAssetMarkerSO` (its only consumer was Script Doc Generator, replaced by the tool's own `ScriptDocGeneratorAssetMarkerSO`).
