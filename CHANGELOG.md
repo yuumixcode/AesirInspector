@@ -12,8 +12,11 @@
 
 ### ⚠ BREAKING CHANGES（破坏性变更 · 升级前必读 / Read before upgrading）
 
-> **Script Doc Generator 与 Summary 工具已移出本包**，迁移至仓库内独立工具 `Assets/ScriptDocGenerator/`（非 UPM 包）。本包定位收窄为 Odin Inspector 增强库（双语特性、Attribute Overview Pro、安全编辑器工具、扩展包管理器）。
+> **Script Doc Generator 与 Summary 工具已移出本包**，迁移至仓库内独立工具 `Assets/ScriptDocGenerator/`（非 UPM 包）。本包定位收窄为 Odin Inspector 增强库（双语特性、Attribute Overview Ultra、安全编辑器工具、扩展包管理器）。
 > The Script Doc Generator and Summary Tool were moved out of this package into the standalone tool at `Assets/ScriptDocGenerator/`.
+
+> **Attribute Overview Pro 已移除**，由全面重做的 Attribute Overview Ultra 取代。面板与示例不再作为子资产持久化（`AttributeOverviewDatabase.asset`、`OdinExamples.asset`、`UnityExamples.asset` 随升级删除），用户调试状态改由状态银行 `UltraStateBank.asset` 以快照形式持久化，Project 中零子资产。示例 SO 单例（`AttributeExampleSO<T>.Instance` / `OdinAttributeExampleSO<T>.Instance`）后端切换为银行内存路由，外部仍按 `.Instance` 惯用法访问。
+> **Attribute Overview Pro has been removed** and replaced by the fully rebuilt Attribute Overview Ultra. Panels and examples are no longer persisted as sub-assets (`AttributeOverviewDatabase.asset`, `OdinExamples.asset` and `UnityExamples.asset` are deleted on upgrade); user debug state now persists as snapshots in the `UltraStateBank.asset` state bank, keeping the Project free of sub-assets. Example SO singletons are now routed through the in-memory state bank while keeping the `.Instance` accessor.
 
 #### 迁移指南 / Migration Guide
 
@@ -26,11 +29,23 @@
 | 菜单 | `Tools → Aesir → Inspector → Script Doc Generator`、`Assets → Aesir Inspector → …` | `Tools → Script Doc Generator`、`Assets → Script Doc Generator → …` |
 | 编辑器资源路径 | `Assets/Editor Default Resources/Aesir Inspector/…` | `Assets/Editor Default Resources/Script Doc Generator/…` |
 | `[Summary]` / `[ReferenceLinkURL]` 特性 | `Runestone.AesirInspector` | `Runestone.ScriptDocGenerator` |
+| 特性总览窗口 | `Tools → Aesir → Inspector → Attribute Overview Pro`（资产数据库 + 子资产示例） | `Tools → Aesir → Inspector → Attribute Overview Ultra`（内存面板 + UltraStateBank 状态银行） |
+| 编辑器资源路径（特性总览） | `Assets/Editor Default Resources/Aesir Inspector/Attribute Overview Pro/` | `Assets/Editor Default Resources/Aesir Inspector/Attribute Overview/`（仅 `UltraStateBank.asset`） |
+
+### Added
+
+- **Attribute Overview Ultra 特性总览窗口**：以 TypeCache 扫描 + CreateInstance 内存实例化替代资产数据库；树形菜单、搜索、分类浏览与代码预览与 Pro 对齐，并新增窄窗防线（可拖拽菜单宽度 + 内容整体横向滚动）、示例调试状态快照持久化（SHA256 校验和 + 类型名双校验）。/ **Attribute Overview Ultra window**: replaces the asset database with TypeCache scanning and CreateInstance in-memory panels; menu tree, search, category browsing and code preview are on par with Pro, plus narrow-window defenses (draggable menu width + unified horizontal scrolling) and example debug-state snapshots persisted with SHA256 checksum and type-name double validation.
 
 ### Changed
 
 - 工具面板 UI 移除双语特性，改为纯 Odin 特性（仅中文文本）。/ The tool panel UI no longer uses the bilingual attributes; plain Odin attributes with Chinese text are used instead.
 - 移除 `AesirInspectorModuleAssetMarkerSO`（其唯一使用者为 Script Doc Generator，由工具自带的 `ScriptDocGeneratorAssetMarkerSO` 替代）。/ Removed `AesirInspectorModuleAssetMarkerSO` (its only consumer was Script Doc Generator, replaced by the tool's own `ScriptDocGeneratorAssetMarkerSO`).
+- Getting Started 窗口的初始化按钮不再生成 100+ 案例资产，改为确保状态银行可用并完成一次全量面板构建冒烟。/ The Getting Started initialize button no longer generates 100+ example assets; it now ensures the state bank exists and smoke-builds all panels once.
+- 清理 CustomValueDrawer 双胞胎面板（Misc 分类重复项，Essentials 归类与 Odin 官方一致），消除同名菜单项。/ Removed the duplicate CustomValueDrawer panel from Misc (the Essentials registration matches Odin's official category), eliminating the duplicated menu entry.
+
+### Removed
+
+- Attribute Overview Pro 窗口（`AttributeOverviewWindow`）与资产数据库（`AttributeOverviewDatabaseSO`）。/ The Attribute Overview Pro window (`AttributeOverviewWindow`) and its asset database (`AttributeOverviewDatabaseSO`).
 
 ## [0.14.1] - 2026-09-05
 

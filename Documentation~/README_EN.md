@@ -61,7 +61,7 @@ Aesir Inspector automatically detects how it was installed (UPM / Assets folder)
 
 ## Core Features
 
-### 1. Attribute Overview Pro
+### 1. Attribute Overview Ultra
 
 A searchable tree menu that shows all registered Odin Inspector and Aesir Inspector attribute panels, with live previews and sample code for each attribute.
 
@@ -69,7 +69,8 @@ A searchable tree menu that shows all registered Odin Inspector and Aesir Inspec
 - **Search**: fuzzy search to quickly locate an attribute.
 - **Live preview**: selecting an attribute shows its effect and parameter configuration in the right panel.
 - **Code preview**: selecting an attribute also shows the corresponding sample source code.
-- Open via `Tools → Aesir → Inspector → Attribute Overview Pro`.
+- **Zero asset pollution**: panels and examples are in-memory instances; user debug state persists via the UltraStateBank, no sub-assets are generated in the Project.
+- Open via `Tools → Aesir → Inspector → Attribute Overview Ultra`.
 
 ### 2. Script Doc Generator
 
@@ -230,7 +231,7 @@ Available decorators and controls:
 Odin Inspector is a hard dependency — the package uses Sirenix (Odin) APIs directly for all of its enhanced capabilities:
 
 - Bilingual attributes, Inspector controls, attribute drawers, and processors are built directly on Odin's attribute/drawer system.
-- Attribute Overview Pro and the Extension Package Manager are built on Odin's menu editor window and editor window infrastructure.
+- Attribute Overview Ultra and the Extension Package Manager are built on Odin's menu editor window and editor window infrastructure.
 - The package will not compile without Odin Inspector; install Odin 3.3.x+ from [odininspector.com](https://odininspector.com/) first.
 
 ### 8. Safe Editor Utilities

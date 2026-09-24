@@ -8,31 +8,12 @@ using UnityEngine;
 namespace Runestone.AesirInspector.Editor
 {
     /// <summary>
-    /// 特性面板 SO 泛型单例基类，继承自 SerializedScriptableObject。
+    /// 特性面板 SO 泛型基类。
+    /// 面板由 Ultra 窗口的 UltraPanelDatabase 以 CreateInstance 内存实例化，不再是资产单例。
     /// </summary>
     public abstract class AttributeOverviewPanelSO<T> : SerializedScriptableObject, IAesirInspectorReset
         where T : AttributeOverviewPanelSO<T>
     {
-        static T _asset;
-
-        /// <summary>
-        /// 获取单例实例，若不存在则自动创建。
-        /// </summary>
-        public static T Instance
-        {
-            get
-            {
-                if (_asset)
-                {
-                    return _asset;
-                }
-
-                _asset = ScriptableObjectSafeEditorUtility.GetSingletonAssetAndDeleteOther<T>(
-                    AesirInspectorPaths.AttributePanelsPath);
-                return _asset;
-            }
-        }
-
         /// <summary>
         /// 重置面板状态。
         /// </summary>

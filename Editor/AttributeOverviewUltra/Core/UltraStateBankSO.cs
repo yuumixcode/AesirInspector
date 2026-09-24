@@ -49,7 +49,52 @@ namespace Runestone.AesirInspector.Editor
         [SerializeField]
         List<UltraStateBankEntry> entries = new List<UltraStateBankEntry>();
 
+        static UltraStateBankSO _cachedBank;
+
         public int EntryCount => entries.Count;
+
+        /// <summary>
+        /// 获取或创建全局状态银行实例（静态缓存，Domain Reload 后自动重载）。
+        /// 示例单例路由（GetMemoryExample）与 Ultra 窗口共用同一银行。
+        /// </summary>
+        public static UltraStateBankSO LoadOrCreateBank()
+        {
+            if (_cachedBank)
+            {
+                return _cachedBank;
+            }
+
+            _cachedBank = AssetDatabase.LoadAssetAtPath<UltraStateBankSO>(
+                AesirInspectorPaths.AttributeOverviewUltraStateBankPath);
+            if (_cachedBank != null)
+            {
+                return _cachedBank;
+            }
+
+            var folder = System.IO.Path.GetDirectoryName(
+                AesirInspectorPaths.AttributeOverviewUltraStateBankPath);
+            if (!System.IO.Directory.Exists(folder))
+            {
+                System.IO.Directory.CreateDirectory(folder);
+            }
+
+            _cachedBank = CreateInstance<UltraStateBankSO>();
+            AssetDatabase.CreateAsset(_cachedBank, AesirInspectorPaths.AttributeOverviewUltraStateBankPath);
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+            return _cachedBank;
+        }
+
+        /// <summary>
+        /// 获取指定示例类型的内存单例：银行有快照则恢复用户调试状态，否则返回全新默认实例。
+        /// 这是示例 SO 单例（AttributeExampleSO / OdinAttributeExampleSO 的 Instance）的唯一后端，
+        /// 全程零 AssetDatabase 写操作。
+        /// </summary>
+        public static T GetMemoryExample<T>() where T : ScriptableObject
+        {
+            var bank = LoadOrCreateBank();
+            return (T)bank.RestoreOrCreateExample(typeof(T).Name, typeof(T));
+        }
 
         #region --- 面板选中记录 ---
 
