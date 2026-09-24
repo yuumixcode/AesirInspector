@@ -383,5 +383,25 @@ namespace Runestone.AesirInspector.Editor
         /// EnableGUI 特性文档链接。
         /// </summary>
         public const string EnableGuiUrl = "https://odininspector.com/attributes/enable-gui-attribute";
+
+        /// <summary>
+        /// Unity Multiline 特性文档链接。
+        /// </summary>
+        public const string MultilineUrl = "https://odininspector.com/attributes/multiline-attribute";
+
+        /// <summary>
+        /// Unity Range 特性文档链接。
+        /// </summary>
+        public const string RangeUrl = "https://odininspector.com/attributes/range-attribute";
+
+        /// <summary>
+        /// Unity Space 特性文档链接。
+        /// </summary>
+        public const string SpaceUrl = "https://odininspector.com/attributes/space-attribute";
+
+        /// <summary>
+        /// Unity TextArea 特性文档链接。
+        /// </summary>
+        public const string TextAreaUrl = "https://odininspector.com/attributes/text-area-attribute";
     }
 }
