@@ -69,10 +69,21 @@ namespace Runestone.AesirInspector.Editor
                 if (currentSelectedExample != value)
                 {
                     currentSelectedExample = value;
+                    ExampleSelectionChanged?.Invoke(value);
                     UpdateExampleCode();
                 }
             }
         }
+
+        /// <summary>
+        /// 选中示例变化时触发。Ultra 窗口订阅此事件在切换示例时同步快照，防止未关窗异常丢状态。
+        /// </summary>
+        internal event System.Action<ScriptableObject> ExampleSelectionChanged;
+
+        /// <summary>
+        /// Ultra 使用的示例预览项访问器。
+        /// </summary>
+        internal AttributeExamplePreviewItem[] ExamplePreviewItemsForUltra => _examplePreviewItems;
 
         /// <summary>
         /// 顶部说明控件引用。
@@ -80,6 +91,15 @@ namespace Runestone.AesirInspector.Editor
         public BilingualHeaderControl BilingualHeaderControl => bilingualHeaderControl;
 
         void OnDestroy()
+        {
+            ReleaseLanguageSubscription();
+        }
+
+        /// <summary>
+        /// 释放语言变更订阅。资产面板由 OnDestroy 触发；
+        /// Ultra 内存面板由数据库 ReleaseAll 时显式调用，防止静态事件持有已卸载实例。
+        /// </summary>
+        internal void ReleaseLanguageSubscription()
         {
             AesirInspectorLanguageSettingsSO.LanguageChanged -= OnLanguageChanged;
         }

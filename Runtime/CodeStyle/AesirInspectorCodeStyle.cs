@@ -42,7 +42,6 @@ namespace Runestone.AesirInspector
     /// Flags 枚举规范：必须使用 [Flags]；基础值用位移操作；复合值用按位或组合；必须包含 0 值成员。
     /// 普通枚举同理：显式赋值连续整数，必须包含 0 值成员（如 None）。
     /// </summary>
-    [Summary("Flags 枚举规范：位移操作赋值；按位或组合复合值；必须包含 0 值成员。")]
     [Flags]
     public enum AttackModes
     {
@@ -56,27 +55,25 @@ namespace Runestone.AesirInspector
     /// <summary>
     /// 接口规范：I 前缀 + 帕斯卡命名法
     /// </summary>
-    [Summary("接口规范：I 前缀 + 帕斯卡命名法")]
     public interface IDamageable<in T>
     {
-        [Summary("受伤害处理")]
+        /// <summary>受伤害处理</summary>
         void Damage(T damageTaken);
     }
 
     /// <summary>
     /// Aesir Inspector 代码风格示例，展示本项目的规范和最佳实践，基于 Rider 默认推荐格式
     /// </summary>
-    [Summary("Aesir Inspector 代码风格示例，展示本项目的规范和最佳实践，基于 Rider 默认推荐格式")]
     public sealed class AesirInspectorCodeStyle : MonoBehaviour, IDamageable<float>
     {
         // 字段声明顺序：const → static → static readonly → [SerializeField] → private
-        [Summary("常量")]
+        /// <summary>常量</summary>
         public const int MaxCount = 100;
 
-        [Summary("静态字段")]
+        /// <summary>静态字段</summary>
         public static int SharedCount;
 
-        [Summary("静态只读字段")]
+        /// <summary>静态只读字段</summary>
         static readonly int ColorPropertyId = Shader.PropertyToID("_BaseColor");
 
         // 单个特性独占一行，提升可读性
@@ -92,13 +89,13 @@ namespace Runestone.AesirInspector
         public AesirInspectorCodeStyle() => _instanceId = GetHashCode();
 
         // 属性风格：表达式体 → 私有 Setter → 完整属性
-        [Summary("只读属性")]
+        /// <summary>只读属性</summary>
         public int MaxHealthReadOnly => _maxHealth;
 
-        [Summary("私有 Setter 属性")]
+        /// <summary>私有 Setter 属性</summary>
         public int CurrentCount { get; private set; }
 
-        [Summary("完整属性")]
+        /// <summary>完整属性</summary>
         public int MaxHealth
         {
             get => _maxHealth;
@@ -119,27 +116,27 @@ namespace Runestone.AesirInspector
         }
 
         // Internal_ 前缀的方法名，必须是一个私有或者受保护或者内部的方法和一个公开方法重名，才能使用 Internal_ 前缀
-        [Summary("设置最大生命值")]
+        /// <summary>设置最大生命值</summary>
         public void SetMaxHealth(int newMaxValue) => Internal_SetMaxHealth(newMaxValue);
 
         void Internal_SetMaxHealth(int value) => _maxHealth = value;
 
         // 事件声明
-        [Summary("门已打开")]
+        /// <summary>门已打开</summary>
         public event Action DoorOpened;
 
-        [Summary("触发自定义事件")]
+        /// <summary>触发自定义事件</summary>
         public event Action<CustomEventArgs> ThingHappened;
 
         // 事件触发方法命名：Raise + 事件名
-        [Summary("触发门已打开事件")]
+        /// <summary>触发门已打开事件</summary>
         public void RaiseDoorOpened()
         {
             DoorOpened?.Invoke();
         }
 
         // 事件订阅方法命名：On + 事件名
-        [Summary("事件订阅方法：On + 事件名")]
+        /// <summary>事件订阅方法：On + 事件名</summary>
         public void OnDoorOpened()
         {
             Debug.Log("门已打开");
@@ -157,13 +154,13 @@ namespace Runestone.AesirInspector
         }
 
         // 事件参数结构体：参数较多时用结构体整合
-        [Summary("事件参数结构体：参数较多时用结构体整合")]
+        /// <summary>事件参数结构体：参数较多时用结构体整合</summary>
         public struct CustomEventArgs
         {
-            [Summary("对象 ID")]
+            /// <summary>对象 ID</summary>
             public int ObjectID { get; }
 
-            [Summary("颜色")]
+            /// <summary>颜色</summary>
             public Color Color { get; }
 
             public CustomEventArgs(int objectId, Color color)
