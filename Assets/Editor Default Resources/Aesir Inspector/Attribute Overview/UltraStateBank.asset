@@ -1249,3 +1249,229 @@ MonoBehaviour:
       - Name: UniqueGameobjectListMode2
         Entry: 6
         Data: 
+  - key: PanelSelection/BilingualButtonAttributePanelSO
+    typeName: BilingualButtonExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: BilingualButtonExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/BilingualButtonExampleSO
+    typeName: Runestone.AesirInspector.Editor.BilingualButtonExampleSO
+    checksum: 4E642643BA5DE6E3F7EE3DEB89D9916E5AF6F0D024FFD49AE2F496898745C464
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: toggled
+        Entry: 5
+        Data: false
+  - key: PanelSelection/RequiredAttributePanelSO
+    typeName: RequiredExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: RequiredExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/RequiredExampleSO
+    typeName: Runestone.AesirInspector.Editor.RequiredExampleSO
+    checksum: D6E545AA2DC29B288D35BC2E60CF54B5711D8541A93CC392AAE31CDFCCF34D73
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: defaultRequired
+        Entry: 6
+        Data: 
+      - Name: myRigidbody
+        Entry: 6
+        Data: 
+      - Name: infoRequired
+        Entry: 6
+        Data: 
+      - Name: warningRequired
+        Entry: 6
+        Data: 
+      - Name: errorRequired
+        Entry: 6
+        Data: 
+  - key: ExampleState/RequiredExampleWithErrorMessageSO
+    typeName: Runestone.AesirInspector.Editor.RequiredExampleWithErrorMessageSO
+    checksum: 98270777CEED6C87FBF43080F22999D9EB577D62AB5E9F2E5D806BF87F5D56C7
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: customError
+        Entry: 1
+        Data: My custom error message from field
+      - Name: referenceExample
+        Entry: 6
+        Data: 
+      - Name: expressionExample
+        Entry: 6
+        Data: 
+  - key: PanelSelection/BilingualTitleAttributePanelSO
+    typeName: BilingualTitleExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: BilingualTitleExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/BilingualTitleExampleSO
+    typeName: Runestone.AesirInspector.Editor.BilingualTitleExampleSO
+    checksum: 65B9B8EEE09BD9FC4F3828989D7E809153CD456F9E207919A54FF26B98B0B269
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: basicField
+        Entry: 3
+        Data: 10
+      - Name: fieldWithSubtitle
+        Entry: 1
+        Data: Hello
+      - Name: centeredField
+        Entry: 4
+        Data: 1.5
+      - Name: notBoldField
+        Entry: 5
+        Data: false
+  - key: PanelSelection/BilingualTextAttributePanelSO
+    typeName: BilingualTextExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: BilingualTextExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/BilingualTextExampleSO
+    typeName: Runestone.AesirInspector.Editor.BilingualTextExampleSO
+    checksum: 091F039D5641932F01EE59180240A33D28D7099ADD6070662FE46E72027ACFD8
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: readOnlyText
+        Entry: 1
+        Data: Hello Aesir
+      - Name: textWithIcon
+        Entry: 3
+        Data: 42
+      - Name: notNicifiedField
+        Entry: 5
+        Data: false
+      - Name: coloredIconField
+        Entry: 4
+        Data: 3.14
+  - key: PanelSelection/BilingualInfoBoxAttributePanelSO
+    typeName: BilingualInfoBoxExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: BilingualInfoBoxExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/BilingualInfoBoxExampleSO
+    typeName: Runestone.AesirInspector.Editor.BilingualInfoBoxExampleSO
+    checksum: 57BC8CC4A4650C9A3E077E74D013588CB4801F7658F3743CBE1159335C297B39
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: infoField
+        Entry: 3
+        Data: 0
+      - Name: warningField
+        Entry: 3
+        Data: 0
+      - Name: errorField
+        Entry: 3
+        Data: 0
+      - Name: iconField
+        Entry: 3
+        Data: 0
+      - Name: stackedField
+        Entry: 3
+        Data: 0
+      - Name: showConditionalBox
+        Entry: 5
+        Data: true
+      - Name: conditionalField
+        Entry: 3
+        Data: 0
