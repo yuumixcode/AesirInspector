@@ -44,7 +44,7 @@ namespace Runestone.AesirInspector.Editor
         float _contentWidthCache = MinContentWidth;
 
         /// <summary>
-        /// 已完成示例内存替换的面板集合（DrawEditor 首帧触发，幂等防护）。
+        /// 已订阅示例选中事件的面板集合（DrawEditor 首帧触发，幂等防护）。
         /// </summary>
         readonly HashSet<AbstractAttributePanelSO> _swappedPanels =
             new HashSet<AbstractAttributePanelSO>();
@@ -62,7 +62,7 @@ namespace Runestone.AesirInspector.Editor
         protected override void OnEnable()
         {
             base.OnEnable();
-            _bank = LoadOrCreateBank();
+            _bank = UltraStateBankSO.LoadOrCreateBank();
             _database = new UltraPanelDatabase(_bank);
             WindowPadding = new Vector4(15, 15, 15, 5);
 
@@ -165,33 +165,23 @@ namespace Runestone.AesirInspector.Editor
             if (targets != null && index < targets.Count &&
                 targets[index] is AbstractAttributePanelSO panel)
             {
-                if (UltraPanelDatabase.PanelNeedsExampleSwap(panel))
+                if (Event.current.type == EventType.Layout)
                 {
-                    if (Event.current.type == EventType.Layout)
-                    {
-                        // 只在 Layout 事件开头执行替换：本次 Layout 与其配对的 Repaint 看到同一状态，
-                        // 遵守 IMGUI 布局契约（两遍之间换状态会报 "Getting control N's position"）
-                        _swappedPanels.Remove(panel);
-                        if (_swappedPanels.Add(panel))
-                        {
-                            _database.SwapPanelExamplesToMemory(panel);
-                            SubscribePanel(panel);
-                        }
-                    }
-                    else
-                    {
-                        // Repaint 中检测到需替换（上个 Layout 内被 [OnInspectorInit] 重建）：
-                        // 绝不在两遍之间变更状态——保持一致绘制，排队下一周期再换
-                        Repaint();
-                    }
-                }
-                else
-                {
-                    // 无示例或已替换：登记 + 订阅（幂等）
+                    // 首帧登记订阅（幂等）；[OnInspectorInit] 重跑会把面板选中重置为初始示例，
+                    // 每个布局周期开头按银行记录恢复——本次 Layout 与配对 Repaint 看到同一状态，
+                    // 遵守 IMGUI 布局契约（两遍之间换状态会报 "Getting control N's position"）
                     if (_swappedPanels.Add(panel))
                     {
                         SubscribePanel(panel);
                     }
+
+                    _database.RestorePanelSelection(panel);
+                }
+                else if (_database.PanelSelectionNeedsRestore(panel))
+                {
+                    // Repaint 等事件中检测到需恢复（上个 Layout 内被 [OnInspectorInit] 重置）：
+                    // 绝不在两遍之间变更状态——保持一致绘制，排队下一周期再恢复
+                    Repaint();
                 }
             }
 
@@ -259,8 +249,8 @@ namespace Runestone.AesirInspector.Editor
                 var example = item.ExampleType == AttributeExampleType.UnitySerialized
                     ? (ScriptableObject)item.UnitySerializedExample
                     : item.OdinSerializedExample;
-                // 只快照内存实例，资产引用（未替换的）跳过
-                if (example != null && !AssetDatabase.Contains(example))
+                // 全部示例均为银行路由的内存实例，直接快照
+                if (example != null)
                 {
                     _bank.SaveExampleState(example.GetType().Name, example);
                 }
@@ -301,29 +291,6 @@ namespace Runestone.AesirInspector.Editor
                     Debug.LogWarning($"[AttributeOverviewUltra] 快照落盘失败: {e.Message}");
                 }
             }
-        }
-
-        static UltraStateBankSO LoadOrCreateBank()
-        {
-            var bank = AssetDatabase.LoadAssetAtPath<UltraStateBankSO>(
-                AesirInspectorPaths.AttributeOverviewUltraStateBankPath);
-            if (bank != null)
-            {
-                return bank;
-            }
-
-            var folder = System.IO.Path.GetDirectoryName(
-                AesirInspectorPaths.AttributeOverviewUltraStateBankPath);
-            if (!System.IO.Directory.Exists(folder))
-            {
-                System.IO.Directory.CreateDirectory(folder);
-            }
-
-            bank = ScriptableObject.CreateInstance<UltraStateBankSO>();
-            AssetDatabase.CreateAsset(bank, AesirInspectorPaths.AttributeOverviewUltraStateBankPath);
-            AssetDatabase.SaveAssets();
-            AssetDatabase.Refresh();
-            return bank;
         }
     }
 }

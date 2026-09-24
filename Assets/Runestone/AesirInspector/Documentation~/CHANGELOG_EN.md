@@ -13,7 +13,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### ⚠ BREAKING CHANGES (Read before upgrading / 升级前必读)
 
-> **The Script Doc Generator and Summary Tool were moved out of this package** into the standalone in-repo tool at `Assets/ScriptDocGenerator/` (not a UPM package; namespaces `Runestone.ScriptDocGenerator` / `Runestone.ScriptDocGenerator.Editor`). This package now focuses solely on Odin Inspector enhancements (bilingual attributes, Attribute Overview Pro, safe editor utilities, extension package manager) / Script Doc Generator 与 Summary 工具已移出本包，迁移至仓库内独立工具 `Assets/ScriptDocGenerator/`。
+> **The Script Doc Generator and Summary Tool were moved out of this package** into the standalone in-repo tool at `Assets/ScriptDocGenerator/` (not a UPM package; namespaces `Runestone.ScriptDocGenerator` / `Runestone.ScriptDocGenerator.Editor`). This package now focuses solely on Odin Inspector enhancements (bilingual attributes, Attribute Overview Ultra, safe editor utilities, extension package manager) / Script Doc Generator 与 Summary 工具已移出本包，迁移至仓库内独立工具 `Assets/ScriptDocGenerator/`。
+
+> **Attribute Overview Pro has been removed** and replaced by the fully rebuilt Attribute Overview Ultra. Panels and examples are no longer persisted as sub-assets (`AttributeOverviewDatabase.asset`, `OdinExamples.asset` and `UnityExamples.asset` are deleted on upgrade); user debug state now persists as snapshots in the `UltraStateBank.asset` state bank, keeping the Project free of sub-assets. Example SO singletons (`AttributeExampleSO<T>.Instance` / `OdinAttributeExampleSO<T>.Instance`) are now routed through the in-memory state bank while keeping the `.Instance` accessor / Attribute Overview Pro 已移除，由 Attribute Overview Ultra 取代；面板与示例改为内存实例，调试状态经状态银行持久化，Project 中零子资产。
 
 #### Migration Guide / 迁移指南
 
@@ -26,11 +28,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 | Menus | `Tools → Aesir → Inspector → Script Doc Generator`, `Assets → Aesir Inspector → …` | `Tools → Script Doc Generator`, `Assets → Script Doc Generator → …` |
 | Editor assets path | `Assets/Editor Default Resources/Aesir Inspector/…` | `Assets/Editor Default Resources/Script Doc Generator/…` |
 | `[Summary]` / `[ReferenceLinkURL]` attributes | `Runestone.AesirInspector` | `Runestone.ScriptDocGenerator` |
+| Attribute Overview window | `Tools → Aesir → Inspector → Attribute Overview Pro` (asset database + sub-asset examples) | `Tools → Aesir → Inspector → Attribute Overview Ultra` (in-memory panels + UltraStateBank state bank) |
+| Editor assets path (Attribute Overview) | `Assets/Editor Default Resources/Aesir Inspector/Attribute Overview Pro/` | `Assets/Editor Default Resources/Aesir Inspector/Attribute Overview/` (only `UltraStateBank.asset`) |
+
+### Added
+
+- **Attribute Overview Ultra window**: replaces the asset database with TypeCache scanning and CreateInstance in-memory panels; menu tree, search, category browsing and code preview are on par with Pro, plus narrow-window defenses (draggable menu width + unified horizontal scrolling) and example debug-state snapshots persisted with SHA256 checksum and type-name double validation / **Attribute Overview Ultra 特性总览窗口**：TypeCache 扫描 + 内存实例化，树形菜单与代码预览对齐 Pro，新增窄窗防线与状态银行快照持久化。
 
 ### Changed
 
 - The tool panel UI no longer uses the bilingual attributes; plain Odin attributes with Chinese text are used instead / 工具面板 UI 移除双语特性，改为纯 Odin 特性（仅中文文本）。
 - Removed `AesirInspectorModuleAssetMarkerSO` (its only consumer was Script Doc Generator, replaced by the tool's own `ScriptDocGeneratorAssetMarkerSO`) / 移除 `AesirInspectorModuleAssetMarkerSO`。
+- The Getting Started initialize button no longer generates 100+ example assets; it now ensures the state bank exists and smoke-builds all panels once / Getting Started 初始化按钮不再生成案例资产，改为确保状态银行可用并完成一次全量面板构建冒烟。
+- Removed the duplicate CustomValueDrawer panel from Misc (the Essentials registration matches Odin's official category), eliminating the duplicated menu entry / 清理 CustomValueDrawer 双胞胎面板，消除同名菜单项。
+
+### Removed
+
+- The Attribute Overview Pro window (`AttributeOverviewWindow`) and its asset database (`AttributeOverviewDatabaseSO`) / Attribute Overview Pro 窗口与资产数据库。
 
 ## [0.14.1] - 2026-09-05
 

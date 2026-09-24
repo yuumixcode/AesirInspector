@@ -10,8 +10,8 @@ namespace Runestone.AesirInspector.Editor
 {
     /// <summary>
     /// Attribute Overview Ultra 的内存面板注册中心。
-    /// 替代 Pro 的资产数据库：TypeCache 扫描面板类型 → CreateInstance 内存实例化 →
-    /// 按需把示例替换为内存实例（状态从 UltraStateBankSO 恢复）。
+    /// 替代 Pro 的资产数据库：TypeCache 扫描面板类型 → CreateInstance 内存实例化；
+    /// 示例由各 Data 构造器经 UltraStateBankSO 银行路由取得内存单例（含用户调试状态恢复）。
     /// 全程零 AssetDatabase 写操作。
     /// </summary>
     public class UltraPanelDatabase
@@ -49,7 +49,8 @@ namespace Runestone.AesirInspector.Editor
         /// <summary>
         /// 扫描并实例化全部面板（幂等，每窗口生命周期仅构建一次）。
         /// Initialize 由菜单构建需要中文名而提前手动调用；
-        /// 首次绘制时 Odin 树会再次触发 [OnInspectorInit]，届时示例会被 SwapPanelExamplesToMemory 统一替换。
+        /// [OnInspectorInit] 重跑会把面板选中重置为初始示例，由窗口在 DrawEditor 的
+        /// Layout 开头经 RestorePanelSelection 按银行记录恢复。
         /// </summary>
         public void BuildAllPanels()
         {
@@ -88,85 +89,37 @@ namespace Runestone.AesirInspector.Editor
         }
 
         /// <summary>
-        /// 把面板的示例预览项替换为内存实例，并按银行记录恢复面板选中的示例。
-        /// 必须在面板的 [OnInspectorInit]（SetData 完成后）之后调用——窗口在 DrawEditor 首帧处触发。
+        /// 示例 SO 的 Instance 后端已直接经 UltraStateBankSO 银行路由返回内存单例（含状态恢复），
+        /// 面板无需再替换示例引用。但 [OnInspectorInit] 重跑时 Internal_SetData 会把面板选中重置为初始示例，
+        /// 因此选中恢复由本方法承担：银行有记录且与当前选中不一致时，恢复为记录的示例。
         /// </summary>
-        public void SwapPanelExamplesToMemory(AbstractAttributePanelSO panel)
+        public bool PanelSelectionNeedsRestore(AbstractAttributePanelSO panel)
         {
-            var items = panel.ExamplePreviewItemsForUltra;
-            if (items == null || items.Length == 0)
+            if (!_bank.TryGetPanelSelection(panel.GetType().Name, out var selectedTypeName))
             {
-                return;
+                return false;
             }
 
-            ScriptableObject firstMemory = null;
-            foreach (var item in items)
-            {
-                if (item == null)
-                {
-                    continue;
-                }
-
-                var current = item.ExampleType == AttributeExampleType.UnitySerialized
-                    ? (ScriptableObject)item.UnitySerializedExample
-                    : item.OdinSerializedExample;
-                if (current == null)
-                {
-                    continue;
-                }
-
-                var exampleType = current.GetType();
-                var memory = _bank.RestoreOrCreateExample(exampleType.Name, exampleType);
-                if (item.ExampleType == AttributeExampleType.UnitySerialized)
-                {
-                    item.InitializeUnitySerializedExample(item.ItemName, memory);
-                }
-                else
-                {
-                    item.InitializeOdinSerializedExample(item.ItemName, (SerializedScriptableObject)memory);
-                }
-
-                firstMemory ??= memory;
-            }
-
-            if (firstMemory == null)
-            {
-                return;
-            }
-
-            // 恢复上次选中：按记录的类型名匹配预览项
-            if (_bank.TryGetPanelSelection(panel.GetType().Name, out var selectedTypeName))
-            {
-                foreach (var item in items)
-                {
-                    if (item == null)
-                    {
-                        continue;
-                    }
-
-                    var example = item.ExampleType == AttributeExampleType.UnitySerialized
-                        ? (ScriptableObject)item.UnitySerializedExample
-                        : item.OdinSerializedExample;
-                    if (example != null && example.GetType().Name == selectedTypeName)
-                    {
-                        panel.CurrentSelectedExample = example;
-                        return;
-                    }
-                }
-            }
-
-            panel.CurrentSelectedExample = firstMemory;
+            var current = panel.CurrentSelectedExample;
+            return current == null || current.GetType().Name != selectedTypeName;
         }
 
         /// <summary>
-        /// 判断面板首个示例是否仍是资产引用（说明 [OnInspectorInit] 重跑替换了内存实例，需要重新替换）。
+        /// 按银行记录恢复面板选中的示例（无记录或已一致时为空操作）。
+        /// 属于状态变更，只允许在 DrawEditor 的 Layout 事件开头调用，遵守 IMGUI 两遍布局契约。
         /// </summary>
-        public static bool PanelNeedsExampleSwap(AbstractAttributePanelSO panel)
+        public void RestorePanelSelection(AbstractAttributePanelSO panel)
         {
-            var items = panel.ExamplePreviewItemsForUltra;
-            if (items == null || items.Length == 0)
+            if (!PanelSelectionNeedsRestore(panel) ||
+                !_bank.TryGetPanelSelection(panel.GetType().Name, out var selectedTypeName))
             {
-                return false;
+                return;
+            }
+
+            var items = panel.ExamplePreviewItemsForUltra;
+            if (items == null)
+            {
+                return;
             }
 
             foreach (var item in items)
@@ -179,10 +132,12 @@ namespace Runestone.AesirInspector.Editor
                 var example = item.ExampleType == AttributeExampleType.UnitySerialized
                     ? (ScriptableObject)item.UnitySerializedExample
                     : item.OdinSerializedExample;
-                return example != null && AssetDatabase.Contains(example);
+                if (example != null && example.GetType().Name == selectedTypeName)
+                {
+                    panel.CurrentSelectedExample = example;
+                    return;
+                }
             }
-
-            return false;
         }
 
         /// <summary>

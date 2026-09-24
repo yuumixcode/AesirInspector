@@ -3,8 +3,8 @@ using Sirenix.OdinInspector;
 namespace Runestone.AesirInspector.Editor
 {
     /// <summary>
-    /// Odin 序列化的特性案例 SO 泛型抽象基类，提供单例模式。
-    /// 子资产持久化在 AttributeOverviewDatabaseSO 中。
+    /// Odin 序列化的特性案例 SO 泛型抽象基类，提供内存单例模式。
+    /// 单例经 UltraStateBankSO 银行路由：有用户调试状态快照则恢复，否则全新默认实例，全程零资产写操作。
     /// </summary>
     public abstract class OdinAttributeExampleSO<T> : SerializedScriptableObject, IAesirInspectorReset
         where T : OdinAttributeExampleSO<T>
@@ -12,7 +12,7 @@ namespace Runestone.AesirInspector.Editor
         static T _asset;
 
         /// <summary>
-        /// 获取单例实例，若不存在则作为数据库子资产自动创建。
+        /// 获取内存单例实例，状态由 Ultra 状态银行按需恢复。
         /// </summary>
         public static T Instance
         {
@@ -23,7 +23,7 @@ namespace Runestone.AesirInspector.Editor
                     return _asset;
                 }
 
-                _asset = AttributeOverviewDatabaseSO.GetOrCreateExampleSubAsset<T>();
+                _asset = UltraStateBankSO.GetMemoryExample<T>();
                 return _asset;
             }
         }
