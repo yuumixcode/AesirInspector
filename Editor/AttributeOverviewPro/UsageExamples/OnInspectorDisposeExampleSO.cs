@@ -18,11 +18,22 @@ namespace Runestone.AesirInspector.Editor
             Debug.Log("OnInspectorDispose invoked via method");
         }
 
+        [Title("Parameter: Action (Method Name)")]
+        [OnInspectorDispose("DisposeByNamedMethod")]
+        public string methodNameExample;
+
         [Title("Parameter: Action (Expression)")]
         [OnInspectorDispose("@Debug.Log(\"OnInspectorDispose invoked\", this)")]
         public string expressionField = "OnInspectorDispose trigger";
 
-        [Title("Parameter: Action (Polymorphic Field)")]
+        [Title("Parameter: Action (Expression) (Member Reference)")]
+        public string disposeMessage = "Dispose action reading a member via expression";
+
+        [Title("Parameter: Action (Expression) (Member Reference)")]
+        [OnInspectorDispose("@Debug.Log(disposeMessage, this)")]
+        public string memberReferenceExample;
+
+        [Title("Parameter: Action (Expression) (Polymorphic Field)")]
         [OnInspectorDispose("@UnityEngine.Debug.Log(\"Dispose event invoked!\")")]
         [ShowInInspector]
         [InfoBox("When you change the type of this field, or set it to null, the former property setup is disposed. The property setup will also be disposed when you deselect this example.", InfoMessageType.Info)]
@@ -53,9 +64,17 @@ namespace Runestone.AesirInspector.Editor
         {
         }
 
+        void DisposeByNamedMethod()
+        {
+            Debug.Log("OnInspectorDispose invoked via named method");
+        }
+
         public override void AesirInspectorReset()
         {
+            methodNameExample = string.Empty;
             expressionField = "OnInspectorDispose trigger";
+            disposeMessage = "Dispose action reading a member via expression";
+            memberReferenceExample = string.Empty;
             PolymorphicField = null;
         }
     }

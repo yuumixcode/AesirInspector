@@ -43,6 +43,13 @@ namespace Runestone.AesirInspector.Editor
         [OnInspectorInit("@TimeWhenExampleWasOpened = DateTime.Now.ToString()")]
         public string TimeWhenExampleWasOpened;
 
+        [Title("Parameter: Action (Expression) (Member Reference)")]
+        public string initMessage = "Init action reading a member via expression";
+
+        [Title("Parameter: Action (Expression) (Member Reference)")]
+        [OnInspectorInit("@Debug.Log(initMessage, this)")]
+        public string memberReferenceExample;
+
         [FoldoutGroup("Delayed Initialization", 0f, Expanded = false, HideWhenChildrenAreInvisible = false)]
         [OnInspectorInit("@TimeFoldoutWasOpened = DateTime.Now.ToString()")]
         public string TimeFoldoutWasOpened;
@@ -57,6 +64,8 @@ namespace Runestone.AesirInspector.Editor
             methodNameField = null;
             fieldSetByExpression = null;
             TimeWhenExampleWasOpened = null;
+            initMessage = "Init action reading a member via expression";
+            memberReferenceExample = null;
             TimeFoldoutWasOpened = null;
         }
     }
