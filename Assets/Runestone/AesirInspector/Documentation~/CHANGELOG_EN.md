@@ -40,6 +40,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **Filled every remaining attribute panel for full parity with Odin's window**: added 33 panels (with 6 examples ported from Odin's official examples); the Ultra menu now covers every official entry (verified: 0 missing, 0 extra). HideNetworkBehaviourFields ships without an example because the UNET module is not enabled / **补齐全部剩余特性面板，目录与官方完全对等**：新增 33 个面板（其中 6 个示例按官方移植），逐条比对缺失 0、多余 0；HideNetworkBehaviourFields 因未启用 UNET 模块不提供示例。
+- Fixed a null-reference issue for panels without examples: the code-preview refresh is skipped when the example list is empty (it previously logged an "attribute 不能为空" error) / 修复无示例面板的空引用问题：示例列表为空时跳过示例代码预览刷新。
 - Merged the duplicated OnInspectorInit and OnInspectorDispose examples: their "Basic Usage" and "Action" cases demonstrated exactly the same parameters, so each was merged into a single case (all unique usages kept). Other attributes' "With" variants are kept to separate basic from advanced parameters / 收敛 OnInspectorInit 与 OnInspectorDispose 的重复案例（演示参数完全相同，合并为单一案例），其余特性的 With 变体保留以区分简单/进阶参数。
 
 - The tool panel UI no longer uses the bilingual attributes; plain Odin attributes with Chinese text are used instead / 工具面板 UI 移除双语特性，改为纯 Odin 特性（仅中文文本）。

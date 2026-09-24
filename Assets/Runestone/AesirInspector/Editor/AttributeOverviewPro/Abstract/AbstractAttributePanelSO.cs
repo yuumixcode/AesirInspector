@@ -106,7 +106,10 @@ namespace Runestone.AesirInspector.Editor
             if (_data != null)
             {
                 currentSelectedExample = _data.GetInitialExample();
-                UpdateExampleCode();
+                if (currentSelectedExample != null)
+                {
+                    UpdateExampleCode();
+                }
             }
 
             if (_examplePreviewItems is { Length: > 0 })
@@ -169,7 +172,7 @@ namespace Runestone.AesirInspector.Editor
             _attributeParameters = _data.AttributeParameters;
             _resolvedStringParameters = _data.ResolvedStringParameters;
             _examplePreviewItems = _data.ExamplePreviewItems;
-            if (_examplePreviewItems != null)
+            if (_examplePreviewItems is { Length: > 0 })
             {
                 currentSelectedExample = _data.GetInitialExample();
                 UpdateExampleCode();
