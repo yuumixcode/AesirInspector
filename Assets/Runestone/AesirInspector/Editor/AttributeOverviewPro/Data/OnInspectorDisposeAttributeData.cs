@@ -32,10 +32,8 @@ namespace Runestone.AesirInspector.Editor
 
         public override AttributeExamplePreviewItem[] ExamplePreviewItems { get; set; } =
         {
-            new AttributeExamplePreviewItem().InitializeUnitySerializedExample("Basic Usage",
-                OnInspectorDisposeExampleSO.Instance),
             new AttributeExamplePreviewItem().InitializeUnitySerializedExample("Action",
-                OnInspectorDisposeExampleWithActionSO.Instance)
+                OnInspectorDisposeExampleSO.Instance)
         };
     }
 }

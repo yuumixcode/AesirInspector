@@ -141,18 +141,18 @@ namespace Runestone.AesirInspector.Editor
                 return tree;
             }
 
-            foreach (var category in UltraPanelDatabase.CategoryOrder)
-            {
-                var panels = _database.Panels
-                    .Where(p => p != null
-                                && p.BilingualHeaderControl?.headerName != null
-                                && UltraPanelDatabase.MatchesCategory(p, category))
-                    .OrderBy(p => p.BilingualHeaderControl.headerName.ChineseDisplay);
+            // 目录结构（分类归属/多分类/显示名/顺序）复刻 Odin 官方注册表：
+            // 分类按官方 CategoryComparer 权重排序（同级字母序），分类内保持官方注册表顺序。
+            var entries = AesirAttributeRegistry.BuildMenuEntries(_database.Panels);
 
-                foreach (var panel in panels)
+            foreach (var categoryGroup in entries
+                         .GroupBy(e => e.Category)
+                         .OrderBy(g => AesirAttributeRegistry.GetCategorySortOrder(g.Key))
+                         .ThenBy(g => g.Key, StringComparer.Ordinal))
+            {
+                foreach (var entry in categoryGroup)
                 {
-                    var menuName = panel.BilingualHeaderControl.headerName.ChineseDisplay;
-                    tree.AddObjectAtPath(category + "/" + menuName, panel);
+                    tree.AddObjectAtPath(entry.Category + "/" + entry.DisplayName, entry.Panel);
                 }
             }
 
