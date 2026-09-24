@@ -1,0 +1,1170 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78c5dcf34f1aa463c84e11b3bd2aacda, type: 3}
+  m_Name: UltraStateBank
+  m_EditorClassIdentifier: 
+  entries:
+  - key: PanelSelection/AssetsOnlyAttributePanelSO
+    typeName: AssetsOnlyExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: AssetsOnlyExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/AssetsOnlyExampleSO
+    typeName: Runestone.AesirInspector.Editor.AssetsOnlyExampleSO
+    checksum: D848C2B69ED183DE76D45A5F130AB0ACC6C5C75984924752755A070729ABCCD5
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: OnlyPrefabs
+        Entry: 7
+        Data: 0|System.Collections.Generic.List`1[[UnityEngine.GameObject, UnityEngine.CoreModule]],
+          mscorlib
+      - Name: 
+        Entry: 12
+        Data: 0
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: SomePrefab
+        Entry: 6
+        Data: 
+      - Name: MaterialAsset
+        Entry: 6
+        Data: 
+      - Name: SomeMeshRendererOnPrefab
+        Entry: 6
+        Data: 
+  - key: PanelSelection/CustomValueDrawerPanelSO
+    typeName: CustomValueDrawerExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: CustomValueDrawerExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/CustomValueDrawerExampleSO
+    typeName: Runestone.AesirInspector.Editor.CustomValueDrawerExampleSO
+    checksum: 2F849D8D8FA554CA8ACA1E0D0264963D3DB2001A98E9EC57ABA6661A559F6843
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: CustomDrawerStatic
+        Entry: 4
+        Data: 0
+      - Name: From
+        Entry: 4
+        Data: 2
+      - Name: To
+        Entry: 4
+        Data: 7
+      - Name: CustomDrawerInstance
+        Entry: 4
+        Data: 2
+      - Name: customSlider
+        Entry: 4
+        Data: 5
+      - Name: AppendRange
+        Entry: 4
+        Data: 2
+      - Name: CustomDrawerArrayNoLabel
+        Entry: 7
+        Data: 0|System.Single[], mscorlib
+      - Name: 
+        Entry: 14
+        Data: 3
+      - Name: 
+        Entry: 4
+        Data: 3
+      - Name: 
+        Entry: 4
+        Data: 5
+      - Name: 
+        Entry: 4
+        Data: 6
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: customColor
+        Entry: 7
+        Data: UnityEngine.Color, UnityEngine.CoreModule
+      - Name: 
+        Entry: 4
+        Data: 1
+      - Name: 
+        Entry: 4
+        Data: 0
+      - Name: 
+        Entry: 4
+        Data: 0
+      - Name: 
+        Entry: 4
+        Data: 1
+      - Name: 
+        Entry: 8
+        Data: 
+  - key: PanelSelection/HideLabelAttributePanelSO
+    typeName: HideLabelExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: HideLabelExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/HideLabelExampleSO
+    typeName: Runestone.AesirInspector.Editor.HideLabelExampleSO
+    checksum: FDEE82F74D415D1FD4E9ADC21C053CAD67B1C38DAE4802F159AA94230867D8B6
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: normalProperty
+        Entry: 3
+        Data: 0
+      - Name: hiddenLabelProperty
+        Entry: 3
+        Data: 0
+      - Name: a
+        Entry: 3
+        Data: 0
+      - Name: b
+        Entry: 3
+        Data: 0
+  - key: PanelSelection/DetailInfoBoxAttributePanelSO
+    typeName: DetailInfoBoxBilingualExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: DetailInfoBoxBilingualExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/DetailInfoBoxBilingualExampleSO
+    typeName: Runestone.AesirInspector.Editor.DetailInfoBoxBilingualExampleSO
+    checksum: F2D80A7A811C45FC53AD8094100FD5632EA1514954018F4E6C2155B83AD42FE5
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: bilingualExample
+        Entry: 3
+        Data: 0
+      - Name: dynamicExample
+        Entry: 3
+        Data: 0
+      - Name: dynamicDetailsChinese
+        Entry: 1
+        Data: "\u6765\u81EA\u5B57\u6BB5\u7684\u4E2D\u6587\u8BE6\u7EC6\u5185\u5BB9"
+      - Name: dynamicDetailsEnglish
+        Entry: 1
+        Data: Detailed content from field
+  - key: PanelSelection/DelayedPropertyAttributePanelSO
+    typeName: DelayedPropertyExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: DelayedPropertyExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/DelayedPropertyExampleSO
+    typeName: Runestone.AesirInspector.Editor.DelayedPropertyExampleSO
+    checksum: 355C0EB6DB6F81223420E699F778C4DC4C18853E78DF426F5EA608EC73D32EAA
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: delayedInt
+        Entry: 3
+        Data: 0
+      - Name: normalInt
+        Entry: 3
+        Data: 0
+  - key: PanelSelection/GUIColorAttributePanelSO
+    typeName: GUIColorExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: GUIColorExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/GUIColorExampleSO
+    typeName: Runestone.AesirInspector.Editor.GUIColorExampleSO
+    checksum: E79A1FD6DDD9631DF892975783E7435B91FFE35F391D53C5A36235C419A5600F
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: ColoredInt1
+        Entry: 3
+        Data: 0
+      - Name: ColoredInt2
+        Entry: 3
+        Data: 0
+      - Name: rgbaExample
+        Entry: 3
+        Data: 0
+      - Name: Hex1
+        Entry: 3
+        Data: 0
+      - Name: Hex2
+        Entry: 3
+        Data: 0
+      - Name: Rgb
+        Entry: 3
+        Data: 0
+      - Name: Rgba
+        Entry: 3
+        Data: 0
+      - Name: NamedColors
+        Entry: 3
+        Data: 0
+  - key: ExampleState/GUIColorExampleWithColorSO
+    typeName: Runestone.AesirInspector.Editor.GUIColorExampleWithColorSO
+    checksum: 82FDCF324ABF104335DE942706201316BA1E1E83DBD48EE8D775DF75D8824CC6
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: Hex1
+        Entry: 3
+        Data: 0
+      - Name: Hex2
+        Entry: 3
+        Data: 0
+      - Name: Rgb
+        Entry: 3
+        Data: 0
+      - Name: Rgba
+        Entry: 3
+        Data: 0
+      - Name: NamedColors
+        Entry: 3
+        Data: 0
+      - Name: color
+        Entry: 7
+        Data: UnityEngine.Color, UnityEngine.CoreModule
+      - Name: 
+        Entry: 4
+        Data: 0
+      - Name: 
+        Entry: 4
+        Data: 1
+      - Name: 
+        Entry: 4
+        Data: 0
+      - Name: 
+        Entry: 4
+        Data: 1
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: fieldNameExample
+        Entry: 6
+        Data: 
+      - Name: propertyNameExample
+        Entry: 6
+        Data: 
+      - Name: methodNameExample
+        Entry: 6
+        Data: 
+      - Name: dynamicColorExample
+        Entry: 3
+        Data: 0
+      - Name: useRed
+        Entry: 5
+        Data: false
+      - Name: attributeExpressionExample
+        Entry: 6
+        Data: 
+  - key: PanelSelection/InfoBoxAttributePanelSO
+    typeName: InfoBoxExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: InfoBoxExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/InfoBoxExampleSO
+    typeName: Runestone.AesirInspector.Editor.InfoBoxExampleSO
+    checksum: 238DA1DC42E7A7FA71DB081A5EDE7E42FF1D5F3A90470BF3B996FA55A1C6AF2A
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: defaultInfoBox
+        Entry: 3
+        Data: 0
+      - Name: warningInfoBox
+        Entry: 3
+        Data: 0
+      - Name: errorInfoBox
+        Entry: 3
+        Data: 0
+      - Name: noIconInfoBox
+        Entry: 3
+        Data: 0
+      - Name: guiAlwaysEnabled
+        Entry: 3
+        Data: 0
+      - Name: customIcon
+        Entry: 3
+        Data: 0
+  - key: ExampleState/InfoBoxExampleWithMessageSO
+    typeName: Runestone.AesirInspector.Editor.InfoBoxExampleWithMessageSO
+    checksum: 532D09142134D970415A9FC1DD7AF70330A14317F50B8E0A8940160856973704
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: messageField
+        Entry: 1
+        Data: Dynamic message from field
+      - Name: referenceExample
+        Entry: 3
+        Data: 0
+      - Name: expressionExample
+        Entry: 3
+        Data: 0
+  - key: ExampleState/InfoBoxExampleWithVisibleIfSO
+    typeName: Runestone.AesirInspector.Editor.InfoBoxExampleWithVisibleIfSO
+    checksum: 94AF56317E02B4B86226F02A42C1FBCEB36AEBCC89C6944F28173B7FE59DD369
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: toggleInfoBox
+        Entry: 5
+        Data: false
+      - Name: referenceExample
+        Entry: 3
+        Data: 0
+      - Name: expressionExample
+        Entry: 3
+        Data: 0
+  - key: PanelSelection/LabelTextAttributePanelSO
+    typeName: LabelTextExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: LabelTextExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/LabelTextExampleSO
+    typeName: Runestone.AesirInspector.Editor.LabelTextExampleSO
+    checksum: E6C29D80C377F2EA5BEB52F743B0F99C797B304B019C6ADEF80B34AAB7D831E9
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: customLabel
+        Entry: 3
+        Data: 1
+      - Name: labelFromMember
+        Entry: 1
+        Data: The label above is dynamic
+      - Name: dynamicLabel
+        Entry: 1
+        Data: Dynamic Label Text
+      - Name: expressionLabel
+        Entry: 6
+        Data: 
+      - Name: nicifiedField
+        Entry: 3
+        Data: 10
+      - Name: iconLabel
+        Entry: 3
+        Data: 100
+  - key: PanelSelection/PropertyTooltipAttributePanelSO
+    typeName: PropertyTooltipExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: PropertyTooltipExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/PropertyTooltipExampleSO
+    typeName: Runestone.AesirInspector.Editor.PropertyTooltipExampleSO
+    checksum: E9B2C1A020D87E460F8D71B088DEA30575F7309EF992158E8EE16CE7578D41BC
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: simpleTooltip
+        Entry: 3
+        Data: 0
+      - Name: referencedTooltip
+        Entry: 3
+        Data: 0
+      - Name: expressionTooltip
+        Entry: 3
+        Data: 0
+  - key: PanelSelection/ReadOnlyAttributePanelSO
+    typeName: ReadOnlyExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: ReadOnlyExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/ReadOnlyExampleSO
+    typeName: Runestone.AesirInspector.Editor.ReadOnlyExampleSO
+    checksum: 75E2C299145742144CBC3579B79FA4CFD3C34CE863800D3C72588B65C0115920
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: readOnlyField
+        Entry: 1
+        Data: This field is read-only in the inspector
+      - Name: readOnlyList
+        Entry: 7
+        Data: 0|System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib
+      - Name: 
+        Entry: 12
+        Data: 3
+      - Name: 
+        Entry: 3
+        Data: 1
+      - Name: 
+        Entry: 3
+        Data: 2
+      - Name: 
+        Entry: 3
+        Data: 3
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+  - key: PanelSelection/ShowInInspectorAttributePanelSO
+    typeName: ShowInInspectorExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: ShowInInspectorExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/ShowInInspectorExampleSO
+    typeName: Runestone.AesirInspector.Editor.ShowInInspectorExampleSO
+    checksum: 
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: PanelSelection/SuffixLabelAttributePanelSO
+    typeName: SuffixLabelExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: SuffixLabelExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/SuffixLabelExampleSO
+    typeName: Runestone.AesirInspector.Editor.SuffixLabelExampleSO
+    checksum: F875C8EC40DB6E90ACE41628AF02D86AE46C5A40572279A5A721CE6536129ACF
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: distance
+        Entry: 4
+        Data: 0
+      - Name: progress
+        Entry: 4
+        Data: 0
+      - Name: dynamicProperty
+        Entry: 6
+        Data: 
+      - Name: expressionProperty
+        Entry: 6
+        Data: 
+  - key: PanelSelection/OnValueChangedAttributePanelSO
+    typeName: OnValueChangedExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: OnValueChangedExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/OnValueChangedExampleSO
+    typeName: Runestone.AesirInspector.Editor.OnValueChangedExampleSO
+    checksum: 9CE902817911DF2B1B98D8CEBFD7AE610F2F4E1BE6665D24A8794DD7AA17FA2F
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: value
+        Entry: 3
+        Data: 0
+      - Name: shader
+        Entry: 6
+        Data: 
+      - Name: material
+        Entry: 6
+        Data: 
+  - key: PanelSelection/InlineButtonAttributePanelSO
+    typeName: InlineButtonExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: InlineButtonExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/InlineButtonExampleSO
+    typeName: Runestone.AesirInspector.Editor.InlineButtonExampleSO
+    checksum: 8C8D50536CCD324E3131FD59D4F214E39C530B44C79895B497B1F1838DF42ED0
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: inlineButton
+        Entry: 3
+        Data: 0
+      - Name: multiButtons
+        Entry: 3
+        Data: 0
+      - Name: iconButton
+        Entry: 3
+        Data: 0
+      - Name: showButton
+        Entry: 5
+        Data: false
+      - Name: conditionalButton
+        Entry: 3
+        Data: 0
+      - Name: coloredButton
+        Entry: 3
+        Data: 0
+  - key: PanelSelection/ButtonAttributePanelSO
+    typeName: ButtonExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: ButtonExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/ButtonExampleSO
+    typeName: Runestone.AesirInspector.Editor.ButtonExampleSO
+    checksum: 891B5DA20AF0B418707B8C387DA941A4A7706EE9A40DBB95A32F994F01ABDA6C
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: dynamicButtonName
+        Entry: 1
+        Data: Click Me!
+  - key: PanelSelection/DisplayAsStringAttributePanelSO
+    typeName: DisplayAsStringExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: DisplayAsStringExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/DisplayAsStringExampleSO
+    typeName: Runestone.AesirInspector.Editor.DisplayAsStringExampleSO
+    checksum: 3A7CB0EAB20A5D31284EC999AC0F5441EBAB6AD2F467488046B5E19758F6B365
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: label
+        Entry: 1
+        Data: This is a string displayed as a label
+      - Name: largeLabel
+        Entry: 1
+        Data: Large font text
+      - Name: richTextLabel
+        Entry: 1
+        Data: <color=red>Red</color> <color=green>Green</color> <b>Bold</b>
+      - Name: centerLabel
+        Entry: 1
+        Data: Center aligned text
+      - Name: longLabel
+        Entry: 1
+        Data: This is a very very very very very very very long text
+  - key: PanelSelection/TitleAttributePanelSO
+    typeName: TitleExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: TitleExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/TitleExampleSO
+    typeName: Runestone.AesirInspector.Editor.TitleExampleSO
+    checksum: 93BD6FD7DC93FC1B6B32EBDA4DDAAA8C03C0F38A31BB244F15ED9C0BCC158122
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: defaultTitle
+        Entry: 3
+        Data: 0
+      - Name: subtitleTitle
+        Entry: 3
+        Data: 0
+      - Name: centeredTitle
+        Entry: 3
+        Data: 0
+      - Name: rightTitle
+        Entry: 3
+        Data: 0
+      - Name: splitTitle
+        Entry: 3
+        Data: 0
+      - Name: noLineTitle
+        Entry: 3
+        Data: 0
+      - Name: notBoldTitle
+        Entry: 3
+        Data: 0
+  - key: ExampleState/TitleExampleWithTitleSO
+    typeName: Runestone.AesirInspector.Editor.TitleExampleWithTitleSO
+    checksum: B90F9E942FD16E901162EBC0417EAD971BCF32302048BF2A7C490C39B199AEF9
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: dynamicTitle
+        Entry: 1
+        Data: Title from Field
+      - Name: referenceExample
+        Entry: 3
+        Data: 0
+      - Name: expressionExample
+        Entry: 3
+        Data: 0
+  - key: ExampleState/TitleExampleWithSubtitleSO
+    typeName: Runestone.AesirInspector.Editor.TitleExampleWithSubtitleSO
+    checksum: ACCD15BC466CF49B5112BD1D4B89679D03F1AE27E65B9764EF59EF37C95E830A
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: dynamicSubtitle
+        Entry: 1
+        Data: Subtitle from Field
+      - Name: referenceExample
+        Entry: 3
+        Data: 0
+      - Name: expressionExample
+        Entry: 3
+        Data: 0
+  - key: PanelSelection/LabelWidthAttributePanelSO
+    typeName: LabelWidthExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: LabelWidthExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/LabelWidthExampleSO
+    typeName: Runestone.AesirInspector.Editor.LabelWidthExampleSO
+    checksum: A888D5A7EE61D19A5119A239DD7EEC528EC59620BBD5EAD7215E077184302BD2
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: defaultWidth
+        Entry: 3
+        Data: 0
+      - Name: thinLabel
+        Entry: 3
+        Data: 0
+      - Name: wideLabel
+        Entry: 3
+        Data: 0
+      - Name: proportionalLabel
+        Entry: 3
+        Data: 0
+  - key: PanelSelection/OnInspectorInitAttributePanelSO
+    typeName: OnInspectorInitExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: OnInspectorInitExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/OnInspectorInitExampleSO
+    typeName: Runestone.AesirInspector.Editor.OnInspectorInitExampleSO
+    checksum: 33713171746AA7540E31D913305FEA6350294CBA134A29352619527184818B26
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: initializedField
+        Entry: 3
+        Data: 0
+      - Name: methodNameField
+        Entry: 6
+        Data: 
+      - Name: fieldSetByExpression
+        Entry: 1
+        Data: Set by expression on init
+      - Name: TimeWhenExampleWasOpened
+        Entry: 1
+        Data: 9/23/2026 12:43:15 PM
+      - Name: TimeFoldoutWasOpened
+        Entry: 6
+        Data: 
+  - key: ExampleState/OnInspectorInitExampleWithActionSO
+    typeName: Runestone.AesirInspector.Editor.OnInspectorInitExampleWithActionSO
+    checksum: F716246C95ABC91DA2F510D7D5E10CDB87EE0BC01E4F0B4660798EE0582DD683
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: methodNameExample
+        Entry: 6
+        Data: 
+      - Name: initMethodName
+        Entry: 1
+        Data: CustomInitMethod
+      - Name: memberReferenceExample
+        Entry: 6
+        Data: 
+      - Name: TimeWhenExampleWasOpened
+        Entry: 6
+        Data: 
+      - Name: expressionExample
+        Entry: 6
+        Data: 
+  - key: PanelSelection/OnInspectorDisposeAttributePanelSO
+    typeName: OnInspectorDisposeExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: OnInspectorDisposeExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/OnInspectorDisposeExampleSO
+    typeName: Runestone.AesirInspector.Editor.OnInspectorDisposeExampleSO
+    checksum: FA2AF9C3681FA5C38B0CB92923281FCF91E251283DA7B75130FE11D84312FA82
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: disposedField
+        Entry: 3
+        Data: 0
+      - Name: expressionField
+        Entry: 6
+        Data: 
+  - key: ExampleState/OnInspectorDisposeExampleWithActionSO
+    typeName: Runestone.AesirInspector.Editor.OnInspectorDisposeExampleWithActionSO
+    checksum: E37719F39CC4FF4852251F8A2B74D581F79A6261064E7DE44A71B702F64C504F
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: disposeMethodName
+        Entry: 1
+        Data: CustomDisposeMethod
+      - Name: memberReferenceExample
+        Entry: 6
+        Data: 
+      - Name: expressionExample
+        Entry: 6
+        Data: 
+  - key: PanelSelection/ValueDropdownAttributePanelSO
+    typeName: ValueDropdownExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: ValueDropdownExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/ValueDropdownExampleSO
+    typeName: Runestone.AesirInspector.Editor.ValueDropdownExampleSO
+    checksum: 8F4AEB7A06DC115B8C095DDC43F758A2E6BA598C5E2D58791051DFD6852214C7
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: SomeSize1
+        Entry: 3
+        Data: 256
+      - Name: SomeSize2
+        Entry: 3
+        Data: 512
+      - Name: FilteredEnum
+        Entry: 3
+        Data: 0
+      - Name: SomeSize3
+        Entry: 3
+        Data: 1024
+      - Name: SomeMonoBehaviour
+        Entry: 6
+        Data: 
+      - Name: IntTreview
+        Entry: 7
+        Data: 0|System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib
+      - Name: 
+        Entry: 12
+        Data: 3
+      - Name: 
+        Entry: 3
+        Data: 1
+      - Name: 
+        Entry: 3
+        Data: 2
+      - Name: 
+        Entry: 3
+        Data: 7
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: UniqueGameobjectList
+        Entry: 6
+        Data: 
+      - Name: UniqueScriptableObjectList
+        Entry: 6
+        Data: 
+      - Name: UniqueGameobjectListMode2
+        Entry: 6
+        Data: 

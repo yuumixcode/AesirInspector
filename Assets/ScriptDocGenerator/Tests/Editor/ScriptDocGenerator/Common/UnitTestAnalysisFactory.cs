@@ -1,6 +1,6 @@
-using Runestone.AesirInspector;
+using Runestone.ScriptDocGenerator;
 
-namespace Runestone.AesirInspector.Editor.Tests
+namespace Runestone.ScriptDocGenerator.Editor.Tests
 {
     /// <summary>
     /// 用于单元测试的解析数据工厂类

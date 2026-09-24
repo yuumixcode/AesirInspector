@@ -9,6 +9,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.15.0] - 2026-09-09
+
+### ⚠ BREAKING CHANGES (Read before upgrading / 升级前必读)
+
+> **The Script Doc Generator and Summary Tool were moved out of this package** into the standalone in-repo tool at `Assets/ScriptDocGenerator/` (not a UPM package; namespaces `Runestone.ScriptDocGenerator` / `Runestone.ScriptDocGenerator.Editor`). This package now focuses solely on Odin Inspector enhancements (bilingual attributes, Attribute Overview Pro, safe editor utilities, extension package manager) / Script Doc Generator 与 Summary 工具已移出本包，迁移至仓库内独立工具 `Assets/ScriptDocGenerator/`。
+
+#### Migration Guide / 迁移指南
+
+| Scope / 范围 | Before / 旧 | After / 新 |
+|---|---|---|
+| Code location | `Assets/Runestone/AesirInspector/{Runtime,Editor}/ScriptDocGenerator/` | `Assets/ScriptDocGenerator/{Runtime,Editor}/` |
+| Namespace (Runtime) | `Runestone.AesirInspector` (ScriptDocGenerator part) | `Runestone.ScriptDocGenerator` |
+| Namespace (Editor) | `Runestone.AesirInspector.Editor` (ScriptDocGenerator part) | `Runestone.ScriptDocGenerator.Editor` |
+| Assemblies | merged into `Runestone.AesirInspector(.Editor)` | standalone `Runestone.ScriptDocGenerator(.Editor)` |
+| Menus | `Tools → Aesir → Inspector → Script Doc Generator`, `Assets → Aesir Inspector → …` | `Tools → Script Doc Generator`, `Assets → Script Doc Generator → …` |
+| Editor assets path | `Assets/Editor Default Resources/Aesir Inspector/…` | `Assets/Editor Default Resources/Script Doc Generator/…` |
+| `[Summary]` / `[ReferenceLinkURL]` attributes | `Runestone.AesirInspector` | `Runestone.ScriptDocGenerator` |
+
+### Changed
+
+- The tool panel UI no longer uses the bilingual attributes; plain Odin attributes with Chinese text are used instead / 工具面板 UI 移除双语特性，改为纯 Odin 特性（仅中文文本）。
+- Removed `AesirInspectorModuleAssetMarkerSO` (its only consumer was Script Doc Generator, replaced by the tool's own `ScriptDocGeneratorAssetMarkerSO`) / 移除 `AesirInspectorModuleAssetMarkerSO`。
+
 ## [0.14.1] - 2026-09-05
 
 ### Fixed

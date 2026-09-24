@@ -8,7 +8,7 @@ using System.Text;
 using UnityEditor;
 using UnityEngine;
 
-namespace Runestone.AesirInspector.Editor
+namespace Runestone.ScriptDocGenerator.Editor
 {
     /// <summary>
     /// 脚本文档生成器逻辑控制类，负责处理文档生成的核心逻辑
@@ -22,7 +22,7 @@ namespace Runestone.AesirInspector.Editor
         static readonly StringBuilder UserIdentifierDescriptionParagraph = new StringBuilder()
             .AppendLine(IdentifierCn).AppendLine().AppendLine("> 首个 `" + IdentifierCn +
                                                               "` 是增量生成文档标识符，请勿修改标题级别和内容！" +
-                                                              "本文档由 [`Aesir Inspector`](" + GithubRepository +
+                                                              "本文档由 [`Script Doc Generator`](" + GithubRepository +
                                                               ") 辅助生成。");
 
         static readonly IAnalysisDataFactory AnalysisDataFactory = new DefaultAnalysisDataFactory();
@@ -33,7 +33,7 @@ namespace Runestone.AesirInspector.Editor
         /// <returns>true 表示已初始化（或用户刚确认初始化）；false 表示用户取消了初始化。</returns>
         public static bool EnsureInitialized()
         {
-            if (AesirInspectorModuleAssetMarkerSO.IsScriptDocGeneratorAssetsInitialized())
+            if (ScriptDocGeneratorAssetMarkerSO.IsAssetsInitialized())
             {
                 return true;
             }
@@ -56,7 +56,7 @@ namespace Runestone.AesirInspector.Editor
             _ = ScriptDocGeneratorPanelSO.Instance;
             _ = DefaultScriptingAPISettingsSO.Instance;
 
-            AesirInspectorModuleAssetMarkerSO.CreateScriptDocGeneratorMarkerAsset();
+            ScriptDocGeneratorAssetMarkerSO.CreateMarkerAsset();
 
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
@@ -66,6 +66,13 @@ namespace Runestone.AesirInspector.Editor
         {
             if (targetType != null)
             {
+                if (TypeAnalyzerUtility.IsGeneratedInternalType(targetType))
+                {
+                    Debug.LogError("目标类型是编译器或 Unity 生成的内部类型，不支持为其生成文档：" +
+                                    targetType.FullName);
+                    return null;
+                }
+
                 return AnalysisDataFactory.CreateTypeData(targetType, AnalysisDataFactory);
             }
 
@@ -81,7 +88,7 @@ namespace Runestone.AesirInspector.Editor
                 return null;
             }
 
-            types.RemoveAll(x => x == null);
+            types.RemoveAll(x => x == null || TypeAnalyzerUtility.IsGeneratedInternalType(x));
             return types.Select(type => AnalysisDataFactory.CreateTypeData(type, AnalysisDataFactory))
                 .ToList();
         }
@@ -108,7 +115,8 @@ namespace Runestone.AesirInspector.Editor
             var targetAssembly = Assembly.Load(assemblyFullName);
 
             return targetAssembly.GetTypes()
-                .Where(t => t.GetCustomAttribute<CompilerGeneratedAttribute>() == null).Select(type =>
+                .Where(t => t.GetCustomAttribute<CompilerGeneratedAttribute>() == null &&
+                            !TypeAnalyzerUtility.IsGeneratedInternalType(t)).Select(type =>
                     AnalysisDataFactory.CreateTypeData(type, AnalysisDataFactory)).ToList();
         }
 
@@ -137,7 +145,8 @@ namespace Runestone.AesirInspector.Editor
             {
                 var assembly = Assembly.Load(assemblyFullName);
                 var types = assembly.GetTypes()
-                    .Where(t => t.GetCustomAttribute<CompilerGeneratedAttribute>() == null).Select(type =>
+                    .Where(t => t.GetCustomAttribute<CompilerGeneratedAttribute>() == null &&
+                                !TypeAnalyzerUtility.IsGeneratedInternalType(t)).Select(type =>
                         AnalysisDataFactory.CreateTypeData(type, AnalysisDataFactory));
                 result.AddRange(types);
             }
@@ -314,7 +323,7 @@ namespace Runestone.AesirInspector.Editor
                     : markdownText + ("\n" + UserIdentifierDescriptionParagraph);
             }
 
-            var fileNameWithoutExtension = memberData.Name.Replace('<', '[').Replace('>', ']');
+            var fileNameWithoutExtension = TypeAnalyzerUtility.ConvertToDocumentationFileName(memberData.Name);
 
             if (generatorSettings.generateNamespaceFolder)
             {

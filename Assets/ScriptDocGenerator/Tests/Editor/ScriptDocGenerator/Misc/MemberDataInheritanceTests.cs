@@ -1,4 +1,4 @@
-using Runestone.AesirInspector;
+using Runestone.ScriptDocGenerator;
 using System;
 using System.Linq;
 using System.Reflection;
@@ -7,7 +7,7 @@ using UnityEngine;
 
 #pragma warning disable CS0067 // 事件从未使用过
 
-namespace Runestone.AesirInspector.Editor.Tests
+namespace Runestone.ScriptDocGenerator.Editor.Tests
 {
     public class MemberDataInheritanceTests
     {

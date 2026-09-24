@@ -1,11 +1,11 @@
-using Runestone.AesirInspector;
+using Runestone.ScriptDocGenerator;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using NUnit.Framework;
 
-namespace Runestone.AesirInspector.Editor.Tests
+namespace Runestone.ScriptDocGenerator.Editor.Tests
 {
     /// <summary>
     /// 测试常量和静态字段的默认值

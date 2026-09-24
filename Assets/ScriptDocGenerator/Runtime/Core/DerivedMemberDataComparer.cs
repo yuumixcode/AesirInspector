@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace Runestone.AesirInspector
+namespace Runestone.ScriptDocGenerator
 {
     /// <summary>
     /// IDerivedMemberData 比较类

@@ -1,10 +1,10 @@
-using Runestone.AesirInspector;
+using Runestone.ScriptDocGenerator;
 using System.Collections.Generic;
 using System.Reflection;
 using NUnit.Framework;
 using UnityEngine;
 
-namespace Runestone.AesirInspector.Editor.Tests
+namespace Runestone.ScriptDocGenerator.Editor.Tests
 {
     public interface ITestInterface { }
 
@@ -82,7 +82,7 @@ namespace Runestone.AesirInspector.Editor.Tests
             Debug.Log(typeData.MemberType);
             Debug.Log(typeData.FullDeclarationWithAttributes);
             Assert.IsTrue(typeData.MemberType == MemberTypes.TypeInfo &&
-                          "public class TypeDataTests : Runestone.AesirInspector.Editor.Tests.TestAbstractClass" ==
+                          "public class TypeDataTests : Runestone.ScriptDocGenerator.Editor.Tests.TestAbstractClass" ==
                           typeData.FullDeclarationWithAttributes);
         }
 

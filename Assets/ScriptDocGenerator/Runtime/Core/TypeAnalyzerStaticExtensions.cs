@@ -7,7 +7,7 @@ using System.Text;
 using UnityEngine;
 using Sirenix.Utilities;
 
-namespace Runestone.AesirInspector
+namespace Runestone.ScriptDocGenerator
 {
     /// <summary>
     /// 类型分析器静态扩展类，统一管理类型分析器有关的静态扩展方法

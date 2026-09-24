@@ -1,8 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
-namespace Runestone.AesirInspector
+namespace Runestone.ScriptDocGenerator
 {
     /// <summary>
     /// 方法数据接口，继承自 IDerivedMemberData
@@ -70,6 +71,16 @@ namespace Runestone.AesirInspector
         string ParametersDeclaration { get; }
 
         /// <summary>
+        /// 参数级注释字典（XML <c>&lt;param&gt;</c> 标签），键为参数名。无参数注释时为 null
+        /// </summary>
+        IReadOnlyDictionary<string, string> ParamSummaries { get; }
+
+        /// <summary>
+        /// 返回值注释（XML <c>&lt;returns&gt;</c> 标签）。无注释时为 null
+        /// </summary>
+        string ReturnsSummary { get; }
+
+        /// <summary>
         /// 不包含参数的简单方法签名
         /// </summary>
         string SignatureWithoutParameters { get; }
@@ -107,6 +118,8 @@ namespace Runestone.AesirInspector
             ParametersDeclaration = memberInfo.GetParametersNameWithDefaultValue();
             IsFromInterfaceImplement = memberInfo.IsFromInterfaceImplementMethod();
             IsFromAncestor = memberInfo.IsInheritedOverrideFromAncestor(memberInfo.DeclaringType);
+            ParamSummaries = ParamSummariesResolver(memberInfo);
+            ReturnsSummary = ReturnsSummaryResolver(memberInfo);
             Signature = GetMethodFullSignature(AccessModifierName, memberInfo);
             SignatureWithoutParameters = Signature.Split('(')[0];
             FullDeclarationWithAttributes = AttributesDeclaration + Signature;
@@ -189,6 +202,16 @@ namespace Runestone.AesirInspector
         /// 方法的参数声明字符串，包含参数名称和类型
         /// </summary>
         public string ParametersDeclaration { get; }
+
+        /// <summary>
+        /// 参数级注释字典（XML <c>&lt;param&gt;</c> 标签），键为参数名。无参数注释时为 null
+        /// </summary>
+        public IReadOnlyDictionary<string, string> ParamSummaries { get; }
+
+        /// <summary>
+        /// 返回值注释（XML <c>&lt;returns&gt;</c> 标签）。无注释时为 null
+        /// </summary>
+        public string ReturnsSummary { get; }
 
         /// <summary>
         /// 不包含参数的简单方法签名

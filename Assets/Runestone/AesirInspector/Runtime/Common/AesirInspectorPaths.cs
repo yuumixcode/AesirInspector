@@ -45,6 +45,13 @@ namespace Runestone.AesirInspector
         public const string AttributeExamplesOdinPath = AttributeOverviewDatabasePath + "/OdinExamples.asset";
 
         /// <summary>
+        /// Attribute Overview Ultra 状态银行资产路径。
+        /// 存储面板选中记录与示例调试状态快照，替代 Pro 的示例子资产持久化。
+        /// </summary>
+        public const string AttributeOverviewUltraStateBankPath =
+            AttributeOverviewDatabasePath + "/UltraStateBank.asset";
+
+        /// <summary>
         /// MiniTools 资源的存放路径
         /// </summary>
         public const string MiniToolsAssetsFolderPath = EditorDefaultResourcesPath + "/MiniTools";

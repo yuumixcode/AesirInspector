@@ -1,4 +1,3 @@
-using Runestone.AesirInspector.Editor;
 using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
 using Sirenix.Utilities;
@@ -6,7 +5,7 @@ using Sirenix.Utilities.Editor;
 using UnityEditor;
 using UnityEngine;
 
-namespace Runestone.AesirInspector.Editor
+namespace Runestone.ScriptDocGenerator.Editor
 {
     /// <summary>
     /// 脚本文档生成器窗口，直接展示 ScriptDocGeneratorSO 单面板。
@@ -27,20 +26,16 @@ namespace Runestone.AesirInspector.Editor
 
             ScriptDocGeneratorPanelSO.ToastRequested -= ShowToast;
             ScriptDocGeneratorPanelSO.ToastRequested += ShowToast;
-
-            AesirInspectorLanguageSettingsSO.LanguageChanged -= Repaint;
-            AesirInspectorLanguageSettingsSO.LanguageChanged += Repaint;
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
             ScriptDocGeneratorPanelSO.ToastRequested -= ShowToast;
-            AesirInspectorLanguageSettingsSO.LanguageChanged -= Repaint;
         }
 
-        [MenuItem(AesirInspectorMenuItems.ScriptDocGenerator, false,
-            AesirInspectorMenuItems.ScriptDocGeneratorOrder)]
+        [MenuItem(ScriptDocGeneratorMenuPaths.ScriptDocGenerator, false,
+            ScriptDocGeneratorMenuPaths.ScriptDocGeneratorOrder)]
         public static void OpenWindow()
         {
             if (!ScriptDocGeneratorUtility.EnsureInitialized())

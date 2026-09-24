@@ -1,6 +1,6 @@
 using System;
 
-namespace Runestone.AesirInspector
+namespace Runestone.ScriptDocGenerator
 {
     [Serializable]
     public enum AccessModifierType

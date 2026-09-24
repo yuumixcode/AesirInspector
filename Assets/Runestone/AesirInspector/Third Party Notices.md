@@ -1,13 +1,6 @@
-This package contains third-party software components governed by the license(s) indicated below:
+This package currently contains no third-party software components.
 
-Component Name: JakePineOdinTools (SourceFileAnalyzerUtility)
-
-License Type: "MIT"
-
-Copyright (c) 2026 Jake Pine
-
-[JakePineOdinTools](https://github.com/JakePineGames/JakePineOdinTools)
-
-The file `Editor/ScriptDocGenerator/SourceFileTool/SourceFileAnalyzerUtility.cs`
-is extracted from the JakePineOdinTools project (MIT License) and has been simplified
-to keep only source file lookup and member name extraction.
+Note: The JakePineOdinTools-derived `SourceFileAnalyzerUtility.cs` has moved out of this
+package together with the Script Doc Generator tool (now at
+`Assets/ScriptDocGenerator/Editor/SourceFileTool/`); see the tool's own Third Party
+Notices for its attribution.

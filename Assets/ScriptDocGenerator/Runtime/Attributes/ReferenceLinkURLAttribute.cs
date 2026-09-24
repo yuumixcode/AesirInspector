@@ -1,6 +1,6 @@
 using System;
 
-namespace Runestone.AesirInspector
+namespace Runestone.ScriptDocGenerator
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Enum | AttributeTargets.Struct,
         AllowMultiple = true, Inherited = false)]

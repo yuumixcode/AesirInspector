@@ -1,4 +1,4 @@
-namespace Runestone.AesirInspector
+namespace Runestone.ScriptDocGenerator
 {
     /// <summary>
     /// 类型种类枚举

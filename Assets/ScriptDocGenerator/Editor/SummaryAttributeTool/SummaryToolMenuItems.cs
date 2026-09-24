@@ -1,17 +1,16 @@
 using System.IO;
 using System.Linq;
-using Runestone.AesirInspector.Editor;
 using UnityEditor;
 
-namespace Runestone.AesirInspector.Editor
+namespace Runestone.ScriptDocGenerator.Editor
 {
     /// <summary>
     /// 右键快捷处理 Summary 特性。
     /// </summary>
     public static class SummaryToolMenuItems
     {
-        [MenuItem(AesirInspectorMenuItems.ProcessSummarySync, false,
-            AesirInspectorMenuItems.ProcessSummarySyncOrder)]
+        [MenuItem(ScriptDocGeneratorMenuPaths.ProcessSummarySync, false,
+            ScriptDocGeneratorMenuPaths.ProcessSummarySyncOrder)]
         public static void QuickSyncSummary()
         {
             if (Selection.objects.Length == 1)
@@ -27,8 +26,8 @@ namespace Runestone.AesirInspector.Editor
             }
         }
 
-        [MenuItem(AesirInspectorMenuItems.ProcessSummaryReplace, false,
-            AesirInspectorMenuItems.ProcessSummaryReplaceOrder)]
+        [MenuItem(ScriptDocGeneratorMenuPaths.ProcessSummaryReplace, false,
+            ScriptDocGeneratorMenuPaths.ProcessSummaryReplaceOrder)]
         public static void QuickReplaceSummary()
         {
             if (Selection.objects.Length == 1)
@@ -44,8 +43,8 @@ namespace Runestone.AesirInspector.Editor
             }
         }
 
-        [MenuItem(AesirInspectorMenuItems.ProcessSummaryRemove, false,
-            AesirInspectorMenuItems.ProcessSummaryRemoveOrder)]
+        [MenuItem(ScriptDocGeneratorMenuPaths.ProcessSummaryRemove, false,
+            ScriptDocGeneratorMenuPaths.ProcessSummaryRemoveOrder)]
         public static void QuickRemoveSummary()
         {
             if (Selection.objects.Length == 1)
@@ -61,13 +60,13 @@ namespace Runestone.AesirInspector.Editor
             }
         }
 
-        [MenuItem(AesirInspectorMenuItems.ProcessSummarySync, true)]
+        [MenuItem(ScriptDocGeneratorMenuPaths.ProcessSummarySync, true)]
         static bool CanSyncSummary() => IsScriptAsset();
 
-        [MenuItem(AesirInspectorMenuItems.ProcessSummaryReplace, true)]
+        [MenuItem(ScriptDocGeneratorMenuPaths.ProcessSummaryReplace, true)]
         static bool CanReplaceSummary() => IsScriptAsset();
 
-        [MenuItem(AesirInspectorMenuItems.ProcessSummaryRemove, true)]
+        [MenuItem(ScriptDocGeneratorMenuPaths.ProcessSummaryRemove, true)]
         static bool CanRemoveSummary() => IsScriptAsset();
 
         static bool IsScriptAsset()

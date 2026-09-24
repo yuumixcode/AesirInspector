@@ -12,16 +12,6 @@ namespace Runestone.AesirInspector.Editor
         public const string ToolsAesirRoot = "Tools/Aesir";
         public const string ToolsAesirInspectorRoot = "Tools/Aesir/Inspector";
 
-        /// <summary>
-        /// Assets 上下文菜单中 Script Doc Generator 的根路径。
-        /// </summary>
-        public const string AssetsScriptDocGeneratorRoot = "Assets/Aesir Inspector/Script Doc Generator";
-
-        /// <summary>
-        /// Assets 上下文菜单中 Process Summary 的根路径。
-        /// </summary>
-        public const string AssetsProcessSummaryRoot = "Assets/Aesir Inspector/Process Summary";
-
         #endregion
 
         #region Tools Menu
@@ -67,14 +57,19 @@ namespace Runestone.AesirInspector.Editor
         public const int AttributeOverviewProOrder = -900;
 
         /// <summary>
-        /// 打开 Script Doc Generator 窗口的菜单路径。
+        /// 打开 Attribute Overview Ultra 窗口的菜单路径。
         /// </summary>
-        public const string ScriptDocGenerator = ToolsAesirInspectorRoot + "/Script Doc Generator";
+        public const string AttributeOverviewUltra = ToolsAesirInspectorRoot + "/Attribute Overview Ultra";
 
         /// <summary>
-        /// Script Doc Generator 菜单项优先级。
+        /// Attribute Overview Ultra 菜单项优先级（紧邻 Pro 上方）。
         /// </summary>
-        public const int ScriptDocGeneratorOrder = -895;
+        public const int AttributeOverviewUltraOrder = -901;
+
+        /// <summary>
+        /// Attribute Overview Ultra 窗口标题。
+        /// </summary>
+        public const string AttributeOverviewUltraWindowName = "Attribute Overview Ultra";
 
         /// <summary>
         /// 打开 Mini Tools 窗口的菜单路径。
@@ -127,43 +122,6 @@ namespace Runestone.AesirInspector.Editor
         /// RuntimeInitializeLoadType 示例窗口标题。
         /// </summary>
         public const string SampleRuntimeInitializeOnLoadWindowName = "RuntimeInitializeLoadType";
-
-        #endregion
-
-        #region Assets Context Menu
-
-     
-
-        /// <summary>
-        /// 同步 XML Summary 注释到 SummaryAttribute 的菜单路径。
-        /// </summary>
-        public const string ProcessSummarySync = AssetsProcessSummaryRoot + "/Sync";
-
-        /// <summary>
-        /// Process Summary Sync 菜单项优先级。
-        /// Script Doc Generator 末尾 124，+11 产生分割线。
-        /// </summary>
-        public const int ProcessSummarySyncOrder = -28;
-
-        /// <summary>
-        /// 用 SummaryAttribute 替换 XML Summary 注释的菜单路径。
-        /// </summary>
-        public const string ProcessSummaryReplace = AssetsProcessSummaryRoot + "/Replace";
-
-        /// <summary>
-        /// Process Summary Replace 菜单项优先级。
-        /// </summary>
-        public const int ProcessSummaryReplaceOrder = -25;
-
-        /// <summary>
-        /// 移除所有 SummaryAttribute 的菜单路径。
-        /// </summary>
-        public const string ProcessSummaryRemove = AssetsProcessSummaryRoot + "/Remove";
-
-        /// <summary>
-        /// Process Summary Remove 菜单项优先级。
-        /// </summary>
-        public const int ProcessSummaryRemoveOrder = -23;
 
         #endregion
     }

@@ -4,7 +4,7 @@ using System.Reflection;
 using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
 
-namespace Runestone.AesirInspector.Editor
+namespace Runestone.ScriptDocGenerator.Editor
 {
     public class TypeDataProcessor : OdinAttributeProcessor<TypeData>
     {

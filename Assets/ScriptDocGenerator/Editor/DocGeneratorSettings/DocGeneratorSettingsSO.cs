@@ -1,17 +1,18 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Runestone.AesirInspector.Editor
+namespace Runestone.ScriptDocGenerator.Editor
 {
     /// <summary>
     /// 文档生成器设置抽象类
     /// </summary>
-    public abstract class DocGeneratorSettingsSO : ScriptableObject, IAesirInspectorReset
+    public abstract class DocGeneratorSettingsSO : ScriptableObject
     {
         /// <summary>
         /// 重置文档生成器设置
         /// </summary>
-        public void AesirInspectorReset()
+        [Button("重置为默认值")]
+        public void ResetToDefault()
         {
             generateNamespaceFolder = true;
             customizeDocFileExtensionName = false;
@@ -29,26 +30,26 @@ namespace Runestone.AesirInspector.Editor
         /// <summary>
         /// 是否按命名空间生成文件夹
         /// </summary>
-        [BilingualText("按命名空间生成文件夹", "Generate Namespace Folder")]
+        [LabelText("按命名空间生成文件夹")]
         public bool generateNamespaceFolder = true;
 
         /// <summary>
         /// 是否自定义文档扩展名
         /// </summary>
-        [BilingualText("自定义文档扩展名", "Customize Doc Extension Name")]
+        [LabelText("自定义文档扩展名")]
         public bool customizeDocFileExtensionName;
 
         /// <summary>
         /// 设置的文档扩展名
         /// </summary>
         [EnableIf("customizeDocFileExtensionName")]
-        [BilingualText("文档扩展名", "Doc Extension Name")]
+        [LabelText("文档扩展名")]
         public string docFileExtensionName = ".md";
 
         /// <summary>
         /// 是否生成增量标识符
         /// </summary>
-        [BilingualText("是否生成增量标识符", "Generate Identifier")]
+        [LabelText("是否生成增量标识符")]
         public bool generateIdentifier = true;
 
         #endregion

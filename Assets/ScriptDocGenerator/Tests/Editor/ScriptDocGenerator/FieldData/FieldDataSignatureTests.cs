@@ -1,4 +1,4 @@
-using Runestone.AesirInspector;
+using Runestone.ScriptDocGenerator;
 using System;
 using System.Collections;
 using System.Collections.Concurrent;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Reflection;
 using NUnit.Framework;
 
-namespace Runestone.AesirInspector.Editor.Tests
+namespace Runestone.ScriptDocGenerator.Editor.Tests
 {
     public class FieldDataSignatureTests
     {

@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
-namespace Runestone.AesirInspector
+namespace Runestone.ScriptDocGenerator
 {
     /// <summary>
     /// 类型分析器工具类
@@ -186,5 +188,32 @@ namespace Runestone.AesirInspector
             var defaultValue = Activator.CreateInstance(type);
             return defaultValue == null || value.Equals(defaultValue);
         }
+
+        /// <summary>
+        /// 判断类型是否为编译器或 Unity 源生成的内部类型（如 &lt;PrivateImplementationDetails&gt;、
+        /// UnitySourceGenerated* 等），这类类型不属于用户 API，不应为其生成文档。
+        /// </summary>
+        public static bool IsGeneratedInternalType(Type type) =>
+            type != null &&
+            (type.GetCustomAttribute<CompilerGeneratedAttribute>() != null ||
+             IsGeneratedInternalTypeName(type.FullName));
+
+        /// <summary>
+        /// 判断类型完整名称是否属于编译器或 Unity 源生成的内部类型命名模式。
+        /// 合法的 C# 源代码无法在类型名中产生尖括号，因此名称含尖括号的一定是编译器合成类型（如匿名类型、闭包类）。
+        /// </summary>
+        public static bool IsGeneratedInternalTypeName(string typeFullName) =>
+            !string.IsNullOrEmpty(typeFullName) &&
+            (typeFullName.IndexOf('<') >= 0 ||
+             typeFullName.IndexOf('>') >= 0 ||
+             typeFullName.StartsWith("UnitySourceGenerated"));
+
+        /// <summary>
+        /// 将类型名称转换为文档文件名（不含扩展名）。
+        /// 泛型尖括号转换为花括号（C# XML 文档注释 cref 规范）：尖括号在 Windows 文件名中非法，
+        /// 而方括号在 Markdown 中是链接语法会导致引用失效，花括号则两者皆安全。
+        /// </summary>
+        public static string ConvertToDocumentationFileName(string typeName) =>
+            typeName?.Replace('<', '{').Replace('>', '}');
     }
 }

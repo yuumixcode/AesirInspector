@@ -1,4 +1,4 @@
-using Runestone.AesirInspector;
+using Runestone.ScriptDocGenerator;
 using System;
 using System.Collections;
 using System.Linq;
@@ -8,7 +8,7 @@ using UnityEngine;
 
 #pragma warning disable CS0618 // 类型或成员已过时
 
-namespace Runestone.AesirInspector.Editor.Tests
+namespace Runestone.ScriptDocGenerator.Editor.Tests
 {
     /// <summary>
     /// 测试 Unity 的类型以及带特性的字段
