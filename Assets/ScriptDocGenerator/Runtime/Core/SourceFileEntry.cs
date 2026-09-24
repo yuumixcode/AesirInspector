@@ -1,6 +1,6 @@
 using System;
 
-namespace Runestone.AesirInspector
+namespace Runestone.ScriptDocGenerator
 {
     /// <summary>
     /// 源代码文件路径与内容的绑定容器。

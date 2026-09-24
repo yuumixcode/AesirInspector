@@ -1,9 +1,8 @@
 using System.Linq;
-using Runestone.AesirInspector.Editor;
 using UnityEditor;
 using UnityEngine;
 
-namespace Runestone.AesirInspector.Editor
+namespace Runestone.ScriptDocGenerator.Editor
 {
     public static class ScriptDocGeneratorMenuItems
     {
@@ -107,7 +106,7 @@ namespace Runestone.AesirInspector.Editor
         /// 将选中脚本添加到 Target Type 的菜单路径。
         /// </summary>
         const string AddScriptToTargetTypeMenuName =
-            AesirInspectorMenuItems.AssetsScriptDocGeneratorRoot + "/Add To Target Type";
+            ScriptDocGeneratorMenuPaths.AssetsScriptDocGeneratorRoot + "/Add To Target Type";
 
         /// <summary>
         /// Add To Target Type 菜单项优先级。
@@ -118,7 +117,7 @@ namespace Runestone.AesirInspector.Editor
         /// 将选中脚本添加到 Target Type 并打开窗口的菜单路径。
         /// </summary>
         const string AddScriptToTargetTypeAndOpenWindowMenuName =
-            AesirInspectorMenuItems.AssetsScriptDocGeneratorRoot + "/Add To Target Type And Open Window";
+            ScriptDocGeneratorMenuPaths.AssetsScriptDocGeneratorRoot + "/Add To Target Type And Open Window";
 
         /// <summary>
         /// Add To Target Type And Open Window 菜单项优先级。
@@ -129,7 +128,7 @@ namespace Runestone.AesirInspector.Editor
         /// 将选中脚本添加到 Temporary Types 的菜单路径。
         /// </summary>
         const string AddScriptsToTemporaryTypesMenuName =
-            AesirInspectorMenuItems.AssetsScriptDocGeneratorRoot + "/Add To Temporary Types";
+            ScriptDocGeneratorMenuPaths.AssetsScriptDocGeneratorRoot + "/Add To Temporary Types";
 
         /// <summary>
         /// Add To Temporary Types 菜单项优先级。
@@ -140,7 +139,7 @@ namespace Runestone.AesirInspector.Editor
         /// 将选中脚本添加到 Temporary Types 并打开窗口的菜单路径。
         /// </summary>
         const string AddScriptsToTemporaryTypesAndOpenWindowMenuName =
-            AesirInspectorMenuItems.AssetsScriptDocGeneratorRoot + "/Add To Temporary Types And Open Window";
+            ScriptDocGeneratorMenuPaths.AssetsScriptDocGeneratorRoot + "/Add To Temporary Types And Open Window";
 
         /// <summary>
         /// Add To Temporary Types And Open Window 菜单项优先级。

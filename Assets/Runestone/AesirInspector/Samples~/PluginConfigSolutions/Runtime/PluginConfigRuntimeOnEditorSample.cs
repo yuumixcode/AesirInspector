@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Runestone.AesirInspector.Samples.PluginConfig
 {
-    [Summary("在编辑器阶段使用且可以被 Runtime 程序集读取，构建后不使用的配置类案例")]
+    /// <summary>在编辑器阶段使用且可以被 Runtime 程序集读取，构建后不使用的配置类案例</summary>
     public class PluginConfigRuntimeOnEditorSample : ScriptableObject
     {
         static PluginConfigRuntimeOnEditorSample _instance;

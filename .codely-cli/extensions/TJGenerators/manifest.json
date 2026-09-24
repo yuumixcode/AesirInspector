@@ -1,5 +1,5 @@
 {
   "dependencies": {
-    "cn.tuanjie.ai.generators": "file:/Users/yuumix/Projects/Unity/Aesir-Inspector/.codely-cli/extensions/TJGenerators/Packages/cn.tuanjie.ai.generators"
+    "cn.tuanjie.ai.generators": "file:/Users/yuumix/Projects/Unity/AesirInspector/.codely-cli/extensions/TJGenerators/Packages/cn.tuanjie.ai.generators"
   }
 }

@@ -7,7 +7,7 @@ using System.Text;
 using UnityEngine;
 using Sirenix.Utilities;
 
-namespace Runestone.AesirInspector
+namespace Runestone.ScriptDocGenerator
 {
     /// <summary>
     /// 类型解析数据接口，继承自 IDerivedMemberData 接口

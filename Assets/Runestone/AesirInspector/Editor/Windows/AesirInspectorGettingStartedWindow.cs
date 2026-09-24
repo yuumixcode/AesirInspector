@@ -119,18 +119,8 @@ namespace Runestone.AesirInspector.Editor
                 },
                 new SummaryDetailGroup
                 {
-                    summary = "Summary 注释特性",
-                    details = "SummaryAttribute 等效于 XML 注释中的 Summary 部分，支持快捷同步、替换、删除操作。"
-                },
-                new SummaryDetailGroup
-                {
                     summary = "Attribute Overview Pro",
                     details = "以可搜索的树形菜单展示所有已注册的 Odin Inspector 特性面板。"
-                },
-                new SummaryDetailGroup
-                {
-                    summary = "Script Doc Generator",
-                    details = "基于 SummaryAttribute 一键生成 Scripting API 文档，支持多种输出格式。"
                 },
                 new SummaryDetailGroup
                 {

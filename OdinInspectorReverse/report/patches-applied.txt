@@ -1,0 +1,16 @@
+01-Patched/Sirenix.Serialization/Sirenix/Serialization/UnitySerializationUtility.cs  <- 1 处  StackFrame[] stackFrames = new StackTrace().
+01-Patched/Sirenix.Serialization/Sirenix/Serialization/UnitySerializationUtility.cs  <- 1 处  foreach (StackFrame frame in stackFrames)
+01-Patched/Sirenix.OdinInspector.Editor/Sirenix/OdinInspector/Editor/Internal/DesignerAttributePopup.cs  <- 1 处  [DesignerAttributePopup.cs] using System;
+01-Patched/Sirenix.OdinInspector.Editor/Sirenix/OdinInspector/Editor/Internal/DesignerIOUtils.cs  <- 1 处  FileAttributes.None
+01-Patched/Sirenix.OdinInspector.Editor/Sirenix/OdinInspector/Editor/Internal/OdinInternalEditorFields.cs  <- 1 处  [OdinInternalEditorFields.cs] using System;
+01-Patched/Sirenix.OdinInspector.Editor/Sirenix/OdinInspector/Editor/Internal/DesignerEditorContext.cs  <- 1 处  [DesignerEditorContext.cs] using System;
+01-Patched/Sirenix.OdinInspector.Editor/Sirenix/OdinInspector/Editor/Internal/DesignerEditor.cs  <- 1 处  [DesignerEditor.cs] using System;
+01-Patched/Sirenix.OdinInspector.Editor/Sirenix/OdinInspector/Editor/Examples/AttributeExamplePreview.cs  <- 1 处  [AttributeExamplePreview.cs] using System;
+01-Patched/Sirenix.OdinInspector.Editor/Sirenix/OdinInspector/Editor/Drawers/PropertyContextMenuDrawer.cs  <- 1 处  [PropertyContextMenuDrawer.cs] using System;
+01-Patched/Sirenix.OdinInspector.Editor/Sirenix/OdinInspector/Editor/Drawers/ColorDrawer.cs  <- 1 处  [ColorDrawer.cs] using System;
+01-Patched/Sirenix.OdinInspector.Editor/Sirenix/OdinInspector/Editor/Drawers/CollectionDrawer.cs  <- 1 处  [CollectionDrawer.cs] using System;
+01-Patched/Sirenix.OdinInspector.Editor/Sirenix/OdinInspector/Editor/Validation/ValidationDrawer.cs  <- 1 处  [ValidationDrawer.cs] using System;
+01-Patched/Sirenix.Utilities.Editor/Sirenix/Utilities/Editor/ArraySlice.cs  <- 5 处  MethodImplOptions.AggressiveOptimization
+01-Patched/Sirenix.Utilities.Editor/Sirenix/Utilities/Editor/SirenixEditorFields.cs  <- 1 处  FileAttributes.None
+01-Patched/Sirenix.Utilities.Editor/Sirenix/Utilities/Editor/InstanceCreatorWindow.cs  <- 1 处  select (!CanCreateInstance(type, ref t)) ? n
+01-Patched/Sirenix.Utilities.Editor/Sirenix/Utilities/Editor/InstanceCreatorWindow.cs  <- 1 处  private static bool CanCreateInstance(Type b

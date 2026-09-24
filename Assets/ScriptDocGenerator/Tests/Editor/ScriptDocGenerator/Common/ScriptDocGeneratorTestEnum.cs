@@ -1,5 +1,5 @@
-using Runestone.AesirInspector;
-namespace Runestone.AesirInspector.Editor.Tests
+using Runestone.ScriptDocGenerator;
+namespace Runestone.ScriptDocGenerator.Editor.Tests
 {
     /// <summary>
     /// 用于测试的枚举类型

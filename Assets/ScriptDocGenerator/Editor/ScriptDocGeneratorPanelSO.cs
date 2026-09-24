@@ -11,12 +11,12 @@ using Sirenix.Utilities.Editor;
 using UnityEditor;
 using UnityEngine;
 
-namespace Runestone.AesirInspector.Editor
+namespace Runestone.ScriptDocGenerator.Editor
 {
     /// <summary>
     /// ScriptDocGenerator 可视化操作面板类
     /// </summary>
-    public class ScriptDocGeneratorPanelSO : SerializedScriptableObject, IAesirInspectorReset
+    public class ScriptDocGeneratorPanelSO : SerializedScriptableObject
     {
         public enum TypeSource
         {
@@ -26,13 +26,10 @@ namespace Runestone.AesirInspector.Editor
             MultipleAssemblies
         }
 
-        const string ScriptDocGeneratorRootPath =
-            AesirInspectorPaths.EditorDefaultResourcesPath + "/ScriptDocGenerator";
+        const string DefaultTypesCacheSoFolderPath =
+            ScriptDocGeneratorPaths.PanelConfigFolderPath + "/TypeCache";
 
-        const string DefaultTypesCacheSoFolderPath = ScriptDocGeneratorRootPath + "/TypeCache";
-
-        public const string DefaultDocFolderPath =
-            AesirInspectorPaths.EditorDefaultResourcesPath + "/Documents";
+        public const string DefaultDocFolderPath = ScriptDocGeneratorPaths.DefaultDocFolderPath;
 
         const string NoneAssembly = "None Assembly";
 
@@ -41,10 +38,6 @@ namespace Runestone.AesirInspector.Editor
         static ValueDropdownList<string> _currentDomainAssemblies;
         bool _hasFinishedAnalyze;
         bool _isCustomizingSaveConfig;
-
-        [PropertyOrder(-5)]
-        [SerializeField]
-        BilingualHeaderControl bilingualHeaderControl;
 
         [PropertyOrder(2)]
         [SerializeField]
@@ -99,8 +92,8 @@ namespace Runestone.AesirInspector.Editor
         List<ITypeData> _typeDataList;
 
         public static ScriptDocGeneratorPanelSO Instance =>
-            ScriptableObjectSafeEditorUtility.GetOrCreateEditorScriptableObject<ScriptDocGeneratorPanelSO>(
-                ConfigName, ScriptDocGeneratorRootPath, "ScriptDocGenerator");
+            ScriptDocGeneratorEditorUtility.GetOrCreateEditorScriptableObject<ScriptDocGeneratorPanelSO>(
+                ConfigName, ScriptDocGeneratorPaths.PanelConfigFolderPath, "ScriptDocGenerator");
 
         public Type TargetType
         {
@@ -139,15 +132,16 @@ namespace Runestone.AesirInspector.Editor
 
         void OnEnable()
         {
-            bilingualHeaderControl = new BilingualHeaderControl("脚本文档生成工具", "Script Doc Generator",
-                "用户提供一个 Type 类型的值，分析 Type 数据，选择合适的文档生成器，一键生成对应的文档。默认提供中文 API 文档生成器，可以自定义适合项目的生成器。",
-                "The user provides a value of the Type, analyze the Type data, selects the appropriate document generator, " +
-                "and generates the corresponding document with one click. By default, a Chinese API document generator is provided, " +
-                "and a custom generator suitable for the project can also be defined.");
-            AesirInspectorReset();
+            ResetToDefault();
         }
 
-        public void AesirInspectorReset()
+        [PropertyOrder(-5)]
+        [Title("脚本文档生成工具")]
+        [InfoBox(
+            "用户提供一个 Type 类型的值，分析 Type 数据，选择合适的文档生成器，一键生成对应的文档。默认提供中文 API 文档生成器，可以自定义适合项目的生成器。",
+            InfoMessageType.None)]
+        [Button("重置所有配置", ButtonSizes.Small)]
+        public void ResetToDefault()
         {
             ResetDocFolderPath();
             ResetDocGeneratorSettingSO();
@@ -168,9 +162,9 @@ namespace Runestone.AesirInspector.Editor
         public static event Action<ToastPosition, SdfIconType, string, Color, float> ToastRequested;
 
         [PropertyOrder(50)]
-        [BilingualTitle("分析按钮", "Analyze Button")]
-        [BilingualButton("基于当前模式执行类型分析", "Analyze Type based on the current mode", ButtonSizes.Large,
-            ButtonStyle.Box, SdfIconType.FileEarmarkPlus)]
+        [Title("分析按钮")]
+        [Button("基于当前模式执行类型分析", ButtonSizes.Large, Style = ButtonStyle.Box,
+            Icon = SdfIconType.FileEarmarkPlus)]
         public void AnalyzeType()
         {
             PerformAnalyzeType();
@@ -178,10 +172,9 @@ namespace Runestone.AesirInspector.Editor
 
         [PropertyOrder(70)]
         [ShowIf("CanShowGenerateButton")]
-        [BilingualTitle("生成按钮", "Generate Button")]
-        [BilingualButton("基于解析结果和文档生成器生成 Markdown 文档",
-            "Generate Markdown Document Based On Analysis Result And Doc Generator", ButtonSizes.Large,
-            ButtonStyle.Box, SdfIconType.FileEarmarkPlus)]
+        [Title("生成按钮")]
+        [Button("基于解析结果和文档生成器生成 Markdown 文档", ButtonSizes.Large, Style = ButtonStyle.Box,
+            Icon = SdfIconType.FileEarmarkPlus)]
         public void GenerateDoc()
         {
             PerformGenerateDoc();
@@ -189,43 +182,41 @@ namespace Runestone.AesirInspector.Editor
 
         string GetDocGeneratorTitle()
         {
-            var chineseTitle = "文档生成器设置";
-            var englishTitle = "Doc Generator Setting";
+            var title = "文档生成器设置";
             if (docGeneratorSettings &&
                 docGeneratorSettings.GetType() == typeof(DefaultScriptingAPISettingsSO))
             {
-                chineseTitle += " - [当前选择: 中文 API Markdown 文档]";
-                englishTitle += " - [Current Selection: Chinese API Markdown Document]";
+                title += " - [当前选择: 中文 API Markdown 文档]";
+            }
+            else if (docGeneratorSettings &&
+                     docGeneratorSettings.GetType() == typeof(ZensicalScriptingAPISettingsSO))
+            {
+                title += " - [当前选择: Zensical API Markdown 文档]";
             }
 
-            return new BilingualData(chineseTitle, englishTitle);
+            return title;
         }
 
         string GetTypeSourceEnumLabelText()
         {
-            var chineseText = "类型来源模式";
-            var englishText = "Type Source Mode";
+            var text = "类型来源模式";
             switch (typeSource)
             {
                 case TypeSource.SingleType:
-                    chineseText += " - [当前选择: 单类型模式]";
-                    englishText += " - [Current Selection: Single Type Mode]";
+                    text += " - [当前选择: 单类型模式]";
                     break;
                 case TypeSource.MultipleTypes:
-                    chineseText += " - [当前选择: 多类型模式]";
-                    englishText += " - [Current Selection: Multiple Type Mode]";
+                    text += " - [当前选择: 多类型模式]";
                     break;
                 case TypeSource.SingleAssembly:
-                    chineseText += " - [当前选择: 单程序集模式]";
-                    englishText += " - [Current Selection: Single Assembly Mode]";
+                    text += " - [当前选择: 单程序集模式]";
                     break;
                 case TypeSource.MultipleAssemblies:
-                    chineseText += " - [当前选择: 多程序集模式]";
-                    englishText += " - [Current Selection: Multiple Assemblies Mode]";
+                    text += " - [当前选择: 多程序集模式]";
                     break;
             }
 
-            return new BilingualData(chineseText, englishText);
+            return text;
         }
 
         void OnSelectedMonoScriptChanged()
@@ -257,10 +248,10 @@ namespace Runestone.AesirInspector.Editor
             if (_temporaryTypes.Count > 0 && SirenixEditorGUI.ToolbarButton(content))
             {
                 var so = CreateInstance<TypesCacheSO>();
-                PathSafeEditorUtility.EnsureDirectoryExists(typesCacheSOFolderPath);
+                ScriptDocGeneratorEditorUtility.EnsureDirectoryExists(typesCacheSOFolderPath);
                 so.Types = _temporaryTypes;
                 ProjectWindowUtil.CreateAsset(so, filePathWithExtension);
-                ProjectSafeEditorUtility.PingAndSelectAsset(filePathWithExtension);
+                ScriptDocGeneratorEditorUtility.PingAndSelectAsset(filePathWithExtension);
                 Debug.Log("请更改资源名称，避免下次生成时覆盖内容");
             }
 
@@ -367,7 +358,7 @@ namespace Runestone.AesirInspector.Editor
                     return;
                 }
 
-                PathSafeEditorUtility.EnsureDirectoryExists(docFolderPath);
+                ScriptDocGeneratorEditorUtility.EnsureDirectoryExists(docFolderPath);
             }
 
             switch (typeSource)
@@ -395,8 +386,7 @@ namespace Runestone.AesirInspector.Editor
             {
                 if (member.Name == nameof(docFolderPath))
                 {
-                    attributes.Add(new BilingualTitleAttribute("生成脚本文档的目标文件夹路径 [可拖拽]",
-                        "Folder Path For Document [Drag And Drop Allowed]"));
+                    attributes.Add(new TitleAttribute("生成脚本文档的目标文件夹路径 [可拖拽]"));
                     attributes.Add(new HideLabelAttribute());
                     attributes.Add(new FolderPathAttribute
                     {
@@ -435,8 +425,7 @@ namespace Runestone.AesirInspector.Editor
                     attributes.Add(new TitleAttribute("$" + nameof(_singleTypeDataLabel)));
                     attributes.Add(new ShowIfAttribute(nameof(IsSingleType)));
                     attributes.Add(new LabelWidthAttribute(270));
-                    attributes.Add(new BilingualTextAttribute("拖拽 Script 文件到此处，自动识别类型: ",
-                        "Drag Script File Here to Auto Identify Type: "));
+                    attributes.Add(new LabelTextAttribute("拖拽 Script 文件到此处，自动识别类型: "));
                     attributes.Add(new InlineButtonAttribute(nameof(ResetSelectedMonoScript),
                         SdfIconType.ArrowClockwise, ""));
                     attributes.Add(new CustomContextMenuAttribute("Reset To Default",
@@ -448,7 +437,7 @@ namespace Runestone.AesirInspector.Editor
                 {
                     attributes.Add(new ShowIfAttribute(nameof(IsSingleType)));
                     attributes.Add(new LabelWidthAttribute(130));
-                    attributes.Add(new BilingualTextAttribute("手动选择 Type: ", "Manually Select Type: "));
+                    attributes.Add(new LabelTextAttribute("手动选择 Type: "));
                     attributes.Add(new InlineButtonAttribute(nameof(ResetSingleType),
                         SdfIconType.ArrowClockwise, ""));
                     attributes.Add(
@@ -458,9 +447,8 @@ namespace Runestone.AesirInspector.Editor
                 if (member.Name == nameof(typesCache))
                 {
                     attributes.Add(new ShowIfAttribute(nameof(IsMultipleType)));
-                    attributes.Add(new BilingualTitleAttribute("目标 Types 列表配置", "Types Config"));
-                    attributes.Add(new BilingualInfoBoxAttribute("TypesConfigSO 不为空时，会强制覆盖 Type 列表",
-                        "When the TypesConfigSO asset is not empty, TemporaryTypes Config is forced to be overridden"));
+                    attributes.Add(new TitleAttribute("目标 Types 列表配置"));
+                    attributes.Add(new InfoBoxAttribute("TypesConfigSO 不为空时，会强制覆盖 Type 列表"));
                     attributes.Add(new HideLabelAttribute());
                     attributes.Add(new AssetSelectorAttribute
                     {
@@ -476,8 +464,7 @@ namespace Runestone.AesirInspector.Editor
                 {
                     attributes.Add(new ShowIfAttribute(nameof(IsMultipleType)));
                     attributes.Add(new LabelWidthAttribute(270));
-                    attributes.Add(new BilingualTextAttribute("拖拽多个 Script 文件到此处，自动识别类型: ",
-                        "Drag Multiple Script Files Here to Auto Identify Types: "));
+                    attributes.Add(new LabelTextAttribute("拖拽多个 Script 文件到此处，自动识别类型: "));
                     attributes.Add(new InlineButtonAttribute(nameof(ResetSelectedMonoScriptArray),
                         SdfIconType.ArrowClockwise, ""));
                     attributes.Add(new CustomContextMenuAttribute("Reset To Default",
@@ -509,8 +496,7 @@ namespace Runestone.AesirInspector.Editor
                         "$" + nameof(_completeConfigButtonLabel)));
                     attributes.Add(new InlineButtonAttribute(nameof(ResetTypesCacheSOFolderPath),
                         SdfIconType.ArrowClockwise, "$" + nameof(_resetSOSaveFolderPathButtonLabel)));
-                    attributes.Add(new BilingualTitleAttribute("存放 TypesCacheSO 的文件夹路径",
-                        "Folder Path For TypesCacheSO"));
+                    attributes.Add(new TitleAttribute("存放 TypesCacheSO 的文件夹路径"));
                     attributes.Add(new CustomContextMenuAttribute("Reset To Default",
                         nameof(ResetTypesCacheSOFolderPath)));
                 }
@@ -518,7 +504,7 @@ namespace Runestone.AesirInspector.Editor
                 if (member.Name == nameof(targetAssemblyFullName))
                 {
                     attributes.Add(new ShowIfAttribute(nameof(IsSingleAssembly)));
-                    attributes.Add(new BilingualTitleAttribute("目标程序集配置", "Single Assembly Config"));
+                    attributes.Add(new TitleAttribute("目标程序集配置"));
                     attributes.Add(new ValueDropdownAttribute(nameof(GetAssemblyNameToFullName)));
                     attributes.Add(new HideLabelAttribute());
                     attributes.Add(new InlineButtonAttribute(nameof(ResetSingleAssemblyFullName),
@@ -530,7 +516,7 @@ namespace Runestone.AesirInspector.Editor
                 if (member.Name == nameof(selectedAssemblyFullNames))
                 {
                     attributes.Add(new ShowIfAttribute(nameof(IsMultipleAssemblies)));
-                    attributes.Add(new BilingualTitleAttribute("目标程序集配置", "Multiple Assemblies Config"));
+                    attributes.Add(new TitleAttribute("目标程序集配置"));
                     attributes.Add(new ValueDropdownAttribute(nameof(GetAssemblyNameToFullName)));
                     attributes.Add(new ListDrawerSettingsAttribute
                     {
@@ -632,18 +618,15 @@ namespace Runestone.AesirInspector.Editor
 
         #endregion
 
-        #region Bilingualism
+        #region 标签文本
 
-        public static readonly BilingualData ModuleName =
-            new BilingualData("脚本文档生成工具", "Script Doc Generator");
+        string _singleTypeDataLabel = "目标 Type";
 
-        BilingualData _singleTypeDataLabel = new BilingualData("目标 Type", "Single Target Type");
+        string _typeAnalysisResultLabel = "类型分析数据结果";
 
-        BilingualData _typeAnalysisResultLabel = new BilingualData("类型分析数据结果", "Type Analysis Result");
+        string _completeConfigButtonLabel = "完成设置";
 
-        BilingualData _completeConfigButtonLabel = new BilingualData("完成设置", "Complete Setting");
-
-        BilingualData _resetSOSaveFolderPathButtonLabel = new BilingualData("重置路径", "Reset Folder Path");
+        string _resetSOSaveFolderPathButtonLabel = "重置路径";
 
         #endregion
     }

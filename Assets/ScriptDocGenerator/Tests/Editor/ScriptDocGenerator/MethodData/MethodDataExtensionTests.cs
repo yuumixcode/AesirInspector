@@ -1,9 +1,9 @@
-using Runestone.AesirInspector;
+using Runestone.ScriptDocGenerator;
 using System.Reflection;
 using NUnit.Framework;
 using UnityEngine;
 
-namespace Runestone.AesirInspector.Editor.Tests
+namespace Runestone.ScriptDocGenerator.Editor.Tests
 {
     public class MethodDataExtensionTests
     {

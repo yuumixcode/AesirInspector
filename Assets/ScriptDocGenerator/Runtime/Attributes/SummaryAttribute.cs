@@ -1,6 +1,6 @@
 using System;
 
-namespace Runestone.AesirInspector
+namespace Runestone.ScriptDocGenerator
 {
     /// <summary>
     /// 提供类似于 XML 文档 summary 部分的描述性元数据。

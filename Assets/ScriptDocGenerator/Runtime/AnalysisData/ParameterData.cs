@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 
-namespace Runestone.AesirInspector
+namespace Runestone.ScriptDocGenerator
 {
     /// <summary>
     /// 参数信息解析数据

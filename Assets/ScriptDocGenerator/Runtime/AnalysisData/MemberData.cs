@@ -1,7 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 
-namespace Runestone.AesirInspector
+namespace Runestone.ScriptDocGenerator
 {
     /// <summary>
     /// 成员数据接口
@@ -107,11 +108,27 @@ namespace Runestone.AesirInspector
         }
 
         /// <summary>
-        /// Summary 解析委托。Editor 程序集在加载时注入源文件解析实现（基于 OdinSourceFileHelper），
+        /// Summary 解析委托。Editor 程序集在加载时注入源文件解析实现（基于 SourceScanner），
         /// 从源代码的 XML <c>/// &lt;summary&gt;</c> 注释中读取成员摘要。
         /// 默认回退到 [Summary] 特性，保持向后兼容。
         /// </summary>
         public static Func<MemberInfo, string> SummaryResolver { get; set; } = ResolveSummaryFromAttribute;
+
+        /// <summary>
+        /// 参数级注释解析委托（XML <c>&lt;param&gt;</c> 标签），键为参数名。
+        /// Editor 程序集在加载时注入源文件解析实现；默认无参数级注释（返回 null）。
+        /// </summary>
+        public static Func<MethodInfo, IReadOnlyDictionary<string, string>> ParamSummariesResolver
+        {
+            get;
+            set;
+        } = _ => null;
+
+        /// <summary>
+        /// 返回值注释解析委托（XML <c>&lt;returns&gt;</c> 标签）。
+        /// Editor 程序集在加载时注入源文件解析实现；默认无返回值注释（返回 null）。
+        /// </summary>
+        public static Func<MethodInfo, string> ReturnsSummaryResolver { get; set; } = _ => null;
 
         static string ResolveSummaryFromAttribute(MemberInfo memberInfo) =>
             memberInfo?.GetCustomAttribute<SummaryAttribute>()?.GetSummary();

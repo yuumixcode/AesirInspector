@@ -3,22 +3,19 @@ using System.Linq;
 using System.Text;
 using Sirenix.Utilities;
 
-namespace Runestone.AesirInspector.Editor
+namespace Runestone.ScriptDocGenerator.Editor
 {
     /// <summary>
     /// 默认中文 API 文档生成设置
     /// </summary>
     public class DefaultScriptingAPISettingsSO : DocGeneratorSettingsSO
     {
-        const string GeneratorSettingsPath = AesirInspectorPaths.EditorDefaultResourcesPath +
-                                             "/ScriptDocGenerator/GeneratorSettings";
-
         static readonly string ConfigName = typeof(DefaultScriptingAPISettingsSO).GetNiceFullName();
 
         public static DefaultScriptingAPISettingsSO Instance =>
-            ScriptableObjectSafeEditorUtility
+            ScriptDocGeneratorEditorUtility
                 .GetOrCreateEditorScriptableObject<DefaultScriptingAPISettingsSO>(ConfigName,
-                    GeneratorSettingsPath, "DefaultCnScriptingAPI");
+                    ScriptDocGeneratorPaths.GeneratorSettingsFolderPath, "DefaultCnScriptingAPI");
 
         public override string GetGeneratedDocumentation(ITypeData data)
         {

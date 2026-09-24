@@ -1,10 +1,10 @@
-using Runestone.AesirInspector;
+using Runestone.ScriptDocGenerator;
 using System.Linq;
 using System.Reflection;
 using NUnit.Framework;
 using UnityEngine;
 
-namespace Runestone.AesirInspector.Editor.Tests
+namespace Runestone.ScriptDocGenerator.Editor.Tests
 {
     /// <summary>
     /// 验证重载方法的 [Overload] 前缀只出现一次，不会因重载数量增加而重复追加。

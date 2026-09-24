@@ -1,4 +1,4 @@
-using Runestone.AesirInspector;
+using Runestone.ScriptDocGenerator;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using NUnit.Framework;
 
 // ReSharper disable UnusedMember.Local
 
-namespace Runestone.AesirInspector.Editor.Tests
+namespace Runestone.ScriptDocGenerator.Editor.Tests
 {
     /// <summary>
     /// 测试字段的不同修饰符（复合关键字和访问修饰符）

@@ -1,0 +1,22 @@
+{
+  "name": "com.sirenix.odin-inspector",
+  "version": "4.0.2",
+  "displayName": "Odin Inspector",
+  "description": "Odin Inspector & Serializer (Sirenix) v4.0.2.4, repackaged as a UPM package from the original precompiled assemblies. Internal layout (Assemblies/ + Odin Inspector/) is preserved verbatim because SirenixAssetPaths derives its paths by GUID lookup, and the PluginImporter platform variants (NoEditor / NoEmitAndNoEditor) depend on the original .meta files.",
+  "unity": "2021.3",
+  "keywords": [
+    "inspector",
+    "editor",
+    "serialization",
+    "odin",
+    "sirenix",
+    "drawer"
+  ],
+  "author": {
+    "name": "Sirenix",
+    "url": "https://odininspector.com"
+  },
+  "documentationUrl": "https://odininspector.com/documentation",
+  "changelogUrl": "https://odininspector.com/patch-notes",
+  "licensesUrl": "https://assetstore.unity.com/packages/tools/utilities/odin-inspector-and-serializer-89041"
+}

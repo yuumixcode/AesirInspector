@@ -1,4 +1,4 @@
-using Runestone.AesirInspector;
+using Runestone.ScriptDocGenerator;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -9,7 +9,7 @@ using UnityEngine;
 
 #pragma warning disable CS0067 // 事件从未使用过
 
-namespace Runestone.AesirInspector.Editor.Tests
+namespace Runestone.ScriptDocGenerator.Editor.Tests
 {
     /// <summary>
     /// 测试事件类型字段

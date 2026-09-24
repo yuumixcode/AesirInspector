@@ -1,0 +1,2 @@
+warning CS2023: /noconfig 选项是在响应文件中指定的，因此被忽略
+OdinInspectorReverse/01-Patched/Sirenix.OdinValidator.Editor/Sirenix/OdinValidator/Editor/ValidationSessionResultCollector.cs(277,17): error CS0122: “FixIdentifier”不可访问，因为它具有一定的保护级别

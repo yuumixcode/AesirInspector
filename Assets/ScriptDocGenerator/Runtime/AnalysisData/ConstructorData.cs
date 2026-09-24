@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 
-namespace Runestone.AesirInspector
+namespace Runestone.ScriptDocGenerator
 {
     /// <summary>
     /// 构造方法数据接口，继承自 IDerivedMemberData

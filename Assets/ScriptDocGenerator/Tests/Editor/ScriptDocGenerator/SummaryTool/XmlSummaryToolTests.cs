@@ -1,12 +1,12 @@
 using NUnit.Framework;
 
-namespace Runestone.AesirInspector.Editor.Tests
+namespace Runestone.ScriptDocGenerator.Editor.Tests
 {
     public class XmlSummaryToolTests
     {
         const string TypeSummaryCode = @"using System;
 
-namespace Runestone.AesirInspector.Editor.Tests
+namespace Runestone.ScriptDocGenerator.Editor.Tests
 {
     /// <summary>
     /// 测试类级别（包括结构体，接口等）的 Summary，
@@ -19,7 +19,7 @@ namespace Runestone.AesirInspector.Editor.Tests
 
         const string SpecialCharsCode = @"using System;
 
-namespace Runestone.AesirInspector.Editor.Tests
+namespace Runestone.ScriptDocGenerator.Editor.Tests
 {
     /// <summary>
     /// 成员 "" Summary 注释 ????
@@ -34,7 +34,7 @@ namespace Runestone.AesirInspector.Editor.Tests
         const string MethodSummaryCode = @"using System;
 using UnityEngine;
 
-namespace Runestone.AesirInspector.Editor.Tests
+namespace Runestone.ScriptDocGenerator.Editor.Tests
 {
     public class TestMemberSummary : MonoBehaviour
     {
@@ -54,9 +54,9 @@ namespace Runestone.AesirInspector.Editor.Tests
 
         const string MultiLineAttrCode = @"using System;
 using UnityEngine;
-using Runestone.AesirInspector;
+using Runestone.ScriptDocGenerator;
 
-namespace Runestone.AesirInspector.Editor.Tests
+namespace Runestone.ScriptDocGenerator.Editor.Tests
 {
     /// <summary>
     /// 测试移除 ChineseSummary
@@ -82,9 +82,9 @@ namespace Runestone.AesirInspector.Editor.Tests
 public class NoSummaryClass { }";
 
         const string StringLiteralCode = @"using System;
-using Runestone.AesirInspector;
+using Runestone.ScriptDocGenerator;
 
-namespace Runestone.AesirInspector.Editor.Tests
+namespace Runestone.ScriptDocGenerator.Editor.Tests
 {
     /// <summary>
     /// 包含字符串常量的测试类
@@ -102,9 +102,9 @@ namespace Runestone.AesirInspector.Editor.Tests
 ";
 
         const string PreprocessorCode = @"using System;
-using Runestone.AesirInspector;
+using Runestone.ScriptDocGenerator;
 
-namespace Runestone.AesirInspector.Editor.Tests
+namespace Runestone.ScriptDocGenerator.Editor.Tests
 {
     /// <summary>
     /// 编辑器工具类
@@ -124,7 +124,7 @@ namespace Runestone.AesirInspector.Editor.Tests
 
         const string SingleLineSummaryCode = @"using System;
 
-namespace Runestone.AesirInspector.Editor.Tests
+namespace Runestone.ScriptDocGenerator.Editor.Tests
 {
     /// <summary>单行 summary 测试</summary>
     [Serializable]
@@ -133,9 +133,9 @@ namespace Runestone.AesirInspector.Editor.Tests
 ";
 
         const string MixedSingleMultiLineCode = @"using System;
-using Runestone.AesirInspector;
+using Runestone.ScriptDocGenerator;
 
-namespace Runestone.AesirInspector.Editor.Tests
+namespace Runestone.ScriptDocGenerator.Editor.Tests
 {
     /// <summary>类级别单行</summary>
     public class TestMixed
@@ -161,10 +161,10 @@ namespace Runestone.AesirInspector.Editor.Tests
         public void TypeLevelSummary_SyncAddsAttribute()
         {
             ProcessAndAssert(TypeSummaryCode, XmlSummaryTool.ProcessMode.SyncSummary,
-                @"using Runestone.AesirInspector;
+                @"using Runestone.ScriptDocGenerator;
 using System;
 
-namespace Runestone.AesirInspector.Editor.Tests
+namespace Runestone.ScriptDocGenerator.Editor.Tests
 {
     /// <summary>
     /// 测试类级别（包括结构体，接口等）的 Summary，
@@ -181,10 +181,10 @@ namespace Runestone.AesirInspector.Editor.Tests
         public void TypeLevelSummary_ReplaceReplacesTagWithAttribute()
         {
             ProcessAndAssert(TypeSummaryCode, XmlSummaryTool.ProcessMode.ReplaceSummary,
-                @"using Runestone.AesirInspector;
+                @"using Runestone.ScriptDocGenerator;
 using System;
 
-namespace Runestone.AesirInspector.Editor.Tests
+namespace Runestone.ScriptDocGenerator.Editor.Tests
 {
     [Summary(""测试类级别（包括结构体，接口等）的 Summary， 以 class 为例"")]
     [Serializable]
@@ -197,10 +197,10 @@ namespace Runestone.AesirInspector.Editor.Tests
         public void SpecialCharsSummary_SyncHandlesCorrectly()
         {
             ProcessAndAssert(SpecialCharsCode, XmlSummaryTool.ProcessMode.SyncSummary,
-                @"using Runestone.AesirInspector;
+                @"using Runestone.ScriptDocGenerator;
 using System;
 
-namespace Runestone.AesirInspector.Editor.Tests
+namespace Runestone.ScriptDocGenerator.Editor.Tests
 {
     /// <summary>
     /// 成员 "" Summary 注释 ????
@@ -218,10 +218,10 @@ namespace Runestone.AesirInspector.Editor.Tests
         public void SpecialCharsSummary_ReplaceHandlesCorrectly()
         {
             ProcessAndAssert(SpecialCharsCode, XmlSummaryTool.ProcessMode.ReplaceSummary,
-                @"using Runestone.AesirInspector;
+                @"using Runestone.ScriptDocGenerator;
 using System;
 
-namespace Runestone.AesirInspector.Editor.Tests
+namespace Runestone.ScriptDocGenerator.Editor.Tests
 {
     /// <remarks>AAAAA</remarks>>
     [Summary(""成员 "" Summary 注释 ???? &lt;para&gt;aaa&lt;/para&gt; aaa"")]
@@ -234,11 +234,11 @@ namespace Runestone.AesirInspector.Editor.Tests
         public void MethodSummary_SyncAddsAttribute()
         {
             ProcessAndAssert(MethodSummaryCode, XmlSummaryTool.ProcessMode.SyncSummary,
-                @"using Runestone.AesirInspector;
+                @"using Runestone.ScriptDocGenerator;
 using System;
 using UnityEngine;
 
-namespace Runestone.AesirInspector.Editor.Tests
+namespace Runestone.ScriptDocGenerator.Editor.Tests
 {
     public class TestMemberSummary : MonoBehaviour
     {
@@ -262,11 +262,11 @@ namespace Runestone.AesirInspector.Editor.Tests
         public void MethodSummary_ReplaceReplacesTagWithAttribute()
         {
             ProcessAndAssert(MethodSummaryCode, XmlSummaryTool.ProcessMode.ReplaceSummary,
-                @"using Runestone.AesirInspector;
+                @"using Runestone.ScriptDocGenerator;
 using System;
 using UnityEngine;
 
-namespace Runestone.AesirInspector.Editor.Tests
+namespace Runestone.ScriptDocGenerator.Editor.Tests
 {
     public class TestMemberSummary : MonoBehaviour
     {
@@ -288,9 +288,9 @@ namespace Runestone.AesirInspector.Editor.Tests
         {
             ProcessAndAssert(MultiLineAttrCode, XmlSummaryTool.ProcessMode.SyncSummary, @"using System;
 using UnityEngine;
-using Runestone.AesirInspector;
+using Runestone.ScriptDocGenerator;
 
-namespace Runestone.AesirInspector.Editor.Tests
+namespace Runestone.ScriptDocGenerator.Editor.Tests
 {
     /// <summary>
     /// 测试移除 ChineseSummary
@@ -317,9 +317,9 @@ namespace Runestone.AesirInspector.Editor.Tests
         {
             ProcessAndAssert(MultiLineAttrCode, XmlSummaryTool.ProcessMode.ReplaceSummary, @"using System;
 using UnityEngine;
-using Runestone.AesirInspector;
+using Runestone.ScriptDocGenerator;
 
-namespace Runestone.AesirInspector.Editor.Tests
+namespace Runestone.ScriptDocGenerator.Editor.Tests
 {
     [Summary(""测试移除 ChineseSummary"")]
     [Obsolete(""临时方法"")]
@@ -340,7 +340,7 @@ namespace Runestone.AesirInspector.Editor.Tests
         {
             var result = new XmlSummaryTool(NoSummaryCode).ParseSourceScript()
                 .GetProcessedSourceScript(XmlSummaryTool.ProcessMode.SyncSummary);
-            Assert.IsTrue(result.Contains("using Runestone.AesirInspector;"));
+            Assert.IsTrue(result.Contains("using Runestone.ScriptDocGenerator;"));
             Assert.IsTrue(result.Contains("public class NoSummaryClass { }"));
         }
 
@@ -349,9 +349,9 @@ namespace Runestone.AesirInspector.Editor.Tests
         {
             ProcessAndAssert(MultiLineAttrCode, XmlSummaryTool.ProcessMode.RemoveSummary, @"using System;
 using UnityEngine;
-using Runestone.AesirInspector;
+using Runestone.ScriptDocGenerator;
 
-namespace Runestone.AesirInspector.Editor.Tests
+namespace Runestone.ScriptDocGenerator.Editor.Tests
 {
     /// <summary>
     /// 测试移除 ChineseSummary
@@ -386,9 +386,9 @@ namespace Runestone.AesirInspector.Editor.Tests
         public void Preprocessor_SyncAddsAttributeInsideBlock()
         {
             ProcessAndAssert(PreprocessorCode, XmlSummaryTool.ProcessMode.SyncSummary, @"using System;
-using Runestone.AesirInspector;
+using Runestone.ScriptDocGenerator;
 
-namespace Runestone.AesirInspector.Editor.Tests
+namespace Runestone.ScriptDocGenerator.Editor.Tests
 {
     /// <summary>
     /// 编辑器工具类
@@ -412,9 +412,9 @@ namespace Runestone.AesirInspector.Editor.Tests
         public void Preprocessor_ReplaceReplacesTagInsideBlock()
         {
             ProcessAndAssert(PreprocessorCode, XmlSummaryTool.ProcessMode.ReplaceSummary, @"using System;
-using Runestone.AesirInspector;
+using Runestone.ScriptDocGenerator;
 
-namespace Runestone.AesirInspector.Editor.Tests
+namespace Runestone.ScriptDocGenerator.Editor.Tests
 {
     [Summary(""编辑器工具类"")]
     public class TestPreprocessor
@@ -432,9 +432,9 @@ namespace Runestone.AesirInspector.Editor.Tests
         public void Preprocessor_RemoveDeletesAttributeInsideBlock()
         {
             ProcessAndAssert(PreprocessorCode, XmlSummaryTool.ProcessMode.RemoveSummary, @"using System;
-using Runestone.AesirInspector;
+using Runestone.ScriptDocGenerator;
 
-namespace Runestone.AesirInspector.Editor.Tests
+namespace Runestone.ScriptDocGenerator.Editor.Tests
 {
     /// <summary>
     /// 编辑器工具类
@@ -456,10 +456,10 @@ namespace Runestone.AesirInspector.Editor.Tests
         public void SingleLineSummary_SyncAddsAttribute()
         {
             ProcessAndAssert(SingleLineSummaryCode, XmlSummaryTool.ProcessMode.SyncSummary,
-                @"using Runestone.AesirInspector;
+                @"using Runestone.ScriptDocGenerator;
 using System;
 
-namespace Runestone.AesirInspector.Editor.Tests
+namespace Runestone.ScriptDocGenerator.Editor.Tests
 {
     /// <summary>单行 summary 测试</summary>
     [Summary(""单行 summary 测试"")]
@@ -473,10 +473,10 @@ namespace Runestone.AesirInspector.Editor.Tests
         public void SingleLineSummary_ReplaceReplacesTagWithAttribute()
         {
             ProcessAndAssert(SingleLineSummaryCode, XmlSummaryTool.ProcessMode.ReplaceSummary,
-                @"using Runestone.AesirInspector;
+                @"using Runestone.ScriptDocGenerator;
 using System;
 
-namespace Runestone.AesirInspector.Editor.Tests
+namespace Runestone.ScriptDocGenerator.Editor.Tests
 {
     [Summary(""单行 summary 测试"")]
     [Serializable]
@@ -490,9 +490,9 @@ namespace Runestone.AesirInspector.Editor.Tests
         {
             ProcessAndAssert(MixedSingleMultiLineCode, XmlSummaryTool.ProcessMode.SyncSummary,
                 @"using System;
-using Runestone.AesirInspector;
+using Runestone.ScriptDocGenerator;
 
-namespace Runestone.AesirInspector.Editor.Tests
+namespace Runestone.ScriptDocGenerator.Editor.Tests
 {
     /// <summary>类级别单行</summary>
     [Summary(""类级别单行"")]
@@ -517,9 +517,9 @@ namespace Runestone.AesirInspector.Editor.Tests
         {
             ProcessAndAssert(MixedSingleMultiLineCode, XmlSummaryTool.ProcessMode.ReplaceSummary,
                 @"using System;
-using Runestone.AesirInspector;
+using Runestone.ScriptDocGenerator;
 
-namespace Runestone.AesirInspector.Editor.Tests
+namespace Runestone.ScriptDocGenerator.Editor.Tests
 {
     [Summary(""类级别单行"")]
     public class TestMixed

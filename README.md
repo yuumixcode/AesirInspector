@@ -4,7 +4,9 @@
 [![Version](https://img.shields.io/badge/version-0.14.0-blue.svg)](Assets/Runestone/AesirInspector/CHANGELOG.md)
 [![Install via Git URL](https://img.shields.io/badge/UPM-Git%20URL-blueviolet.svg)](#通过-git-url-安装)
 
-本仓库是一个 **Unity 工程项目仓库**，托管编辑器扩展包 **Aesir Inspector** —— 提供双语 Inspector 特性、脚本文档生成器、XML Summary 同步工具、安全编辑器工具集与扩展包管理器，基于 Odin Inspector（硬依赖）实现增强能力。
+本仓库是一个 **Unity 工程项目仓库**，托管编辑器扩展包 **Aesir Inspector** —— 提供双语 Inspector 特性、安全编辑器工具集与扩展包管理器，基于 Odin Inspector（硬依赖）实现增强能力。
+
+仓库内另有独立工具 **Script Doc Generator**（[`Assets/ScriptDocGenerator/`](Assets/ScriptDocGenerator/README.md)，脚本文档生成器与 XML Summary 同步工具），已脱离 Aesir Inspector 包独立维护。
 
 包本体位于 `Assets/Runestone/AesirInspector/`，是一个完整、自包含的 Unity Custom Package，因此本仓库同时支持三种使用方式：
 
@@ -29,6 +31,10 @@ AesirInspector/                        # 仓库根目录 = Unity 工程根目录
 │           ├── Samples~/              # 示例（UPM Samples 标签页按需导入）
 │           ├── Documentation~/        # 包文档（英文 README / CHANGELOG、开发者指南等）
 │           └── package.json           # UPM 包描述（cn.runestone.aesir-inspector）
+│   └── ScriptDocGenerator/            # Script Doc Generator 独立工具（非 UPM 包）
+│       ├── Editor/                    # 编辑器程序集（Runestone.ScriptDocGenerator.Editor）
+│       ├── Runtime/                   # 运行时程序集（Runestone.ScriptDocGenerator）
+│       └── Tests/                     # 单元测试（Editor）
 ├── Packages/                          # 工程依赖清单（manifest.json）
 ├── Scripts/                           # 导出与发布脚本（export-package.sh）
 ├── ProjectSettings/                   # Unity 工程设置
@@ -68,7 +74,7 @@ AesirInspector/                        # 仓库根目录 = Unity 工程根目录
    ```
 
 2. 用 Unity（2022.3.62f3c1 或更高版本）打开仓库根目录。
-3. 包源码位于 `Assets/Runestone/AesirInspector/`；单元测试位于 `Tests/Editor/` 与 `Tests/Runtime/`，通过 Test Runner 运行。
+3. 包源码位于 `Assets/Runestone/AesirInspector/`；包单元测试位于其 `Tests/Runtime/`，Script Doc Generator 的单元测试位于 `Assets/ScriptDocGenerator/Tests/Editor/`，通过 Test Runner 运行。
 
 ## 导出 .unitypackage
 
@@ -90,6 +96,7 @@ AesirInspector/                        # 仓库根目录 = Unity 工程根目录
 | 包说明（英文） | [Assets/Runestone/AesirInspector/Documentation~/README_EN.md](Assets/Runestone/AesirInspector/Documentation~/README_EN.md) |
 | 变更日志 | [Assets/Runestone/AesirInspector/CHANGELOG.md](Assets/Runestone/AesirInspector/CHANGELOG.md) |
 | 开发者指南 | [Assets/Runestone/AesirInspector/Documentation~/development.md](Assets/Runestone/AesirInspector/Documentation~/development.md) |
+| Script Doc Generator 说明 | [Assets/ScriptDocGenerator/README.md](Assets/ScriptDocGenerator/README.md) |
 | 贡献指南 | [CONTRIBUTING.md](CONTRIBUTING.md) |
 
 ## 环境依赖
@@ -103,7 +110,7 @@ AesirInspector/                        # 仓库根目录 = Unity 工程根目录
 
 | 项目 | 作者 | 许可 | 用途 |
 |------|------|------|------|
-| [JakePineOdinTools](https://github.com/JakePineGames/JakePineOdinTools) | Jake Pine | MIT | Odin 自动 Tooltip 与源码文件分析工具（`SourceFileAnalyzerUtility`）的来源，集成时已简化 |
+| [JakePineOdinTools](https://github.com/JakePineGames/JakePineOdinTools) | Jake Pine | MIT | Odin 自动 Tooltip 与源码文件分析工具（`SourceFileAnalyzerUtility`，现位于 Script Doc Generator）的来源，集成时已简化 |
 | [public-unity-package-exporter](https://github.com/Guardingpearsoftware/public-unity-package-exporter) | Guarding Pear Software | MIT | `.unitypackage` 导出工具，供 `Scripts/export-package.sh` 与 CI 使用 |
 | [Unity-Improved-Timers](https://github.com/adammyhre/Unity-Improved-Timers) | Git-Amend | MIT（附加条款） | 扩展包管理器中提供安装的第三方扩展包 |
 

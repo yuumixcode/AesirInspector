@@ -1,9 +1,9 @@
 {
-    "name": "Runestone.AesirInspector.Editor.Tests",
-    "rootNamespace": "Runestone.AesirInspector.Editor.Tests",
+    "name": "Runestone.ScriptDocGenerator.Editor.Tests",
+    "rootNamespace": "Runestone.ScriptDocGenerator.Editor.Tests",
     "references": [
-        "Runestone.AesirInspector",
-        "Runestone.AesirInspector.Editor",
+        "Runestone.ScriptDocGenerator",
+        "Runestone.ScriptDocGenerator.Editor",
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner"
     ],

@@ -11,19 +11,18 @@ using System.IO;
 using System.Text.RegularExpressions;
 using UnityEditor;
 
-namespace Runestone.AesirInspector.Editor
+namespace Runestone.ScriptDocGenerator.Editor
 {
     /// <summary>
-    /// 源文件查找与成员名提取工具。通过 AssetDatabase 定位类型的 .cs 源文件，
-    /// 返回 <see cref="SourceFileEntry" /> 数组（路径 + 代码内容）。
+    /// 源文件查找与成员名提取工具。
+    /// 查找链路：<see cref="ScriptAssemblyFilter" /> 程序集过滤 →
+    /// AssetDatabase 按名搜索 + <see cref="MonoScript.GetClass()" /> 验证（单遍，partial 全收集）→
+    /// <see cref="ProjectScriptIndex" /> 内容索引兜底（文件名与类型名不一致的场景，全项目仅扫描一次）。
+    /// 非 partial 场景返回唯一匹配；partial 类型返回全部声明文件。
     /// </summary>
     public static class SourceFileAnalyzerUtility
     {
-        static readonly Dictionary<Type, SourceFileEntry[]> _sourceFilesCache =
-            new Dictionary<Type, SourceFileEntry[]>();
-
-        static readonly Regex _typeDefinitionRegex = new Regex(
-            @"\b(class|struct|enum|interface)\s+(\w+)", RegexOptions.Compiled);
+        static readonly Dictionary<Type, string[]> _sourcePathsCache = new Dictionary<Type, string[]>();
 
         static readonly Regex _memberDeclRegex = new Regex(
             @"(?:public|private|protected|internal|\s|static|readonly|const|volatile|new|override|virtual|abstract|sealed|async|partial)*\s+\S+\s+(\w+)\s*[{;=\(]",
@@ -41,6 +40,14 @@ namespace Runestone.AesirInspector.Editor
             "abstract", "sealed", "async", "partial", "event", "null"
         };
 
+        // 这些关键字不可能出现在成员声明的行首——命中即视为语句行，直接放弃提取，
+        // 防止悬空 /// 文档被错误归属到局部变量（如 var x = 1; 提取出 "x"）
+        static readonly HashSet<string> _statementStarterKeywords = new HashSet<string>(StringComparer.Ordinal)
+        {
+            "var", "using", "return", "if", "else", "while", "for", "foreach", "do", "switch",
+            "case", "break", "continue", "throw", "new", "yield", "await", "lock", "goto"
+        };
+
         static SourceFileAnalyzerUtility() => AssemblyReloadEvents.afterAssemblyReload += ClearCache;
 
         /// <summary>
@@ -48,35 +55,72 @@ namespace Runestone.AesirInspector.Editor
         /// </summary>
         public static void ClearCache()
         {
-            _sourceFilesCache.Clear();
+            _sourcePathsCache.Clear();
         }
 
         /// <summary>
-        /// 获取类型对应的源文件条目数组（路径 + 代码内容），结果会被缓存。
+        /// 获取类型对应的源文件条目数组（路径 + 代码内容）。
+        /// 兼容包装：每次现读文件内容，不在静态缓存中驻留行数组（内容由解析结果缓存承接）。
         /// </summary>
         public static SourceFileEntry[] GetSourceFiles(Type type)
         {
-            if (type == null)
+            var paths = FindSourceFilePaths(type);
+            if (paths.Length == 0)
             {
-                return null;
+                return Array.Empty<SourceFileEntry>();
             }
 
-            if (_sourceFilesCache.TryGetValue(type, out var cached))
+            var entries = new List<SourceFileEntry>(paths.Length);
+            foreach (var path in paths)
+            {
+                try
+                {
+                    var fullPath = Path.GetFullPath(path);
+                    if (File.Exists(fullPath))
+                    {
+                        entries.Add(new SourceFileEntry(path, File.ReadAllLines(fullPath)));
+                    }
+                }
+                catch
+                {
+                    // IO 异常忽略，跳过该文件
+                }
+            }
+
+            return entries.ToArray();
+        }
+
+        /// <summary>
+        /// 查找类型对应的源文件相对路径（Assets/ 开头），结果按类型缓存。
+        /// 引擎模块 / 预编译 DLL 类型直接返回空数组（不可能存在项目源码）。
+        /// </summary>
+        public static string[] FindSourceFilePaths(Type type)
+        {
+            if (type == null)
+            {
+                return Array.Empty<string>();
+            }
+
+            if (_sourcePathsCache.TryGetValue(type, out var cached))
             {
                 return cached;
             }
 
-            var entries = FindSourceFiles(type);
-            _sourceFilesCache[type] = entries;
-            return entries;
+            var paths = FindSourceFilePathsUncached(type);
+            _sourcePathsCache[type] = paths;
+            return paths;
         }
 
-        /// <summary>
-        /// 通过 AssetDatabase 查找类型对应的 .cs 源文件。
-        /// 非 partial 类型找到即停；partial 类型读取所有匹配脚本。
-        /// </summary>
-        public static SourceFileEntry[] FindSourceFiles(Type type)
+        static string[] FindSourceFilePathsUncached(Type type)
         {
+            // 前置程序集过滤：非脚本程序集（引擎模块、预编译 DLL）不可能存在项目源文件，
+            // 直接短路，避免其触发昂贵的项目级内容扫描
+            if (!ScriptAssemblyFilter.IsScriptAssembly(type.Assembly))
+            {
+                return Array.Empty<string>();
+            }
+
+            // 嵌套类型以最外层声明类型名为搜索名；泛型类型去掉 arity 后缀
             var searchType = type;
             while (searchType.DeclaringType != null)
             {
@@ -90,20 +134,15 @@ namespace Runestone.AesirInspector.Editor
                 typeName = typeName[..backtick];
             }
 
-            var isPartial = IsPartialType(searchType);
-            var guids = AssetDatabase.FindAssets($"{typeName} t:MonoScript");
-            var preferredFileName = typeName + ".cs";
-            var results = new List<SourceFileEntry>();
+            var results = new List<string>();
 
-            // 第一轮：精确文件名 + GetClass 验证
-            foreach (var guid in guids)
+            // 第一轮（合并历史 Round 1/2）：单遍 AssetDatabase 搜索。
+            // GetClass 验证收集全部匹配（含 partial 分部与文件名不一致的部分）；历史实现因
+            // partial 判定恒真导致两轮全量 Load，此处收敛为单遍。
+            // GetClass == null 的未编译脚本按文件名精确一致回退采信。
+            foreach (var guid in AssetDatabase.FindAssets($"{typeName} t:MonoScript"))
             {
                 var path = AssetDatabase.GUIDToAssetPath(guid);
-                if (!path.EndsWith(preferredFileName, StringComparison.OrdinalIgnoreCase))
-                {
-                    continue;
-                }
-
                 var monoScript = AssetDatabase.LoadAssetAtPath<MonoScript>(path);
                 if (monoScript == null)
                 {
@@ -113,130 +152,59 @@ namespace Runestone.AesirInspector.Editor
                 var scriptClass = monoScript.GetClass();
                 if (scriptClass == searchType || (scriptClass == null && monoScript.name == typeName))
                 {
-                    var fullPath = Path.GetFullPath(path);
-                    if (!File.Exists(fullPath))
+                    if (TryGetExistingFullPath(path, out _) && !results.Contains(path))
                     {
-                        continue;
-                    }
-
-                    results.Add(new SourceFileEntry(path, File.ReadAllLines(fullPath)));
-                    if (!isPartial)
-                    {
-                        return results.ToArray();
+                        results.Add(path);
                     }
                 }
             }
 
-            // 第二轮：GetClass 验证（不要求文件名匹配）
-            if (results.Count == 0 || isPartial)
+            if (results.Count > 0)
             {
-                foreach (var guid in guids)
-                {
-                    var path = AssetDatabase.GUIDToAssetPath(guid);
-                    var monoScript = AssetDatabase.LoadAssetAtPath<MonoScript>(path);
-                    if (monoScript == null)
-                    {
-                        continue;
-                    }
-
-                    var scriptClass = monoScript.GetClass();
-                    if (scriptClass == searchType || (scriptClass == null && monoScript.name == typeName))
-                    {
-                        var fullPath = Path.GetFullPath(path);
-                        if (!File.Exists(fullPath))
-                        {
-                            continue;
-                        }
-
-                        if (!results.Exists(e => e.filePath == path))
-                        {
-                            results.Add(new SourceFileEntry(path, File.ReadAllLines(fullPath)));
-                            if (!isPartial)
-                            {
-                                return results.ToArray();
-                            }
-                        }
-                    }
-                }
+                return results.ToArray();
             }
 
-            // 第三轮：内容正则匹配（在 guids 结果中搜索类型定义）
-            if (results.Count == 0)
+            // 第二轮：项目级类型声明索引（历史 Round 3/4 的每类型全项目扫描收敛为一次全局索引）。
+            // 文件名与类型名不一致、接口与他类同文件等场景在此命中；
+            // 期望命名空间非空时按索引内的命名空间集合过滤，排除其他命名空间的同名类型。
+            if (ProjectScriptIndex.TryGetTypePaths(typeName, out var candidates))
             {
-                foreach (var guid in guids)
+                var expectedNamespace = searchType.Namespace;
+                foreach (var candidate in candidates)
                 {
-                    var path = AssetDatabase.GUIDToAssetPath(guid);
-                    var fullPath = Path.GetFullPath(path);
-                    if (!File.Exists(fullPath))
+                    if (results.Contains(candidate))
                     {
                         continue;
                     }
 
-                    var content = File.ReadAllText(fullPath);
-                    foreach (Match match in _typeDefinitionRegex.Matches(content))
+                    if (!string.IsNullOrEmpty(expectedNamespace) &&
+                        !ProjectScriptIndex.FileDeclaresNamespace(candidate, expectedNamespace))
                     {
-                        if (match.Groups[2].Value == typeName)
-                        {
-                            if (!results.Exists(e => e.filePath == path))
-                            {
-                                results.Add(new SourceFileEntry(path, File.ReadAllLines(fullPath)));
-                                if (!isPartial)
-                                {
-                                    return results.ToArray();
-                                }
-                            }
-                        }
+                        continue;
+                    }
+
+                    if (TryGetExistingFullPath(candidate, out _))
+                    {
+                        results.Add(candidate);
                     }
                 }
             }
 
-            // 第四轮：全局内容扫描（当文件名与类型名不匹配时，guids 可能为空）
-            // 例如 Capabilities.cs 中定义了 ICanExecuteCommand，但搜索 "ICanExecuteCommand t:MonoScript" 不会返回该文件
-            // 此轮扫描所有 MonoScript 文件内容，正则匹配类型定义
-            if (results.Count == 0)
+            return results.Count > 0 ? results.ToArray() : Array.Empty<string>();
+        }
+
+        static bool TryGetExistingFullPath(string assetPath, out string fullPath)
+        {
+            fullPath = null;
+            try
             {
-                var allGuids = AssetDatabase.FindAssets("t:MonoScript");
-                foreach (var guid in allGuids)
-                {
-                    var path = AssetDatabase.GUIDToAssetPath(guid);
-                    var fullPath = Path.GetFullPath(path);
-                    if (!File.Exists(fullPath))
-                    {
-                        continue;
-                    }
-
-                    // 快速预过滤：文件扩展名必须是 .cs
-                    if (!path.EndsWith(".cs", StringComparison.OrdinalIgnoreCase))
-                    {
-                        continue;
-                    }
-
-                    try
-                    {
-                        var content = File.ReadAllText(fullPath);
-                        foreach (Match match in _typeDefinitionRegex.Matches(content))
-                        {
-                            if (match.Groups[2].Value == typeName)
-                            {
-                                if (!results.Exists(e => e.filePath == path))
-                                {
-                                    results.Add(new SourceFileEntry(path, File.ReadAllLines(fullPath)));
-                                    if (!isPartial)
-                                    {
-                                        return results.ToArray();
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    catch
-                    {
-                        // ignored
-                    }
-                }
+                fullPath = Path.GetFullPath(assetPath);
+                return File.Exists(fullPath);
             }
-
-            return results.Count > 0 ? results.ToArray() : null;
+            catch
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -253,6 +221,19 @@ namespace Runestone.AesirInspector.Editor
             var sanitized = StripLineComment(declarationLine);
             // 移除行首特性（[Attribute]），使后续正则直接面对声明关键字
             var line = _leadingAttributesRegex.Replace(sanitized, "").TrimStart();
+
+            // 行首语句关键字守卫：局部语句（var/return/if...）不可能构成成员声明
+            var firstWordEnd = 0;
+            while (firstWordEnd < line.Length &&
+                   (char.IsLetterOrDigit(line[firstWordEnd]) || line[firstWordEnd] == '_'))
+            {
+                firstWordEnd++;
+            }
+
+            if (firstWordEnd > 0 && _statementStarterKeywords.Contains(line.Substring(0, firstWordEnd)))
+            {
+                return null;
+            }
 
             // 枚举成员：以标识符开头，后跟 , 或 =（如 "None = 0," "First,"）
             // 枚举声明行不包含修饰符，与普通成员声明的格式不同，需单独处理
@@ -272,7 +253,8 @@ namespace Runestone.AesirInspector.Editor
             //   而正确答案应是 "GetModel"
             var genericMethodMatch = Regex.Match(line, @"\b(\w+)\s*<[^>]+>\s*\(");
             if (genericMethodMatch.Success &&
-                !_declarationKeywords.Contains(genericMethodMatch.Groups[1].Value))
+                !_declarationKeywords.Contains(genericMethodMatch.Groups[1].Value) &&
+                IsValidIdentifier(genericMethodMatch.Groups[1].Value))
             {
                 return genericMethodMatch.Groups[1].Value;
             }
@@ -281,7 +263,7 @@ namespace Runestone.AesirInspector.Editor
             // 适用于大多数单行声明，如 "public int Count;" "public void Foo() { }"
             // 注意：表达式体 "=> " 中的 = 也会被此正则匹配，因此必须放在泛型方法正则之后
             var match = _memberDeclRegex.Match(line);
-            if (match.Success)
+            if (match.Success && IsValidIdentifier(match.Groups[1].Value))
             {
                 return match.Groups[1].Value;
             }
@@ -289,7 +271,8 @@ namespace Runestone.AesirInspector.Editor
             // 简单匹配：任意标识符后跟 { ; = ( 之一
             // 作为通用正则的补充，捕获未被前者匹配的边缘情况
             var simpleMatch = Regex.Match(line, @"(\w+)\s*[{;=\(]");
-            if (simpleMatch.Success && !_declarationKeywords.Contains(simpleMatch.Groups[1].Value))
+            if (simpleMatch.Success && !_declarationKeywords.Contains(simpleMatch.Groups[1].Value) &&
+                IsValidIdentifier(simpleMatch.Groups[1].Value))
             {
                 return simpleMatch.Groups[1].Value;
             }
@@ -379,14 +362,6 @@ namespace Runestone.AesirInspector.Editor
 
             return line;
         }
-
-        static bool IsPartialType(Type type) =>
-            // 检查类型是否标记了 partial（通过反射无法直接获取 partial 关键字，
-            // 但如果同一程序集中存在多个同名类型的 partial 声明，
-            // GetFields/GetMethods 等会合并所有 partial 部分。
-            // 这里用 heuristic：如果类型在多个源文件中定义，就是 partial。
-            // 简化处理：始终读取所有匹配的源文件。
-            true;
     }
 }
 #endif

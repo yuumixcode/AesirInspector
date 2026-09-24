@@ -1,0 +1,345 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab25673c45f6943af87e144e4d0c72c3, type: 3}
+  m_Name: TestBank
+  m_EditorClassIdentifier: 
+  entries:
+  - key: Demo/ProtoUnityExampleSO
+    typeName: Runestone.BankPrototype.ProtoUnityExampleSO
+    checksum: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: dynamicButtonName
+        Entry: 1
+        Data: AAA
+      - Name: tweakValue
+        Entry: 3
+        Data: 333
+      - Name: notes
+        Entry: 7
+        Data: 0|System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib
+      - Name: 
+        Entry: 12
+        Data: 1
+      - Name: 
+        Entry: 1
+        Data: default note
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: curve
+        Entry: 7
+        Data: 1|UnityEngine.AnimationCurve, UnityEngine.CoreModule
+      - Name: 
+        Entry: 7
+        Data: 2|UnityEngine.Keyframe[], UnityEngine.CoreModule
+      - Name: 
+        Entry: 12
+        Data: 2
+      - Name: 
+        Entry: 7
+        Data: UnityEngine.Keyframe, UnityEngine.CoreModule
+      - Name: ver
+        Entry: 3
+        Data: 1
+      - Name: m_Time
+        Entry: 4
+        Data: 0
+      - Name: m_Value
+        Entry: 4
+        Data: 0
+      - Name: m_InTangent
+        Entry: 4
+        Data: 0
+      - Name: m_OutTangent
+        Entry: 4
+        Data: 1
+      - Name: m_TangentMode
+        Entry: 3
+        Data: 0
+      - Name: m_WeightedMode
+        Entry: 3
+        Data: 0
+      - Name: m_InWeight
+        Entry: 4
+        Data: 0
+      - Name: m_OutWeight
+        Entry: 4
+        Data: 0
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: 
+        Entry: 7
+        Data: UnityEngine.Keyframe, UnityEngine.CoreModule
+      - Name: ver
+        Entry: 3
+        Data: 1
+      - Name: m_Time
+        Entry: 4
+        Data: 1
+      - Name: m_Value
+        Entry: 4
+        Data: 1
+      - Name: m_InTangent
+        Entry: 4
+        Data: 1
+      - Name: m_OutTangent
+        Entry: 4
+        Data: 0
+      - Name: m_TangentMode
+        Entry: 3
+        Data: 0
+      - Name: m_WeightedMode
+        Entry: 3
+        Data: 0
+      - Name: m_InWeight
+        Entry: 4
+        Data: 0
+      - Name: m_OutWeight
+        Entry: 4
+        Data: 0
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: 
+        Entry: 3
+        Data: 8
+      - Name: 
+        Entry: 3
+        Data: 8
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: colorGradient
+        Entry: 7
+        Data: 3|UnityEngine.Gradient, UnityEngine.CoreModule
+      - Name: 
+        Entry: 7
+        Data: 4|UnityEngine.GradientAlphaKey[], UnityEngine.CoreModule
+      - Name: 
+        Entry: 12
+        Data: 2
+      - Name: 
+        Entry: 7
+        Data: UnityEngine.GradientAlphaKey, UnityEngine.CoreModule
+      - Name: 
+        Entry: 4
+        Data: 1
+      - Name: 
+        Entry: 4
+        Data: 0
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: 
+        Entry: 7
+        Data: UnityEngine.GradientAlphaKey, UnityEngine.CoreModule
+      - Name: 
+        Entry: 4
+        Data: 1
+      - Name: 
+        Entry: 4
+        Data: 1
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: 
+        Entry: 7
+        Data: 5|UnityEngine.GradientColorKey[], UnityEngine.CoreModule
+      - Name: 
+        Entry: 12
+        Data: 2
+      - Name: 
+        Entry: 7
+        Data: UnityEngine.GradientColorKey, UnityEngine.CoreModule
+      - Name: 
+        Entry: 7
+        Data: UnityEngine.Color, UnityEngine.CoreModule
+      - Name: 
+        Entry: 4
+        Data: 1
+      - Name: 
+        Entry: 4
+        Data: 1
+      - Name: 
+        Entry: 4
+        Data: 1
+      - Name: 
+        Entry: 4
+        Data: 1
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: 
+        Entry: 4
+        Data: 0
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: 
+        Entry: 7
+        Data: UnityEngine.GradientColorKey, UnityEngine.CoreModule
+      - Name: 
+        Entry: 7
+        Data: UnityEngine.Color, UnityEngine.CoreModule
+      - Name: 
+        Entry: 4
+        Data: 1
+      - Name: 
+        Entry: 4
+        Data: 1
+      - Name: 
+        Entry: 4
+        Data: 1
+      - Name: 
+        Entry: 4
+        Data: 1
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: 
+        Entry: 4
+        Data: 1
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: mode
+        Entry: 7
+        Data: 6|UnityEngine.GradientMode, UnityEngine.CoreModule
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: referencedMaterial
+        Entry: 6
+        Data: 
+  - key: Demo/ProtoOdinExampleSO
+    typeName: Runestone.BankPrototype.ProtoOdinExampleSO
+    checksum: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: statDictionary
+        Entry: 7
+        Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Int32,
+          mscorlib]], mscorlib
+      - Name: comparer
+        Entry: 7
+        Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+          mscorlib]], mscorlib
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: 
+        Entry: 12
+        Data: 2
+      - Name: 
+        Entry: 7
+        Data: 
+      - Name: $k
+        Entry: 1
+        Data: attack
+      - Name: $v
+        Entry: 3
+        Data: 12345
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: 
+        Entry: 7
+        Data: 
+      - Name: $k
+        Entry: 1
+        Data: defense
+      - Name: $v
+        Entry: 3
+        Data: 5
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: materialLibrary
+        Entry: 7
+        Data: 2|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[UnityEngine.Material,
+          UnityEngine.CoreModule]], mscorlib
+      - Name: comparer
+        Entry: 9
+        Data: 1
+      - Name: 
+        Entry: 12
+        Data: 0
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+  - key: Demo/ProtoButtonExampleSO
+    typeName: Runestone.BankPrototype.ProtoButtonExampleSO
+    checksum: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: dynamicButtonName
+        Entry: 1
+        Data: Click Me!

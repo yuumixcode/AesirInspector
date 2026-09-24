@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
-using Runestone.AesirInspector;
+using Runestone.ScriptDocGenerator;
 
-namespace Runestone.AesirInspector.Editor.Tests
+namespace Runestone.ScriptDocGenerator.Editor.Tests
 {
     /// <summary>
     /// OdinSourceFileHelper 与 SourceSummaryParser 的局限性测试。
@@ -631,15 +631,15 @@ public class NoNamespaceClass
         }
 
         // ─────────────────────────────────────────────────────────────
-        // 10. 字符串中的假 /// （已知局限，记录为预期行为）
+        // 10. 字符串中的假 ///（逐字字符串感知）
         // ─────────────────────────────────────────────────────────────
 
         /// <summary>
-        /// 逐字字符串中的 /// 会被误判（已知局限）。
-        /// 此测试记录该已知行为，防止回归。
+        /// 多行逐字字符串（@""...""）中的 /// 不应被误判为 XML 文档注释。
+        /// 扫描器维护跨行的逐字字符串状态，其内容行全部净化置空。
         /// </summary>
         [Test]
-        public void StringLiteral_WithTripleSlash_KnownLimitation()
+        public void StringLiteral_MultiLineVerbatim_FakeDocIgnored()
         {
             const string source = @"namespace TestNS
 {
@@ -647,20 +647,51 @@ public class NoNamespaceClass
     {
         public void Method()
         {
-            string s = ""line1
+            string s = @""line1
 /// <summary>字符串内的假 summary</summary>
 line3"";
         }
+
+        /// <summary>真 summary</summary>
+        public void RealMethod() { }
     }
 }
 ";
             var result = Parse(source);
 
-            // 已知局限：多行逐字字符串中的 /// 会被误判。
-            // 此测试仅验证不会崩溃，结果可能包含假条目。
-            // 关键断言：真实成员不应被假 summary 覆盖。
-            Assert.IsFalse(result.ContainsKey("TestNS.StringLimitationClass"),
-                "类自身无 XML summary，不应出现在结果中");
+            // 逐字字符串内的 /// 不应被收集为文档注释
+            Assert.IsFalse(result.ContainsValue("字符串内的假 summary"),
+                "逐字字符串内的假 /// 不应被解析");
+            // 真实成员的 summary 应被正确解析
+            Assert.AreEqual("真 summary", result["TestNS.StringLimitationClass.RealMethod()"]);
+        }
+
+        /// <summary>
+        /// 字符串字面量中的 /* 与 */ 不应翻转块注释状态。
+        /// </summary>
+        [Test]
+        public void StringLiteral_BlockCommentMarkersInString_Ignored()
+        {
+            const string source = @"namespace TestNS
+{
+    public class StringBlockClass
+    {
+        public void Method()
+        {
+            string a = ""/*"";
+            string b = ""*/"";
+        }
+
+        /// <summary>真实成员的 summary</summary>
+        public int RealMember;
+    }
+}
+";
+            var result = Parse(source);
+
+            Assert.AreEqual(1, result.Count,
+                "字符串内的 /* 不应吞掉后续真实文档注释");
+            Assert.AreEqual("真实成员的 summary", result["TestNS.StringBlockClass.RealMember"]);
         }
 
         // ─────────────────────────────────────────────────────────────
@@ -919,6 +950,358 @@ line3"";
             Assert.AreEqual("单行声明的方法", result["TestNS.MultiLineMethodClass.DoSomething(int)"]);
             Assert.AreEqual("多行声明的方法（参数跨两行）", result["TestNS.MultiLineMethodClass.DoSomething(int, string)"]);
             Assert.AreEqual("多行声明的方法（每参数一行）", result["TestNS.MultiLineMethodClass.DoSomething(int, string, bool)"]);
+        }
+
+        // ─────────────────────────────────────────────────────────────
+        // 15. 特性与声明同行 / 多行特性
+        // ─────────────────────────────────────────────────────────────
+
+        /// <summary>
+        /// 特性与类型/成员声明写在同一行时，summary 应被正确关联（历史实现整行跳过导致丢失）。
+        /// </summary>
+        [Test]
+        public void AttributeOnSameLineAsDeclaration_SummaryParsed()
+        {
+            const string source = @"namespace TestNS
+{
+    /// <summary>同行特性的类</summary>
+    [System.Serializable] class SameLineAttrClass
+    {
+        /// <summary>同行特性的字段</summary>
+        [System.Obsolete] public int AttributedField;
+    }
+}
+";
+            var result = Parse(source);
+
+            Assert.AreEqual("同行特性的类", result["TestNS.SameLineAttrClass"]);
+            Assert.AreEqual("同行特性的字段", result["TestNS.SameLineAttrClass.AttributedField"]);
+        }
+
+        /// <summary>
+        /// 特性参数跨多行时，summary 应关联到特性之后的声明。
+        /// </summary>
+        [Test]
+        public void MultiLineAttribute_SummaryAssociated()
+        {
+            const string source = @"namespace TestNS
+{
+    public class MultiLineAttrClass
+    {
+        /// <summary>多行特性方法</summary>
+        [System.Obsolete(
+            ""长文本""
+        )]
+        public void MultiLineAttrMethod() { }
+    }
+}
+";
+            var result = Parse(source);
+
+            Assert.AreEqual("多行特性方法", result["TestNS.MultiLineAttrClass.MultiLineAttrMethod()"]);
+        }
+
+        // ─────────────────────────────────────────────────────────────
+        // 16. 构造函数键
+        // ─────────────────────────────────────────────────────────────
+
+        /// <summary>
+        /// 构造函数应同时发射 #ctor 键与自然名（类型名）键，各附参数类型键与参数计数键。
+        /// </summary>
+        [Test]
+        public void Constructor_SummaryEmitsCtorKeys()
+        {
+            const string source = @"namespace TestNS
+{
+    public class CtorClass
+    {
+        /// <summary>带参构造</summary>
+        public CtorClass(int value) { }
+
+        /// <summary>默认构造</summary>
+        public CtorClass() { }
+    }
+}
+";
+            var result = Parse(source);
+
+            Assert.AreEqual("带参构造", result["TestNS.CtorClass.#ctor(int)"]);
+            Assert.AreEqual("带参构造", result["TestNS.CtorClass.#ctor(1)"]);
+            Assert.AreEqual("带参构造", result["TestNS.CtorClass.CtorClass(int)"]);
+            Assert.AreEqual("默认构造", result["TestNS.CtorClass.#ctor()"]);
+            Assert.AreEqual("默认构造", result["TestNS.CtorClass.#ctor(0)"]);
+        }
+
+        // ─────────────────────────────────────────────────────────────
+        // 17. 参数计数键（对源码书写格式免疫的重载区分）
+        // ─────────────────────────────────────────────────────────────
+
+        /// <summary>
+        /// 每个带参方法除参数类型键外还应发射参数计数键 Member(N)；
+        /// 泛型参数中的逗号不应拆分参数（按 &lt;&gt; [] () 深度切分）。
+        /// </summary>
+        [Test]
+        public void Overloads_EmitParamCountKeys()
+        {
+            const string source = @"namespace TestNS
+{
+    public class OverloadCountClass
+    {
+        /// <summary>限定名版本</summary>
+        public void DoWork(System.Collections.Generic.List<int> list) { }
+
+        /// <summary>简单版本</summary>
+        public void DoWork(int count, string name) { }
+
+        /// <summary>泛型字典版本</summary>
+        public void DoWork(Dictionary<string, int> map, bool flag, int extra) { }
+    }
+}
+";
+            var result = Parse(source);
+
+            Assert.AreEqual("限定名版本",
+                result["TestNS.OverloadCountClass.DoWork(System.Collections.Generic.List<int>)"]);
+            Assert.AreEqual("限定名版本", result["TestNS.OverloadCountClass.DoWork(1)"]);
+            Assert.AreEqual("简单版本", result["TestNS.OverloadCountClass.DoWork(int, string)"]);
+            Assert.AreEqual("简单版本", result["TestNS.OverloadCountClass.DoWork(2)"]);
+            Assert.AreEqual("泛型字典版本",
+                result["TestNS.OverloadCountClass.DoWork(Dictionary<string, int>, bool, int)"]);
+            Assert.AreEqual("泛型字典版本", result["TestNS.OverloadCountClass.DoWork(3)"]);
+        }
+
+        // ─────────────────────────────────────────────────────────────
+        // 18. 嵌套类型规范键（Outer.Inner）与扁平旧键并存
+        // ─────────────────────────────────────────────────────────────
+
+        /// <summary>
+        /// 嵌套类型的成员应发射规范键 Namespace.Outer.Inner.Member（消除同名嵌套类型冲突），
+        /// 同时保留扁平旧键 Namespace.Inner.Member。
+        /// </summary>
+        [Test]
+        public void NestedType_CanonicalAndLegacyKeys()
+        {
+            const string source = @"namespace TestNS
+{
+    public class OuterHost
+    {
+        public class InnerHost
+        {
+            /// <summary>嵌套成员</summary>
+            public void InnerMethod() { }
+        }
+    }
+}
+";
+            var result = Parse(source);
+
+            Assert.AreEqual("嵌套成员", result["TestNS.OuterHost.InnerHost.InnerMethod()"]);
+            Assert.AreEqual("嵌套成员", result["TestNS.InnerHost.InnerMethod()"]);
+        }
+
+        /// <summary>
+        /// 不同外部类下的同名嵌套类型，规范键应能区分（扁平旧键会冲突）。
+        /// </summary>
+        [Test]
+        public void NestedSameNameTypes_CanonicalKeysDisambiguate()
+        {
+            const string source = @"namespace TestNS
+{
+    public class HostA
+    {
+        /// <summary>A 的结果</summary>
+        public class Result { }
+    }
+
+    public class HostB
+    {
+        /// <summary>B 的结果</summary>
+        public class Result { }
+    }
+}
+";
+            var result = Parse(source);
+
+            Assert.AreEqual("A 的结果", result["TestNS.HostA.Result"]);
+            Assert.AreEqual("B 的结果", result["TestNS.HostB.Result"]);
+        }
+
+        // ─────────────────────────────────────────────────────────────
+        // 19. 结构化 param / returns / remarks 解析
+        // ─────────────────────────────────────────────────────────────
+
+        /// <summary>
+        /// ParseDocComments 应解析 &lt;param&gt;/&lt;returns&gt;/&lt;remarks&gt; 标签到结构化结果，
+        /// 参数文档按参数名（而非参数类型）关联。
+        /// </summary>
+        [Test]
+        public void ParamAndReturnsTags_ParsedIntoStructuredDoc()
+        {
+            const string source = @"namespace TestNS
+{
+    public class ParamDocClass
+    {
+        /// <summary>计算方法</summary>
+        /// <param name=""count"">数量</param>
+        /// <param name=""name"">名称</param>
+        /// <returns>计算结果</returns>
+        /// <remarks>备注文本</remarks>
+        public int Compute(int count, string name) { return 0; }
+    }
+}
+";
+            var doc = SourceSummaryParser.ParseDocComments(new[] { MakeEntry(source) });
+            var key = "TestNS.ParamDocClass.Compute(int, string)";
+
+            Assert.AreEqual("计算方法", doc.Summaries[key]);
+            Assert.AreEqual("数量", doc.ParamSummaries[key]["count"]);
+            Assert.AreEqual("名称", doc.ParamSummaries[key]["name"]);
+            Assert.AreEqual("计算结果", doc.ReturnsSummaries[key]);
+            Assert.AreEqual("备注文本", doc.RemarksSummaries[key]);
+        }
+
+        /// <summary>
+        /// ParseSummaryText 应将 paramref/typeparamref 替换为名称，保留 &lt;c&gt; 内容，解码 XML 实体。
+        /// </summary>
+        [Test]
+        public void ParseSummaryText_ParamRefInlineCodeEntity()
+        {
+            var lines = new List<string>
+            {
+                "<summary>",
+                "如果 <paramref name=\"count\"/> 为 <c>0</c> 返回 &lt;null&gt;",
+                "</summary>"
+            };
+            var result = SourceSummaryParser.ParseSummaryText(lines);
+
+            Assert.AreEqual("如果 count 为 0 返回 <null>", result);
+        }
+
+        // ─────────────────────────────────────────────────────────────
+        // 20. 运算符与索引器
+        // ─────────────────────────────────────────────────────────────
+
+        /// <summary>
+        /// 运算符应发射反射元数据名键（op_Addition 等），索引器发射 Item 键（与 PropertyInfo.Name 对齐）。
+        /// </summary>
+        [Test]
+        public void OperatorAndIndexer_SummaryKeys()
+        {
+            const string source = @"namespace TestNS
+{
+    public class OpIndexClass
+    {
+        /// <summary>加法运算符</summary>
+        public static OpIndexClass operator +(OpIndexClass a, OpIndexClass b) { return a; }
+
+        /// <summary>索引器</summary>
+        public int this[int index] => index;
+    }
+}
+";
+            var result = Parse(source);
+
+            Assert.AreEqual("加法运算符",
+                result["TestNS.OpIndexClass.op_Addition(OpIndexClass, OpIndexClass)"]);
+            Assert.AreEqual("加法运算符", result["TestNS.OpIndexClass.op_Addition(2)"]);
+            Assert.AreEqual("索引器", result["TestNS.OpIndexClass.Item"]);
+        }
+
+        // ─────────────────────────────────────────────────────────────
+        // 21. record 声明
+        // ─────────────────────────────────────────────────────────────
+
+        /// <summary>
+        /// record 与 record struct 声明应被识别为类型（历史实现仅识别 class/struct/enum/interface）。
+        /// </summary>
+        [Test]
+        public void RecordType_SummaryParsed()
+        {
+            const string source = @"namespace TestNS
+{
+    /// <summary>人员记录</summary>
+    public record PersonRecord(string Name);
+
+    /// <summary>点记录</summary>
+    public record struct PointRecord(int X);
+}
+";
+            var result = Parse(source);
+
+            Assert.AreEqual("人员记录", result["TestNS.PersonRecord"]);
+            Assert.AreEqual("点记录", result["TestNS.PointRecord"]);
+        }
+
+        // ─────────────────────────────────────────────────────────────
+        // 22. 误归属防护与命名空间保护
+        // ─────────────────────────────────────────────────────────────
+
+        /// <summary>
+        /// 方法体内的悬空 /// 文档不应被归属到局部变量。
+        /// 扫描器按花括号深度判定"直接成员"，深层语句的文档直接丢弃。
+        /// </summary>
+        [Test]
+        public void DanglingDocInsideMethodBody_NotAttached()
+        {
+            const string source = @"namespace TestNS
+{
+    public class DanglingDocClass
+    {
+        public void Method()
+        {
+            /// <summary>方法内悬空注释</summary>
+            var x = 1;
+        }
+    }
+}
+";
+            var result = Parse(source);
+
+            Assert.AreEqual(0, result.Count, "方法体内的悬空文档不应产生任何键");
+            Assert.IsFalse(result.ContainsKey("TestNS.DanglingDocClass.x"));
+        }
+
+        /// <summary>
+        /// 块注释中的 namespace 关键字不应污染命名空间上下文。
+        /// </summary>
+        [Test]
+        public void BlockComment_NamespaceKeyword_Ignored()
+        {
+            const string source = @"namespace TestNS
+{
+    /* namespace FakeNS */
+    public class NsGuardClass
+    {
+        /// <summary>命名空间保护</summary>
+        public void GuardMethod() { }
+    }
+}
+";
+            var result = Parse(source);
+
+            Assert.AreEqual("命名空间保护", result["TestNS.NsGuardClass.GuardMethod()"]);
+            Assert.IsFalse(result.ContainsKey("FakeNS.NsGuardClass.GuardMethod()"));
+        }
+
+        /// <summary>
+        /// 文件级命名空间（namespace X;）下的类型与成员键应包含命名空间前缀。
+        /// </summary>
+        [Test]
+        public void FileScopedNamespace_Supported()
+        {
+            const string source = @"namespace TestNS;
+
+/// <summary>文件级命名空间的类</summary>
+public class FileScopedClass
+{
+    /// <summary>文件级命名空间的方法</summary>
+    public void FileScopedMethod() { }
+}
+";
+            var result = Parse(source);
+
+            Assert.AreEqual("文件级命名空间的类", result["TestNS.FileScopedClass"]);
+            Assert.AreEqual("文件级命名空间的方法", result["TestNS.FileScopedClass.FileScopedMethod()"]);
         }
     }
 }

@@ -8,6 +8,30 @@
 
 ---
 
+## [0.15.0] - 2026-09-09
+
+### ⚠ BREAKING CHANGES（破坏性变更 · 升级前必读 / Read before upgrading）
+
+> **Script Doc Generator 与 Summary 工具已移出本包**，迁移至仓库内独立工具 `Assets/ScriptDocGenerator/`（非 UPM 包）。本包定位收窄为 Odin Inspector 增强库（双语特性、Attribute Overview Pro、安全编辑器工具、扩展包管理器）。
+> The Script Doc Generator and Summary Tool were moved out of this package into the standalone tool at `Assets/ScriptDocGenerator/`.
+
+#### 迁移指南 / Migration Guide
+
+| 范围 / Scope | 旧 / Before | 新 / After |
+|---|---|---|
+| 代码位置 | `Assets/Runestone/AesirInspector/{Runtime,Editor}/ScriptDocGenerator/` | `Assets/ScriptDocGenerator/{Runtime,Editor}/` |
+| 命名空间（Runtime） | `Runestone.AesirInspector`（ScriptDocGenerator 部分） | `Runestone.ScriptDocGenerator` |
+| 命名空间（Editor） | `Runestone.AesirInspector.Editor`（ScriptDocGenerator 部分） | `Runestone.ScriptDocGenerator.Editor` |
+| 程序集 | 并入 `Runestone.AesirInspector(.Editor)` | 独立 `Runestone.ScriptDocGenerator(.Editor)` |
+| 菜单 | `Tools → Aesir → Inspector → Script Doc Generator`、`Assets → Aesir Inspector → …` | `Tools → Script Doc Generator`、`Assets → Script Doc Generator → …` |
+| 编辑器资源路径 | `Assets/Editor Default Resources/Aesir Inspector/…` | `Assets/Editor Default Resources/Script Doc Generator/…` |
+| `[Summary]` / `[ReferenceLinkURL]` 特性 | `Runestone.AesirInspector` | `Runestone.ScriptDocGenerator` |
+
+### Changed
+
+- 工具面板 UI 移除双语特性，改为纯 Odin 特性（仅中文文本）。/ The tool panel UI no longer uses the bilingual attributes; plain Odin attributes with Chinese text are used instead.
+- 移除 `AesirInspectorModuleAssetMarkerSO`（其唯一使用者为 Script Doc Generator，由工具自带的 `ScriptDocGeneratorAssetMarkerSO` 替代）。/ Removed `AesirInspectorModuleAssetMarkerSO` (its only consumer was Script Doc Generator, replaced by the tool's own `ScriptDocGeneratorAssetMarkerSO`).
+
 ## [0.14.1] - 2026-09-05
 
 ### Fixed

@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 
-namespace Runestone.AesirInspector
+namespace Runestone.ScriptDocGenerator
 {
     /// <summary>
     /// 特性过滤器接口，用于过滤掉不需要的特性
