@@ -1,12 +1,12 @@
 # Aesir Inspector
 
 [English](Documentation~/README_EN.md) | [![license](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE.md)
-[![Version](https://img.shields.io/badge/version-0.14.0-blue.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.16.0-blue.svg)](CHANGELOG.md)
 [![Install via Git URL](https://img.shields.io/badge/UPM-Git%20URL-blueviolet.svg)](#安装说明)
 
 > 📦 **本包是 [Unity-Aesir-Packages](https://github.com/yuumixcode/Unity-Aesir-Packages) monorepo 的一部分**。本包**不依赖**其他 Aesir 子包（独立可装）。
 >
-> ⚠️ **强依赖 [Odin Inspector](https://odininspector.com/)**：本包需要 Odin Inspector 才能正常编译和运行。请确保项目中已安装 Odin Inspector 3.3.x+。
+> ⚠️ **强依赖 [Odin Inspector](https://odininspector.com/)**：本包需要 Odin Inspector 才能正常编译和运行；未安装时程序集因 `ODIN_INSPECTOR` 约束整体跳过编译（不报错）、功能不可用。请确保项目中已安装 Odin Inspector 3.3.x+。
 >
 > 关联包：
 > - **[Aesir Architecture](https://github.com/yuumixcode/Unity-Aesir-Packages)**（独立）
@@ -32,7 +32,7 @@
 2. 点击左上角的 `+` 按钮，选择 `Add package from git URL...`。
 3. 输入以下地址：
    ```
-   https://github.com/yuumixcode/AesirInspector.git?path=Assets/Runestone/AesirInspector
+   https://github.com/yuumixcode/Unity-Aesir-Packages.git?path=/Assets/Runestone/AesirInspector
    ```
 
 ### 通过 manifest.json 安装
@@ -42,7 +42,7 @@
 ```json
 {
   "dependencies": {
-    "cn.runestone.aesir-inspector": "https://github.com/yuumixcode/AesirInspector.git?path=Assets/Runestone/AesirInspector"
+    "cn.runestone.aesir-inspector": "https://github.com/yuumixcode/Unity-Aesir-Packages.git?path=/Assets/Runestone/AesirInspector"
   }
 }
 ```
@@ -55,10 +55,19 @@ Aesir Inspector 会在编辑器加载时自动检测安装方式（UPM / Assets 
 - `IsUpm`：是否通过 UPM 安装。
 - `IsAssetFolder`：是否安装在 Assets 目录中（Asset Store 导入或 Git 子模块）。
 
+### 导入示例（Samples）
+
+本包通过 `Samples~` 提供可直接导入的示例，在 Package Manager 中选中 `Aesir Inspector`，展开 **Samples** 分组后点击对应示例的 `Import` 即可（导入后位于 `Assets/Samples/Aesir Inspector/<版本>/`）：
+
+| 示例 | 说明 |
+|------|------|
+| **Plugin Config Solutions** | ScriptableSingleton 在 Preferences 和 Project 中的使用示例，演示编辑器配置持久化的最佳实践 |
+| **RuntimeInitializeLoadType** | RuntimeInitializeOnLoadMethod 五个初始化时机的执行顺序与最佳实践示例 |
+
 ## 环境依赖
 
 - **Unity**: 2022.3 或更高版本。
-- **Odin Inspector**: 3.3.x 或更高版本（**硬依赖**；未安装时本包无法编译）。
+- **Odin Inspector**: 3.3.x 或更高版本（**硬依赖**；未安装时程序集整体跳过编译，功能不可用）。
 
 ## 核心功能
 
@@ -83,17 +92,9 @@ Aesir Inspector 会在编辑器加载时自动检测安装方式（UPM / Assets 
 | **Syntax Highlighter** | 基于 Odin 内置语法高亮处理器的可视化面板，输入源码即可测试高亮效果并输出富文本标记 |
 | **Quick Create SO** | 在 Project 窗口右键 MonoScript 即可快速生成 ScriptableObject 资源文件，支持多选批量创建 |
 
-### 3. 扩展包管理器 (Extension Package Manager)
-
-快捷安装推荐的 Aesir 系列和其他常用开源 Unity Packages，基于 Git URL 方式。
-
-- **一键安装/移除**：卡片式 UI 展示推荐包的安装状态，点击即可安装或移除。
-- **自动检测**：打开窗口时自动检测已安装包的状态，安装/移除后实时刷新。
-- 通过 `Tools → Aesir → Inspector → Extension Package Manager` 菜单打开。
-
 ## 基础设施
 
-### 4. 双语 UI 特性 (Bilingual Attributes)
+### 3. 双语 UI 特性 (Bilingual Attributes)
 
 提供了一套完整的双语属性装饰器与 Inspector Control，支持在 Inspector 面板中同时显示中文和英文信息。主要面向以下场景：
 
@@ -110,15 +111,15 @@ Aesir Inspector 会在编辑器加载时自动检测安装方式（UPM / Assets 
 - `BilingualHeaderControl` 双语头部信息控件
 - `HorizontalSeparateControl` 水平分隔线控件
 
-### 5. Odin 集成
+### 4. Odin 集成
 
 Odin Inspector 为硬依赖，本包直接使用 Sirenix（Odin）API 提供全部增强能力：
 
 - 双语特性、Inspector Control、Attribute Drawer 与 Processor 直接基于 Odin Attribute/Drawer 体系实现。
-- 特性总览（Attribute Overview Ultra）与扩展包管理器基于 Odin MenuEditorWindow / EditorWindow 构建。
-- 未安装 Odin Inspector 时本包无法编译，请先通过 [odininspector.com](https://odininspector.com/) 安装 Odin 3.3.x+。
+- 特性总览（Attribute Overview Ultra）基于 Odin MenuEditorWindow / EditorWindow 构建。
+- 未安装 Odin Inspector 时程序集整体跳过编译（不报错），功能不可用，请先通过 [odininspector.com](https://odininspector.com/) 安装 Odin 3.3.x+。
 
-### 6. 安全编辑器工具 (Safe Editor Utilities)
+### 5. 安全编辑器工具 (Safe Editor Utilities)
 
 针对 Unity Editor API 进行了安全封装，确保编辑器专用代码在打包后自动剔除。
 
@@ -138,11 +139,11 @@ Odin Inspector 为硬依赖，本包直接使用 Sirenix（Odin）API 提供全�
 | `RegexUtility` | 正则表达式工具：命名空间/类名规范化、邮箱/URL 校验 |
 | `AesirInspectorDebug` | 统一日志输出（Info/Warning/Error，支持前缀），构建后自动剔除；可通过 `AesirInspectorDebugSettings` 配置 |
 
-### 7. 代码风格与规范
+### 6. 代码风格与规范
 
 本项目将代码风格视为与功能同等重要的组成部分。内置严格的代码编写标准与示例，确保团队协作中的代码一致性与可维护性：
 
-- **风格指南**：详情请参阅 `Runtime/Unity/CodeStyle/AesirInspectorCodeStyle.cs`。
+- **风格指南**：详情请参阅 `Runtime/CodeStyle/AesirInspectorCodeStyle.cs`。
 - **设计理念**：良好的代码风格不是可选项，而是项目质量的基石。所有贡献者均需遵循本规范。
 
 ## 使用示例
