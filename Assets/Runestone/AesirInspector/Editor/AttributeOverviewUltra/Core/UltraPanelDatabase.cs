@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
 
@@ -41,8 +39,7 @@ namespace Runestone.AesirInspector.Editor
             }
 
             var panelTypes = TypeCache.GetTypesDerivedFrom<AbstractAttributePanelSO>()
-                .Where(t => !t.IsAbstract && !t.IsInterface)
-                .ToArray();
+                .Where(t => !t.IsAbstract && !t.IsInterface).ToArray();
 
             _panels = new List<AbstractAttributePanelSO>(panelTypes.Length);
             foreach (var type in panelTypes)
@@ -72,6 +69,8 @@ namespace Runestone.AesirInspector.Editor
         /// <summary>
         /// 按银行记录恢复面板选中的示例（无记录或已一致时为空操作）。
         /// 属于状态变更，只允许在 DrawEditor 的 Layout 事件开头调用，遵守 IMGUI 两遍布局契约。
+        /// 记录指向的示例已不在本面板（示例被移除或改名）时丢弃该记录：
+        /// 否则 <see cref="PanelSelectionNeedsRestore" /> 恒为 true，窗口会陷入每帧重绘。
         /// </summary>
         public void RestorePanelSelection(AbstractAttributePanelSO panel)
         {
@@ -82,27 +81,27 @@ namespace Runestone.AesirInspector.Editor
             }
 
             var items = panel.ExamplePreviewItemsForUltra;
-            if (items == null)
+            if (items != null)
             {
-                return;
-            }
-
-            foreach (var item in items)
-            {
-                if (item == null)
+                foreach (var item in items)
                 {
-                    continue;
-                }
+                    if (item == null)
+                    {
+                        continue;
+                    }
 
-                var example = item.ExampleType == AttributeExampleType.UnitySerialized
-                    ? (ScriptableObject)item.UnitySerializedExample
-                    : item.OdinSerializedExample;
-                if (example != null && example.GetType().Name == selectedTypeName)
-                {
-                    panel.CurrentSelectedExample = example;
-                    return;
+                    var example = item.ExampleType == AttributeExampleType.UnitySerialized
+                        ? item.UnitySerializedExample
+                        : item.OdinSerializedExample;
+                    if (example != null && example.GetType().Name == selectedTypeName)
+                    {
+                        panel.CurrentSelectedExample = example;
+                        return;
+                    }
                 }
             }
+
+            _bank.RemovePanelSelection(panel.GetType().Name);
         }
 
         /// <summary>
@@ -123,7 +122,7 @@ namespace Runestone.AesirInspector.Editor
                 }
 
                 panel.ReleaseLanguageSubscription();
-                UnityEngine.Object.DestroyImmediate(panel);
+                Object.DestroyImmediate(panel);
             }
 
             _panels = null;

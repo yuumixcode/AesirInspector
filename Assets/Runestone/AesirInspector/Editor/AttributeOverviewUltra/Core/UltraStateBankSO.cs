@@ -1,15 +1,19 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Security.Cryptography;
+using System.Text;
 using Sirenix.Serialization;
 using UnityEditor;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Runestone.AesirInspector.Editor
 {
     /// <summary>
     /// 状态银行条目类型。
     /// </summary>
-    enum UltraBankEntryKind
+    internal enum UltraBankEntryKind
     {
         /// <summary>面板当前选中的示例类型名（轻量 string 记录，无序列化数据）。</summary>
         PanelSelection = 0,
@@ -22,7 +26,7 @@ namespace Runestone.AesirInspector.Editor
     /// 状态银行条目。
     /// </summary>
     [Serializable]
-    class UltraStateBankEntry
+    internal class UltraStateBankEntry
     {
         public string key;
 
@@ -46,10 +50,10 @@ namespace Runestone.AesirInspector.Editor
     /// </summary>
     public class UltraStateBankSO : ScriptableObject
     {
+        static UltraStateBankSO _cachedBank;
+
         [SerializeField]
         List<UltraStateBankEntry> entries = new List<UltraStateBankEntry>();
-
-        static UltraStateBankSO _cachedBank;
 
         public int EntryCount => entries.Count;
 
@@ -71,11 +75,10 @@ namespace Runestone.AesirInspector.Editor
                 return _cachedBank;
             }
 
-            var folder = System.IO.Path.GetDirectoryName(
-                AesirInspectorPaths.AttributeOverviewUltraStateBankPath);
-            if (!System.IO.Directory.Exists(folder))
+            var folder = Path.GetDirectoryName(AesirInspectorPaths.AttributeOverviewUltraStateBankPath);
+            if (!Directory.Exists(folder))
             {
-                System.IO.Directory.CreateDirectory(folder);
+                Directory.CreateDirectory(folder);
             }
 
             _cachedBank = CreateInstance<UltraStateBankSO>();
@@ -139,7 +142,7 @@ namespace Runestone.AesirInspector.Editor
         /// <summary>
         /// 把内存示例实例的当前状态（全部字段，含 Odin 序列化成员）快照进银行。
         /// </summary>
-        public void SaveExampleState(string exampleKey, UnityEngine.Object instance)
+        public void SaveExampleState(string exampleKey, Object instance)
         {
             if (instance == null)
             {
@@ -151,8 +154,7 @@ namespace Runestone.AesirInspector.Editor
             entry.typeName = instance.GetType().FullName;
             entry.selectionValue = null;
             entry.state = new SerializationData();
-            UnitySerializationUtility.SerializeUnityObject(instance, ref entry.state,
-                serializeUnityFields: true);
+            UnitySerializationUtility.SerializeUnityObject(instance, ref entry.state, true);
             entry.checksum = ComputeChecksum(entry.state);
             EditorUtility.SetDirty(this);
         }
@@ -161,11 +163,10 @@ namespace Runestone.AesirInspector.Editor
         /// 恢复状态到已存在的实例（调用方负责 CreateInstance 保证生命周期正确）。
         /// 校验和/类型名不匹配（数据损坏、版本漂移、跨类型）返回 false，调用方回落默认值。
         /// </summary>
-        public bool TryRestoreExampleState(string exampleKey, UnityEngine.Object instance)
+        public bool TryRestoreExampleState(string exampleKey, Object instance)
         {
             var entry = FindEntry(ExampleStatePrefix + exampleKey);
-            if (entry == null || instance == null ||
-                entry.kind != (int)UltraBankEntryKind.ExampleState)
+            if (entry == null || instance == null || entry.kind != (int)UltraBankEntryKind.ExampleState)
             {
                 return false;
             }
@@ -198,7 +199,7 @@ namespace Runestone.AesirInspector.Editor
         /// </summary>
         public ScriptableObject RestoreOrCreateExample(string exampleKey, Type exampleType)
         {
-            var instance = ScriptableObject.CreateInstance(exampleType);
+            var instance = CreateInstance(exampleType);
             instance.name = exampleKey;
             TryRestoreExampleState(exampleKey, instance);
             return instance;
@@ -276,18 +277,17 @@ namespace Runestone.AesirInspector.Editor
                 }
 
                 // Nodes 格式：对节点内容做规范化字符串哈希
-                var nodeBuffer = new System.Text.StringBuilder();
+                var nodeBuffer = new StringBuilder();
                 foreach (var node in data.SerializationNodes)
                 {
-                    nodeBuffer.Append(node.Name).Append('\x1F')
-                        .Append((int)node.Entry).Append('\x1F')
+                    nodeBuffer.Append(node.Name).Append('\x1F').Append((int)node.Entry).Append('\x1F')
                         .Append(node.Data).Append('\x1E');
                 }
 
-                payload = System.Text.Encoding.UTF8.GetBytes(nodeBuffer.ToString());
+                payload = Encoding.UTF8.GetBytes(nodeBuffer.ToString());
             }
 
-            using var sha = System.Security.Cryptography.SHA256.Create();
+            using var sha = SHA256.Create();
             return BitConverter.ToString(sha.ComputeHash(payload)).Replace("-", "", StringComparison.Ordinal);
         }
 
