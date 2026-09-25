@@ -11,14 +11,14 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("二维数组需要使用 Odin 序列化，案例继承 SerializedScriptableObject。",
-                "Two-dimensional arrays require Odin serialization. Examples inherit from SerializedScriptableObject."),
-            new BilingualData("默认绘制表格和代码结构的二维数组是相反的，可以使用参数 Transpose 反转。",
-                "The default table layout is transposed relative to the code structure; use the Transpose parameter to invert it."),
-            new BilingualData("自定义绘制元素样式要注意 UNITY_EDITOR 宏定义。",
-                "When customizing element drawing styles, be mindful of UNITY_EDITOR macro definitions."),
-            new BilingualData("可以拖拽更换不同行或者列的值，同时 Odin 新增了表格鼠标右键的功能。",
-                "Values can be rearranged by dragging rows or columns; Odin also adds right-click table functionality.")
+            new BilingualData("二维数组需要 Odin 序列化才能保存（案例继承 SerializedScriptableObject）；若沿用 Unity 序列化，可用 [ShowInInspector] 让 Odin 绘制。",
+                "Two-dimensional arrays need Odin serialization to be saved (the examples derive from SerializedScriptableObject); with Unity serialization you can still expose them via [ShowInInspector]."),
+            new BilingualData("表格默认的绘制方向与代码中 \"[行, 列]\" 的书写顺序相反，可用 Transpose 反转。",
+                "By default the table is drawn transposed relative to the code's \"[row, column]\" order; set Transpose to invert it."),
+            new BilingualData("拖拽行或列标签可移动整行、整列，右键表格可打开上下文菜单。",
+                "Drag row or column labels to move entire rows or columns, and right-click the table to open a context menu."),
+            new BilingualData("自定义 DrawElementMethod 的绘制代码使用 UnityEditor API，需要包在 #if UNITY_EDITOR 中。",
+                "Custom DrawElementMethod drawing code uses UnityEditor APIs, so it must be wrapped in #if UNITY_EDITOR.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

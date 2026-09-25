@@ -13,11 +13,12 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("常用于需要引用当前场景中特定实例的字段。",
-                "Commonly used for fields that must reference a specific instance in the current scene."),
-            new BilingualData("如果尝试将项目资源拖入该字段，Odin 会显示验证错误。",
-                "Odin will display a validation error if you try to drag a project asset into the field."),
-            new BilingualData("与 AssetsOnly 特性相反。", "The opposite of the AssetsOnly attribute.")
+            new BilingualData("用于对象引用字段，限制只能选择场景中的对象，不能选择项目资源（Prefab 等）。",
+                "Used on object reference fields to restrict selection to scene objects only, disallowing project assets such as prefabs."),
+            new BilingualData("拖入项目资源时会显示验证错误。",
+                "A validation error is shown if a project asset is dragged into the field."),
+            new BilingualData("与 AssetsOnly 特性正好相反。",
+                "The exact opposite of the AssetsOnly attribute.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } = { };

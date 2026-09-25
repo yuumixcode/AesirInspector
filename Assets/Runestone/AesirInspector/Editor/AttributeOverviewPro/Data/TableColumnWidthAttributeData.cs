@@ -10,8 +10,12 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("列表必须标记 [TableList]，列表元素封装为一个类对象，在元素内部的字段上标记 [TableColumnWidth]。",
-                "The list must be marked with [TableList]. Wrap list elements in a class and mark inner fields with [TableColumnWidth].")
+            new BilingualData("仅对 [TableList] 列表生效：把列表元素封装为类，在元素内部的字段上标记本特性。",
+                "Only takes effect on [TableList] lists: wrap the list elements in a class and mark that class's inner fields with this attribute."),
+            new BilingualData("width 为像素宽度；未标记宽度的列会自动分配剩余空间。",
+                "width is measured in pixels; columns without a marked width automatically share the remaining space."),
+            new BilingualData("resizable 默认为 true，可拖拽调整列宽；设为 false 则固定宽度。",
+                "resizable defaults to true so the column can be dragged to resize; setting it to false fixes the width.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

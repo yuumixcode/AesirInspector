@@ -12,11 +12,12 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("Unity 默认是无法序列化多态类型的（接口、抽象类），但是可以使用 Odin 序列化。",
-                "Unity cannot serialize polymorphic types (interfaces, abstract classes) by default, but Odin serialization supports them."),
-            new BilingualData("对于接口一定要注意是否采用了 Odin 序列化，如果选择了 EditorOnly 序列化，则构建时将会剔除 Odin 序列化的部分。",
-                "Ensure interfaces use Odin serialization. If EditorOnly serialization is selected, Odin serialization is stripped during builds."),
-            new BilingualData("该 Example 采用了 Odin 序列化。", "This example uses Odin serialization.")
+            new BilingualData("用于配置由 Odin 绘制的多态字段（接口、抽象类）；Unity 默认无法序列化这类类型，需要 Odin 序列化（如 SerializedMonoBehaviour 或 [OdinSerialize]）。",
+                "Configures how Odin draws polymorphic fields (interfaces, abstract classes); Unity cannot serialize such types by default, so Odin serialization is required (e.g. SerializedMonoBehaviour or [OdinSerialize])."),
+            new BilingualData("若接口使用 EditorOnly 序列化模式，构建时会剔除 Odin 序列化的数据，导致运行时数据丢失，需特别注意。",
+                "If interfaces use the EditorOnly serialization mode, Odin-serialized data is stripped from builds and lost at runtime, so be careful."),
+            new BilingualData("CreateInstanceFunction 需指向一个接收单个 Type 参数（名为 type）并返回 object 的方法，且不会用于 UnityEngine.Object 类型；未指定时由 NonDefaultConstructorPreference（默认 ConstructIdeal）决定实例构造方式。",
+                "CreateInstanceFunction must point to a method taking a single Type parameter named 'type' and returning object, and is not called for UnityEngine.Object types; when unset, NonDefaultConstructorPreference (default ConstructIdeal) decides how instances are constructed.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

@@ -12,12 +12,10 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("支持限制扩展名，通过 Extensions 参数设置（如 'cs, asset'）。",
-                "Supports restricting file extensions via the Extensions parameter (e.g., 'cs, asset')."),
-            new BilingualData("可以配置为绝对路径或相对于项目根目录/指定文件夹的相对路径。",
-                "Can be configured to use absolute paths or relative paths from the project root or a specified folder."),
-            new BilingualData("通过 RequireExistingPath 参数可以强制要求路径必须存在。",
-                "The RequireExistingPath parameter can force the selected path to exist.")
+            new BilingualData("默认绘制相对于 Unity 项目根目录的路径，并强制使用正斜杠；AbsolutePath 可改为绝对路径，UseBackslashes 可改用反斜杠。", "By default the path is drawn relative to the Unity project root and forward slashes are enforced; AbsolutePath switches to absolute paths and UseBackslashes switches to backslashes."),
+            new BilingualData("ParentFolder 与 Extensions 都支持 $ 成员引用（例如 ParentFolder = \"$DynamicParent\"），可以动态改变相对基准目录与允许的扩展名。", "Both ParentFolder and Extensions support $ member references (for example ParentFolder = \"$DynamicParent\"), so the base folder and allowed extensions can change dynamically."),
+            new BilingualData("支持从 Project 窗口直接拖放文件到该字段，也可以用于 string[] 等集合的元素。", "Files can be dragged and dropped from the Project window onto the field, and the attribute also works on elements of collections such as string[]."),
+            new BilingualData("RequireExistingPath 为 true 时，路径不存在会报校验错误。", "With RequireExistingPath set to true, a non-existing path raises a validation error.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

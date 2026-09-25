@@ -15,12 +15,14 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("适合做横幅、分区标题等不适合作为对象字段编辑的内联图片预览。",
-                "Ideal for banners, section headers and other inline image previews that should not be edited as object fields."),
+            new BilingualData("在 Inspector 中直接绘制图片，适合横幅、分区标题等内联预览，而非可编辑的对象字段。",
+                "Draws an image directly in the inspector, ideal for banners, section headers and other inline previews rather than editable object fields."),
             new BilingualData("不指定 ImageSource 时绘制所标注的 Texture2D / Sprite 值。",
                 "Without ImageSource, the decorated Texture2D / Sprite value is drawn."),
-            new BilingualData("DrawProperty 控制是否同时绘制原属性字段，false 时只显示图片。",
-                "DrawProperty controls whether the original field is drawn as well; false shows only the image.")
+            new BilingualData("ImageSource 支持成员名、@ 表达式或资源路径，也可标注在类上绘制固定图片。",
+                "ImageSource accepts a member name, an @ expression or an asset path, and the attribute can also be placed on a class to draw a fixed image."),
+            new BilingualData("DrawProperty 默认为 true，会同时绘制原属性字段；设为 false 时只显示图片。",
+                "DrawProperty defaults to true and draws the original field as well; set it to false to show only the image.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

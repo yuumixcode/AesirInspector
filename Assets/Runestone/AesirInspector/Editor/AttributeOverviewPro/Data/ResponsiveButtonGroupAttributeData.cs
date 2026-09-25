@@ -15,12 +15,12 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("与 ButtonGroup 的固定横排不同，按钮组会随窗口宽度自动换行。",
-                "Unlike ButtonGroup's fixed horizontal row, this group wraps as the window width changes."),
-            new BilingualData("UniformLayout 让组内按钮宽度统一；DefaultButtonSize 设定默认按钮尺寸。",
-                "UniformLayout makes all buttons the same width; DefaultButtonSize sets the default button size."),
-            new BilingualData("组名可包含 / 以嵌套到其他分组（如 FoldoutGroup）之下。",
-                "Group names may contain / to nest under other groups (such as FoldoutGroup).")
+            new BilingualData("只能标记方法（按钮），会按可用宽度自动换行并调整按钮宽度，与 ButtonGroup 的固定横排不同。",
+                "Can only be applied to methods (buttons); it wraps and resizes buttons according to the available width, unlike ButtonGroup's fixed row."),
+            new BilingualData("UniformLayout = true 时同排按钮宽度统一（取最长名称）；DefaultButtonSize 设置组内默认按钮尺寸，默认为 Medium。",
+                "With UniformLayout = true all buttons in a row share the same width (based on the longest name); DefaultButtonSize sets the group's default button size, which is Medium by default."),
+            new BilingualData("组名可用 / 嵌套到其他分组之下（如 \"SomeGroup/SomeBtnGroup\"），从而嵌入 FoldoutGroup、TabGroup 等。",
+                "The group name may use / to nest under other groups (such as \"SomeGroup/SomeBtnGroup\"), embedding it in FoldoutGroup, TabGroup, and similar.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

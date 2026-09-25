@@ -11,10 +11,12 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("使用了 HideIn 特性的 Property 所在的脚本，需要是和 Prefab 有关的，可以是预制体物体或者子物体。",
-                "The script containing a property with HideIn must be related to a Prefab, either a prefab object or a child object."),
-            new BilingualData("当脚本所在的预制体是某一种特定类型(PrefabKind)时，被标记的 Property 将会隐藏。",
-                "When the prefab containing the script is of a specific type (PrefabKind), the property will be hidden.")
+            new BilingualData("通过 PrefabKind 指定隐藏条件，多个类型可用 | 组合，任一匹配即隐藏。",
+                "The PrefabKind parameter defines the hide condition; multiple kinds can be combined with |, and the property is hidden when any of them matches."),
+            new BilingualData("仅在 Prefab 相关场景生效；场景中的非 Prefab 对象需显式包含 PrefabKind.NonPrefabInstance 才会隐藏。",
+                "Only takes effect in prefab-related contexts; non-prefab scene objects are hidden only when PrefabKind.NonPrefabInstance is explicitly included."),
+            new BilingualData("与 DisableIn 相对：HideIn 直接隐藏属性，DisableIn 仅禁用交互。",
+                "In contrast to DisableIn: HideIn hides the property entirely, while DisableIn only disables interaction.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

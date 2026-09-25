@@ -13,12 +13,12 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("常用于 HorizontalGroup 中，以便让输入框占据整行或特定列的全部宽度。",
-                "Commonly used in HorizontalGroups to allow input fields to occupy the entire width of a row or column."),
-            new BilingualData("适用于本身就具有清晰视觉含义的属性（如颜色块、预览图等）。",
-                "Ideal for properties that have clear visual meaning on their own, such as color blocks or previews."),
-            new BilingualData("该特性不仅隐藏标签，还会移除标签所占用的水平空间。",
-                "This attribute not only hides the label but also removes the horizontal space it would have occupied.")
+            new BilingualData("隐藏标签的同时移除标签占用的水平空间，使输入框占满整行。",
+                "Hides the label and removes the horizontal space it occupied, letting the input field span the full row."),
+            new BilingualData("常用于 HorizontalGroup 中，让控件占满所在列或整行的宽度。",
+                "Commonly used in HorizontalGroups so controls fill the full width of their column or row."),
+            new BilingualData("适合自身已具备清晰视觉含义的属性，如颜色块、预览图等。",
+                "Ideal for properties that already convey clear visual meaning, such as color blocks or previews.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } = { };

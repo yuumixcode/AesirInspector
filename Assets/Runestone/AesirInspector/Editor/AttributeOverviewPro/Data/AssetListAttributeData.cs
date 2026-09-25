@@ -15,7 +15,13 @@ namespace Runestone.AesirInspector.Editor
                 "Use this to both filter and include or exclude assets from a list or an array, without navigating the project window.",
                 OdinInspectorDocumentationLinks.AssetListUrl);
 
-        public override BilingualData[] UsageTips { get; set; } = null;
+        public override BilingualData[] UsageTips { get; set; } =
+        {
+            new BilingualData("可作用于单个 UnityEngine.Object 字段，也可作用于其列表或数组，两者绘制行为不同；支持材质、ScriptableObject、预制体、音频、贴图等资源类型，并会显示继承类型。", "Works on a single UnityEngine.Object field as well as on lists or arrays of them, with different drawing behavior; it covers materials, ScriptableObjects, prefabs, audio and textures, and also shows inherited types."),
+            new BilingualData("Path、Tags、LayerNames、AssetNamePrefix 等筛选参数可以组合使用并同时生效。", "Filters such as Path, Tags, LayerNames and AssetNamePrefix can be combined and all take effect together."),
+            new BilingualData("CustomFilterMethod 支持 $ 成员引用与 @ 表达式，方法接收单个资源元素并返回 bool。", "CustomFilterMethod supports $ member references and @ expressions; the method receives a single asset element and returns a bool."),
+            new BilingualData("AutoPopulate 为 true 时，检视该对象会自动把所有匹配到的资源填入列表。", "When AutoPopulate is true, inspecting the object automatically fills the list with every matching asset.")
+        };
 
         public override ParameterValue[] AttributeParameters { get; set; } = new ParameterValue[6]
         {

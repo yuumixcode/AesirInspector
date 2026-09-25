@@ -1475,3 +1475,3948 @@ MonoBehaviour:
       - Name: conditionalField
         Entry: 3
         Data: 0
+  - key: PanelSelection/TableMatrixAttributePanelSO
+    typeName: TableMatrixExampleWithHorizontalTitleSO
+    checksum: 
+    kind: 0
+    selectionValue: TableMatrixExampleWithHorizontalTitleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/TableMatrixExampleSO
+    typeName: Runestone.AesirInspector.Editor.TableMatrixExampleSO
+    checksum: CD965C7C26EE5DA17C54E7B55429EF88A3D66C6B4A6D24E12FA9241979157542
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: matrix
+        Entry: 7
+        Data: 0|System.String[,], mscorlib
+      - Name: 
+        Entry: 12
+        Data: 6
+      - Name: ranks
+        Entry: 1
+        Data: 2|3
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: transposedMatrix
+        Entry: 7
+        Data: 1|System.String[,], mscorlib
+      - Name: 
+        Entry: 12
+        Data: 6
+      - Name: ranks
+        Entry: 1
+        Data: 2|3
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: readOnlyMatrix
+        Entry: 7
+        Data: 2|System.String[,], mscorlib
+      - Name: 
+        Entry: 12
+        Data: 6
+      - Name: ranks
+        Entry: 1
+        Data: 2|3
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: fixedColumnsMatrix
+        Entry: 7
+        Data: 3|System.String[,], mscorlib
+      - Name: 
+        Entry: 12
+        Data: 6
+      - Name: ranks
+        Entry: 1
+        Data: 2|3
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: horizontalTitleMatrix
+        Entry: 7
+        Data: 4|System.String[,], mscorlib
+      - Name: 
+        Entry: 12
+        Data: 6
+      - Name: ranks
+        Entry: 1
+        Data: 2|3
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: verticalTitleMatrix
+        Entry: 7
+        Data: 5|System.String[,], mscorlib
+      - Name: 
+        Entry: 12
+        Data: 6
+      - Name: ranks
+        Entry: 1
+        Data: 2|3
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: rowHeightMatrix
+        Entry: 7
+        Data: 6|System.String[,], mscorlib
+      - Name: 
+        Entry: 12
+        Data: 6
+      - Name: ranks
+        Entry: 1
+        Data: 2|3
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: squareCellsMatrix
+        Entry: 7
+        Data: 7|System.String[,], mscorlib
+      - Name: 
+        Entry: 12
+        Data: 6
+      - Name: ranks
+        Entry: 1
+        Data: 2|3
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: squareCelledTextureMatrix
+        Entry: 7
+        Data: 8|UnityEngine.Texture2D[,], UnityEngine.CoreModule
+      - Name: 
+        Entry: 12
+        Data: 32
+      - Name: ranks
+        Entry: 1
+        Data: 8|4
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: prefabMatrix
+        Entry: 7
+        Data: 9|UnityEngine.Mesh[,], UnityEngine.CoreModule
+      - Name: 
+        Entry: 12
+        Data: 32
+      - Name: ranks
+        Entry: 1
+        Data: 8|4
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: hideColumnIndicesMatrix
+        Entry: 7
+        Data: 10|System.String[,], mscorlib
+      - Name: 
+        Entry: 12
+        Data: 6
+      - Name: ranks
+        Entry: 1
+        Data: 2|3
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: hideRowIndicesMatrix
+        Entry: 7
+        Data: 11|System.String[,], mscorlib
+      - Name: 
+        Entry: 12
+        Data: 6
+      - Name: ranks
+        Entry: 1
+        Data: 2|3
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+  - key: ExampleState/TableMatrixExampleWithDrawElementMethodSO
+    typeName: Runestone.AesirInspector.Editor.TableMatrixExampleWithDrawElementMethodSO
+    checksum: 21096DA9F5B5EA8D9DA867AC8BD4C5CE6509EDC2AC4BBDA70D02B8A920F9F719
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: simpleDrawElement
+        Entry: 7
+        Data: 0|System.String[,], mscorlib
+      - Name: 
+        Entry: 12
+        Data: 6
+      - Name: ranks
+        Entry: 1
+        Data: 2|3
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: coloredDrawElement
+        Entry: 7
+        Data: 1|System.Boolean[,], mscorlib
+      - Name: 
+        Entry: 12
+        Data: 25
+      - Name: ranks
+        Entry: 1
+        Data: 5|5
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: TrueColor
+        Entry: 7
+        Data: UnityEngine.Color, UnityEngine.CoreModule
+      - Name: 
+        Entry: 4
+        Data: 0.11
+      - Name: 
+        Entry: 4
+        Data: 0.77
+      - Name: 
+        Entry: 4
+        Data: 0.5
+      - Name: 
+        Entry: 4
+        Data: 1
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: FalseColor
+        Entry: 7
+        Data: UnityEngine.Color, UnityEngine.CoreModule
+      - Name: 
+        Entry: 4
+        Data: 1
+      - Name: 
+        Entry: 4
+        Data: 0.4
+      - Name: 
+        Entry: 4
+        Data: 0.14
+      - Name: 
+        Entry: 4
+        Data: 1
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: customCellDrawing
+        Entry: 7
+        Data: 2|System.Boolean[,], mscorlib
+      - Name: 
+        Entry: 12
+        Data: 225
+      - Name: ranks
+        Entry: 1
+        Data: 15|15
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: true
+      - Name: 
+        Entry: 5
+        Data: true
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: true
+      - Name: 
+        Entry: 5
+        Data: true
+      - Name: 
+        Entry: 5
+        Data: true
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: true
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: true
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: true
+      - Name: 
+        Entry: 5
+        Data: true
+      - Name: 
+        Entry: 5
+        Data: true
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: true
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: true
+      - Name: 
+        Entry: 5
+        Data: true
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+  - key: ExampleState/TableMatrixExampleWithHorizontalTitleSO
+    typeName: Runestone.AesirInspector.Editor.TableMatrixExampleWithHorizontalTitleSO
+    checksum: DE1DA96C1816B94097BC7CEC5F040137919BAA1728DB3F3CAF51978512AD2ED9
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: readOnlyMatrix
+        Entry: 7
+        Data: 0|System.Int32[,], mscorlib
+      - Name: 
+        Entry: 12
+        Data: 25
+      - Name: ranks
+        Entry: 1
+        Data: 5|5
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: labeledMatrix
+        Entry: 7
+        Data: 1|Sirenix.OdinInspector.InfoMessageType[,], Sirenix.OdinInspector.Attributes
+      - Name: 
+        Entry: 12
+        Data: 36
+      - Name: ranks
+        Entry: 1
+        Data: 6|6
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: Title
+        Entry: 1
+        Data: Peace, Love & Ducks
+      - Name: AlternativeTitle
+        Entry: 1
+        Data: Peace, Love & Fenrir
+      - Name: UseAlternativeTitle
+        Entry: 5
+        Data: false
+      - Name: fieldNameExample
+        Entry: 7
+        Data: 2|System.Boolean[,], mscorlib
+      - Name: 
+        Entry: 12
+        Data: 25
+      - Name: ranks
+        Entry: 1
+        Data: 5|5
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: propertyNameExample
+        Entry: 7
+        Data: 3|System.Boolean[,], mscorlib
+      - Name: 
+        Entry: 12
+        Data: 25
+      - Name: ranks
+        Entry: 1
+        Data: 5|5
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: methodNameExample
+        Entry: 7
+        Data: 4|System.Boolean[,], mscorlib
+      - Name: 
+        Entry: 12
+        Data: 25
+      - Name: ranks
+        Entry: 1
+        Data: 5|5
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: attributeExpressionExample
+        Entry: 7
+        Data: 5|System.Boolean[,], mscorlib
+      - Name: 
+        Entry: 12
+        Data: 25
+      - Name: ranks
+        Entry: 1
+        Data: 5|5
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 5
+        Data: false
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+  - key: PanelSelection/RangeAttributePanelSO
+    typeName: RangeExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: RangeExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/RangeExampleSO
+    typeName: Runestone.AesirInspector.Editor.RangeExampleSO
+    checksum: A9ED541125EAEA1B369B3E317CC354DB21B650ACB34FC132EBCBE83ED651690A
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: floatRange
+        Entry: 4
+        Data: 5
+      - Name: intRange
+        Entry: 3
+        Data: 50
+      - Name: normalizedRange
+        Entry: 4
+        Data: 0.5
+  - key: PanelSelection/HideIfGroupAttributePanelSO
+    typeName: HideIfGroupExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: HideIfGroupExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/HideIfGroupExampleSO
+    typeName: Runestone.AesirInspector.Editor.HideIfGroupExampleSO
+    checksum: 47BE9B7A14EEDD51C61AC27302659C2CC61785687AC71D69A073EE0A11D20E3D
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: toggle
+        Entry: 5
+        Data: true
+      - Name: a
+        Entry: 3
+        Data: 0
+      - Name: b
+        Entry: 3
+        Data: 0
+      - Name: messageType
+        Entry: 3
+        Data: 1
+      - Name: fieldName
+        Entry: 6
+        Data: 
+      - Name: vector
+        Entry: 7
+        Data: UnityEngine.Vector3, UnityEngine.CoreModule
+      - Name: 
+        Entry: 4
+        Data: 0
+      - Name: 
+        Entry: 4
+        Data: 0
+      - Name: 
+        Entry: 4
+        Data: 0
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: x
+        Entry: 7
+        Data: UnityEngine.Vector3, UnityEngine.CoreModule
+      - Name: 
+        Entry: 4
+        Data: 0
+      - Name: 
+        Entry: 4
+        Data: 0
+      - Name: 
+        Entry: 4
+        Data: 0
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: y
+        Entry: 7
+        Data: UnityEngine.Vector3, UnityEngine.CoreModule
+      - Name: 
+        Entry: 4
+        Data: 0
+      - Name: 
+        Entry: 4
+        Data: 0
+      - Name: 
+        Entry: 4
+        Data: 0
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: gameObject
+        Entry: 6
+        Data: 
+  - key: ExampleState/HideIfGroupExampleWithGroupNameSO
+    typeName: Runestone.AesirInspector.Editor.HideIfGroupExampleWithGroupNameSO
+    checksum: D0F4E42DB6B2FEA83297E41924E1495981B78A2F72BE4A2B6F125DC7A00DC257
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: toggle
+        Entry: 5
+        Data: true
+      - Name: groupName
+        Entry: 1
+        Data: DynamicGroup
+      - Name: content
+        Entry: 6
+        Data: 
+      - Name: value
+        Entry: 3
+        Data: 0
+      - Name: expressionValue
+        Entry: 3
+        Data: 0
+  - key: ExampleState/HideIfGroupExampleWithConditionSO
+    typeName: Runestone.AesirInspector.Editor.HideIfGroupExampleWithConditionSO
+    checksum: BC6194A32D50C815A8893DFC95480D2B89EC46F001C00452E7A8BAC0410D1988
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: hideGroup
+        Entry: 5
+        Data: true
+      - Name: fieldNameExample
+        Entry: 6
+        Data: 
+      - Name: propertyNameExample
+        Entry: 6
+        Data: 
+      - Name: methodNameExample
+        Entry: 6
+        Data: 
+      - Name: attributeExpressionExample
+        Entry: 6
+        Data: 
+  - key: PanelSelection/HideReferenceObjectPickerAttributePanelSO
+    typeName: HideReferenceObjectPickerExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: HideReferenceObjectPickerExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/HideReferenceObjectPickerExampleSO
+    typeName: Runestone.AesirInspector.Editor.HideReferenceObjectPickerExampleSO
+    checksum: E068D5EBAB41B837B4B331A716C7DBD14E97D46A1BE7E97F6EFC1CA902DD4FD3
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: hiddenPickerField
+        Entry: 6
+        Data: 
+      - Name: shownPickerField
+        Entry: 6
+        Data: 
+  - key: PanelSelection/MaxValueAttributePanelSO
+    typeName: MaxValueExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: MaxValueExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/MaxValueExampleSO
+    typeName: Runestone.AesirInspector.Editor.MaxValueExampleSO
+    checksum: E7B885ED8F0D6B915E19C532F6021EA88F673CB501F5CC2F691F564BDCCF07FE
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: MaximumHundred
+        Entry: 3
+        Data: 100
+      - Name: FloatMaxValue
+        Entry: 4
+        Data: 0
+      - Name: Vector3MaxValue
+        Entry: 7
+        Data: UnityEngine.Vector3, UnityEngine.CoreModule
+      - Name: 
+        Entry: 4
+        Data: 0
+      - Name: 
+        Entry: 4
+        Data: 0
+      - Name: 
+        Entry: 4
+        Data: 0
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: DynamicMaximum
+        Entry: 4
+        Data: 50
+      - Name: DynamicMax
+        Entry: 4
+        Data: 50
+  - key: PanelSelection/TitleGroupAttributePanelSO
+    typeName: TitleGroupExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: TitleGroupExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/TitleGroupExampleSO
+    typeName: Runestone.AesirInspector.Editor.TitleGroupExampleSO
+    checksum: E8DB2D91260310EE27EF60C593682819EA16E8B4CA9DC3C9A73916F862064FB2
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: SomeInt1
+        Entry: 3
+        Data: 0
+      - Name: SomeInt2
+        Entry: 3
+        Data: 0
+      - Name: SomeString1
+        Entry: 1
+        Data: Dynamic Title
+      - Name: SomeString2
+        Entry: 6
+        Data: 
+      - Name: withSubtitle
+        Entry: 3
+        Data: 0
+      - Name: centered
+        Entry: 3
+        Data: 0
+      - Name: split
+        Entry: 3
+        Data: 0
+      - Name: noHorizontalLine
+        Entry: 3
+        Data: 0
+      - Name: notBold
+        Entry: 3
+        Data: 0
+      - Name: indented
+        Entry: 3
+        Data: 0
+      - Name: nestedIndented
+        Entry: 3
+        Data: 0
+      - Name: order5
+        Entry: 3
+        Data: 0
+      - Name: order2
+        Entry: 3
+        Data: 0
+      - Name: SomeVector1
+        Entry: 7
+        Data: UnityEngine.Vector2, UnityEngine.CoreModule
+      - Name: 
+        Entry: 4
+        Data: 0
+      - Name: 
+        Entry: 4
+        Data: 0
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: A
+        Entry: 3
+        Data: 0
+      - Name: B
+        Entry: 3
+        Data: 0
+      - Name: C
+        Entry: 3
+        Data: 0
+      - Name: BoxA
+        Entry: 3
+        Data: 0
+      - Name: BoxB
+        Entry: 3
+        Data: 0
+      - Name: BoxC
+        Entry: 3
+        Data: 0
+      - Name: BoxD
+        Entry: 3
+        Data: 0
+      - Name: BoxE
+        Entry: 3
+        Data: 0
+  - key: ExampleState/TitleGroupExampleWithGroupNameSO
+    typeName: Runestone.AesirInspector.Editor.TitleGroupExampleWithGroupNameSO
+    checksum: 8D3E506686B6FDB00E26876EA64A88AE4DEEAD1BD4F5EE5CB94C76A92CE78460
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: groupNameField
+        Entry: 1
+        Data: Dynamic Group
+      - Name: referenceExample
+        Entry: 3
+        Data: 0
+      - Name: secondReferenceExample
+        Entry: 6
+        Data: 
+      - Name: expressionExample
+        Entry: 3
+        Data: 0
+  - key: ExampleState/TitleGroupExampleWithSubtitleSO
+    typeName: Runestone.AesirInspector.Editor.TitleGroupExampleWithSubtitleSO
+    checksum: 1645B77F1B793F7202D903119DEE60377E98B1EBE86CD6B401682F635490DC8C
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: literalExample
+        Entry: 3
+        Data: 0
+      - Name: subtitleField
+        Entry: 1
+        Data: Subtitle from Field
+      - Name: referenceExample
+        Entry: 3
+        Data: 0
+      - Name: expressionExample
+        Entry: 3
+        Data: 0
+  - key: PanelSelection/MinMaxSliderAttributePanelSO
+    typeName: MinMaxSliderExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: MinMaxSliderExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/MinMaxSliderExampleSO
+    typeName: Runestone.AesirInspector.Editor.MinMaxSliderExampleSO
+    checksum: 69ADF3C19DC5865F108CAE8715FF8314A91E841B6355F24C9FB035B91537D4D1
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: MinMaxValueSlider
+        Entry: 7
+        Data: UnityEngine.Vector2, UnityEngine.CoreModule
+      - Name: 
+        Entry: 4
+        Data: -7
+      - Name: 
+        Entry: 4
+        Data: -2
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: Vector2IntRange
+        Entry: 7
+        Data: UnityEngine.Vector2Int, UnityEngine.CoreModule
+      - Name: 
+        Entry: 3
+        Data: 20
+      - Name: 
+        Entry: 3
+        Data: 80
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: Vector2Range
+        Entry: 7
+        Data: UnityEngine.Vector2, UnityEngine.CoreModule
+      - Name: 
+        Entry: 4
+        Data: -2
+      - Name: 
+        Entry: 4
+        Data: 2
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: DynamicMin
+        Entry: 4
+        Data: 0
+      - Name: DynamicMax
+        Entry: 4
+        Data: 10
+      - Name: DynamicRange
+        Entry: 7
+        Data: UnityEngine.Vector2, UnityEngine.CoreModule
+      - Name: 
+        Entry: 4
+        Data: 3
+      - Name: 
+        Entry: 4
+        Data: 7
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: MinMaxRange
+        Entry: 7
+        Data: UnityEngine.Vector2, UnityEngine.CoreModule
+      - Name: 
+        Entry: 4
+        Data: 0
+      - Name: 
+        Entry: 4
+        Data: 50
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: DynamicMinMaxSlider
+        Entry: 7
+        Data: UnityEngine.Vector2, UnityEngine.CoreModule
+      - Name: 
+        Entry: 4
+        Data: 25
+      - Name: 
+        Entry: 4
+        Data: 50
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: MixedRange
+        Entry: 7
+        Data: UnityEngine.Vector2, UnityEngine.CoreModule
+      - Name: 
+        Entry: 4
+        Data: 2
+      - Name: 
+        Entry: 4
+        Data: 7
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: Expressive
+        Entry: 7
+        Data: UnityEngine.Vector2, UnityEngine.CoreModule
+      - Name: 
+        Entry: 4
+        Data: 0
+      - Name: 
+        Entry: 4
+        Data: 450
+      - Name: 
+        Entry: 8
+        Data: 
+  - key: PanelSelection/SpaceAttributePanelSO
+    typeName: SpaceExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: SpaceExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/SpaceExampleSO
+    typeName: Runestone.AesirInspector.Editor.SpaceExampleSO
+    checksum: ACEEDADCEC5F1680B30E330B3CCF164CA318E16B86D55E3A4081147BB5FEE948
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: beforeDefaultSpace
+        Entry: 3
+        Data: 1
+      - Name: afterDefaultSpace
+        Entry: 3
+        Data: 2
+      - Name: beforeCustomSpace
+        Entry: 3
+        Data: 3
+      - Name: afterCustomSpace
+        Entry: 3
+        Data: 4
+  - key: PanelSelection/MultilineAttributePanelSO
+    typeName: MultilineExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: MultilineExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/MultilineExampleSO
+    typeName: Runestone.AesirInspector.Editor.MultilineExampleSO
+    checksum: 4B6BE4AD2F823AAC1F5C87C07DF6F3A7D36C50A42C2804DADD9875EA58DCB85A
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: defaultMultiline
+        Entry: 1
+        Data: "Multiline \u8BA9\u5B57\u7B26\u4E32\u4EE5\u591A\u884C\u6587\u672C\u6846\u7ED8\u5236\u3002\nThe
+          string is drawn as a multi-line text box."
+      - Name: sixLines
+        Entry: 1
+        Data: "\u8BE5\u5B57\u6BB5\u9884\u7559 6 \u884C\u9AD8\u5EA6\u3002\nThis field
+          reserves six lines of height."
+  - key: PanelSelection/ButtonGroupAttributePanelSO
+    typeName: ButtonGroupExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: ButtonGroupExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/ButtonGroupExampleSO
+    typeName: Runestone.AesirInspector.Editor.ButtonGroupExampleSO
+    checksum: 6C0E099B736171B40AA712A98716E5ECF50B2C81BDCB3C4C108BDD3ED3C453CF
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: iconButtonGroupExamples
+        Entry: 7
+        Data: Runestone.AesirInspector.Editor.ButtonGroupExampleSO+IconButtonGroupExamples,
+          Runestone.AesirInspector.Editor
+      - Name: 
+        Entry: 8
+        Data: 
+  - key: ExampleState/ButtonGroupExampleWithGroupNameSO
+    typeName: Runestone.AesirInspector.Editor.ButtonGroupExampleWithGroupNameSO
+    checksum: F261DCE2A73DB829C30E2D264B2970712F5B5DABF96A00A0427E88250495BCD4
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: groupNameField
+        Entry: 1
+        Data: Custom Group
+  - key: PanelSelection/SuppressInvalidAttributeErrorAttributePanelSO
+    typeName: SuppressInvalidAttributeErrorExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: SuppressInvalidAttributeErrorExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/SuppressInvalidAttributeErrorExampleSO
+    typeName: Runestone.AesirInspector.Editor.SuppressInvalidAttributeErrorExampleSO
+    checksum: 9FC9636DFFE9299B26BBF8AF3B9FC8083349AF035EBFBED23C790F4200876C50
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: InvalidAttributeError
+        Entry: 1
+        Data: This field will have an error box for the Range attribute on a string
+          field.
+      - Name: SuppressedError
+        Entry: 1
+        Data: The error has been suppressed on this field, and thus no error box
+          will appear.
+  - key: PanelSelection/ShowPropertyResolverAttributePanelSO
+    typeName: ShowPropertyResolverExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: ShowPropertyResolverExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/ShowPropertyResolverExampleSO
+    typeName: Runestone.AesirInspector.Editor.ShowPropertyResolverExampleSO
+    checksum: DE3D6361356831B28AE926FE227789B43D2F6185253B178E67E92D9E03B5CD8A
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: MyDictionary
+        Entry: 7
+        Data: 0|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[UnityEngine.Vector3,
+          UnityEngine.CoreModule]], mscorlib
+      - Name: comparer
+        Entry: 7
+        Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+          mscorlib]], mscorlib
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: 
+        Entry: 12
+        Data: 0
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: myList
+        Entry: 7
+        Data: 2|System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib
+      - Name: 
+        Entry: 12
+        Data: 0
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: myString
+        Entry: 1
+        Data: Hello
+  - key: PanelSelection/TextAreaAttributePanelSO
+    typeName: TextAreaExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: TextAreaExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/TextAreaExampleSO
+    typeName: Runestone.AesirInspector.Editor.TextAreaExampleSO
+    checksum: A4DC02BB30619A117AEFCFB30D7C7EE53923549D02286E87BB210FC18E460B72
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: defaultTextArea
+        Entry: 1
+        Data: "TextArea \u7ED8\u5236\u9AD8\u5EA6\u81EA\u9002\u5E94\u3001\u53EF\u6EDA\u52A8\u7684\u591A\u884C\u6587\u672C\u57DF\u3002\nThe
+          text area grows with its content and scrolls when needed."
+      - Name: sizedTextArea
+        Entry: 1
+        Data: "\u8BE5\u6587\u672C\u57DF\u6700\u5C11 4 \u884C\u3001\u6700\u591A 10
+          \u884C\u3002\nThis area shows at least four lines and at most ten."
+  - key: PanelSelection/FoldoutGroupAttributePanelSO
+    typeName: FoldoutGroupExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: FoldoutGroupExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/FoldoutGroupExampleSO
+    typeName: Runestone.AesirInspector.Editor.FoldoutGroupExampleSO
+    checksum: 449A0EAEA4782E516EFAA34E2B378961954C378831AA83B59BAE32F53DEA6FD6
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: A
+        Entry: 3
+        Data: 0
+      - Name: B
+        Entry: 3
+        Data: 0
+      - Name: C
+        Entry: 3
+        Data: 0
+      - Name: D
+        Entry: 3
+        Data: 0
+      - Name: E
+        Entry: 3
+        Data: 0
+      - Name: expandedInt1
+        Entry: 3
+        Data: 0
+      - Name: expandedInt2
+        Entry: 3
+        Data: 0
+      - Name: One
+        Entry: 3
+        Data: 0
+      - Name: Two
+        Entry: 3
+        Data: 0
+      - Name: GroupTitle
+        Entry: 1
+        Data: Dynamic group title
+      - Name: nestedInt
+        Entry: 3
+        Data: 0
+  - key: PanelSelection/ShowDrawerChainAttributePanelSO
+    typeName: ShowDrawerChainExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: ShowDrawerChainExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/ShowDrawerChainExampleSO
+    typeName: Runestone.AesirInspector.Editor.ShowDrawerChainExampleSO
+    checksum: E6BC74B66DB2C7F9748F74B0FBAD5E5AFCF9E82131A73D83D9D6F7D63C05EDFA
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: intValue
+        Entry: 3
+        Data: 0
+      - Name: floatValue
+        Entry: 4
+        Data: 0
+      - Name: boolValue
+        Entry: 5
+        Data: false
+      - Name: stringValue
+        Entry: 1
+        Data: Unity Built-in
+      - Name: vector2Value
+        Entry: 7
+        Data: UnityEngine.Vector2, UnityEngine.CoreModule
+      - Name: 
+        Entry: 4
+        Data: 0
+      - Name: 
+        Entry: 4
+        Data: 0
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: layerMask
+        Entry: 7
+        Data: UnityEngine.LayerMask, UnityEngine.CoreModule
+      - Name: 
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: color
+        Entry: 7
+        Data: UnityEngine.Color, UnityEngine.CoreModule
+      - Name: 
+        Entry: 4
+        Data: 1
+      - Name: 
+        Entry: 4
+        Data: 1
+      - Name: 
+        Entry: 4
+        Data: 1
+      - Name: 
+        Entry: 4
+        Data: 1
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: SomeObject
+        Entry: 6
+        Data: 
+      - Name: SomeRange
+        Entry: 4
+        Data: 0
+  - key: PanelSelection/WrapAttributePanelSO
+    typeName: WrapExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: WrapExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/WrapExampleSO
+    typeName: Runestone.AesirInspector.Editor.WrapExampleSO
+    checksum: 1D2527078FF22C08C46B8E216C9188A9B483212ADB19D8732423063F194E07E5
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: wrappedInt
+        Entry: 3
+        Data: 0
+      - Name: wrappedFloat
+        Entry: 4
+        Data: 0
+      - Name: wrappedVector3
+        Entry: 7
+        Data: UnityEngine.Vector3, UnityEngine.CoreModule
+      - Name: 
+        Entry: 4
+        Data: 0
+      - Name: 
+        Entry: 4
+        Data: 0
+      - Name: 
+        Entry: 4
+        Data: 0
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: IntWrapFrom0To100
+        Entry: 3
+        Data: 0
+      - Name: FloatWrapFrom0To100
+        Entry: 4
+        Data: 0
+      - Name: Vector3WrapFrom0To100
+        Entry: 7
+        Data: UnityEngine.Vector3, UnityEngine.CoreModule
+      - Name: 
+        Entry: 4
+        Data: 0
+      - Name: 
+        Entry: 4
+        Data: 0
+      - Name: 
+        Entry: 4
+        Data: 0
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: angleWrap
+        Entry: 4
+        Data: 0
+      - Name: radianWrap
+        Entry: 4
+        Data: 0
+  - key: PanelSelection/HideNetworkBehaviourFieldsAttributePanelSO
+    typeName: 
+    checksum: 
+    kind: 0
+    selectionValue: 
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: PanelSelection/BoxGroupAttributePanelSO
+    typeName: BoxGroupExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: BoxGroupExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/BoxGroupExampleSO
+    typeName: Runestone.AesirInspector.Editor.BoxGroupExampleSO
+    checksum: 7767B98925C54648E5AB4B8E0973A8E4B8B447A3653F71964C2DA070D9551029
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: A
+        Entry: 6
+        Data: 
+      - Name: B
+        Entry: 6
+        Data: 
+      - Name: I
+        Entry: 6
+        Data: 
+      - Name: J
+        Entry: 6
+        Data: 
+      - Name: C
+        Entry: 6
+        Data: 
+      - Name: D
+        Entry: 6
+        Data: 
+      - Name: labelTextBox
+        Entry: 3
+        Data: 0
+      - Name: E
+        Entry: 1
+        Data: Dynamic box title 2
+      - Name: F
+        Entry: 6
+        Data: 
+      - Name: G
+        Entry: 1
+        Data: Dynamic Box Title
+      - Name: H
+        Entry: 6
+        Data: 
+      - Name: BoxedStruct
+        Entry: 7
+        Data: Runestone.AesirInspector.Editor.BoxGroupExampleSO+SomeStruct, Runestone.AesirInspector.Editor
+      - Name: One
+        Entry: 3
+        Data: 0
+      - Name: Two
+        Entry: 3
+        Data: 0
+      - Name: Three
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: DefaultStruct
+        Entry: 7
+        Data: Runestone.AesirInspector.Editor.BoxGroupExampleSO+SomeStruct, Runestone.AesirInspector.Editor
+      - Name: One
+        Entry: 3
+        Data: 0
+      - Name: Two
+        Entry: 3
+        Data: 0
+      - Name: Three
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 8
+        Data: 
+  - key: PanelSelection/HideMonoScriptAttributePanelSO
+    typeName: HideMonoScriptExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: HideMonoScriptExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/HideMonoScriptExampleSO
+    typeName: Runestone.AesirInspector.Editor.HideMonoScriptExampleSO
+    checksum: 6227712E4C7CBD860A8633D3306AE447AE442C6B3ADF93018CBB16B6B5EF2D5C
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: sampleField
+        Entry: 6
+        Data: 
+  - key: PanelSelection/VerticalGroupAttributePanelSO
+    typeName: VerticalGroupExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: VerticalGroupExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/VerticalGroupExampleSO
+    typeName: Runestone.AesirInspector.Editor.VerticalGroupExampleSO
+    checksum: 71280CA859545DDBBAE6ED31B9A2F6C9D4ADC27A8F004F84DE7E3C561D37B3EA
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: First
+        Entry: 3
+        Data: 0
+      - Name: Second
+        Entry: 3
+        Data: 0
+      - Name: A
+        Entry: 3
+        Data: 0
+      - Name: B
+        Entry: 3
+        Data: 0
+      - Name: padded1
+        Entry: 3
+        Data: 0
+      - Name: padded2
+        Entry: 3
+        Data: 0
+      - Name: BoxA
+        Entry: 3
+        Data: 0
+      - Name: BoxB
+        Entry: 3
+        Data: 0
+      - Name: BoxC
+        Entry: 3
+        Data: 0
+      - Name: BoxD
+        Entry: 3
+        Data: 0
+      - Name: BoxE
+        Entry: 3
+        Data: 0
+  - key: PanelSelection/ToggleGroupAttributePanelSO
+    typeName: ToggleGroupExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: ToggleGroupExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/ToggleGroupExampleSO
+    typeName: Runestone.AesirInspector.Editor.ToggleGroupExampleSO
+    checksum: 61BDEDD4A12F9A67896317339691E7C99CEA0B1D7BECD0773461D33AC2E0D628
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: MyToggle
+        Entry: 5
+        Data: false
+      - Name: A
+        Entry: 4
+        Data: 0
+      - Name: B
+        Entry: 6
+        Data: 
+      - Name: EnableGroupOne
+        Entry: 5
+        Data: true
+      - Name: GroupOneTitle
+        Entry: 1
+        Data: One
+      - Name: GroupOneA
+        Entry: 4
+        Data: 0
+      - Name: GroupOneB
+        Entry: 4
+        Data: 0
+      - Name: Toggle2
+        Entry: 5
+        Data: false
+      - Name: field3
+        Entry: 3
+        Data: 0
+      - Name: Toggle4
+        Entry: 5
+        Data: false
+      - Name: field5
+        Entry: 3
+        Data: 0
+      - Name: Toggle3
+        Entry: 5
+        Data: false
+      - Name: field4
+        Entry: 3
+        Data: 0
+      - Name: Toggle5
+        Entry: 5
+        Data: false
+      - Name: field6
+        Entry: 3
+        Data: 0
+      - Name: Three
+        Entry: 7
+        Data: 0|Runestone.AesirInspector.Editor.ToggleGroupExampleSO+MyToggleObject,
+          Runestone.AesirInspector.Editor
+      - Name: Enabled
+        Entry: 5
+        Data: false
+      - Name: Title
+        Entry: 6
+        Data: 
+      - Name: A
+        Entry: 3
+        Data: 0
+      - Name: B
+        Entry: 3
+        Data: 0
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: Four
+        Entry: 7
+        Data: 1|Runestone.AesirInspector.Editor.ToggleGroupExampleSO+MyToggleA, Runestone.AesirInspector.Editor
+      - Name: Enabled
+        Entry: 5
+        Data: false
+      - Name: Title
+        Entry: 6
+        Data: 
+      - Name: A
+        Entry: 3
+        Data: 0
+      - Name: B
+        Entry: 3
+        Data: 0
+      - Name: C
+        Entry: 4
+        Data: 0
+      - Name: D
+        Entry: 4
+        Data: 0
+      - Name: F
+        Entry: 4
+        Data: 0
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: Five
+        Entry: 7
+        Data: 2|Runestone.AesirInspector.Editor.ToggleGroupExampleSO+MyToggleB, Runestone.AesirInspector.Editor
+      - Name: Enabled
+        Entry: 5
+        Data: false
+      - Name: Title
+        Entry: 6
+        Data: 
+      - Name: A
+        Entry: 3
+        Data: 0
+      - Name: B
+        Entry: 3
+        Data: 0
+      - Name: Text
+        Entry: 6
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: ToggleList
+        Entry: 7
+        Data: 3|Runestone.AesirInspector.Editor.ToggleGroupExampleSO+MyToggleC[],
+          Runestone.AesirInspector.Editor
+      - Name: 
+        Entry: 12
+        Data: 3
+      - Name: 
+        Entry: 7
+        Data: 4|Runestone.AesirInspector.Editor.ToggleGroupExampleSO+MyToggleC, Runestone.AesirInspector.Editor
+      - Name: Enabled
+        Entry: 5
+        Data: true
+      - Name: Test
+        Entry: 4
+        Data: 2
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: 
+        Entry: 7
+        Data: 5|Runestone.AesirInspector.Editor.ToggleGroupExampleSO+MyToggleC, Runestone.AesirInspector.Editor
+      - Name: Enabled
+        Entry: 5
+        Data: false
+      - Name: Test
+        Entry: 4
+        Data: 5
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: 
+        Entry: 7
+        Data: 6|Runestone.AesirInspector.Editor.ToggleGroupExampleSO+MyToggleC, Runestone.AesirInspector.Editor
+      - Name: Enabled
+        Entry: 5
+        Data: false
+      - Name: Test
+        Entry: 4
+        Data: 7
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+  - key: ExampleState/ToggleGroupExampleWithToggleGroupTitleSO
+    typeName: Runestone.AesirInspector.Editor.ToggleGroupExampleWithToggleGroupTitleSO
+    checksum: 80FCEA529F501638C9DFD1200E9278FE6EFFC8241558F75D735826DCD5EC5AA7
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: toggleTitleField
+        Entry: 1
+        Data: Dynamic Toggle Title
+      - Name: Toggle1
+        Entry: 5
+        Data: false
+      - Name: referenceExample
+        Entry: 3
+        Data: 0
+      - Name: Toggle3
+        Entry: 5
+        Data: false
+      - Name: Test
+        Entry: 4
+        Data: 0
+      - Name: Toggle2
+        Entry: 5
+        Data: false
+      - Name: expressionExample
+        Entry: 3
+        Data: 0
+  - key: PanelSelection/DisableIfAttributePanelSO
+    typeName: DisableIfExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: DisableIfExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/DisableIfExampleSO
+    typeName: Runestone.AesirInspector.Editor.DisableIfExampleSO
+    checksum: E5C746BECE9D008413C3AD83C728AEEAAFC70FA0B229FAD47EBF4CAC6EDD5D2B
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: isToggled
+        Entry: 5
+        Data: false
+      - Name: disabledWhenToggled
+        Entry: 3
+        Data: 0
+      - Name: someEnum
+        Entry: 3
+        Data: 0
+      - Name: disabledWhenInfo
+        Entry: 1
+        Data: Disabled when someEnum is Info
+      - Name: disabledWhenError
+        Entry: 1
+        Data: Disabled when someEnum is Error
+      - Name: someObject
+        Entry: 6
+        Data: 
+      - Name: disabledWhenNotNull
+        Entry: 7
+        Data: UnityEngine.Vector3, UnityEngine.CoreModule
+      - Name: 
+        Entry: 4
+        Data: 0
+      - Name: 
+        Entry: 4
+        Data: 0
+      - Name: 
+        Entry: 4
+        Data: 0
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: disabledWithExpression
+        Entry: 1
+        Data: Complex condition with expression
+  - key: PanelSelection/ResponsiveButtonGroupAttributePanelSO
+    typeName: ResponsiveButtonGroupExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: ResponsiveButtonGroupExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/ResponsiveButtonGroupExampleSO
+    typeName: Runestone.AesirInspector.Editor.ResponsiveButtonGroupExampleSO
+    checksum: 
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: PanelSelection/HorizontalGroupAttributePanelSO
+    typeName: HorizontalGroupExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: HorizontalGroupExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/HorizontalGroupExampleSO
+    typeName: Runestone.AesirInspector.Editor.HorizontalGroupExampleSO
+    checksum: 86B4719D5451225D116DE3EB8EA95CADA992B301FF65C2500EAAB6D92F1B838E
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: Left1
+        Entry: 7
+        Data: Runestone.AesirInspector.Editor.HorizontalGroupExampleSO+SomeFieldType,
+          Runestone.AesirInspector.Editor
+      - Name: x
+        Entry: 7
+        Data: 0|System.Single[], mscorlib
+      - Name: 
+        Entry: 14
+        Data: 0
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: Right1
+        Entry: 7
+        Data: Runestone.AesirInspector.Editor.HorizontalGroupExampleSO+SomeFieldType,
+          Runestone.AesirInspector.Editor
+      - Name: x
+        Entry: 7
+        Data: 1|System.Single[], mscorlib
+      - Name: 
+        Entry: 14
+        Data: 0
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: Left3
+        Entry: 7
+        Data: Runestone.AesirInspector.Editor.HorizontalGroupExampleSO+SomeFieldType,
+          Runestone.AesirInspector.Editor
+      - Name: x
+        Entry: 7
+        Data: 2|System.Single[], mscorlib
+      - Name: 
+        Entry: 14
+        Data: 0
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: Center3
+        Entry: 7
+        Data: Runestone.AesirInspector.Editor.HorizontalGroupExampleSO+SomeFieldType,
+          Runestone.AesirInspector.Editor
+      - Name: x
+        Entry: 7
+        Data: 3|System.Single[], mscorlib
+      - Name: 
+        Entry: 14
+        Data: 0
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: Right3
+        Entry: 7
+        Data: Runestone.AesirInspector.Editor.HorizontalGroupExampleSO+SomeFieldType,
+          Runestone.AesirInspector.Editor
+      - Name: x
+        Entry: 7
+        Data: 4|System.Single[], mscorlib
+      - Name: 
+        Entry: 14
+        Data: 0
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: left
+        Entry: 3
+        Data: 0
+      - Name: right
+        Entry: 3
+        Data: 0
+      - Name: fixedWidth
+        Entry: 3
+        Data: 0
+      - Name: flexibleWidth
+        Entry: 3
+        Data: 0
+      - Name: Left2
+        Entry: 7
+        Data: Runestone.AesirInspector.Editor.HorizontalGroupExampleSO+SomeFieldType,
+          Runestone.AesirInspector.Editor
+      - Name: x
+        Entry: 7
+        Data: 5|System.Single[], mscorlib
+      - Name: 
+        Entry: 14
+        Data: 0
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: Right2
+        Entry: 7
+        Data: Runestone.AesirInspector.Editor.HorizontalGroupExampleSO+SomeFieldType,
+          Runestone.AesirInspector.Editor
+      - Name: x
+        Entry: 7
+        Data: 6|System.Single[], mscorlib
+      - Name: 
+        Entry: 14
+        Data: 0
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: Left4
+        Entry: 7
+        Data: Runestone.AesirInspector.Editor.HorizontalGroupExampleSO+SomeFieldType,
+          Runestone.AesirInspector.Editor
+      - Name: x
+        Entry: 7
+        Data: 7|System.Single[], mscorlib
+      - Name: 
+        Entry: 14
+        Data: 0
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: Center4
+        Entry: 7
+        Data: Runestone.AesirInspector.Editor.HorizontalGroupExampleSO+SomeFieldType,
+          Runestone.AesirInspector.Editor
+      - Name: x
+        Entry: 7
+        Data: 8|System.Single[], mscorlib
+      - Name: 
+        Entry: 14
+        Data: 0
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: Right4
+        Entry: 7
+        Data: Runestone.AesirInspector.Editor.HorizontalGroupExampleSO+SomeFieldType,
+          Runestone.AesirInspector.Editor
+      - Name: x
+        Entry: 7
+        Data: 9|System.Single[], mscorlib
+      - Name: 
+        Entry: 14
+        Data: 0
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: gap1
+        Entry: 3
+        Data: 0
+      - Name: gap2
+        Entry: 3
+        Data: 0
+      - Name: Left5
+        Entry: 7
+        Data: Runestone.AesirInspector.Editor.HorizontalGroupExampleSO+SomeFieldType,
+          Runestone.AesirInspector.Editor
+      - Name: x
+        Entry: 7
+        Data: 10|System.Single[], mscorlib
+      - Name: 
+        Entry: 14
+        Data: 0
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: Center5
+        Entry: 7
+        Data: Runestone.AesirInspector.Editor.HorizontalGroupExampleSO+SomeFieldType,
+          Runestone.AesirInspector.Editor
+      - Name: x
+        Entry: 7
+        Data: 11|System.Single[], mscorlib
+      - Name: 
+        Entry: 14
+        Data: 0
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: Right5
+        Entry: 7
+        Data: Runestone.AesirInspector.Editor.HorizontalGroupExampleSO+SomeFieldType,
+          Runestone.AesirInspector.Editor
+      - Name: x
+        Entry: 7
+        Data: 12|System.Single[], mscorlib
+      - Name: 
+        Entry: 14
+        Data: 0
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
+  - key: PanelSelection/MinValueAttributePanelSO
+    typeName: MinValueExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: MinValueExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/MinValueExampleSO
+    typeName: Runestone.AesirInspector.Editor.MinValueExampleSO
+    checksum: A5024355870D8640C94D9F02DD040514E731DF09A588E6B4317C49B000BBEF53
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: MinimumZero
+        Entry: 3
+        Data: 0
+      - Name: FloatMinValue
+        Entry: 4
+        Data: 0
+      - Name: Vector3MinValue
+        Entry: 7
+        Data: UnityEngine.Vector3, UnityEngine.CoreModule
+      - Name: 
+        Entry: 4
+        Data: 0
+      - Name: 
+        Entry: 4
+        Data: 0
+      - Name: 
+        Entry: 4
+        Data: 0
+      - Name: 
+        Entry: 8
+        Data: 
+      - Name: DynamicMinimum
+        Entry: 4
+        Data: 10
+      - Name: DynamicMin
+        Entry: 4
+        Data: 10

@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Runestone.AesirInspector.Editor
 {
     /// <summary>
@@ -13,12 +15,12 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("适用于预制体资源或预制体实例中的脚本属性。",
-                "Applicable to script properties in prefab assets or prefab instances."),
-            new BilingualData("通过 PrefabKind 参数，你可以精确控制在哪些预制体状态下触发必填检查。",
-                "Via the PrefabKind parameter, you can precisely control in which prefab states the required check is triggered."),
-            new BilingualData("支持自定义错误消息，并且支持解析器（Resolvers）。",
-                "Supports custom error messages and resolvers.")
+            new BilingualData("Required 的预制体版本：仅当当前对象匹配指定的 PrefabKind 时才执行非空检查，其他状态下不会报错。",
+                "The prefab-oriented variant of Required: the null check only runs when the current object matches the specified PrefabKind, and reports nothing otherwise."),
+            new BilingualData("PrefabKind 是位标志，可用 | 组合多种状态（如 PrefabKind.InstanceInScene | PrefabKind.Regular）。",
+                "PrefabKind is a bit flag, so multiple states can be combined with | (for example PrefabKind.InstanceInScene | PrefabKind.Regular)."),
+            new BilingualData("ErrorMessage 支持 $ 成员引用与 @ 表达式；默认消息为 \"<成员名> is required\"。",
+                "ErrorMessage supports $ member references and @ expressions; the default message is \"<member name> is required\".")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =
@@ -31,7 +33,16 @@ namespace Runestone.AesirInspector.Editor
                     "Custom error message to display when validation fails."))
         };
 
-        public override ResolvedStringParameterValue[] ResolvedStringParameters { get; set; } = { };
+        public override ResolvedStringParameterValue[] ResolvedStringParameters { get; set; } =
+        {
+            new ResolvedStringParameterValue("Error Message", ResolverType.ValueResolver,
+                typeof(string).FullName, "None", new List<ParameterValue>
+                {
+                    new ParameterValue("T", "$value",
+                        new BilingualData("应用此特性的成员的值（通常为空）。",
+                            "The value of the member that has the attribute applied to it (usually empty)."))
+                })
+        };
 
         public override AttributeExamplePreviewItem[] ExamplePreviewItems { get; set; } =
         {

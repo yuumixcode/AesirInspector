@@ -14,12 +14,12 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("Title 和 Header 类似，但支持子标题、对齐方式以及字符串解析。",
-                "Title is similar to Header but supports subtitles, alignments, and string resolution."),
-            new BilingualData("支持通过 $ 引用成员或使用 @ 编写表达式来动态生成标题和子标题。",
-                "Supports dynamically generating titles and subtitles by referencing members via $ or writing expressions via @."),
-            new BilingualData("可以使用 TitleAlignments 来控制标题和子标题的布局（如 Split 模式）。",
-                "TitleAlignments can be used to control the layout of titles and subtitles (e.g., Split mode).")
+            new BilingualData("用途与 Unity 的 Header 类似，但可作用于字段、属性和方法，并额外支持子标题、对齐方式、粗体与水平分割线。",
+                "Serves the same purpose as Unity's Header but works on fields, properties and methods, and adds subtitles, alignment, bold text and a horizontal line."),
+            new BilingualData("标题与子标题都支持字符串解析：\"$成员名\" 引用成员，\"@表达式\" 使用表达式。",
+                "Both title and subtitle support string resolution: \"$memberName\" references a member, while \"@expression\" evaluates an expression."),
+            new BilingualData("默认加粗并显示水平分割线；TitleAlignments.Split 会把标题放在左侧、子标题放在右侧。",
+                "Bold and horizontal line are on by default; TitleAlignments.Split places the title on the left and the subtitle on the right.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

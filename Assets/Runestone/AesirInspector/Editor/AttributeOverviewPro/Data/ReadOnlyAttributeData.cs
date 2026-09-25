@@ -12,10 +12,12 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("该特性仅影响检查器面板中的编辑，代码逻辑中仍然可以修改该变量的值。",
-                "This attribute only affects editing in the inspector panel; the value can still be modified in code logic."),
-            new BilingualData("可以应用于字段、属性以及集合类型（如 List 或 Array）。",
-                "Can be applied to fields, properties, and collection types (such as List or Array).")
+            new BilingualData("只影响检查器面板中的编辑，脚本逻辑中仍可自由修改该值。",
+                "Only affects editing in the inspector panel; the value can still be modified freely in script logic."),
+            new BilingualData("可作用于字段、属性以及集合类型（如 List 或 Array）。",
+                "Can be applied to fields, properties, and collection types (such as List or Array)."),
+            new BilingualData("与 [ShowInInspector] 组合时，可让非序列化的私有字段或属性以只读方式显示，便于实时调试。",
+                "Combined with [ShowInInspector], it displays non-serialized private fields or properties as read-only for live debugging.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } = { };

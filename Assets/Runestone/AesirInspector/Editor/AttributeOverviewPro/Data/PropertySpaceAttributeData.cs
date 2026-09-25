@@ -13,11 +13,12 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("与 Unity 原生的 [Space] 不同，[PropertySpace] 可以同时设置属性上方和下方的间距。",
-                "Unlike Unity's native [Space], [PropertySpace] can set spacing both above and below a property."),
-            new BilingualData("间距是以像素为单位的浮点值。", "The spacing values are floats representing pixels."),
-            new BilingualData("该特性可以应用于字段、属性和方法。",
-                "This attribute can be applied to fields, properties, and methods.")
+            new BilingualData("与 Unity 的 [Space] 作用相同，但可应用于任意成员（字段、属性、方法），而不只是字段。",
+                "Works like Unity's [Space], but can be applied to any member (fields, properties, methods), not just fields."),
+            new BilingualData("默认在成员上方添加 8 像素间距；用两个参数可分别设置上方（SpaceBefore）和下方（SpaceAfter）的间距。",
+                "Adds 8 pixels of spacing above the member by default; two arguments set the spacing above (SpaceBefore) and below (SpaceAfter) separately."),
+            new BilingualData("支持负值，可用于收紧成员之间已有的间距。",
+                "Negative values are supported and can tighten existing spacing between members.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

@@ -14,12 +14,9 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("支持根据 bool 成员、属性、方法或 C# 表达式来动态控制禁用状态。",
-                "Supports dynamically controlling the disabled state based on bool members, properties, methods, or C# expressions."),
-            new BilingualData("支持通过 optionalValue 参数将成员值与特定值进行比较。",
-                "Supports comparing a member value with a specific value via the optionalValue parameter."),
-            new BilingualData("当条件满足时，属性在检查器中将显示为禁用（灰掉）状态，且不可编辑。",
-                "When the condition is met, the property will appear disabled (greyed out) in the inspector and will not be editable.")
+            new BilingualData("条件为真时属性在检视器中变灰且不可编辑；condition 可为 bool 成员、属性、方法或 @ 表达式。", "When the condition is true the property is greyed out and cannot be edited; condition may be a bool member, a property, a method, or an @ expression."),
+            new BilingualData("传入 optionalValue 时，仅当 condition 成员的值等于该值才禁用（常用于枚举成员等于某个枚举值）。", "When optionalValue is supplied, the property is disabled only if the value of the condition member equals it (commonly used with an enum member equal to a specific enum value)."),
+            new BilingualData("该特性不会作用于列表元素（DontApplyToListElements），只影响成员自身；AllowMultiple 允许叠加多个条件。", "The attribute does not apply to list elements (DontApplyToListElements) and only affects the member itself; AllowMultiple lets several conditions be stacked.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

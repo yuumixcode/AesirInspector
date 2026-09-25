@@ -15,12 +15,9 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("支持多种颜色定义方式，包括颜色名、Hex 码、RGBA 格式和表达式。",
-                "Supports various color definition methods, including color names, hex codes, RGBA format, and expressions."),
-            new BilingualData("使用 $ 符号引用成员名时，Rider 可以提供智能补全和高亮。",
-                "When referencing member names with the $ symbol, Rider provides autocomplete and highlighting."),
-            new BilingualData("颜色表达式可以是三元表达式，用于根据条件动态改变颜色。",
-                "Color expressions can be ternary expressions, used to dynamically change colors based on conditions.")
+            new BilingualData("可以用 r、g、b、a 直接指定颜色（三参数构造重载中 a 默认为 1），也可以用 getColor 以字符串解析颜色。", "The color can be specified directly with r, g, b and a (the three-argument constructor overload defaults a to 1), or resolved from a string with getColor."),
+            new BilingualData("getColor 支持 $ 成员引用与 @ 表达式，例如 \"@useRed ? UnityEngine.Color.red : UnityEngine.Color.green\" 可根据条件动态改变颜色。", "getColor supports $ member references and @ expressions, so for example \"@useRed ? UnityEngine.Color.red : UnityEngine.Color.green\" changes the color dynamically based on a condition."),
+            new BilingualData("颜色作用于整个属性的绘制（包含标签与按钮），因此常用来突出重要字段或按钮。", "The color applies to the drawing of the whole property, including its label and buttons, which makes it handy for highlighting important fields or buttons.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } = new ParameterValue[5]

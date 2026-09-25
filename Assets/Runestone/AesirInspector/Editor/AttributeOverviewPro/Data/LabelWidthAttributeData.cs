@@ -12,19 +12,19 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("可以设置具体的像素宽度，也可以设置 0 到 1 之间的比例宽度。",
-                "You can set a specific pixel width or a proportional width between 0 and 1."),
-            new BilingualData("常用于对齐多个属性的输入框，或者在标签文字较长时增加宽度。",
-                "Commonly used to align input fields of multiple properties or to increase width for long label text."),
-            new BilingualData("该特性会影响当前属性及其子属性的标签宽度。",
-                "This attribute affects the label width of the current property and its children.")
+            new BilingualData("用于自定义属性标签的宽度，常用于对齐多个属性的输入框。",
+                "Customizes the width of a property label, commonly used to align the input fields of multiple properties."),
+            new BilingualData("正数表示标签的绝对像素宽度；负数表示在当前宽度基础上减少的量（相对宽度）。",
+                "A positive value is an absolute pixel width; a negative value is an offset subtracted from the current width (relative width)."),
+            new BilingualData("会影响当前属性及其子属性的标签宽度。",
+                "Affects the label width of the current property and its child properties.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =
         {
             new ParameterValue(typeof(float).FullName, "width",
-                new BilingualData("标签的宽度。如果大于 1，则视为像素；如果小于等于 1，则视为比例。",
-                    "The width of the label. If greater than 1, it's pixels; if 1 or less, it's proportional."))
+                new BilingualData("标签宽度：正数为绝对像素值，负数为在当前标签宽度基础上的相对增减（例如 -50 表示减少 50 像素）。",
+                    "The label width: a positive value is an absolute pixel width, while a negative value is a relative change from the current label width (for example -50 reduces it by 50 pixels)."))
         };
 
         public override ResolvedStringParameterValue[] ResolvedStringParameters { get; set; } = { };

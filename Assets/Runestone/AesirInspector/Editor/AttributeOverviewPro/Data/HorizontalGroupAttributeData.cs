@@ -13,14 +13,14 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("通过指定相同的组名来将属性归入同一个水平组。",
-                "Properties are grouped together by specifying the same group name."),
-            new BilingualData("支持设置固定宽度（像素）或比例宽度（0-1）。",
-                "Supports setting fixed widths (pixels) or proportional widths (0-1)."),
-            new BilingualData("可以嵌套其他组特性，如在水平组中嵌套 BoxGroup。",
-                "Can be nested with other group attributes, such as nesting a BoxGroup inside a HorizontalGroup."),
-            new BilingualData("通过 Gap 参数可以调整组内成员之间的间距。",
-                "The Gap parameter allows adjusting the spacing between members in the group.")
+            new BilingualData("组名相同即归入同一水平组；不指定组名时使用默认组。",
+                "Properties with the same group name join the same horizontal group; omitting the name uses the default group."),
+            new BilingualData("Width 为 0 时自动分配宽度，比例值（0 到 1）按百分比处理，更大的值按像素处理。",
+                "A Width of 0 auto-sizes the column, proportional values (0 to 1) are treated as a percentage, and larger values as pixels."),
+            new BilingualData("可与 BoxGroup、VerticalGroup 等其他组特性嵌套，实现更复杂的布局。",
+                "Can be nested with other group attributes such as BoxGroup and VerticalGroup for more complex layouts."),
+            new BilingualData("水平组中的标签会挤压输入框，通常配合 LabelWidth 或 HideLabel 使用。",
+                "Labels in a horizontal group squeeze the input fields, so it is usually combined with LabelWidth or HideLabel.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

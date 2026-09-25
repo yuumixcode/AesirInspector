@@ -10,10 +10,8 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("适用于需要通过 OnValueChanged 触发昂贵操作的场景，避免在打字过程中频繁触发。",
-                "Ideal for scenarios where OnValueChanged triggers expensive operations, avoiding frequent triggers while typing."),
-            new BilingualData("该特性与 Unity 自带的 [Delayed] 特性功能一致，但 Odin 对其提供了更好的集成支持。",
-                "This attribute functions similarly to Unity's built-in [Delayed] attribute but offers better integration with Odin.")
+            new BilingualData("延迟属性值更新，直到用户按下回车或输入框失去焦点；适合配合 OnValueChanged 避免打字过程中频繁触发昂贵操作。", "Delays applying the value until the user presses enter or the field loses focus; useful together with OnValueChanged to avoid triggering expensive work while typing."),
+            new BilingualData("与 Unity 自带的 [Delayed] 功能类似，但 DelayedProperty 还能作用于属性（Property），而不限于字段。", "Similar to Unity's built-in [Delayed], but DelayedProperty can also be applied to properties, not only to fields.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } = { };

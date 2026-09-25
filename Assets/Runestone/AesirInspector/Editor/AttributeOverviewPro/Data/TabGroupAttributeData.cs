@@ -14,12 +14,14 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("通过组名和页签名称来组织页签。具有相同组名的属性会被放在同一个页签栏中。",
-                "Organizes tabs by group name and tab name. Properties with the same group name will be placed in the same tab bar."),
-            new BilingualData("支持设置页签图标、文字颜色以及是否使用固定高度。",
-                "Supports setting tab icons, text colors, and whether to use fixed heights for all tabs in the group."),
-            new BilingualData("可以通过 TabLayouting 参数控制页签的排列方式（如多行排列或收缩排列）。",
-                "The TabLayouting parameter controls how tabs are laid out (e.g., MultiRow or Shrink).")
+            new BilingualData("用 \"组名, 页签名\" 组织页签；同一组名的成员进入同一页签栏，单参数重载使用默认组 _DefaultTabGroup。",
+                "Organizes tabs with \"group name, tab name\"; members sharing a group name go into the same tab bar, and the single-argument overload uses the default group _DefaultTabGroup."),
+            new BilingualData("组路径支持 / 嵌套，可在页签内再划分页签（如 \"ParentGroup/First Tab/InnerGroup\"）。",
+                "The group path supports / nesting, allowing tabs within tabs (for example \"ParentGroup/First Tab/InnerGroup\")."),
+            new BilingualData("UseFixedHeight 让组内所有页签保持相同高度，默认值为 false。",
+                "UseFixedHeight keeps every tab in the group at the same height, and defaults to false."),
+            new BilingualData("TabLayouting 控制页签排列方式：MultiRow 为多行排列，Shrink 为收缩排列。",
+                "TabLayouting controls how tabs are laid out: MultiRow wraps to multiple rows, and Shrink compresses them.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =
@@ -27,8 +29,8 @@ namespace Runestone.AesirInspector.Editor
             new ParameterValue(typeof(string).FullName, "tab",
                 new BilingualData("页签名称。", "The name of the tab.")),
             new ParameterValue(typeof(bool).FullName, "useFixedHeight",
-                new BilingualData("是否为所有页签使用固定高度。默认值为 true。",
-                    "Whether to use a fixed height for all tabs in the group. Default is true.")),
+                new BilingualData("是否为所有页签使用固定高度。默认值为 false。",
+                    "Whether to use a fixed height for all tabs in the group. Default is false.")),
             new ParameterValue(typeof(SdfIconType).FullName, "icon",
                 new BilingualData("页签显示的图标。", "The icon to display on the tab.")),
             new ParameterValue(typeof(string).FullName, "TextColor",

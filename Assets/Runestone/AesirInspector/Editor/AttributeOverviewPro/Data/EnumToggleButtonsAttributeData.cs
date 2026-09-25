@@ -13,12 +13,10 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("支持带有 [Flags] 特性的位掩码枚举，可以进行多选。",
-                "Supports bitmask enums with the [Flags] attribute, allowing multiple selection."),
-            new BilingualData("配合 [HideLabel] 可以让按钮填满整行。",
-                "Works well with [HideLabel] to make the buttons fill the entire row width."),
-            new BilingualData("可以使用 [LabelText] 为每个枚举项设置图标或自定义显示文本。",
-                "You can use [LabelText] to set icons or custom display text for each enum member.")
+            new BilingualData("把枚举绘制成一排按钮而不是下拉框；带有 [Flags] 的位掩码枚举支持多选，再次点击已选中的项会清除该位。", "Draws an enum as a row of buttons instead of a dropdown; bitmask enums marked with [Flags] support multi-selection, and clicking a selected member again clears its bit."),
+            new BilingualData("位掩码枚举下，右键或按住 Ctrl 点击会直接把值设为该项，而不是切换它的位。", "For bitmask enums, right-clicking or Ctrl-clicking sets the value directly to that member instead of toggling its bit."),
+            new BilingualData("按钮过宽时会自动折行成多排；配合 [HideLabel] 可让按钮占满整行宽度。", "When the buttons do not fit they automatically wrap into multiple rows; combined with [HideLabel] they fill the entire row width."),
+            new BilingualData("可通过枚举成员上的 [LabelText] 为每个枚举项设置自定义文本或图标（SdfIconType）。", "Use [LabelText] on the enum members to give each one custom text or an icon (SdfIconType).")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

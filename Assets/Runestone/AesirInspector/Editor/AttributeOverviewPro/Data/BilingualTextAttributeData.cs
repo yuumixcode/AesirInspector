@@ -14,12 +14,9 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("属性以只读文本绘制，不可编辑，适合展示说明性内容。",
-                "The property is drawn as read-only text and cannot be edited; ideal for explanatory content."),
-            new BilingualData("中英文文本同时展示，语言切换时自动高亮当前语言。",
-                "Chinese and English texts are shown together; the highlight follows the language setting."),
-            new BilingualData("支持 SDF 图标与图标颜色，nicifyEnglishText 控制英文是否美化显示。",
-                "Supports SDF icons and icon colors; nicifyEnglishText controls English nicification.")
+            new BilingualData("同时配置中英文两套文本，只显示与当前语言设置匹配的一条，切换语言时自动更新。", "Both Chinese and English texts are supplied, but only the one matching the current language setting is shown and it updates automatically when the language changes."),
+            new BilingualData("文本支持 $ 成员引用与 @ 表达式解析，可按运行时状态动态显示。", "The text supports $ member references and @ expressions, so it can be resolved dynamically from runtime state."),
+            new BilingualData("支持 SDF 图标与图标颜色（iconColor），仅在指定图标时绘制。", "Supports an SDF icon and icon color (iconColor); the icon is drawn only when one is specified.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

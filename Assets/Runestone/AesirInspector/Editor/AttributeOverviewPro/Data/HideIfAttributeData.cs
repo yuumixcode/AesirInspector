@@ -14,12 +14,10 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("可以根据 bool 成员、方法或表达式来控制属性的隐藏。",
-                "Properties can be hidden based on a bool member, method, or expression."),
-            new BilingualData("配合 OptionalValue 参数，可以根据枚举或其他值进行匹配隐藏。",
-                "With the OptionalValue parameter, properties can be hidden based on matches with enums or other values."),
-            new BilingualData("HideIf 仅控制显示，不影响序列化或逻辑，通常与 ShowIf 成对使用。",
-                "HideIf only controls visibility and does not affect serialization or logic; it's often used as the opposite of ShowIf.")
+            new BilingualData("condition 支持 bool 字段、属性、方法或 @ 表达式；使用 @ 表达式访问成员时应自行做 null 检查。", "condition accepts a bool field, property, method or an @ expression; when an @ expression accesses members, add your own null checks."),
+            new BilingualData("条件结果按类型判断：UnityEngine.Object 判空、bool 取自身值、string 判非空；传入 optionalValue 时则改为与该值相等比较（常用于枚举）。", "The condition result is interpreted by type: UnityEngine.Object is tested for null, bool uses its own value and string is tested for non-emptiness; when optionalValue is supplied the result is compared for equality with it instead (commonly with enums)."),
+            new BilingualData("只控制显示，不影响序列化与业务逻辑；隐藏状态切换默认带滑动动画，可用 animate 参数关闭。", "It only controls visibility and does not affect serialization or game logic; the visibility transition is animated by default and can be turned off with the animate parameter."),
+            new BilingualData("与 ShowIf 相反；需要按条件隐藏整组属性时，请使用 HideIfGroup。", "It is the opposite of ShowIf; to hide a whole group of properties conditionally, use HideIfGroup.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

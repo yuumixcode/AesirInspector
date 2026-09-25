@@ -14,14 +14,10 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("用于方法，中英文名称同时展示，语言切换时自动高亮。",
-                "Applied to methods; both names are shown and the highlight follows the language setting."),
-            new BilingualData("支持 ButtonSizes / ButtonStyle / 图标 / 图标对齐等 Odin 按钮样式。",
-                "Supports Odin button options such as ButtonSizes / ButtonStyle / icon / icon alignment."),
-            new BilingualData("可控制是否拉伸、是否绘制返回值、是否显示参数与点击时是否标记为脏。",
-                "Controls stretch, result drawing, parameter display and dirty-on-click behavior."),
-            new BilingualData("必须硬编码使用特性，不能通过 OdinAttributeProcessor 动态添加。",
-                "Must be applied literally in code; it cannot be added dynamically via OdinAttributeProcessor.")
+            new BilingualData("用于方法，把方法绘制成按钮，点击即调用；带参数的方法会在按钮下方绘制参数输入框（displayParameters）。", "Applied to methods, drawing them as buttons that invoke the method on click; methods with parameters show parameter fields below the button (displayParameters)."),
+            new BilingualData("中英文名称都支持 $ 成员引用与 @ 表达式解析，并按当前语言设置只显示匹配的一条，切换语言时自动更新。", "Both names support $ member references and @ expressions, and only the one matching the current language setting is shown, updating automatically when the language changes."),
+            new BilingualData("支持 Odin 按钮的样式选项：ButtonSize / ButtonStyle、SDF 图标与图标对齐、stretch、drawResult、expanded、dirtyOnClick 等。", "Supports the Odin button styling options: ButtonSize / ButtonStyle, SDF icon and icon alignment, stretch, drawResult, expanded, dirtyOnClick, and more."),
+            new BilingualData("必须硬编码使用特性，不能通过 OdinAttributeProcessor 动态添加。", "Must be applied literally in code; it cannot be added dynamically via OdinAttributeProcessor.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

@@ -14,12 +14,10 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("支持根据 bool 成员、属性、方法或 C# 表达式来动态控制启用状态。",
-                "Supports dynamically controlling the enabled state based on bool members, properties, methods, or C# expressions."),
-            new BilingualData("支持通过 optionalValue 参数将成员值与特定值进行比较。",
-                "Supports comparing a member value with a specific value via the optionalValue parameter."),
-            new BilingualData("当条件不满足时，属性在检查器中将显示为禁用（灰掉）状态。",
-                "When the condition is not met, the property will appear disabled (greyed out) in the inspector.")
+            new BilingualData("condition 支持 bool 字段、属性、方法或 @ 表达式；使用 @ 表达式访问成员时应自行做 null 检查。", "condition accepts a bool field, property, method or an @ expression; when an @ expression accesses members, add your own null checks."),
+            new BilingualData("条件结果按类型判断：UnityEngine.Object 判空、bool 取自身值、string 判非空；传入 optionalValue 时则改为与该值相等比较（常用于枚举）。", "The condition result is interpreted by type: UnityEngine.Object is tested for null, bool uses its own value and string is tested for non-emptiness; when optionalValue is supplied the result is compared for equality with it instead (commonly with enums)."),
+            new BilingualData("条件不满足时属性仍然绘制，只是被禁用（灰显），其值依然会被序列化。", "When the condition is not met the property is still drawn, only disabled (grayed out), and its value is still serialized."),
+            new BilingualData("与 DisableIf 相反；当 condition 无法解析时，属性默认为启用状态。", "It is the opposite of DisableIf; when condition cannot be resolved, the property defaults to the enabled state.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

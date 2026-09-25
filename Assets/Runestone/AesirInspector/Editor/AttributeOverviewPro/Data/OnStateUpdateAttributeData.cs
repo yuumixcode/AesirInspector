@@ -15,10 +15,12 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("这非常适合用于根据其他成员的值来动态更改属性的状态。",
-                "This is perfect for dynamically changing the state of a property based on the values of other members."),
-            new BilingualData("你可以通过 $property 访问当前属性，并修改其 State 属性。",
-                "You can access the current property via $property and modify its State property.")
+            new BilingualData("在属性状态更新时执行（通常每帧至少一次），即使属性当前不可见也会被调用。",
+                "Runs whenever the property's state is updated (generally at least once per frame) and is invoked even when the property is not visible."),
+            new BilingualData("可通过 $property 访问当前属性并修改其 State（如 Visible、Enabled、Expanded），用于替代 [ShowIf] 等一次性状态逻辑。",
+                "Use $property to access the current property and modify its State (such as Visible, Enabled or Expanded); this replaces one-off state logic like [ShowIf]."),
+            new BilingualData("也可用 @#(成员).State 修改其他属性的状态；标注在方法上时方法可接收 InspectorProperty 参数。",
+                "Another property's state can be changed with @#(member).State; when placed on a method, the method may take an InspectorProperty parameter.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } = new ParameterValue[1]

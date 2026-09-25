@@ -15,12 +15,12 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("参数为用作开关的 bool 成员名。",
-                "The parameter is the name of the bool member used as the switch."),
-            new BilingualData("标注在字段上时仅控制该字段；标注在类上时控制该类所有实例的显示。",
-                "Applied to a field it controls that field; applied to a class it controls every instance of the type."),
-            new BilingualData("与 ToggleGroup 的区别：Toggle 只控制单个值，ToggleGroup 控制一组字段。",
-                "Unlike ToggleGroup, Toggle controls a single value rather than a group of fields.")
+            new BilingualData("为字段或属性添加开关：开关成员必须是被标注成员所在对象上的 bool 字段或属性，不支持静态成员。",
+                "Adds a toggle to a field or property: the toggle member must be a bool field or property on the same object as the annotated member, and static members are not supported."),
+            new BilingualData("标注在字段上只控制该字段，标注在类上则该类型的所有实例都带开关。",
+                "Applied to a field it controls only that field, while applied to a class every instance of the type gets the toggle."),
+            new BilingualData("与 ToggleGroup 的区别：Toggle 只启用/禁用单个值，ToggleGroup 用一个 bool 控制整组字段的展开与折叠。",
+                "Unlike ToggleGroup, which uses one bool to expand or collapse a whole group of fields, Toggle enables or disables a single value.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

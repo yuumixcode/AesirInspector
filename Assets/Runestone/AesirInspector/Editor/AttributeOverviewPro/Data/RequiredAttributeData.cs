@@ -14,12 +14,12 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("用于标记关键的值，使其在运行前不能为空。",
-                "Used to mark critical values so they cannot be empty before running."),
-            new BilingualData("自定义错误信息可以引用成员（使用 $ 符号）或使用表达式（使用 @ 符号）。",
-                "Custom error messages can reference members (using $) or use expressions (using @)."),
-            new BilingualData("优先使用构造函数参数而不是 ErrorMessage 命名参数，Rider 能提供更好的字符串解析支持。",
-                "Prefer using constructor arguments over the ErrorMessage named parameter for better string resolution support in Rider.")
+            new BilingualData("标记关键引用或值：当成员为 null、空字符串或已销毁的 UnityEngine.Object 时报告错误（默认类型为 Error）。",
+                "Marks critical references or values: it reports an error when the member is null, an empty string, or a destroyed UnityEngine.Object (default type is Error)."),
+            new BilingualData("自定义错误消息支持 $ 成员引用与 @ 表达式（例如 \"$DynamicMessage\"）。",
+                "Custom error messages support $ member references and @ expressions (for example \"$DynamicMessage\")."),
+            new BilingualData("默认消息为 \"<成员名> is required\"；它属于验证器，不会阻止赋值，也不影响序列化或运行时逻辑。",
+                "The default message is \"<member name> is required\"; it is a validator, so it does not block assignment and does not affect serialization or runtime logic.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

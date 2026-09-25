@@ -9,7 +9,13 @@ namespace Runestone.AesirInspector.Editor
                 "The ColorPalette attribute provides a palette-style drawer for Color properties.",
                 "https://odininspector.com/attributes/color-palette-attribute");
 
-        public override BilingualData[] UsageTips { get; set; } = { };
+        public override BilingualData[] UsageTips { get; set; } =
+        {
+            new BilingualData("为 Color 字段（含 Color 数组）提供调色板选择；不指定 PaletteName 时可从所有可用调色板中选择。", "Provides palette selection for Color fields (including Color arrays); when no PaletteName is given, all available palettes can be chosen from."),
+            new BilingualData("PaletteName 支持 $ 成员引用与 @ 表达式，可按运行时状态动态切换调色板。", "PaletteName supports $ member references and @ expressions, so the palette can be switched dynamically from runtime state."),
+            new BilingualData("颜色值与调色板并不绑定：颜色仍可手动编辑，且修改调色板后已有颜色不会自动更新。", "The color is not bound to the palette: it can still be edited manually, and existing colors do not update when the palette is edited."),
+            new BilingualData("调色板在 Tools > Odin > Inspector > Preferences > Drawers > Color Palettes 中配置。", "Palettes are configured under Tools > Odin > Inspector > Preferences > Drawers > Color Palettes.")
+        };
 
         public override ParameterValue[] AttributeParameters { get; set; } =
         {

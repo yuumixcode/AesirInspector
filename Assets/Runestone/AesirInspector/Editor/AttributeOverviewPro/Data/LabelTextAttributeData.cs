@@ -14,13 +14,14 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("支持使用 $ 符号引用成员变量作为标签内容。",
-                "Supports using the $ symbol to reference member variables as label content."),
-            new BilingualData("支持使用 @ 符号编写 C# 表达式来动态生成标签内容。",
-                "Supports using the @ symbol to write C# expressions to dynamically generate label content."),
-            new BilingualData("可以设置 nicifyText 参数来自动优化变量名为更美观的显示方式。",
-                "The nicifyText parameter can be set to automatically optimize variable names for a more aesthetic display."),
-            new BilingualData("支持 SdfIconType 图标和颜色设置。", "Supports SdfIconType icons and color settings.")
+            new BilingualData("用自定义文本替换属性默认的标签名称。",
+                "Replaces the default label name of a property with custom text."),
+            new BilingualData("text 支持 $ 成员引用与 @ 表达式，可动态生成标签内容。",
+                "text supports $ member references and @ expressions, allowing the label to be generated dynamically."),
+            new BilingualData("nicifyText 为 true 时会对文本做美化（如 m_myField → My Field），解析得到的文本同样会被美化。",
+                "When nicifyText is true the text is nicified (e.g. m_myField -> My Field), and text produced by resolution is nicified as well."),
+            new BilingualData("可通过 icon 与 IconColor 在标签旁显示带颜色的 Sdf 图标。",
+                "icon and IconColor display a colored SDF icon next to the label.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

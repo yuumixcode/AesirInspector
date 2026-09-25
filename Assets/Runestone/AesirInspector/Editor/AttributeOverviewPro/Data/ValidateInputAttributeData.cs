@@ -15,12 +15,12 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("支持使用方法名、成员变量或 C# 表达式作为验证逻辑。",
-                "Supports using method names, member variables, or C# expressions as validation logic."),
-            new BilingualData("验证方法可以包含参数，如属性的值、属性本身，甚至可以通过 ref 参数动态修改错误消息和消息类型。",
-                "Validation methods can include parameters such as the value of the property, the property itself, and even dynamically modify the error message and message type via ref parameters."),
-            new BilingualData("可以设置 ContinuousValidationCheck 选项来强制持续验证（每帧检查）。",
-                "The ContinuousValidationCheck option can be set to force continuous validation (per-frame checking).")
+            new BilingualData("在检查器中验证属性值：condition 可以是方法名、\"$成员\" 引用或 \"@表达式\"，返回 true 表示验证通过。",
+                "Validates a property value in the inspector: condition can be a method name, a \"$member\" reference or an \"@expression\", and returning true means the value is valid."),
+            new BilingualData("验证方法可接收属性值等参数，并能通过 ref string message、ref InfoMessageType messageType 动态改写错误消息与类型。",
+                "The validation method can take parameters such as the value, and can rewrite the message and its type through ref string message and ref InfoMessageType messageType."),
+            new BilingualData("只在编辑器中生效，脚本直接修改的值不会被验证；IncludeChildren 默认开启，子字段变化也会触发验证。",
+                "It only works in the editor, so values changed by script are not validated; IncludeChildren is on by default, so changes to child fields also trigger validation.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

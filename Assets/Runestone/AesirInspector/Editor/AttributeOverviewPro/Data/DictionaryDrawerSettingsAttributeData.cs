@@ -15,14 +15,9 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("可以自定义键（Key）和值（Value）列的标签文本。",
-                "Customizes the label text for Key and Value columns."),
-            new BilingualData("支持多种显示模式，如单行显示（OneLine）、折叠显示（Foldout）等。",
-                "Supports multiple display modes, such as OneLine or Foldout."),
-            new BilingualData("可以设置键列的固定宽度（KeyColumnWidth）。",
-                "Allows setting a fixed width for the Key column."),
-            new BilingualData("可以控制字典是否只读（IsReadOnly），禁止在面板中添加或删除项。",
-                "Can make the dictionary read-only, preventing additions or removals in the Inspector.")
+            new BilingualData("用于自定义字典在 Inspector 中的绘制；字典必须使用 Odin 序列化（[OdinSerialize]）才能在检视器中编辑。", "Customizes how a dictionary is drawn in the Inspector; the dictionary must use Odin serialization ([OdinSerialize]) to be editable there."),
+            new BilingualData("KeyLabel / ValueLabel 自定义键值列标签（默认 \"Key\" / \"Value\"），KeyColumnWidth 设置键列宽度（默认 130）。", "KeyLabel / ValueLabel override the key and value column labels (default \"Key\" / \"Value\"), and KeyColumnWidth sets the key column width (default 130)."),
+            new BilingualData("DisplayMode 控制绘制方式（OneLine、Foldout、CollapsedFoldout、ExpandedFoldout），IsReadOnly 可禁止在面板中增删条目。", "DisplayMode controls the drawing style (OneLine, Foldout, CollapsedFoldout, ExpandedFoldout), and IsReadOnly prevents adding or removing entries in the Inspector.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

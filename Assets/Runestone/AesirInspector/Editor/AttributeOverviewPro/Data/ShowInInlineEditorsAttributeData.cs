@@ -15,11 +15,11 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("无参数，作用于成员本身。",
-                "Takes no parameters and applies to the member itself."),
-            new BilingualData("与 DisableInInlineEditors 相反：普通 Inspector 中隐藏，仅内联编辑器中可见。",
-                "The opposite of DisableInInlineEditors: hidden in regular inspectors, visible only inside inline editors."),
-            new BilingualData("适合把内联编辑时才需要的辅助信息暴露出来。",
+            new BilingualData("无参数；仅当属性绘制在 InlineEditor 内部时显示，普通 Inspector 中隐藏。",
+                "Takes no parameters; the property is shown only while drawn inside an InlineEditor and is hidden in regular inspectors."),
+            new BilingualData("与 HideInInlineEditors 相反；若希望内联编辑时禁用而非隐藏，应使用 DisableInInlineEditors。",
+                "The opposite of HideInInlineEditors; to disable rather than hide the property inside inline editors, use DisableInInlineEditors."),
+            new BilingualData("适合暴露只在内联编辑时有用的辅助信息。",
                 "Useful for exposing helper information that only matters while editing inline.")
         };
 

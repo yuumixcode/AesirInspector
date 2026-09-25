@@ -15,10 +15,12 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("无参数，标注在类上。",
-                "Takes no parameters and is applied to a class."),
-            new BilingualData("隐藏后仍可通过右键菜单等方式访问脚本资源。",
-                "The script asset remains reachable through context menus after hiding.")
+            new BilingualData("无参数，标注在类上，隐藏 Inspector 顶部的 Script 引用字段，使界面更简洁。",
+                "Takes no parameters and is applied to a class; it hides the Script reference field at the top of the inspector for a cleaner look."),
+            new BilingualData("效果等同于全局关闭 Odin 偏好设置中的 \"Show Mono Script In Editor\"，但仅作用于被标注的类型。",
+                "Equivalent to globally disabling \"Show Mono Script In Editor\" in Odin preferences, but it only affects the decorated type."),
+            new BilingualData("仅影响显示，脚本资源本身仍可在 Project 窗口中访问。",
+                "Only the display is affected; the script asset itself remains reachable in the Project window.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } = Array.Empty<ParameterValue>();

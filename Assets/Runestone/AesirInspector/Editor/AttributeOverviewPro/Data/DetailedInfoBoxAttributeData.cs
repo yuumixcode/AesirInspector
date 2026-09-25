@@ -12,12 +12,9 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("支持双语显示主消息和详细内容。",
-                "Supports bilingual display of the main message and detailed content."),
-            new BilingualData("详细内容区域可以手动展开或折叠。",
-                "The detailed content area can be manually expanded or collapsed."),
-            new BilingualData("支持根据成员名或表达式动态解析消息和详细内容。",
-                "Supports dynamic resolution of messages and detailed content based on member names or expressions.")
+            new BilingualData("在属性上方绘制可折叠的消息框，主消息与详细内容都同时配置中英文两套文本。", "Draws a collapsible message box above the property; both the main message and the detailed content supply Chinese and English texts."),
+            new BilingualData("主消息与详细内容都是解析字符串，支持 $ 成员引用与 @ 表达式，可按状态动态显示。", "Both the main message and the detailed content are resolved strings supporting $ member references and @ expressions, so they can reflect runtime state."),
+            new BilingualData("支持 Info / Warning / Error / None 四种消息类型；guiAlwaysEnabled 可让消息框在属性被禁用时仍保持启用。", "Supports the Info / Warning / Error / None message types; guiAlwaysEnabled keeps the box enabled even when the property is disabled.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

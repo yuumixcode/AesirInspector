@@ -15,10 +15,8 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("默认禁用成员自身的右键菜单，可用参数控制是否保留集合元素菜单。",
-                "Disables the member's own context menu by default; parameters control the collection-element menu."),
-            new BilingualData("disableForMember 为 false 时保留成员菜单，仅禁用集合元素菜单。",
-                "With disableForMember set to false, the member menu is kept and only collection-element menus are disabled.")
+            new BilingualData("默认禁用成员自身的右键菜单（disableForMember = true）；disableCollectionElements 为 true 时可同时禁用集合元素的右键菜单。", "Disables the member's own context menu by default (disableForMember = true); setting disableCollectionElements to true also disables the context menus of collection elements."),
+            new BilingualData("只禁用 Odin 提供的右键菜单，不会禁用 Unity 自带对象字段的右键菜单。", "It only disables the context menus provided by Odin; Unity's own object-field context menu is not disabled.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

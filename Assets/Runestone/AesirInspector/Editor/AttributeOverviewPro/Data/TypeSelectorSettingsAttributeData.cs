@@ -10,8 +10,12 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("Odin 对于 TypeSelectorSettings 有全局设置，如果另外设置覆盖，则将使用全局设置。",
-                "Odin has global TypeSelectorSettings. If additional overrides are set, the global settings are used.")
+            new BilingualData("为 Odin 绘制的类型选择器提供选项：是否显示分组、是否优先使用命名空间、是否显示 \"<none>\" 项。",
+                "Provides options for Odin's type selector: whether to show categories, prefer namespaces, and show the \"<none>\" item."),
+            new BilingualData("只覆盖显式设置的选项，未设置的选项沿用 Odin 的全局设置（GeneralDrawerConfig）。",
+                "Only the options you explicitly set are overridden; the rest fall back to Odin's global settings in GeneralDrawerConfig."),
+            new BilingualData("FilterTypesFunction 指向一个 bool 方法(Type type)，返回 false 的类型会从选择器中隐藏。",
+                "FilterTypesFunction points to a bool method(Type type); types it returns false for are hidden from the selector.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

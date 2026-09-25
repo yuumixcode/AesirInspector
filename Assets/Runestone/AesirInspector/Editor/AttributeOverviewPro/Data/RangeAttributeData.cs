@@ -17,10 +17,10 @@ namespace Runestone.AesirInspector.Editor
         {
             new BilingualData("Unity 内置特性，Odin 沿用其滑块绘制行为。",
                 "A Unity built-in attribute whose slider drawing is kept by Odin."),
-            new BilingualData("同时限定取值范围：超出范围的值会被钳制。",
-                "It also constrains the value: out-of-range values are clamped."),
-            new BilingualData("只能作用于字段（Unity 限制），若需作用于属性请使用 Odin 的 PropertyRange。",
-                "Can only be applied to fields (a Unity limitation); use Odin's PropertyRange for properties.")
+            new BilingualData("滑块同时限定取值范围，超出范围的值会被钳制。",
+                "The slider also constrains the value: out-of-range values are clamped."),
+            new BilingualData("只能作用于字段且不支持动态范围（Unity 限制）；需要作用于属性或用 $ 引用成员时请使用 Odin 的 PropertyRange。",
+                "Can only be applied to fields and does not support dynamic bounds (a Unity limitation); use Odin's PropertyRange for properties or $ member references.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

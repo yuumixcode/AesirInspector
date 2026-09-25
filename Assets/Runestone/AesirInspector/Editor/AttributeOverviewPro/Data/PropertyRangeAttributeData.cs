@@ -15,8 +15,12 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("你可以指定滑动条的最小值和最大值。如果使用 $ 引用成员，滑动条的范围将随成员的值变化而动态更新。",
-                "You can specify the minimum and maximum values of the slider. If you use $ to reference members, the range of the slider will be dynamically updated as the values of those members change.")
+            new BilingualData("与 Unity 的 [Range] 类似，但可同时作用于字段和属性（属性需配合 [ShowInInspector]）。",
+                "Similar to Unity's [Range], but it can be applied to both fields and properties (properties need [ShowInInspector])."),
+            new BilingualData("Min/Max 可用 $ 引用成员或 @ 表达式动态取值，范围会随成员值变化实时更新。",
+                "Min/Max can be resolved dynamically with a $ member reference or @ expression, and the range updates live as those members change."),
+            new BilingualData("上下界的书写顺序不影响结果，内部会自动取较小值作为下限、较大值作为上限。",
+                "The order of the two bounds does not matter: the smaller value is used as the lower bound and the larger as the upper bound.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } = new ParameterValue[2]

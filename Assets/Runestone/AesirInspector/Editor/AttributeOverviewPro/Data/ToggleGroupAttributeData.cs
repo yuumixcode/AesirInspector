@@ -12,14 +12,14 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("ToggleGroup 需要指定一个布尔类型的属性作为开关。",
-                "ToggleGroup requires specifying a boolean property as the toggle control."),
-            new BilingualData("支持自定义组的标题、标题对齐方式、粗体和水平分割线。",
-                "Supports customizing the group title, title alignment, bold text, and horizontal line."),
-            new BilingualData("CollapseOthersOnExpand 参数可使展开当前组时自动折叠其他组。",
-                "The CollapseOthersOnExpand parameter automatically collapses other groups when expanding the current one."),
-            new BilingualData("Order 参数控制多个 Toggle 组之间的排序。",
-                "The Order parameter controls the sorting order among multiple Toggle groups.")
+            new BilingualData("组名即开关成员名，同一组的所有成员必须指定相同的开关成员，且该成员需为同一对象上的 bool 字段或属性（不支持静态成员）。",
+                "The group name is the toggle member name: every member of a group must specify the same toggle, and it must be a bool field or property on the same object (static members are not supported)."),
+            new BilingualData("组标题默认使用开关成员名，可通过 groupTitle 或 \"$成员名\" 动态设置。",
+                "The group title defaults to the toggle member name and can be set with groupTitle or a \"$memberName\" string."),
+            new BilingualData("CollapseOthersOnExpand 默认为 true：展开当前组时会自动折叠其他已展开的 Toggle 组。",
+                "CollapseOthersOnExpand defaults to true, so opening one group automatically collapses the other expanded toggle groups."),
+            new BilingualData("与 Toggle 的区别：Toggle 只启用/禁用单个值，ToggleGroup 用一个 bool 控制整组字段的展开与折叠。",
+                "Unlike Toggle, which enables or disables a single value, ToggleGroup uses one bool to expand or collapse a whole group of fields.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =
