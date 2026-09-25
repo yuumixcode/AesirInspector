@@ -173,7 +173,7 @@ AesirInspectorLanguageSettingsSO.OnLanguageChanged -= Internal_OnLanguageChanged
 | Component | Directory | Key Types |
 |-----------|-----------|-----------|
 | Core | `Core/` | `AesirInspectorInstallationChecker`, `AesirInspectorMenuItems`, `EnsureAesirInspectorDefine` |
-| MiniTools | `MiniTools/` | `QuickCreateSOMenuItem`, MenuItem Viewer, Syntax Highlighter |
+| MiniTools | `MiniTools/` | `QuickCreateSOMenuItem`, MenuItem Viewer, Syntax Highlighter, `WrappedTextAttribute`（按可用宽度换行的只读文本特性，`MenuItemViewer/` 内定义） |
 | AttributeOverviewUltra | `AttributeOverviewUltra/` | Data-Panel-Example 三件套架构 + 内存面板与状态银行 |
 | AttributeProcessors | `AttributeProcessors/` | OdinAttributeProcessor 实现 |
 | Drawers | `Drawers/` | 双语 Drawer |
