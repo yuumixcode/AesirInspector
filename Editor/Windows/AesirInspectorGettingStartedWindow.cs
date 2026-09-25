@@ -1,5 +1,4 @@
 using System;
-using Runestone.AesirInspector.Editor;
 using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
 using Sirenix.Utilities;
@@ -123,11 +122,6 @@ namespace Runestone.AesirInspector.Editor
                 {
                     summary = "Mini Tools",
                     details = "提供语法高亮处理器、菜单项检查器等便捷小工具。"
-                },
-                new SummaryDetailGroup
-                {
-                    summary = "Extension Package Manager",
-                    details = "提供快捷安装扩展包模块，基于 Git URL 安装其他优质开源包。"
                 }
             };
         }

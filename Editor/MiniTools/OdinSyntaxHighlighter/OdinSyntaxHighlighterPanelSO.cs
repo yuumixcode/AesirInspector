@@ -12,8 +12,7 @@ namespace Runestone.AesirInspector.Editor
         /// <summary>
         /// EditorBuildSettings 存储引用的 Key
         /// </summary>
-        static readonly string ConfigName =
-            typeof(OdinSyntaxHighlighterPanelSO).GetNiceFullName();
+        static readonly string ConfigName = typeof(OdinSyntaxHighlighterPanelSO).GetNiceFullName();
 
         [PropertyOrder(-100)]
         public BilingualHeaderControl bilingualHeader;
