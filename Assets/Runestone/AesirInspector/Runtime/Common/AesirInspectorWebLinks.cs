@@ -8,24 +8,24 @@ namespace Runestone.AesirInspector
         /// <summary>
         /// Git 仓库链接
         /// </summary>
-        public const string GitUrl = "https://github.com/yuumixcode/Unity-Aesir-Packages.git";
+        public const string GitUrl = "https://github.com/yuumixcode/AesirInspector.git";
 
         /// <summary>
         /// GitHub 仓库页面链接
         /// </summary>
-        public const string GithubRepository = "https://github.com/yuumixcode/Unity-Aesir-Packages";
+        public const string GithubRepository = "https://github.com/yuumixcode/AesirInspector";
 
         /// <summary>
         /// 开源许可证链接
         /// </summary>
         public const string LicenseUrl =
-            "https://github.com/yuumixcode/Unity-Aesir-Packages/blob/main/Assets/Runestone/AesirInspector/LICENSE.md";
+            "https://github.com/yuumixcode/AesirInspector/blob/main/Assets/Runestone/AesirInspector/LICENSE.md";
 
         /// <summary>
         /// 更新日志链接
         /// </summary>
         public const string ChangelogUrl =
-            "https://github.com/yuumixcode/Unity-Aesir-Packages/blob/main/Assets/Runestone/AesirInspector/CHANGELOG.md";
+            "https://github.com/yuumixcode/AesirInspector/blob/main/Assets/Runestone/AesirInspector/CHANGELOG.md";
 
         /// <summary>
         /// Odin Inspector 官方教程链接

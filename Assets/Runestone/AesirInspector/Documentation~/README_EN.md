@@ -1,16 +1,16 @@
 # Aesir Inspector
 
 [中文](../README.md) | [![license](https://img.shields.io/badge/license-MIT-green.svg)](../LICENSE.md)
-[![Version](https://img.shields.io/badge/version-0.16.0-blue.svg)](../CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.17.0-blue.svg)](../CHANGELOG.md)
 [![Install via Git URL](https://img.shields.io/badge/UPM-Git%20URL-blueviolet.svg)](#installation)
 
-> 📦 **This package is part of the [Unity-Aesir-Packages](https://github.com/yuumixcode/Unity-Aesir-Packages) monorepo**. This package does **not** depend on other Aesir sub-packages (installable independently).
+> 📦 **This package is published from its own repository, [AesirInspector](https://github.com/yuumixcode/AesirInspector)** (package folder `Assets/Runestone/AesirInspector`). It does **not** depend on any other Aesir package and can be installed on its own.
 >
 > ⚠️ **Hard dependency on [Odin Inspector](https://odininspector.com/)**: this package requires Odin Inspector to compile and run properly; without it the assemblies are skipped entirely by the `ODIN_INSPECTOR` define constraint (no errors) and the features are unavailable. Make sure Odin Inspector 3.3.x+ is installed in your project.
 >
-> Related packages:
-> - **[Aesir Architecture](https://github.com/yuumixcode/Unity-Aesir-Packages)** (standalone)
-> - **[Aesir Modules](https://github.com/yuumixcode/Unity-Aesir-Packages)** (depends on Architecture)
+> Related packages (in the [AesirFramework](https://github.com/yuumixcode/AesirFramework) monorepo, independent of this package):
+> - **[Aesir Architecture](https://github.com/yuumixcode/AesirFramework)** (standalone)
+> - **[Aesir Modules](https://github.com/yuumixcode/AesirFramework)** (depends on Architecture)
 
 `Aesir Inspector` is a Unity editor extension library designed to provide bilingual Inspector UI, safe editor tooling, and more. It builds on Odin Inspector for enhanced Inspector rendering and styling.
 
@@ -33,7 +33,7 @@
 3. Enter the following URL:
 
    ```
-   https://github.com/yuumixcode/Unity-Aesir-Packages.git?path=/Assets/Runestone/AesirInspector
+   https://github.com/yuumixcode/AesirInspector.git?path=/Assets/Runestone/AesirInspector
    ```
 
 ### Install via manifest.json
@@ -43,7 +43,7 @@ Add the following to your project's `Packages/manifest.json`:
 ```json
 {
   "dependencies": {
-    "cn.runestone.aesir-inspector": "https://github.com/yuumixcode/Unity-Aesir-Packages.git?path=/Assets/Runestone/AesirInspector"
+    "cn.runestone.aesir-inspector": "https://github.com/yuumixcode/AesirInspector.git?path=/Assets/Runestone/AesirInspector"
   }
 }
 ```
@@ -140,13 +140,7 @@ Safe wrappers around Unity Editor APIs so editor-only code is stripped automatic
 | `RegexUtility` | Regex tools: namespace/class name normalization, email/URL validation |
 | `AesirInspectorDebug` | Unified logging (Info/Warning/Error, optional prefix), stripped automatically in builds; configurable via `AesirInspectorDebugSettings` |
 
-### 6. Custom Attributes
-
-| Attribute | Description |
-|------|------|
-| `[Summary]` | Comment attribute, equivalent to the `<summary>` part of an XML doc comment; readable at runtime via `GetSummary()` |
-
-### 7. Code Style and Standards
+### 6. Code Style and Standards
 
 This project treats code style as being as important as features. Strict coding standards and examples are built in to keep team collaboration consistent and maintainable:
 

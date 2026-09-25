@@ -1,16 +1,16 @@
 # Aesir Inspector
 
 [English](Documentation~/README_EN.md) | [![license](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE.md)
-[![Version](https://img.shields.io/badge/version-0.16.0-blue.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.17.0-blue.svg)](CHANGELOG.md)
 [![Install via Git URL](https://img.shields.io/badge/UPM-Git%20URL-blueviolet.svg)](#安装说明)
 
-> 📦 **本包是 [Unity-Aesir-Packages](https://github.com/yuumixcode/Unity-Aesir-Packages) monorepo 的一部分**。本包**不依赖**其他 Aesir 子包（独立可装）。
+> 📦 **本包在独立仓库 [AesirInspector](https://github.com/yuumixcode/AesirInspector) 中发布**（包目录 `Assets/Runestone/AesirInspector`），**不依赖**其他 Aesir 包，可单独安装。
 >
 > ⚠️ **强依赖 [Odin Inspector](https://odininspector.com/)**：本包需要 Odin Inspector 才能正常编译和运行；未安装时程序集因 `ODIN_INSPECTOR` 约束整体跳过编译（不报错）、功能不可用。请确保项目中已安装 Odin Inspector 3.3.x+。
 >
-> 关联包：
-> - **[Aesir Architecture](https://github.com/yuumixcode/Unity-Aesir-Packages)**（独立）
-> - **[Aesir Modules](https://github.com/yuumixcode/Unity-Aesir-Packages)**（依赖 Architecture）
+> 关联包（位于 [AesirFramework](https://github.com/yuumixcode/AesirFramework) monorepo，与本包互不依赖）：
+> - **[Aesir Architecture](https://github.com/yuumixcode/AesirFramework)**（独立）
+> - **[Aesir Modules](https://github.com/yuumixcode/AesirFramework)**（依赖 Architecture）
 
 `Aesir Inspector` 是一个 Unity 编辑器扩展库，旨在提供双语 Inspector UI、安全编辑器工具集等功能。基于 Odin Inspector 提供增强的 Inspector 渲染和样式优化。
 
@@ -32,7 +32,7 @@
 2. 点击左上角的 `+` 按钮，选择 `Add package from git URL...`。
 3. 输入以下地址：
    ```
-   https://github.com/yuumixcode/Unity-Aesir-Packages.git?path=/Assets/Runestone/AesirInspector
+   https://github.com/yuumixcode/AesirInspector.git?path=/Assets/Runestone/AesirInspector
    ```
 
 ### 通过 manifest.json 安装
@@ -42,7 +42,7 @@
 ```json
 {
   "dependencies": {
-    "cn.runestone.aesir-inspector": "https://github.com/yuumixcode/Unity-Aesir-Packages.git?path=/Assets/Runestone/AesirInspector"
+    "cn.runestone.aesir-inspector": "https://github.com/yuumixcode/AesirInspector.git?path=/Assets/Runestone/AesirInspector"
   }
 }
 ```

@@ -11,6 +11,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.17.0] - 2026-09-25
+
+### Added
+
+- **`WrappedTextAttribute`**: Odin's `DisplayAsString` silently truncates when the column is too narrow (no wrapping, no ellipsis), losing the tail of long text; the new attribute wraps to the available width and exposes `LabelWidth` / `FontSize`. It backs the menu-path column of MenuItem Viewer / `WrappedTextAttribute` 自动换行只读文本特性：`DisplayAsString` 宽度不足时直接截断且不换行，长内容静默丢失尾部；新特性按可用宽度换行，支持 `LabelWidth` / `FontSize`。
+
+### Changed
+
+- **MenuItem Viewer polish**: the menu path gets its own wrapping row, priority and validate state share a two-column row, the collect button is renamed and gains a search icon, the assembly-filter title is shortened, and `MenuItemInfo` now keeps a serialized, hidden `methodName` for search instead of an exposed writable `MethodName` property / MenuItem Viewer 面板打磨：菜单路径独占一行自动换行、优先级与校验并排、按钮更名配图标、过滤器标题简化，并改用隐藏的 `methodName` 序列化字段做搜索。
+- **Naming and copy fixes**: stale `OdinSyntaxHighlighterSO` / `AesirCodeHighlighter` references in `OdinSyntaxHighlighterPanelSO` now read `OdinSyntaxHighlighterPanelSO` / `OdinCodeHighlighter`, the `OdinCodeHighlighter` log prefix follows suit, and the syntax-highlighter panel plus Getting Started window use tighter wording / 命名与文案修正：修正 `OdinSyntaxHighlighterPanelSO` 中过时的 `OdinSyntaxHighlighterSO` / `AesirCodeHighlighter` 引用与 `OdinCodeHighlighter` 日志前缀，语法高亮面板与 Getting Started 窗口文案精简。
+- **Repository and install URL fix**: the install URL, the `package.json` UPM metadata (`documentationUrl` / `changelogUrl` / `licensesUrl`) and `AesirInspectorWebLinks` now point at `yuumixcode/AesirInspector` instead of the `Unity-Aesir-Packages` monorepo (now `AesirFramework`), which does not contain this package path — the old URL 404s. The English README also drops the migrated `[Summary]` section and renumbers / 仓库与安装地址修正：安装地址、UPM 元数据与 `AesirInspectorWebLinks` 改为本包所在仓库 `yuumixcode/AesirInspector`（原 monorepo 现名 `AesirFramework`，不含本包路径，安装会 404）；英文 README 删除已迁出的 `[Summary]` 章节。
+
 ## [0.16.0] - 2026-09-25
 
 ### Added
