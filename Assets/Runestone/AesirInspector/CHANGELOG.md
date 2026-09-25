@@ -8,6 +8,25 @@
 
 ---
 
+## [Unreleased]
+
+## [0.16.0] - 2026-09-25
+
+### Added
+
+- **包内案例资产目录 `Editor/ExampleAssets/`**：为必须指向真实资产的案例（如 `AssetSelector` 的 `Paths`）提供随包分发的占位资产——`AesirExampleAssetSO` 类型、两个 ScriptableObject 资产与两个材质文件夹；该目录位于 `Editor/` 内，随包分发但不会进入构建。/ **In-package example assets**: `Editor/ExampleAssets/` ships placeholder assets (`AesirExampleAssetSO`, two ScriptableObject assets and two material folders) so examples that must point at real assets (`AssetSelector.Paths`) have a stable target; living inside an `Editor` folder they ship with the package but never enter builds.
+
+### Changed
+
+- **UPM 元数据与链接**：`package.json` 补齐 `documentationUrl` / `changelogUrl` / `licensesUrl`，`description` 改为中英双语；`AesirInspectorWebLinks` 的 LICENSE / CHANGELOG 链接修正为包内文件路径（原指向仓库根目录下并不存在的文件）。/ **UPM metadata and links**: `package.json` gains `documentationUrl` / `changelogUrl` / `licensesUrl` and a bilingual `description`; `AesirInspectorWebLinks` now points LICENSE / CHANGELOG at the in-package files instead of non-existent repo-root files.
+- **文档**：README 的 git URL 安装地址统一为 monorepo 子目录形式（`Unity-Aesir-Packages.git?path=/Assets/Runestone/AesirInspector`），新增 Samples 导入说明并更新版本徽章；英文 README 移除已迁出本包的 Script Doc Generator / Summary Tool 章节并重新编号。双语 README 与 `development.md` 的 Odin 依赖描述修正为 defineConstraints 语义（全部 asmdef 带 `ODIN_INSPECTOR` 约束，未安装 Odin 时程序集整体跳过编译而非编译失败）；`development.md` 同步移除已迁出的 ScriptDocGenerator 模块行与已删除的 `Editor/Common`、`AesirInspectorModuleAssetMarkerSO`，补 `ExampleAssets` 与 `AesirInspectorProjectSettingsSO`，并修正 `Runtime/Unity/Utilities`、`Editor/Unity` 等失效路径及已迁出的 `[Summary]` 约定。/ **Docs**: install URLs now consistently use the monorepo git URL with the `?path=` subfolder, sample-import instructions and the version badge were updated, and the English README dropped the Script Doc Generator / Summary Tool sections that no longer belong to this package. The bilingual READMEs and `development.md` now describe Odin as a defineConstraints dependency (every asmdef carries `ODIN_INSPECTOR`, so assemblies are skipped rather than failing to compile when Odin is absent); `development.md` also drops the migrated ScriptDocGenerator module and the removed `Editor/Common` / `AesirInspectorModuleAssetMarkerSO`, adds `ExampleAssets` and `AesirInspectorProjectSettingsSO`, and fixes stale `Runtime/Unity/Utilities` / `Editor/Unity` paths plus the migrated `[Summary]` convention.
+- **目录整合**：`Editor/AttributeOverviewPro/` 整体并入 `Editor/AttributeOverviewUltra/`——`Abstract`、`AttributePanels`、`Data`、`UsageExamples` 平移至 Ultra 下，`Core` 两批文件合并，Pro 目录不再存在；命名空间、类型名与资产 GUID 均未变化。/ **Directory consolidation**: `Editor/AttributeOverviewPro/` merged into `Editor/AttributeOverviewUltra/` — `Abstract`, `AttributePanels`, `Data` and `UsageExamples` moved under Ultra and the two `Core` sets merged; namespaces, type names and asset GUIDs are unchanged.
+
+### Removed
+
+- **移除扩展包管理器**：删除 `ExtensionPackageManagerWindow`、`ExtensionPackageCard`、`PackageManagerEditorUtility` 三个类型及 `Tools → Aesir → Inspector → Extension Package Manager` 菜单项，README 与 Getting Started 窗口中的对应条目同步移除。/ **Removed the Extension Package Manager**: the `ExtensionPackageManagerWindow`, `ExtensionPackageCard` and `PackageManagerEditorUtility` types and the `Tools → Aesir → Inspector → Extension Package Manager` menu entry are gone, together with the matching README and Getting Started entries.
+- **删除示例迁移指南 `AESIR_ATTRIBUTE_MIGRATION_GUIDE.md`**：其分组与流程规范已内化到示例本身，指南不再维护。/ **Removed the deprecated example migration guide** `AESIR_ATTRIBUTE_MIGRATION_GUIDE.md`; its grouping and workflow rules are now embodied by the examples themselves.
+
 ## [0.15.0] - 2026-09-09
 
 ### ⚠ BREAKING CHANGES（破坏性变更 · 升级前必读 / Read before upgrading）

@@ -14,7 +14,7 @@ graph TB
     AICode --> AI[Aesir Inspector<br/>Agent Context Layer]
     Dev --> Editor[Unity Editor]
     Editor --> PKG[Aesir Inspector Package]
-    PKG --> Odin[Odin Inspector<br/>Optional Dependency]
+    PKG --> Odin[Odin Inspector<br/>Hard Dependency]
     PKG --> Unity[Unity API]
 ```
 
@@ -29,7 +29,7 @@ graph LR
 
 ### Odin Hard Dependency
 
-Odin Inspector 是硬依赖：程序集不设 `defineConstraints`，代码直接使用 Sirenix API，不保留任何 `#if ODIN_INSPECTOR` 条件编译分支。未安装 Odin Inspector 时编译失败，属于预期行为。
+Odin Inspector 是硬依赖：代码直接使用 Sirenix API，不保留任何 `#if ODIN_INSPECTOR` 条件编译分支；全部 asmdef 均声明 `"defineConstraints": ["ODIN_INSPECTOR"]`，未安装 Odin Inspector 时程序集整体跳过编译（零报错）、功能不可用，属于预期行为。
 
 - Runtime 程序集 `Runestone.AesirInspector` 使用 `Sirenix.Utilities` 等运行时 API。
 - Editor 程序集 `Runestone.AesirInspector.Editor` 额外使用 `Sirenix.OdinInspector.Editor`（Drawer、Processor、MenuEditorWindow）。
@@ -88,17 +88,17 @@ sequenceDiagram
 本项目采用**自文档化代码**和**无注释范式**：
 
 - **禁止 XML 注释**：不使用 `/// <summary>`、`/// <param>` 等 XML 文档注释
-- **类必须使用 `[Summary]`**：所有类（class / struct / interface）必须具备 `[Summary("...")]`，解释"为什么"
-- **其他成员**：命名即文档，仅复杂逻辑使用 `[Summary]`，解释"为什么"而非"做了什么"
+- **命名即文档**：类、方法、字段通过命名表达意图，仅复杂逻辑补充 `//` 注释，解释"为什么"而非"做了什么"
+- **`[Summary]` 已随 Script Doc Generator 迁出本包**：该特性不再属于本包，需要文档生成时由独立工具 `Assets/ScriptDocGenerator/` 承担
 
 #### 免除规范的模块
 
 以下模块为展示/示例用途，不适用通用注释规范，使用 `//` 单行/多行注释进行特殊性补充即可：
 
 - `Runtime/CodeStyle/` — 代码风格示例文件
-- `Editor/AttributeOverviewPro/Data/` — 属性数据类
-- `Editor/AttributeOverviewPro/AttributePanels/` — Panel SO 定义
-- `Editor/AttributeOverviewPro/UsageExamples/` — 示例 SO
+- `Editor/AttributeOverviewUltra/Data/` — 属性数据类
+- `Editor/AttributeOverviewUltra/AttributePanels/` — Panel SO 定义
+- `Editor/AttributeOverviewUltra/UsageExamples/` — 示例 SO
 
 ### Methods
 
@@ -116,7 +116,7 @@ sequenceDiagram
 |---|---|---|---|
 | Runtime | `XxxUtility` | `Runtime/Utilities/` | `PathUtility` |
 | Editor 安全封装 | `XxxSafeEditorUtility` | `Runtime/Utilities/` | `HierarchySafeEditorUtility` |
-| Editor-Only | `XxxEditorUtility` | `Editor/` | `PackageManagerEditorUtility` |
+| Editor-Only | `XxxEditorUtility` | `Editor/` | `AttributeOverviewEditorUtility` |
 
 ### SafeEditorUtility Pattern
 
@@ -160,9 +160,8 @@ AesirInspectorLanguageSettingsSO.OnLanguageChanged -= Internal_OnLanguageChanged
 
 | Component | Directory | Key Types |
 |-----------|-----------|-----------|
-| Common | `Common/` | `AesirInspectorVersion`, `AesirInspectorPaths`, `AesirInspectorWebLinks`, `AesirInspectorSettings`, `IAesirInspectorReset` |
+| Common | `Common/` | `AesirInspectorVersion`, `AesirInspectorPaths`, `AesirInspectorWebLinks`, `AesirInspectorSettings`, `AesirInspectorProjectSettingsSO`, `IAesirInspectorReset` |
 | Debug | `Debug/` | `AesirInspectorDebug`, `AesirInspectorDebugSettings` |
-| ScriptDocGenerator | `ScriptDocGenerator/` | `ITypeData`, `MemberData`, `FieldData`, `PropertyData`, `MethodData`, `ConstructorData`, `EventData`, `ParameterData`, `TypeData`, `SummaryAttribute` |
 | Utilities | `Utilities/` | `ScriptableObjectSafeEditorUtility`, `MonoScriptSafeEditorUtility`, `PathUtility`, `PathSafeEditorUtility`, `HierarchyUtility`, `HierarchySafeEditorUtility`, `ProjectSafeEditorUtility`, `UrlUtility`, `ReflectionUtility`, `PredefinedAssemblyUtility`, `PlayerLoopUtility`, `RegexUtility`, `OdinCodeHighlighter` |
 | CodeStyle | `CodeStyle/` | `AesirInspectorCodeStyle`（代码风格可编译示例） |
 | Attributes | `Attributes/` | `BilingualTitleAttribute`, `BilingualButtonAttribute` 等双语特性 |
@@ -173,14 +172,12 @@ AesirInspectorLanguageSettingsSO.OnLanguageChanged -= Internal_OnLanguageChanged
 
 | Component | Directory | Key Types |
 |-----------|-----------|-----------|
-| Core | `Core/` | `AesirInspectorInstallationChecker`, `AesirInspectorMenuItems` |
-| Common | `Common/` | `AesirInspectorModuleAssetMarkerSO` |
+| Core | `Core/` | `AesirInspectorInstallationChecker`, `AesirInspectorMenuItems`, `EnsureAesirInspectorDefine` |
 | MiniTools | `MiniTools/` | `QuickCreateSOMenuItem`, MenuItem Viewer, Syntax Highlighter |
-| AttributeOverviewPro | `AttributeOverviewPro/` | Data-Panel-Example 三件套架构 |
+| AttributeOverviewUltra | `AttributeOverviewUltra/` | Data-Panel-Example 三件套架构 + 内存面板与状态银行 |
 | AttributeProcessors | `AttributeProcessors/` | OdinAttributeProcessor 实现 |
 | Drawers | `Drawers/` | 双语 Drawer |
-| ExtensionManager | `ExtensionManager/` | 一键安装/移除推荐包 |
-| ScriptDocGenerator | `ScriptDocGenerator/` | 文档生成器编辑器逻辑、`XmlSummaryTool`（`SummaryAttributeTool/`） |
+| ExampleAssets | `ExampleAssets/` | 需指向真实资产的案例占位资产（`AesirExampleAssetSO`、ScriptableObject、材质） |
 | Windows | `Windows/` | Getting Started, Preferences |
 
 ---
@@ -189,7 +186,7 @@ AesirInspectorLanguageSettingsSO.OnLanguageChanged -= Internal_OnLanguageChanged
 
 ### ADR-001: Odin Hard Dependency
 
-Odin Inspector 是硬依赖：程序集不设 `defineConstraints`，不保留 `#if ODIN_INSPECTOR` 条件编译分支，直接使用 Sirenix API。
+Odin Inspector 是硬依赖：不保留 `#if ODIN_INSPECTOR` 条件编译分支，直接使用 Sirenix API；asmdef 以 `"defineConstraints": ["ODIN_INSPECTOR"]` 声明依赖，未安装 Odin 时程序集整体跳过编译。
 
 <details>
 <summary>Consequences</summary>
@@ -197,10 +194,10 @@ Odin Inspector 是硬依赖：程序集不设 `defineConstraints`，不保留 `#
 **优点**：
 - 无条件编译分支，代码路径单一，可读性和维护成本显著降低
 - 无桥接间接层，直接调用 Odin API，无性能开销
-- 依赖关系清晰：缺少 Odin 时立即编译失败，而非静默降级
+- 依赖关系清晰：缺少 Odin 时程序集整体跳过编译，而非静默降级
 
 **缺点**：
-- 无 Odin 环境下无法编译，未安装 Odin 的项目不能使用本包
+- 无 Odin 环境下程序集被跳过编译，未安装 Odin 的项目不能使用本包
 - Odin 版本升级可能带来 API 破坏性变更，需同步适配
 
 </details>
@@ -237,7 +234,7 @@ Attribute 只承载数据，Drawer 负责渲染逻辑，Processor 负责动态�
 - 命名空间与程序集一一对应（`Runestone.AesirInspector` / `Runestone.AesirInspector.Editor`），降低认知成本
 
 **缺点**：
-- Runtime 程序集包含 Odin 运行时依赖，用户项目必须安装 Odin
+- Runtime 程序集包含 Odin 运行时依赖，用户项目必须安装 Odin，否则程序集被 `ODIN_INSPECTOR` 约束跳过编译
 - 单一 Runtime 程序集体量更大，无法按模块裁剪引用
 
 </details>
@@ -270,7 +267,7 @@ Runtime 工具类使用 `XxxSafeEditorUtility` 模式：`void` 方法加 `[Condi
 1. **Attribute**: `Runtime/Attributes/Bilingual{Name}Attribute.cs` — 命名 `Bilingual{OdinOriginalName}Attribute`，必须 `[DontApplyToListElements]`，公共类必须 `[Summary]`，禁止 XML 注释
 2. **Drawer**: `Editor/Drawers/Bilingual{Name}AttributeDrawer.cs` — 继承 `OdinAttributeDrawer<TAttribute>`，读取 `AesirInspectorLanguageSettingsSO.CurrentLanguage`，无需 XML / `[Summary]`
 3. **Processor** (可选): 与被处理类同文件，`internal sealed`，无需 XML / `[Summary]`
-4. **AttributeOverviewPro** (可选): 创建 Data-Panel-Example 三件套
+4. **AttributeOverviewUltra** (可选): 创建 Data-Panel-Example 三件套
 
 ### Add Inspector Control
 
@@ -295,8 +292,8 @@ Runtime 工具类使用 `XxxSafeEditorUtility` 模式：`void` 方法加 `[Condi
 
 ### Add Utility
 
-1. **Runtime 工具**: `XxxUtility` → `Runtime/Unity/Utilities/`
-2. **Editor 安全封装**: `XxxSafeEditorUtility` → `Runtime/Unity/Utilities/`
-3. **Editor-Only**: `XxxEditorUtility` → `Editor/Unity/`
+1. **Runtime 工具**: `XxxUtility` → `Runtime/Utilities/`
+2. **Editor 安全封装**: `XxxSafeEditorUtility` → `Runtime/Utilities/`
+3. **Editor-Only**: `XxxEditorUtility` → `Editor/`
 4. **必须** `public static class`，私有方法加 `Internal_` 前缀
 5. 日志使用 `AesirInspectorDebug`
