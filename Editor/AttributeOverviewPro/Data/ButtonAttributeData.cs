@@ -14,14 +14,10 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("支持无参数方法，也支持带参数的方法（会在按钮下方显示参数输入框）。",
-                "Supports both parameterless methods and methods with parameters (parameter input fields will be shown below the button)."),
-            new BilingualData("按钮名称支持使用 $ 成员变量引用和 @ 表达式解析。",
-                "Button names support $ member variable referencing and @ expression parsing."),
-            new BilingualData("可以自定义按钮的大小、图标、对齐方式以及是否拉伸宽度。",
-                "You can customize button size, icon, alignment, and whether to stretch the width."),
-            new BilingualData("支持多种按钮样式，如 CompactBox, FoldoutButton, Box。",
-                "Supports multiple button styles, such as CompactBox, FoldoutButton, and Box.")
+            new BilingualData("把方法绘制成按钮，点击即调用；带参数的方法会在按钮下方显示参数输入框，Expanded 可让其默认展开。", "Draws a method as a button that invokes it on click; methods with parameters show parameter fields below the button, which Expanded can expand by default."),
+            new BilingualData("按钮名称支持 $ 成员引用与 @ 表达式解析。", "The button name supports $ member references and @ expressions."),
+            new BilingualData("可自定义按钮外观：ButtonSize / ButtonHeight、ButtonStyle、SDF 图标与图标对齐、Stretch 拉伸等。", "Customizes the button appearance: ButtonSize / ButtonHeight, ButtonStyle, SDF icon and icon alignment, Stretch, and more."),
+            new BilingualData("ButtonAlignment 仅在 Stretch 为 false 时生效；DirtyOnClick 为 false 会同时禁用按钮操作产生的撤销。", "ButtonAlignment only takes effect when Stretch is false; setting DirtyOnClick to false also disables undo for changes caused by the button.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

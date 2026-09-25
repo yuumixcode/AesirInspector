@@ -13,10 +13,12 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("通常 Unity 只显示公有的序列化字段。使用此特性，你可以查看那些通常隐藏的状态，而无需将它们设为公有或添加 [SerializeField]。",
-                "Normally, Unity only displays public serialized fields. With this attribute, you can view states that are normally hidden without having to make them public or adding [SerializeField]."),
-            new BilingualData("请注意，仅使用 [ShowInInspector] 不会使成员变得可序列化；它只是在 Inspector 中显示它。",
-                "Note that using [ShowInInspector] alone does not make a member serializable; it only displays it in the inspector.")
+            new BilingualData("在 Inspector 中显示本来不会显示的成员，如私有字段、C# 属性与静态成员。",
+                "Displays members that would otherwise not appear in the inspector, such as private fields, C# properties, and static members."),
+            new BilingualData("只负责显示，不会序列化：仅用 [ShowInInspector] 的成员改动不会被保存，需配合 [SerializeField] 或 [OdinSerialize]。",
+                "Display only, not serialization: changes to a member marked only with [ShowInInspector] are not saved and require [SerializeField] or [OdinSerialize]."),
+            new BilingualData("常与 [ReadOnly] 组合，用于实时查看调试值（如 [ShowInInspector, ReadOnly] private int currentHealth;）。",
+                "Often combined with [ReadOnly] to inspect live debug values (e.g. [ShowInInspector, ReadOnly] private int currentHealth;).")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } = null;

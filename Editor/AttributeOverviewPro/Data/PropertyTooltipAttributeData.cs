@@ -15,10 +15,12 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("支持静态字符串、引用成员（$）以及 Odin 表达式（@）。",
-                "Supports static strings, member references ($), and Odin expressions (@)."),
-            new BilingualData("与 Unity 自带的 [Tooltip] 类似，但增加了对 Odin 动态解析器的支持。",
-                "Similar to Unity's built-in [Tooltip], but adds support for Odin's dynamic resolvers.")
+            new BilingualData("鼠标悬停在属性标签上时显示提示文本。",
+                "Shows a tooltip when the mouse hovers over the property's label."),
+            new BilingualData("与 Unity 的 [Tooltip] 不同，除字段外还可作用于属性和方法（如 [Button]）。",
+                "Unlike Unity's [Tooltip], it can also be applied to properties and methods (such as [Button]), not only fields."),
+            new BilingualData("文本支持成员引用（$）与 Odin 表达式（@），可动态生成提示内容。",
+                "The text supports member references ($) and Odin expressions (@), so the tooltip content can be generated dynamically.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

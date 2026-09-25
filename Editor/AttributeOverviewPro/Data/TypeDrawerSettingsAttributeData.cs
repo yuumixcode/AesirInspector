@@ -13,9 +13,12 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("Type 类型 Unity 无法直接序列化，可以使用 Odin 序列化，通常 Type 类型需要显示在 Inspector 面板上时是用于编辑器工具的。",
-                "Unity cannot directly serialize Type. Use Odin serialization. Type fields in the Inspector are typically for editor tools."),
-            new BilingualData("该 Example 采用了 Odin 序列化。", "This example uses Odin serialization.")
+            new BilingualData("用于配置 Type 字段的类型选择器：BaseType 限定可选的基类范围，Filter 决定包含哪些类型类别。",
+                "Configures the type selector of a Type field: BaseType limits the selectable base type, and Filter decides which kinds of types are included."),
+            new BilingualData("Filter 是 TypeInclusionFilter 的按位组合，可同时包含多种类别（如 IncludeConcreteTypes | IncludeInterfaces）。",
+                "Filter is a bitwise combination of TypeInclusionFilter values, so several categories can be included at once (e.g. IncludeConcreteTypes | IncludeInterfaces)."),
+            new BilingualData("Type 无法被 Unity 直接序列化，需要 Odin 序列化（案例继承 SerializedScriptableObject）才能保存所选类型。",
+                "Type cannot be serialized by Unity directly; Odin serialization (the example derives from SerializedScriptableObject) is required to save the chosen type.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

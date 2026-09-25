@@ -14,12 +14,9 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("中英文标题同时展示，语言切换时自动切换高亮。",
-                "Chinese and English titles are shown together; the highlight follows the language setting."),
-            new BilingualData("支持副标题（chineseSubTitle / englishSubTitle），可置于标题下方或右侧。",
-                "Supports subtitles (chineseSubTitle / englishSubTitle), placed below or to the right of the title."),
-            new BilingualData("可控制对齐方式（TitleAlignments）、水平分割线、加粗与标题前空格。",
-                "Controls alignment (TitleAlignments), horizontal line, bold text and leading space.")
+            new BilingualData("同时配置中英文标题，只显示与当前语言设置匹配的一条，切换语言时自动更新。", "Both Chinese and English titles are supplied, but only the one matching the current language setting is shown and it updates automatically when the language changes."),
+            new BilingualData("标题与副标题（chineseSubTitle / englishSubTitle）都支持 $ 成员引用与 @ 表达式解析。", "Both the title and the subtitles (chineseSubTitle / englishSubTitle) support $ member references and @ expressions."),
+            new BilingualData("可控制 TitleAlignments 对齐、horizontalLine 分割线与 bold 加粗；beforeSpace 在根属性上不会添加前置空格。", "Controls TitleAlignments, the horizontalLine separator and bold text; beforeSpace does not add leading space on the root property.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

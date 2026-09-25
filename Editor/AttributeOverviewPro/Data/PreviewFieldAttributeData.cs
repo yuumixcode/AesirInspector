@@ -13,8 +13,12 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("默认支持拖拽，可以使用全局快捷键：Ctrl + 点击 = 删除实例，直接拖拽 = 交换或移动，Ctrl + 拖拽并放下 = 覆盖。",
-                "Supports drag-and-drop by default: Ctrl + Click = delete instance, drag = swap or move, Ctrl + drag and drop = replace.")
+            new BilingualData("用正方形预览框代替默认的 ObjectField，仅适用于 UnityEngine.Object 类型；可在 Odin 偏好设置中全局启用与定制。",
+                "Draws a square preview box instead of the default ObjectField and only applies to UnityEngine.Object types; it can be enabled and customized globally in the Odin preferences."),
+            new BilingualData("内置拖拽操作：拖拽 = 移动/交换，Ctrl + 拖拽并放下 = 覆盖，Ctrl + 点击 = 删除实例。",
+                "Built-in drag-and-drop: drag = move or swap, Ctrl + drag and drop = replace, Ctrl + click = delete the instance."),
+            new BilingualData("height 默认 0，表示沿用 Odin 的全局设置；FilterMode 默认 Bilinear；previewGetter 可让字段显示另一个对象的预览。",
+                "height defaults to 0, which falls back to the global Odin setting; FilterMode defaults to Bilinear; previewGetter lets the field preview another object instead.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

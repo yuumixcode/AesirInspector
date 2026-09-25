@@ -15,12 +15,14 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("支持多种显示模式，如仅 GUI、带标题、带预览或完整编辑器。",
-                "Supports multiple display modes, such as GUI only, with header, with preview, or full editor."),
-            new BilingualData("可以控制对象选择字段（ObjectField）的显示方式，如折叠模式或隐藏模式。",
-                "Controls how the object selection field (ObjectField) is drawn, such as foldout or hidden mode."),
-            new BilingualData("非常适合用于 ScriptableObject 或 Material 的内联编辑，减少窗口切换。",
-                "Ideal for inline editing of ScriptableObjects or Materials, reducing window switching.")
+            new BilingualData("作用于类型继承自 UnityEngine.Object 的字段，在属性下方内联嵌入其编辑器面板。",
+                "Applies to fields whose type derives from UnityEngine.Object and embeds that object's editor panel below the property."),
+            new BilingualData("适合内联编辑 ScriptableObject、Material 等资源，减少在独立窗口中来回切换。",
+                "Ideal for inline editing of assets such as ScriptableObjects and Materials, avoiding back-and-forth window switching."),
+            new BilingualData("InlineEditorModes 可组合出仅 GUI、带标题、带预览或完整编辑器等显示形态。",
+                "InlineEditorModes produces different layouts, such as GUI only, with header, with preview, or the full editor."),
+            new BilingualData("配合 HideInInlineEditors / DisableInInlineEditors，可控制成员在内联面板中的可见性与可编辑性。",
+                "Combined with HideInInlineEditors / DisableInInlineEditors, it controls the visibility and editability of members inside the inline panel.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

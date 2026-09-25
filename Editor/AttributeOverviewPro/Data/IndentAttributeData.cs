@@ -12,9 +12,12 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("Indent 特性对于在 Inspector 中组织属性非常有用，尤其是当某些属性在逻辑上属于上一个属性时。",
-                "The Indent attribute is useful for organizing properties in the inspector, especially when some properties logically belong to a previous property."),
-            new BilingualData("你可以使用负值来减少缩进。", "You can use negative values to decrease indentation.")
+            new BilingualData("在 Inspector 中为属性增加缩进，用于体现属性之间的从属关系。",
+                "Adds indentation to a property in the inspector to express its logical subordination to other properties."),
+            new BilingualData("IndentLevel 默认为 1；负值表示相对当前层级减少缩进。",
+                "IndentLevel defaults to 1; a negative value reduces indentation relative to the current level."),
+            new BilingualData("允许在同一属性上叠加多个 Indent，缩进量会依次累加。",
+                "Multiple Indent attributes can be stacked on one property, and their indentation levels accumulate.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } = new ParameterValue[1]

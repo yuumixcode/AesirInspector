@@ -13,12 +13,12 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("默认的绘制顺序（Order）通常是 0。数字越小越优先绘制（可以在最上方），数字越大越靠后绘制。",
-                "The default drawing order is usually 0. Smaller numbers are drawn first (at the top), while larger numbers are drawn later."),
-            new BilingualData("可以使用负数来确保某些属性始终在最上方显示。",
-                "Negative numbers can be used to ensure certain properties always appear at the top."),
-            new BilingualData("不仅适用于字段和属性，也适用于 [Button] 方法和 [OnInspectorGUI] 方法。",
-                "It applies not only to fields and properties but also to [Button] methods and [OnInspectorGUI] methods.")
+            new BilingualData("数值越小越靠前绘制，默认 0；使用负数可确保成员始终显示在最上方。",
+                "Lower values are drawn first, with 0 as the default; negative values ensure a member always appears at the top."),
+            new BilingualData("适用于字段、属性以及方法，包括 [Button] 和 [OnInspectorGUI] 方法。",
+                "Applies to fields, properties and methods, including [Button] and [OnInspectorGUI] methods."),
+            new BilingualData("Order 相同时按类别排序：字段 → 属性 → 方法；分组（如 [BoxGroup]）未指定 Order 时沿用其首个成员的 Order。",
+                "When orders tie, members are sorted by category: fields, then properties, then methods; a group (such as [BoxGroup]) with no order of its own inherits the order of its first member.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

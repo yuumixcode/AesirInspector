@@ -15,12 +15,12 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("Unity 内置特性，Odin 沿用其间距绘制行为。",
-                "A Unity built-in attribute whose spacing behavior is kept by Odin."),
-            new BilingualData("只能作用于字段（Unity 限制），若需作用于属性请使用 Odin 的 PropertySpace。",
-                "Can only be applied to fields (a Unity limitation); use Odin's PropertySpace for properties."),
-            new BilingualData("PropertySpace 还支持分别设置前后间距（SpaceBefore / SpaceAfter）。",
-                "PropertySpace additionally supports separate before/after spacing (SpaceBefore / SpaceAfter).")
+            new BilingualData("Unity 内置特性，只能标记字段；Odin 完全沿用其绘制行为，在被标记字段上方插入间距。",
+                "A Unity built-in attribute that can only mark fields; Odin keeps its drawing behavior and inserts the spacing above the marked field."),
+            new BilingualData("需要作用于属性或方法时，改用 Odin 的 PropertySpace。",
+                "Use Odin's PropertySpace when the spacing must be applied to properties or methods."),
+            new BilingualData("PropertySpace 可分别设置前后间距（SpaceBefore / SpaceAfter），并支持负值来收紧间距。",
+                "PropertySpace can set the spacing before and after separately (SpaceBefore / SpaceAfter), and supports negative values to tighten the spacing.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

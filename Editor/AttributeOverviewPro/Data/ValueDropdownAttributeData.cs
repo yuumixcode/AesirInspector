@@ -16,14 +16,14 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("可以引用字段、属性、方法或使用 Odin 表达式来获取可选值列表。",
-                "Can reference a field, property, method, or use an Odin expression to get the list of values."),
-            new BilingualData("支持树状结构显示，通过在值前面增加路径字符串实现（如 'Group/Item'）。",
-                "Supports tree-view structures by adding path strings to labels (e.g., 'Group/Item')."),
-            new BilingualData("可以使用 ValueDropdownList<T> 来方便地定义带有标签和实际值的选项列表。",
-                "Use ValueDropdownList<T> to easily define options with custom labels and their corresponding values."),
-            new BilingualData("支持多选（作用于列表/集合上），并可以配置是否排除已选值。",
-                "Supports multi-selection when applied to collections and can be configured to exclude already selected values.")
+            new BilingualData("为属性提供自定义下拉列表：values 指向返回 IList 的成员或表达式（数组、List、ValueDropdownList<T> 均可）。",
+                "Provides a custom dropdown for a property: values points to a member or expression returning an IList (arrays, Lists and ValueDropdownList<T> all work)."),
+            new BilingualData("选项文本用 \"Group/Item\" 形式即可形成树状分组，配合 ExpandAllMenuItems 默认展开；选项达到 10 个时会启用搜索框（设为 0 则始终启用）。",
+                "Labels written as \"Group/Item\" form a tree view that ExpandAllMenuItems can expand by default; search appears once there are 10 items (set the count to 0 to always enable it)."),
+            new BilingualData("用 ValueDropdownList<T> 可给每个选项指定显示名称与实际值，适合无法使用 ToString 的类型。",
+                "ValueDropdownList<T> lets each option carry a display name and an actual value, which suits types without a usable ToString."),
+            new BilingualData("作用于列表时默认也为每个元素提供下拉（DrawDropdownForListElements）；IsUniqueList 保证元素唯一并启用多选，ExcludeExistingValuesInList 可隐藏已选项。",
+                "On a list it also gives every element a dropdown by default (DrawDropdownForListElements); IsUniqueList keeps items unique and enables multi-select, and ExcludeExistingValuesInList hides already selected values.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

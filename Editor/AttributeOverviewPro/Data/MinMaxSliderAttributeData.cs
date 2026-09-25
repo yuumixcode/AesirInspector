@@ -15,10 +15,12 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("你可以指定滑动条的范围，也可以选择是否显示数值输入框。",
-                "You can specify the range of the slider and whether to show numeric input fields."),
-            new BilingualData("滑动条的边界值也可以通过引用其他成员来动态确定。",
-                "The boundary values of the slider can also be dynamically determined by referencing other members.")
+            new BilingualData("用双滑块选择一个范围，值保存在 Vector2 中（x 为最小值、y 为最大值），Vector2Int 同样支持。",
+                "Uses a two-knob slider to pick a range, stored in a Vector2 (x is the min, y is the max); Vector2Int is supported as well."),
+            new BilingualData("ShowFields 默认为 false；设为 true 时在滑块旁显示数值输入框，可直接键入精确值。",
+                "ShowFields defaults to false; set it to true to show numeric fields next to the slider for entering exact values."),
+            new BilingualData("上下界可用 $ 引用成员或 @ 表达式动态取值，也可用一个返回 Vector2 的成员同时提供上下界（此时覆盖 MinValue/MaxValue）。",
+                "The bounds can be resolved dynamically with a $ member reference or @ expression, or supplied together by a single member returning a Vector2, which then overrides MinValue/MaxValue.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } = new ParameterValue[3]

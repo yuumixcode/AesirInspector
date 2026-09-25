@@ -15,10 +15,12 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("你可以指定一个方法名，或者直接编写 C# 表达式。",
-                "You can specify a method name or write a C# expression directly."),
-            new BilingualData("当应用于字段或属性时，你可以选择在成员之前或之后绘制自定义 GUI。",
-                "When applied to a field or property, you can choose to draw custom GUI before or after the member.")
+            new BilingualData("在检查器绘制该成员时执行自定义 GUI 代码；可直接标注在方法上，也可标注在字段或属性上指定回调。",
+                "Runs custom GUI code while the inspector draws the member; it can be placed directly on a method, or on a field or property with a callback."),
+            new BilingualData("单参数形式默认 append 为 true，即绘制在成员之后；需要绘制在成员之前时传入 false。",
+                "The single-argument form defaults to append: true, drawing after the member; pass false to draw before it."),
+            new BilingualData("可用两个参数同时指定前置与后置回调，如 [OnInspectorGUI(\"Prepend\", \"Append\")]；该特性继承自 ShowInInspector，因此可作用于私有成员。",
+                "Two arguments can supply both a prepend and an append callback, e.g. [OnInspectorGUI(\"Prepend\", \"Append\")]; the attribute inherits from ShowInInspector, so private members work as well.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } = new ParameterValue[1]

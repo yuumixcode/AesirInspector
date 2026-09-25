@@ -12,12 +12,12 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("通过指定相同的组名将多个属性归入同一个标题组。支持路径嵌套（如 'Parent/Child'）。",
-                "Group multiple properties under the same titled group by specifying the same group name. Supports path-based nesting (e.g., 'Parent/Child')."),
-            new BilingualData("支持子标题、对齐方式、粗体、水平分割线以及缩进等显示样式控制。",
-                "Supports subtitle, alignment, bold text, horizontal line, and indent display style options."),
-            new BilingualData("可以使用 order 参数控制多个标题组之间的显示顺序。",
-                "The order parameter controls the display order among multiple title groups.")
+            new BilingualData("相同组名的属性会归入同一个标题组，组名支持路径嵌套（如 \"Parent/Child\"）以构建层级分组。",
+                "Properties sharing the same group name are collected into one titled group, and the name supports path nesting (e.g. \"Parent/Child\") to build hierarchies."),
+            new BilingualData("组标题与子标题都支持 $/@ 字符串解析（如 \"$SomeString1\"），可为组单独设置子标题与对齐方式。",
+                "Both the group title and subtitle support $/@ string resolution (e.g. \"$SomeString1\"), and each group can set its own subtitle and alignment."),
+            new BilingualData("与 FoldoutGroup 不同，TitleGroup 始终展开、不能折叠，仅以标题和可选分割线分隔内容。",
+                "Unlike FoldoutGroup, a TitleGroup is always expanded and cannot be collapsed, separating content only by a title and an optional line.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

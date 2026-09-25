@@ -15,12 +15,14 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("单参数时只标注单位；双参数时把基准单位换算为显示单位。",
-                "A single parameter only labels the unit; two parameters convert the base unit into the display unit."),
-            new BilingualData("DisplayAsString 以只读文本显示，ForceDisplayUnit 强制使用指定显示单位。",
-                "DisplayAsString shows the value as read-only text; ForceDisplayUnit always uses the given display unit."),
-            new BilingualData("单位字符串（如 \"kg\"）也可代替 Units 枚举传入。",
-                "A unit string (such as \"kg\") can be passed instead of the Units enum.")
+            new BilingualData("单参数时只标注单位；双参数时把基准单位换算为显示单位，字段值始终以基准单位存储。",
+                "A single parameter only labels the unit; two parameters convert the base unit into the display unit, while the stored value always stays in the base unit."),
+            new BilingualData("基准单位与显示单位必须属于同一单位类别（如米与厘米），跨类别（如千克与米/秒）会报错且无法换算。",
+                "Base and display units must belong to the same unit category (e.g. meters and centimeters); mixing categories (e.g. kilograms and meters per second) reports an error and cannot convert."),
+            new BilingualData("单位既可传 Units 枚举，也可传单位字符串（如 \"kg\"）；显示单位名还支持 $/@ 字符串解析。",
+                "A unit can be passed as a Units enum value or as a string (e.g. \"kg\"), and the display unit name also supports $/@ string resolution."),
+            new BilingualData("数值字段右键可切换显示单位；DisplayAsString 改为只读文本，ForceDisplayUnit 则禁用该切换菜单。",
+                "Right-clicking the number field switches the display unit; DisplayAsString renders it as read-only text, and ForceDisplayUnit disables that switching menu.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

@@ -11,16 +11,9 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("通过指定相同的组名来将多个按钮归入同一组中。",
-                "Group multiple buttons together by specifying the same group name."),
-            new BilingualData("默认组名为 \"_DefaultGroup\"，不指定组名时自动使用。",
-                "The default group name is \"_DefaultGroup\", used automatically when no group name is specified."),
-            new BilingualData("Order 参数控制组内按钮的显示顺序，数值越小越靠左。",
-                "The Order parameter controls the display order of buttons within a group; smaller values appear further to the left."),
-            new BilingualData("ButtonHeight 参数可以自定义按钮的高度。",
-                "The ButtonHeight parameter customizes the button height."),
-            new BilingualData("GroupName 参数支持 $ 和 @ 字符串解析。",
-                "The GroupName parameter supports $ and @ string resolution.")
+            new BilingualData("用于方法，通过相同的组名把多个按钮并排显示在同一行；不指定组名时使用默认组 \"_DefaultGroup\"。", "Applied to methods, grouping multiple buttons side by side in one row via the same group name; when no group name is given, the default group \"_DefaultGroup\" is used."),
+            new BilingualData("Order 控制组内按钮的排列顺序（数值越小越靠左），ButtonHeight 可自定义按钮高度。", "Order controls the arrangement of buttons within the group (smaller values appear further left), and ButtonHeight customizes the button height."),
+            new BilingualData("GroupName 支持 $ 成员引用与 @ 表达式解析。", "GroupName supports $ member references and @ expressions.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

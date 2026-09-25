@@ -14,8 +14,12 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("你可以指定一个固定的最小值，或者引用另一个成员作为动态最小值。",
-                "You can specify a fixed minimum value, or reference another member as a dynamic minimum value.")
+            new BilingualData("在检查器中把数值或向量限制到指定下限，向量（Vector2/3/4 等）按分量分别钳制。",
+                "Caps numeric or vector values at the given minimum in the inspector; vectors (Vector2/3/4, etc.) are clamped per component."),
+            new BilingualData("仅在编辑器中生效：脚本直接赋值不会被钳制。",
+                "Only takes effect in the editor: values assigned from script are not clamped."),
+            new BilingualData("参数可以是固定数值，也可以引用成员（$）或表达式（@）动态取值；与 MaxValue 组合可限定一个完整区间。",
+                "The parameter accepts a fixed number, or a $ member reference / @ expression for a dynamic bound; combine with MaxValue to constrain a full range.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } = new ParameterValue[1]

@@ -14,12 +14,12 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("可以根据 bool 成员、方法或表达式来控制属性的显示。",
-                "Properties can be shown or hidden based on a bool member, method, or expression."),
-            new BilingualData("配合 OptionalValue 参数，可以根据枚举或其他值进行匹配显示。",
-                "With the OptionalValue parameter, properties can be shown based on matches with enums or other values."),
-            new BilingualData("ShowIf 仅控制显示，不影响序列化或逻辑，通常与 HideIf 成对使用。",
-                "ShowIf only controls visibility and does not affect serialization or logic; it's often used as the opposite of HideIf.")
+            new BilingualData("根据 bool 成员、方法或 @ 表达式控制显示；提供可选值时按值匹配显示（如 [ShowIf(\"enumField\", SomeEnum.Value)]）。",
+                "Controls visibility from a bool member, method, or @ expression; when an optional value is supplied, the property is shown only if the condition equals it (e.g. [ShowIf(\"enumField\", SomeEnum.Value)])."),
+            new BilingualData("只影响可见性：隐藏的字段仍会被序列化，也不影响运行时逻辑；与 HideIf 行为相反。",
+                "Affects visibility only: hidden fields are still serialized and runtime logic is unaffected; it is the opposite of HideIf."),
+            new BilingualData("Animate 默认为 true，显示 / 隐藏切换时会播放滑动动画。",
+                "Animate defaults to true, playing a slide animation when the property is shown or hidden.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

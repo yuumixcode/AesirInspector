@@ -14,12 +14,14 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("可以更换提示 InfoMessageType 级别图标和 SdfIconType 图标。",
-                "You can change the InfoMessageType level icon and the SdfIconType icon."),
-            new BilingualData("支持根据 bool 成员或表达式动态控制 InfoBox 的显示。",
-                "Supports dynamically controlling the visibility of the InfoBox based on a bool member or expression."),
-            new BilingualData("消息内容支持字符串解析，可以包含动态生成的文本。",
-                "Message content supports string resolution and can include dynamically generated text.")
+            new BilingualData("在属性上方绘制消息框，用于提示、警告或错误信息。",
+                "Draws a message box above the property for tips, warnings or errors."),
+            new BilingualData("message 与 VisibleIf 都支持 $ 成员引用和 @ 表达式，可实现动态文本与条件显示。",
+                "Both message and VisibleIf support $ member references and @ expressions for dynamic text and conditional visibility."),
+            new BilingualData("Warning / Error 级别的消息框会被 Odin Scene Validator 追踪，可用于项目校验。",
+                "Warning and Error level message boxes are tracked by the Odin Scene Validator and can be used for project validation."),
+            new BilingualData("需要可展开的详细说明时，改用 DetailedInfoBox。",
+                "Use DetailedInfoBox instead when you need an expandable, more detailed description.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

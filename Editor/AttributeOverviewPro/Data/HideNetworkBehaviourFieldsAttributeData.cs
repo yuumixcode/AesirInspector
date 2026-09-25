@@ -15,12 +15,12 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("无参数，标注在类上。",
-                "Takes no parameters and is applied to a class."),
-            new BilingualData("仅对派生自 NetworkBehaviour 的类生效；未启用 UNET 模块的项目中该特性不产生效果。",
-                "Only affects classes derived from NetworkBehaviour; it has no effect in projects without the UNET module."),
-            new BilingualData("对非 NetworkBehaviour 类型无任何影响。",
-                "It has no effect at all on types that are not NetworkBehaviour.")
+            new BilingualData("无参数，标注在类上，隐藏 NetworkBehaviour 特有的 \"Network Channel\" 与 \"Network Send Interval\" 字段。",
+                "Takes no parameters and is applied to a class; it hides the \"Network Channel\" and \"Network Send Interval\" fields specific to NetworkBehaviour."),
+            new BilingualData("仅对派生自 UnityEngine.Networking.NetworkBehaviour 的类生效，对其他类型无任何影响。",
+                "Only affects classes derived from UnityEngine.Networking.NetworkBehaviour; it has no effect on any other type."),
+            new BilingualData("项目未启用旧版 UNET 网络模块（UnityEngine.Networking）时，该特性不产生效果。",
+                "It has no effect in projects where the legacy UNET networking module (UnityEngine.Networking) is not available.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } = Array.Empty<ParameterValue>();

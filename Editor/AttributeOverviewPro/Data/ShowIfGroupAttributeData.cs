@@ -15,12 +15,14 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("组路径可以作为条件判断的成员名，无需单独设置 Condition 参数。",
-                "The group path can serve as the condition member name without needing a separate Condition parameter."),
-            new BilingualData("支持通过 Condition 参数指定成员名、方法名或表达式来控制组显示。",
-                "Supports specifying a member name, method name, or expression via the Condition parameter to control group visibility."),
-            new BilingualData("配合 Value 参数，可以根据枚举或其他值进行匹配显示。",
-                "With the Value parameter, visibility can be controlled based on matches with enums or other values.")
+            new BilingualData("按条件显示 / 隐藏整个组，可与其他组特性（如 BoxGroup、TabGroup）组合使用。",
+                "Shows or hides an entire group by condition, and can be combined with other group attributes such as BoxGroup and TabGroup."),
+            new BilingualData("未指定 Condition 时，组路径本身即作为条件成员名。",
+                "When no Condition is specified, the group path itself is used as the condition member name."),
+            new BilingualData("Value 参数可按值匹配显示（如 Value = InfoMessageType.Info）。",
+                "The Value parameter shows the group when the condition matches a specific value (e.g. Value = InfoMessageType.Info)."),
+            new BilingualData("若只是控制单个组的显隐，优先使用所有组特性都支持的 VisibleIf 参数，无需使用 ShowIfGroup。",
+                "To control the visibility of a single group, prefer the VisibleIf parameter supported by all group attributes instead of ShowIfGroup.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =
