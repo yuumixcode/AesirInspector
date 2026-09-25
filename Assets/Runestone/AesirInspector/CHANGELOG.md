@@ -10,6 +10,18 @@
 
 ## [Unreleased]
 
+## [0.17.0] - 2026-09-25
+
+### Added
+
+- **`WrappedTextAttribute` 自动换行只读文本特性**：Odin 自带的 `DisplayAsString` 在宽度不足时直接截断（不换行、也不加省略号），长内容会静默丢失尾部；新特性按可用宽度换行绘制，支持 `LabelWidth` / `FontSize` 参数，已用于 MenuItem Viewer 的菜单路径列。/ **`WrappedTextAttribute`**: Odin's `DisplayAsString` silently truncates when the column is too narrow (no wrapping, no ellipsis), losing the tail of long text; the new attribute wraps to the available width and exposes `LabelWidth` / `FontSize`. It backs the menu-path column of MenuItem Viewer.
+
+### Changed
+
+- **MenuItem Viewer 面板打磨**：菜单路径独占一行并按宽度自动换行，优先级与校验状态改为并排两列；"收集菜单项"按钮更名并配搜索图标；程序集过滤器标题简化；菜单项信息新增用于搜索的 `methodName` 序列化字段（面板中隐藏），不再暴露可写的 `MethodName` 属性。/ **MenuItem Viewer polish**: the menu path gets its own wrapping row, priority and validate state share a two-column row, the collect button is renamed and gains a search icon, the assembly-filter title is shortened, and `MenuItemInfo` now keeps a serialized, hidden `methodName` for search instead of an exposed writable `MethodName` property.
+- **命名与文案修正**：`OdinSyntaxHighlighterPanelSO` 中过时的 `OdinSyntaxHighlighterSO` / `AesirCodeHighlighter` 引用修正为 `OdinSyntaxHighlighterPanelSO` / `OdinCodeHighlighter`，`OdinCodeHighlighter` 的日志前缀同步为 `[OdinCodeHighlighter]`；语法高亮面板与 Getting Started 窗口的中英文案改为更简洁的表述。/ **Naming and copy fixes**: stale `OdinSyntaxHighlighterSO` / `AesirCodeHighlighter` references in `OdinSyntaxHighlighterPanelSO` now read `OdinSyntaxHighlighterPanelSO` / `OdinCodeHighlighter`, the `OdinCodeHighlighter` log prefix follows suit, and the syntax-highlighter panel plus Getting Started window use tighter wording.
+- **仓库与安装地址修正**：安装地址、`package.json` 的 UPM 元数据（`documentationUrl` / `changelogUrl` / `licensesUrl`）与 `AesirInspectorWebLinks` 全部由 `Unity-Aesir-Packages` monorepo 改为本包所在仓库 `yuumixcode/AesirInspector`——原地址指向的 monorepo（现名 `AesirFramework`）中并不存在本包路径，安装会 404；英文 README 同步删除已迁出本包的 `[Summary]` 章节并重新编号。/ **Repository and install URL fix**: the install URL, the `package.json` UPM metadata (`documentationUrl` / `changelogUrl` / `licensesUrl`) and `AesirInspectorWebLinks` now point at `yuumixcode/AesirInspector` instead of the `Unity-Aesir-Packages` monorepo (now `AesirFramework`), which does not contain this package path — the old URL 404s. The English README also drops the migrated `[Summary]` section and renumbers.
+
 ## [0.16.0] - 2026-09-25
 
 ### Added

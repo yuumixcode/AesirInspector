@@ -1,7 +1,7 @@
 {
   "name": "cn.runestone.aesir-inspector",
   "displayName": "Aesir Inspector",
-  "version": "0.16.0",
+  "version": "0.17.0",
   "unity": "2022.3",
   "description": "Aesir Inspector —— 基于 Odin Inspector 的双语 Inspector 增强库：双语特性、Attribute Overview Ultra 特性总览、安全编辑器工具集。/ Bilingual Inspector enhancements built on Odin Inspector: bilingual attributes, the Attribute Overview Ultra browser, and safe editor utilities.",
   "keywords": [
@@ -17,9 +17,9 @@
     "url": "https://github.com/yuumixcode"
   },
   "license": "MIT",
-  "documentationUrl": "https://github.com/yuumixcode/Unity-Aesir-Packages/blob/main/Assets/Runestone/AesirInspector/README.md",
-  "changelogUrl": "https://github.com/yuumixcode/Unity-Aesir-Packages/blob/main/Assets/Runestone/AesirInspector/CHANGELOG.md",
-  "licensesUrl": "https://github.com/yuumixcode/Unity-Aesir-Packages/blob/main/Assets/Runestone/AesirInspector/LICENSE.md",
+  "documentationUrl": "https://github.com/yuumixcode/AesirInspector/blob/main/Assets/Runestone/AesirInspector/README.md",
+  "changelogUrl": "https://github.com/yuumixcode/AesirInspector/blob/main/Assets/Runestone/AesirInspector/CHANGELOG.md",
+  "licensesUrl": "https://github.com/yuumixcode/AesirInspector/blob/main/Assets/Runestone/AesirInspector/LICENSE.md",
   "dependencies": {
     "com.unity.test-framework": "1.1.33"
   },
