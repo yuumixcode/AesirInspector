@@ -4,10 +4,16 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Runestone/AesirModules/Tests/Runtime/TestScenes/SceneModulePlayTestA.unity
+    guid: 53a9b18a27bd4bef9832e51b9105c640
+  - enabled: 1
+    path: Assets/Runestone/AesirModules/Tests/Runtime/TestScenes/SceneModulePlayTestB.unity
+    guid: e29a3346f8704a7dabc28bb504acca8d
   m_configObjects:
-    RunLab.AesirInspector.AesirInspectorLanguageSettingsSO: {fileID: 11400000, guid: 75eace2feb1254a07932867c5e4fb935, type: 2}
-    RunLab.AesirInspector.AesirInspectorProjectSettingsSO: {fileID: 11400000, guid: fca32fbb4d5fa4a3e95c60266da1e356, type: 2}
+    RunLab.AesirInspector.AesirInspectorLanguageSettingsSO: {fileID: 0}
+    RunLab.AesirInspector.AesirInspectorProjectSettingsSO: {fileID: 0}
     Runestone.AesirInspector.AesirInspectorDebugSettings: {fileID: 11400000, guid: 100443edbd161417086a07984dd859f3, type: 2}
     Runestone.AesirInspector.AesirInspectorLanguageSettingsSO: {fileID: 11400000, guid: 75eace2feb1254a07932867c5e4fb935, type: 2}
     Runestone.AesirInspector.AesirInspectorProjectSettingsSO: {fileID: 11400000, guid: fca32fbb4d5fa4a3e95c60266da1e356, type: 2}
