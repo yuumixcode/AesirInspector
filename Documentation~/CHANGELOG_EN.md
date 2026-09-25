@@ -9,6 +9,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Unreleased]
+
+## [0.16.0] - 2026-09-25
+
+### Added
+
+- **In-package example assets**: `Editor/ExampleAssets/` ships placeholder assets (`AesirExampleAssetSO`, two ScriptableObject assets and two material folders) so examples that must point at real assets (`AssetSelector.Paths`) have a stable target; living inside an `Editor` folder they ship with the package but never enter builds / 包内案例资产目录 `Editor/ExampleAssets/`：为 `AssetSelector.Paths` 等必须指向真实资产的案例提供随包分发的占位资产，位于 `Editor/` 内故不进入构建。
+
+### Changed
+
+- **UPM metadata and links**: `package.json` gains `documentationUrl` / `changelogUrl` / `licensesUrl` and a bilingual `description`; `AesirInspectorWebLinks` now points LICENSE / CHANGELOG at the in-package files instead of non-existent repo-root files / UPM 元数据与链接：补齐 UPM 字段，修正 LICENSE / CHANGELOG 链接到包内文件。
+- **Docs**: install URLs now consistently use the monorepo git URL with the `?path=` subfolder, sample-import instructions and the version badge were updated, and the English README dropped the Script Doc Generator / Summary Tool sections that no longer belong to this package. The bilingual READMEs and `development.md` now describe Odin as a defineConstraints dependency (every asmdef carries `ODIN_INSPECTOR`, so assemblies are skipped rather than failing to compile when Odin is absent); `development.md` also drops the migrated ScriptDocGenerator module and the removed `Editor/Common` / `AesirInspectorModuleAssetMarkerSO`, adds `ExampleAssets` and `AesirInspectorProjectSettingsSO`, and fixes stale `Runtime/Unity/Utilities` / `Editor/Unity` paths plus the migrated `[Summary]` convention / 文档：统一 git URL 安装地址、补充 Samples 导入说明、英文 README 清除已迁出本包的章节，并修正双语 README 与 development.md 的 Odin 约束语义、失效模块表与路径、已迁出的 `[Summary]` 约定。
+- **Directory consolidation**: `Editor/AttributeOverviewPro/` merged into `Editor/AttributeOverviewUltra/` — `Abstract`, `AttributePanels`, `Data` and `UsageExamples` moved under Ultra and the two `Core` sets merged; namespaces, type names and asset GUIDs are unchanged / 目录整合：`Editor/AttributeOverviewPro/` 整体并入 `Editor/AttributeOverviewUltra/`，Pro 目录不再存在。
+
+### Removed
+
+- **Removed the Extension Package Manager**: the `ExtensionPackageManagerWindow`, `ExtensionPackageCard` and `PackageManagerEditorUtility` types and the `Tools → Aesir → Inspector → Extension Package Manager` menu entry are gone, together with the matching README and Getting Started entries / 移除扩展包管理器：删除对应三个类型与菜单项。
+- **Removed the deprecated example migration guide** `AESIR_ATTRIBUTE_MIGRATION_GUIDE.md`; its grouping and workflow rules are now embodied by the examples themselves / 删除示例迁移指南 `AESIR_ATTRIBUTE_MIGRATION_GUIDE.md`。
+
 ## [0.15.0] - 2026-09-09
 
 ### ⚠ BREAKING CHANGES (Read before upgrading / 升级前必读)

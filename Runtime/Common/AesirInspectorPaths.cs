@@ -18,8 +18,7 @@ namespace Runestone.AesirInspector
         /// <summary>
         /// Attribute Overview 数据资产存放文件夹路径（仅 Ultra 状态银行，无 Pro 资产）。
         /// </summary>
-        public const string AttributeOverviewDataPath =
-            EditorDefaultResourcesPath + "/Attribute Overview";
+        public const string AttributeOverviewDataPath = EditorDefaultResourcesPath + "/Attribute Overview";
 
         /// <summary>
         /// Attribute Overview Ultra 状态银行资产路径。
