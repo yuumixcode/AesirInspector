@@ -34,6 +34,8 @@ namespace Runestone.AesirInspector.Editor
 
         GUIStyle _sloganStyle;
 
+        AesirInspectorProjectSettingsSO _projectSettings;
+
         static AesirInspectorGettingStartedWindow()
         {
             // 首次导入时不再自动打开 Getting Started 窗口
@@ -44,6 +46,9 @@ namespace Runestone.AesirInspector.Editor
         {
             base.OnEnable();
             WindowPadding = new Vector4(10f, 10f, 10f, 10f);
+            // 设置项在启用时解析一次：资产缺失时该解析会写资产并触发 AssetDatabase.Refresh，
+            // 属于阻塞且 GUI 不安全的操作，绝不能放进 [OnInspectorGUI] 绘制回调里反复执行
+            _projectSettings = AesirInspectorProjectSettingsSO.Instance;
             AesirInspectorLanguageSettingsSO.LanguageChanged -= Repaint;
             AesirInspectorLanguageSettingsSO.LanguageChanged += Repaint;
         }
@@ -52,13 +57,19 @@ namespace Runestone.AesirInspector.Editor
         {
             base.OnDisable();
             AesirInspectorLanguageSettingsSO.LanguageChanged -= Repaint;
+            _projectSettings = null;
         }
 
         [PropertyOrder(-60)]
         [OnInspectorGUI]
         void DrawInitButton()
         {
-            if (AesirInspectorProjectSettingsSO.Instance.IsInitialized)
+            if (_projectSettings == null)
+            {
+                return;
+            }
+
+            if (_projectSettings.IsInitialized)
             {
                 EditorGUILayout.HelpBox(
                     AesirInspectorLanguageSettingsSO.CurrentIsEnglish
@@ -80,10 +91,10 @@ namespace Runestone.AesirInspector.Editor
         {
             try
             {
-                // Attribute Overview Ultra 为零资产生成：确保状态银行可用，
-                // 并完成一次全量面板构建冒烟（覆盖全部 Data 构造器与示例银行路由）
-                var bank = UltraStateBankSO.LoadOrCreateBank();
-                var database = new UltraPanelDatabase(bank);
+                // Attribute Overview Ultra 为零资产生成：确保状态存储可用，
+                // 并完成一次全量面板构建冒烟（覆盖全部 Data 构造器与示例状态存储路由）
+                var stateStore = UltraStateStoreSO.LoadOrCreate();
+                var database = new UltraPanelDatabase(stateStore);
                 database.BuildAllPanels();
                 database.ReleaseAll();
 
@@ -116,7 +127,7 @@ namespace Runestone.AesirInspector.Editor
                 new SummaryDetailGroup
                 {
                     summary = "Attribute Overview Ultra",
-                    details = "以可搜索的树形菜单展示所有已注册的 Odin Inspector 特性面板；示例为内存实例，调试状态经状态银行持久化，零资产污染。"
+                    details = "以可搜索的树形菜单展示所有已注册的 Odin Inspector 特性面板；示例为内存实例，调试数据经 Attribute Overview Ultra 状态存储持久化，零资产污染。"
                 },
                 new SummaryDetailGroup
                 {

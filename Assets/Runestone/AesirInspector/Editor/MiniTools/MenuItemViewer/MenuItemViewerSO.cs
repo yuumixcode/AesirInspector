@@ -12,9 +12,26 @@ namespace Runestone.AesirInspector.Editor
     {
         static readonly string ConfigName = typeof(MenuItemViewerSO).GetNiceFullName();
 
-        public static MenuItemViewerSO Instance =>
-            ScriptableObjectSafeEditorUtility.GetOrCreateEditorScriptableObject<MenuItemViewerSO>(ConfigName,
-                AesirInspectorPaths.MiniToolsAssetsFolderPath, "MenuItemViewer");
+        static MenuItemViewerSO _instance;
+
+        /// <summary>
+        /// 单例访问。解析结果按域缓存：缺失资产的解析会执行 CreateAsset 与 AssetDatabase.Refresh，
+        /// 每次都重新解析会把这类重操作带进绘制回调等高频路径。
+        /// </summary>
+        public static MenuItemViewerSO Instance
+        {
+            get
+            {
+                if (_instance != null)
+                {
+                    return _instance;
+                }
+
+                _instance = ScriptableObjectSafeEditorUtility.GetOrCreateEditorScriptableObject<MenuItemViewerSO>(
+                    ConfigName, AesirInspectorPaths.MiniToolsAssetsFolderPath, "MenuItemViewer");
+                return _instance;
+            }
+        }
 
         #region Event Functions
 

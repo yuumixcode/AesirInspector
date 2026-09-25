@@ -1,0 +1,282 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78c5dcf34f1aa463c84e11b3bd2aacda, type: 3}
+  m_Name: UltraStateStore
+  m_EditorClassIdentifier: 
+  entries:
+  - key: PanelSelection/BilingualButtonAttributePanelSO
+    typeName: BilingualButtonExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: BilingualButtonExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/BilingualButtonExampleSO
+    typeName: Runestone.AesirInspector.Editor.BilingualButtonExampleSO
+    checksum: 4E642643BA5DE6E3F7EE3DEB89D9916E5AF6F0D024FFD49AE2F496898745C464
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: toggled
+        Entry: 5
+        Data: false
+  - key: PanelSelection/DetailInfoBoxAttributePanelSO
+    typeName: DetailedInfoBoxExampleWithVisibleIfSO
+    checksum: 
+    kind: 0
+    selectionValue: DetailedInfoBoxExampleWithVisibleIfSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/DetailedInfoBoxExampleWithMessageSO
+    typeName: Runestone.AesirInspector.Editor.DetailedInfoBoxExampleWithMessageSO
+    checksum: 868FC03422019ABABBDC8962D8A5AE9EB70A14009B45053B689174D3DA0DF1DF
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: messageField
+        Entry: 1
+        Data: Dynamic message from field
+      - Name: fieldReferenceExample
+        Entry: 3
+        Data: 0
+      - Name: expressionExample
+        Entry: 3
+        Data: 0
+      - Name: methodNameExample
+        Entry: 3
+        Data: 0
+  - key: ExampleState/DetailedInfoBoxExampleWithDetailsSO
+    typeName: Runestone.AesirInspector.Editor.DetailedInfoBoxExampleWithDetailsSO
+    checksum: 08C99559EE71536283D3CDA598736F1645018CD5A3FAA4CB1CB62E9E182D7058
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: detailsField
+        Entry: 1
+        Data: Dynamic details from field
+      - Name: fieldReferenceExample
+        Entry: 3
+        Data: 0
+      - Name: expressionExample
+        Entry: 3
+        Data: 0
+      - Name: methodNameExample
+        Entry: 3
+        Data: 0
+  - key: ExampleState/DetailedInfoBoxExampleWithVisibleIfSO
+    typeName: Runestone.AesirInspector.Editor.DetailedInfoBoxExampleWithVisibleIfSO
+    checksum: B63B471DF0198494DCF73109D2477C30B3EB9E45CF6D2D89E91D9B96C34B7151
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: toggleVisibility
+        Entry: 5
+        Data: false
+      - Name: fieldReferenceExample
+        Entry: 3
+        Data: 0
+      - Name: expressionExample
+        Entry: 3
+        Data: 0
+  - key: PanelSelection/BilingualDetailInfoBoxAttributePanelSO
+    typeName: DetailInfoBoxBilingualExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: DetailInfoBoxBilingualExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/DetailInfoBoxBilingualExampleSO
+    typeName: Runestone.AesirInspector.Editor.DetailInfoBoxBilingualExampleSO
+    checksum: A176C5BA1BB53C2EB56F1FDC6C39C416114B9E8974068551894123645E9592DF
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: bilingualExample
+        Entry: 3
+        Data: 0
+      - Name: dynamicExample
+        Entry: 3
+        Data: 0
+      - Name: dynamicDetailsChinese
+        Entry: 1
+        Data: "\u6765\u81EA\u5B57\u6BB5\u7684\u4E2D\u6587\u8BE6\u7EC6\u5185\u5BB9"
+      - Name: dynamicDetailsEnglish
+        Entry: 1
+        Data: Detailed content from field
+      - Name: infoMessageTypeExample
+        Entry: 3
+        Data: 0
+      - Name: warningMessageTypeExample
+        Entry: 3
+        Data: 0
+      - Name: errorMessageTypeExample
+        Entry: 3
+        Data: 0
+      - Name: noneMessageTypeExample
+        Entry: 3
+        Data: 0
+      - Name: showInfoBox
+        Entry: 5
+        Data: true
+      - Name: visibleIfExample
+        Entry: 3
+        Data: 0
+  - key: PanelSelection/BilingualTitleAttributePanelSO
+    typeName: BilingualTitleExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: BilingualTitleExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/BilingualTitleExampleSO
+    typeName: Runestone.AesirInspector.Editor.BilingualTitleExampleSO
+    checksum: 65B9B8EEE09BD9FC4F3828989D7E809153CD456F9E207919A54FF26B98B0B269
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: basicField
+        Entry: 3
+        Data: 10
+      - Name: fieldWithSubtitle
+        Entry: 1
+        Data: Hello
+      - Name: centeredField
+        Entry: 4
+        Data: 1.5
+      - Name: notBoldField
+        Entry: 5
+        Data: false
+  - key: PanelSelection/BilingualInfoBoxAttributePanelSO
+    typeName: BilingualInfoBoxExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: BilingualInfoBoxExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/BilingualInfoBoxExampleSO
+    typeName: Runestone.AesirInspector.Editor.BilingualInfoBoxExampleSO
+    checksum: 57BC8CC4A4650C9A3E077E74D013588CB4801F7658F3743CBE1159335C297B39
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: infoField
+        Entry: 3
+        Data: 0
+      - Name: warningField
+        Entry: 3
+        Data: 0
+      - Name: errorField
+        Entry: 3
+        Data: 0
+      - Name: iconField
+        Entry: 3
+        Data: 0
+      - Name: stackedField
+        Entry: 3
+        Data: 0
+      - Name: showConditionalBox
+        Entry: 5
+        Data: true
+      - Name: conditionalField
+        Entry: 3
+        Data: 0

@@ -7,18 +7,18 @@ namespace Runestone.AesirInspector.Editor
 {
     /// <summary>
     /// Attribute Overview Ultra 的内存面板注册中心。
-    /// 替代 Pro 的资产数据库：TypeCache 扫描面板类型 → CreateInstance 内存实例化；
-    /// 示例由各 Data 构造器经 UltraStateBankSO 银行路由取得内存单例（含用户调试状态恢复）。
+    /// 替代 Pro 时代的面板资产集合（Pro 已移除）：TypeCache 扫描面板类型 → CreateInstance 内存实例化；
+    /// 示例由各 Data 构造器经 UltraStateStoreSO 状态存储路由取得内存单例（含用户数据恢复）。
     /// 目录结构（分类/显示名/排序）由 AesirAttributeRegistry 从 Odin 官方注册表提供。
     /// 全程零 AssetDatabase 写操作。
     /// </summary>
     public class UltraPanelDatabase
     {
-        readonly UltraStateBankSO _bank;
+        readonly UltraStateStoreSO _stateStore;
 
         List<AbstractAttributePanelSO> _panels;
 
-        public UltraPanelDatabase(UltraStateBankSO bank) => _bank = bank;
+        public UltraPanelDatabase(UltraStateStoreSO stateStore) => _stateStore = stateStore;
 
         /// <summary>
         /// 已实例化的全部内存面板（未构建时为 null）。
@@ -29,7 +29,7 @@ namespace Runestone.AesirInspector.Editor
         /// 扫描并实例化全部面板（幂等，每窗口生命周期仅构建一次）。
         /// Initialize 由菜单构建需要中文名而提前手动调用；
         /// [OnInspectorInit] 重跑会把面板选中重置为初始示例，由窗口在 DrawEditor 的
-        /// Layout 开头经 RestorePanelSelection 按银行记录恢复。
+        /// Layout 开头经 RestorePanelSelection 按状态存储记录恢复。
         /// </summary>
         public void BuildAllPanels()
         {
@@ -51,13 +51,13 @@ namespace Runestone.AesirInspector.Editor
         }
 
         /// <summary>
-        /// 示例 SO 的 Instance 后端已直接经 UltraStateBankSO 银行路由返回内存单例（含状态恢复），
+        /// 示例 SO 的 Instance 后端已直接经 UltraStateStoreSO 状态存储路由返回内存单例（含数据恢复），
         /// 面板无需再替换示例引用。但 [OnInspectorInit] 重跑时 Internal_SetData 会把面板选中重置为初始示例，
-        /// 因此选中恢复由本方法承担：银行有记录且与当前选中不一致时，恢复为记录的示例。
+        /// 因此选中恢复由本方法承担：状态存储有记录且与当前选中不一致时，恢复为记录的示例。
         /// </summary>
         public bool PanelSelectionNeedsRestore(AbstractAttributePanelSO panel)
         {
-            if (!_bank.TryGetPanelSelection(panel.GetType().Name, out var selectedTypeName))
+            if (!_stateStore.TryGetPanelSelection(panel.GetType().Name, out var selectedTypeName))
             {
                 return false;
             }
@@ -67,7 +67,7 @@ namespace Runestone.AesirInspector.Editor
         }
 
         /// <summary>
-        /// 按银行记录恢复面板选中的示例（无记录或已一致时为空操作）。
+        /// 按状态存储记录恢复面板选中的示例（无记录或已一致时为空操作）。
         /// 属于状态变更，只允许在 DrawEditor 的 Layout 事件开头调用，遵守 IMGUI 两遍布局契约。
         /// 记录指向的示例已不在本面板（示例被移除或改名）时丢弃该记录：
         /// 否则 <see cref="PanelSelectionNeedsRestore" /> 恒为 true，窗口会陷入每帧重绘。
@@ -75,7 +75,7 @@ namespace Runestone.AesirInspector.Editor
         public void RestorePanelSelection(AbstractAttributePanelSO panel)
         {
             if (!PanelSelectionNeedsRestore(panel) ||
-                !_bank.TryGetPanelSelection(panel.GetType().Name, out var selectedTypeName))
+                !_stateStore.TryGetPanelSelection(panel.GetType().Name, out var selectedTypeName))
             {
                 return;
             }
@@ -101,7 +101,7 @@ namespace Runestone.AesirInspector.Editor
                 }
             }
 
-            _bank.RemovePanelSelection(panel.GetType().Name);
+            _stateStore.RemovePanelSelection(panel.GetType().Name);
         }
 
         /// <summary>
