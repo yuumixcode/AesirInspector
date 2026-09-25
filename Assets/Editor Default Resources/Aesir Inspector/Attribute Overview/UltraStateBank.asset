@@ -5708,3 +5708,17 @@ MonoBehaviour:
       - Name: BeforeAndAfter
         Entry: 3
         Data: 0
+  - key: PanelSelection/BilingualDetailInfoBoxAttributePanelSO
+    typeName: DetailInfoBoxBilingualExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: DetailInfoBoxBilingualExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
