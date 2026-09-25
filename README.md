@@ -1,10 +1,10 @@
 # Aesir Inspector
 
 [English](Assets/Runestone/AesirInspector/Documentation~/README_EN.md) | [![license](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE.md)
-[![Version](https://img.shields.io/badge/version-0.14.0-blue.svg)](Assets/Runestone/AesirInspector/CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.17.0-blue.svg)](Assets/Runestone/AesirInspector/CHANGELOG.md)
 [![Install via Git URL](https://img.shields.io/badge/UPM-Git%20URL-blueviolet.svg)](#通过-git-url-安装)
 
-本仓库是一个 **Unity 工程项目仓库**，托管编辑器扩展包 **Aesir Inspector** —— 提供双语 Inspector 特性、安全编辑器工具集与扩展包管理器，基于 Odin Inspector（硬依赖）实现增强能力。
+本仓库是一个 **Unity 工程项目仓库**，托管编辑器扩展包 **Aesir Inspector** —— 提供双语 Inspector 特性、Attribute Overview Ultra 特性总览与安全编辑器工具集，基于 Odin Inspector（硬依赖）实现增强能力。
 
 仓库内另有独立工具 **Script Doc Generator**（[`Assets/ScriptDocGenerator/`](Assets/ScriptDocGenerator/README.md)，脚本文档生成器与 XML Summary 同步工具），已脱离 Aesir Inspector 包独立维护。
 
@@ -16,7 +16,7 @@
 | **Git URL 导入** | 任意 Unity 项目通过 UPM Git URL 安装本包（见下文） |
 | **导出分发包** | 将包目录导出为 `.unitypackage`，或整目录复制分发 |
 
-> ⚠️ **硬依赖 [Odin Inspector](https://odininspector.com/)**：需先安装 Odin 3.3.x+，未安装时本包无法编译。
+> ⚠️ **硬依赖 [Odin Inspector](https://odininspector.com/)**：需先安装 Odin 3.3.x+；未安装时全部 asmdef 的 `ODIN_INSPECTOR` 约束会使程序集整体跳过编译（不报错），但功能不可用。
 
 ## 仓库结构
 
@@ -86,7 +86,7 @@ AesirInspector/                        # 仓库根目录 = Unity 工程根目录
 
 - 首次运行自动安装 .NET 8 SDK 到 `~/.dotnet`（用户目录，免 sudo），并缓存导出工具（固定 commit）
 - 版本号取自包内 `package.json`
-- 发布 Release：推送 `v*` 标签（如 `git tag v0.14.1 && git push origin v0.14.1`），GitHub Actions 自动导出并创建 GitHub Release（Release Notes 取自包内 CHANGELOG）
+- 发布 Release：推送 `v*` 标签（如 `git tag v0.17.0 && git push origin v0.17.0`），GitHub Actions 自动导出并创建 GitHub Release（Release Notes 取自包内 CHANGELOG）
 
 ## 包文档
 
@@ -112,7 +112,6 @@ AesirInspector/                        # 仓库根目录 = Unity 工程根目录
 |------|------|------|------|
 | [JakePineOdinTools](https://github.com/JakePineGames/JakePineOdinTools) | Jake Pine | MIT | Odin 自动 Tooltip 与源码文件分析工具（`SourceFileAnalyzerUtility`，现位于 Script Doc Generator）的来源，集成时已简化 |
 | [public-unity-package-exporter](https://github.com/Guardingpearsoftware/public-unity-package-exporter) | Guarding Pear Software | MIT | `.unitypackage` 导出工具，供 `Scripts/export-package.sh` 与 CI 使用 |
-| [Unity-Improved-Timers](https://github.com/adammyhre/Unity-Improved-Timers) | Git-Amend | MIT（附加条款） | 扩展包管理器中提供安装的第三方扩展包 |
 
 包内第三方组件的许可声明另见 [Third Party Notices.md](Assets/Runestone/AesirInspector/Third%20Party%20Notices.md)。
 
