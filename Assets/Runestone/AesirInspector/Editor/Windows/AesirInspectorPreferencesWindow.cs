@@ -1,4 +1,3 @@
-using Runestone.AesirInspector.Editor;
 using Sirenix.OdinInspector.Editor;
 using Sirenix.Utilities;
 using Sirenix.Utilities.Editor;
@@ -19,9 +18,9 @@ namespace Runestone.AesirInspector.Editor
             new BilingualData("Inspector 日志设置", "Inspector Logger Settings");
 
         static object _lastSelection;
+        AesirInspectorDebugSettings _aesirInspectorDebugSettings;
 
         AesirInspectorLanguageSettingsSO _aesirInspectorLanguageSettingsSO;
-        AesirInspectorDebugSettings _aesirInspectorDebugSettings;
         OdinMenuStyle _menuStyle;
 
         protected override void OnEnable()

@@ -10,8 +10,7 @@ namespace Runestone.AesirInspector.Editor
     /// </summary>
     public class MenuItemViewerSO : ScriptableObject, IAesirInspectorReset
     {
-        static readonly string ConfigName =
-            typeof(MenuItemViewerSO).GetNiceFullName();
+        static readonly string ConfigName = typeof(MenuItemViewerSO).GetNiceFullName();
 
         public static BilingualData ToolMenuPath = new BilingualData("菜单项检查器", "MenuItemViewer");
 
