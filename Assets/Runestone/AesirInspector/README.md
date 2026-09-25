@@ -1,7 +1,7 @@
 # Aesir Inspector
 
 [English](Documentation~/README_EN.md) | [![license](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE.md)
-[![Version](https://img.shields.io/badge/version-0.17.0-blue.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.18.0-blue.svg)](CHANGELOG.md)
 [![Install via Git URL](https://img.shields.io/badge/UPM-Git%20URL-blueviolet.svg)](#安装说明)
 
 > 📦 **本包在独立仓库 [AesirInspector](https://github.com/yuumixcode/AesirInspector) 中发布**（包目录 `Assets/Runestone/AesirInspector`），**不依赖**其他 Aesir 包，可单独安装。
@@ -79,7 +79,7 @@ Aesir Inspector 会在编辑器加载时自动检测安装方式（UPM / Assets 
 - **搜索定位**：支持模糊搜索，快速找到目标特性。
 - **实时预览**：选中特性即可在右侧面板查看效果与参数配置。
 - **代码预览**：选中特性即可查看对应的示例源代码，快速了解用法。
-- **零资产污染**：面板与示例均为内存实例，用户调试状态经状态银行（UltraStateBank）持久化，Project 中不生成任何子资产。
+- **零资产污染**：面板与示例均为内存实例，用户调试状态经状态存储（`UltraStateStore`）持久化，Project 中不生成任何子资产。
 - 通过 `Tools → Aesir → Inspector → Attribute Overview Ultra` 菜单打开。
 
 ### 2. 迷你工具集 (Mini Tools)

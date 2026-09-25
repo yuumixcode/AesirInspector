@@ -1,7 +1,7 @@
 # Aesir Inspector
 
 [中文](../README.md) | [![license](https://img.shields.io/badge/license-MIT-green.svg)](../LICENSE.md)
-[![Version](https://img.shields.io/badge/version-0.17.0-blue.svg)](../CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.18.0-blue.svg)](../CHANGELOG.md)
 [![Install via Git URL](https://img.shields.io/badge/UPM-Git%20URL-blueviolet.svg)](#installation)
 
 > 📦 **This package is published from its own repository, [AesirInspector](https://github.com/yuumixcode/AesirInspector)** (package folder `Assets/Runestone/AesirInspector`). It does **not** depend on any other Aesir package and can be installed on its own.
@@ -80,7 +80,7 @@ A searchable tree menu that shows all registered Odin Inspector and Aesir Inspec
 - **Search**: fuzzy search to quickly locate an attribute.
 - **Live preview**: selecting an attribute shows its effect and parameter configuration in the right panel.
 - **Code preview**: selecting an attribute also shows the corresponding sample source code.
-- **Zero asset pollution**: panels and examples are in-memory instances; user debug state persists via the UltraStateBank, no sub-assets are generated in the Project.
+- **Zero asset pollution**: panels and examples are in-memory instances; user debug state persists via the `UltraStateStore`, no sub-assets are generated in the Project.
 - Open via `Tools → Aesir → Inspector → Attribute Overview Ultra`.
 
 ### 2. Mini Tools

@@ -10,6 +10,16 @@
 
 ## [Unreleased]
 
+## [0.18.0] - 2026-09-25
+
+### Changed
+
+- **重命名状态银行（破坏性）**：`UltraStateBankSO` → `UltraStateStoreSO`，资产 `UltraStateBank.asset` → `UltraStateStore.asset`（GUID 不变，用户数据无需迁移），`UltraStateBankEntry` / `UltraBankEntryKind` → `UltraStateStoreEntry` / `UltraStateStoreEntryKind`，`LoadOrCreateBank()` → `LoadOrCreate()`，`AesirInspectorPaths.AttributeOverviewUltraStateBankPath` → `AttributeOverviewUltraStateStorePath`；内存面板注册中心 `UltraPanelDatabase` 名称保持不变。条目 key 前缀 `PanelSelection/` 与 `ExampleState/` 保持不变。/ **Breaking rename**: the state bank is now `UltraStateStoreSO` (asset renamed with GUID preserved, no data migration needed); the in-memory panel registry keeps its name `UltraPanelDatabase`. Entry key prefixes are unchanged.
+
+### Fixed
+
+- **避免在绘制回调中解析"缺失即自动创建"的资产**：`MenuItemViewerSO.Instance` / `OdinSyntaxHighlighterPanelSO.Instance` 改为按域缓存；Getting Started 窗口的 `AesirInspectorProjectSettingsSO.Instance` 由 `[OnInspectorGUI]` 绘制路径移到 `OnEnable` 解析一次。此前资产缺失时该解析会执行 `CreateAsset` + `AssetDatabase.Refresh()`（全项目重扫），在 GUI 回调中执行会产出大量 `the GUIStateObj is deleted, but is accessed` 并可能卡住编辑器。/ **Fixed**: assets that auto-create on first access are no longer resolved from GUI draw callbacks — `MenuItemViewerSO.Instance` / `OdinSyntaxHighlighterPanelSO.Instance` are cached per domain and the Getting Started window resolves `AesirInspectorProjectSettingsSO.Instance` in `OnEnable`. A missing asset previously triggered `CreateAsset` plus a full `AssetDatabase.Refresh()` inside IMGUI callbacks, producing `the GUIStateObj is deleted, but is accessed` errors and potentially hanging the editor.
+
 ## [0.17.0] - 2026-09-25
 
 ### Added

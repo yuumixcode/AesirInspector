@@ -11,6 +11,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.18.0] - 2026-09-25
+
+### Changed
+
+- **Breaking rename of the state bank**: `UltraStateBankSO` → `UltraStateStoreSO`, asset `UltraStateBank.asset` → `UltraStateStore.asset` (GUID preserved, no data migration needed), `UltraStateBankEntry` / `UltraBankEntryKind` → `UltraStateStoreEntry` / `UltraStateStoreEntryKind`, `LoadOrCreateBank()` → `LoadOrCreate()`, `AesirInspectorPaths.AttributeOverviewUltraStateBankPath` → `AttributeOverviewUltraStateStorePath`; the in-memory panel registry keeps its name `UltraPanelDatabase`. Entry key prefixes (`PanelSelection/`, `ExampleState/`) are unchanged.
+
+### Fixed
+
+- **Assets that auto-create on first access are no longer resolved from GUI draw callbacks**: `MenuItemViewerSO.Instance` / `OdinSyntaxHighlighterPanelSO.Instance` are now cached per domain, and the Getting Started window resolves `AesirInspectorProjectSettingsSO.Instance` in `OnEnable` instead of `[OnInspectorGUI]`. Previously a missing asset triggered `CreateAsset` plus a full `AssetDatabase.Refresh()` inside IMGUI callbacks, producing `the GUIStateObj is deleted, but is accessed` errors and potentially hanging the editor.
+
 ## [0.17.0] - 2026-09-25
 
 ### Added
