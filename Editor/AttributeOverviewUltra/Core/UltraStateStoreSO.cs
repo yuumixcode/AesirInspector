@@ -11,22 +11,22 @@ using Object = UnityEngine.Object;
 namespace Runestone.AesirInspector.Editor
 {
     /// <summary>
-    /// 状态银行条目类型。
+    /// 状态存储条目类型。
     /// </summary>
-    internal enum UltraBankEntryKind
+    internal enum UltraStateStoreEntryKind
     {
         /// <summary>面板当前选中的示例类型名（轻量 string 记录，无序列化数据）。</summary>
         PanelSelection = 0,
 
-        /// <summary>示例的用户调试状态快照（Odin 序列化数据）。</summary>
+        /// <summary>示例的用户调试数据快照（Odin 序列化数据）。</summary>
         ExampleState = 1
     }
 
     /// <summary>
-    /// 状态银行条目。
+    /// 状态存储条目。
     /// </summary>
     [Serializable]
-    internal class UltraStateBankEntry
+    internal class UltraStateStoreEntry
     {
         public string key;
 
@@ -43,59 +43,59 @@ namespace Runestone.AesirInspector.Editor
     }
 
     /// <summary>
-    /// Attribute Overview Ultra 的状态银行。
-    /// 面板与示例在 Ultra 中均为 CreateInstance 的内存实例，用户调试状态以快照形式持久化于此：
-    /// 面板选中记录（轻量）+ 示例状态快照（Odin 序列化数据，SHA256 校验和 + 类型名双校验）。
-    /// 单文件资产，分类信息编码在 key 前缀中。
+    /// Attribute Overview Ultra 的状态存储：持久化 Attribute Overview Ultra 的用户状态与数据。
+    /// 面板与示例在 Ultra 中均为 CreateInstance 的内存实例，用户数据以快照形式持久化于此：
+    /// 面板选中记录（UI 状态，轻量 string）+ 示例数据快照（Odin 序列化数据，SHA256 校验和 + 类型名双校验）。
+    /// 单文件资产，条目类别编码在 key 前缀（PanelSelection/、ExampleState/）中。
     /// </summary>
-    public class UltraStateBankSO : ScriptableObject
+    public class UltraStateStoreSO : ScriptableObject
     {
-        static UltraStateBankSO _cachedBank;
+        static UltraStateStoreSO _cachedStore;
 
         [SerializeField]
-        List<UltraStateBankEntry> entries = new List<UltraStateBankEntry>();
+        List<UltraStateStoreEntry> entries = new List<UltraStateStoreEntry>();
 
         public int EntryCount => entries.Count;
 
         /// <summary>
-        /// 获取或创建全局状态银行实例（静态缓存，Domain Reload 后自动重载）。
-        /// 示例单例路由（GetMemoryExample）与 Ultra 窗口共用同一银行。
+        /// 获取或创建全局状态存储实例（静态缓存，Domain Reload 后自动重载）。
+        /// 示例单例路由（GetMemoryExample）与 Ultra 窗口共用同一状态存储。
         /// </summary>
-        public static UltraStateBankSO LoadOrCreateBank()
+        public static UltraStateStoreSO LoadOrCreate()
         {
-            if (_cachedBank)
+            if (_cachedStore)
             {
-                return _cachedBank;
+                return _cachedStore;
             }
 
-            _cachedBank = AssetDatabase.LoadAssetAtPath<UltraStateBankSO>(
-                AesirInspectorPaths.AttributeOverviewUltraStateBankPath);
-            if (_cachedBank != null)
+            _cachedStore = AssetDatabase.LoadAssetAtPath<UltraStateStoreSO>(
+                AesirInspectorPaths.AttributeOverviewUltraStateStorePath);
+            if (_cachedStore != null)
             {
-                return _cachedBank;
+                return _cachedStore;
             }
 
-            var folder = Path.GetDirectoryName(AesirInspectorPaths.AttributeOverviewUltraStateBankPath);
+            var folder = Path.GetDirectoryName(AesirInspectorPaths.AttributeOverviewUltraStateStorePath);
             if (!Directory.Exists(folder))
             {
                 Directory.CreateDirectory(folder);
             }
 
-            _cachedBank = CreateInstance<UltraStateBankSO>();
-            AssetDatabase.CreateAsset(_cachedBank, AesirInspectorPaths.AttributeOverviewUltraStateBankPath);
+            _cachedStore = CreateInstance<UltraStateStoreSO>();
+            AssetDatabase.CreateAsset(_cachedStore, AesirInspectorPaths.AttributeOverviewUltraStateStorePath);
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
-            return _cachedBank;
+            return _cachedStore;
         }
 
         /// <summary>
-        /// 获取指定示例类型的内存单例：银行有快照则恢复用户调试状态，否则返回全新默认实例。
+        /// 获取指定示例类型的内存单例：状态存储有快照则恢复用户数据，否则返回全新默认实例。
         /// 这是示例 SO 单例（AttributeExampleSO / OdinAttributeExampleSO 的 Instance）的唯一后端，
         /// 全程零 AssetDatabase 写操作。
         /// </summary>
         public static T GetMemoryExample<T>() where T : ScriptableObject
         {
-            var bank = LoadOrCreateBank();
+            var bank = LoadOrCreate();
             return (T)bank.RestoreOrCreateExample(typeof(T).Name, typeof(T));
         }
 
@@ -109,7 +109,7 @@ namespace Runestone.AesirInspector.Editor
         public void SavePanelSelection(string panelKey, string exampleTypeName)
         {
             var entry = FindOrCreateEntry(PanelSelectionPrefix + panelKey);
-            entry.kind = (int)UltraBankEntryKind.PanelSelection;
+            entry.kind = (int)UltraStateStoreEntryKind.PanelSelection;
             entry.typeName = exampleTypeName;
             entry.selectionValue = exampleTypeName;
             entry.state = default;
@@ -124,7 +124,7 @@ namespace Runestone.AesirInspector.Editor
         {
             exampleTypeName = null;
             var entry = FindEntry(PanelSelectionPrefix + panelKey);
-            if (entry == null || entry.kind != (int)UltraBankEntryKind.PanelSelection)
+            if (entry == null || entry.kind != (int)UltraStateStoreEntryKind.PanelSelection)
             {
                 return false;
             }
@@ -140,7 +140,7 @@ namespace Runestone.AesirInspector.Editor
         const string ExampleStatePrefix = "ExampleState/";
 
         /// <summary>
-        /// 把内存示例实例的当前状态（全部字段，含 Odin 序列化成员）快照进银行。
+        /// 把内存示例实例的当前数据（全部字段，含 Odin 序列化成员）快照进状态存储。
         /// </summary>
         public void SaveExampleState(string exampleKey, Object instance)
         {
@@ -150,7 +150,7 @@ namespace Runestone.AesirInspector.Editor
             }
 
             var entry = FindOrCreateEntry(ExampleStatePrefix + exampleKey);
-            entry.kind = (int)UltraBankEntryKind.ExampleState;
+            entry.kind = (int)UltraStateStoreEntryKind.ExampleState;
             entry.typeName = instance.GetType().FullName;
             entry.selectionValue = null;
             entry.state = new SerializationData();
@@ -166,7 +166,7 @@ namespace Runestone.AesirInspector.Editor
         public bool TryRestoreExampleState(string exampleKey, Object instance)
         {
             var entry = FindEntry(ExampleStatePrefix + exampleKey);
-            if (entry == null || instance == null || entry.kind != (int)UltraBankEntryKind.ExampleState)
+            if (entry == null || instance == null || entry.kind != (int)UltraStateStoreEntryKind.ExampleState)
             {
                 return false;
             }
@@ -222,7 +222,7 @@ namespace Runestone.AesirInspector.Editor
 
         #region --- Internal ---
 
-        UltraStateBankEntry FindEntry(string fullKey)
+        UltraStateStoreEntry FindEntry(string fullKey)
         {
             foreach (var e in entries)
             {
@@ -235,12 +235,12 @@ namespace Runestone.AesirInspector.Editor
             return null;
         }
 
-        UltraStateBankEntry FindOrCreateEntry(string fullKey)
+        UltraStateStoreEntry FindOrCreateEntry(string fullKey)
         {
             var entry = FindEntry(fullKey);
             if (entry == null)
             {
-                entry = new UltraStateBankEntry { key = fullKey };
+                entry = new UltraStateStoreEntry { key = fullKey };
                 entries.Add(entry);
             }
 

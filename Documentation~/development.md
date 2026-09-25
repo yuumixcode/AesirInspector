@@ -174,7 +174,7 @@ AesirInspectorLanguageSettingsSO.OnLanguageChanged -= Internal_OnLanguageChanged
 |-----------|-----------|-----------|
 | Core | `Core/` | `AesirInspectorInstallationChecker`, `AesirInspectorMenuItems`, `EnsureAesirInspectorDefine` |
 | MiniTools | `MiniTools/` | `QuickCreateSOMenuItem`, MenuItem Viewer, Syntax Highlighter, `WrappedTextAttribute`（按可用宽度换行的只读文本特性，`MenuItemViewer/` 内定义） |
-| AttributeOverviewUltra | `AttributeOverviewUltra/` | Data-Panel-Example 三件套架构 + 内存面板与状态银行 |
+| AttributeOverviewUltra | `AttributeOverviewUltra/` | Data-Panel-Example 三件套架构 + 内存面板（`UltraPanelDatabase`）与状态存储（`UltraStateStoreSO`） |
 | AttributeProcessors | `AttributeProcessors/` | OdinAttributeProcessor 实现 |
 | Drawers | `Drawers/` | 双语 Drawer |
 | ExampleAssets | `ExampleAssets/` | 需指向真实资产的案例占位资产（`AesirExampleAssetSO`、ScriptableObject、材质） |
