@@ -12,14 +12,14 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("非常适合用于展示和编辑具有多个属性的结构体或类列表。",
-                "Perfect for displaying and editing lists of structs or classes with multiple properties."),
-            new BilingualData("配合 [TableColumnWidth] 可以自定义列宽。",
-                "Use [TableColumnWidth] on element fields to customize column widths."),
-            new BilingualData("支持分页、滚动视图模式以及隐藏工具栏等配置。",
-                "Supports paging, scroll-view mode, hiding the toolbar, and more."),
-            new BilingualData("默认会自动展开，也可以配置为可折叠状态。",
-                "Expanded by default, but can be configured to be collapsible.")
+            new BilingualData("将列表或数组的每个元素绘制为表格的一行，元素成员成为列，适合展示含多个成员的结构体或类列表。",
+                "Draws each element of a list or array as a table row with its members as columns, ideal for lists of structs or classes with several members."),
+            new BilingualData("元素成员可用 [VerticalGroup] 合并进同一列、用 [TableColumnWidth] 调整列宽，带 [HideInTables] 的成员不会成为列。",
+                "Element members can be merged into one column with [VerticalGroup] and sized with [TableColumnWidth], while members marked [HideInTables] are excluded from the table."),
+            new BilingualData("IsReadOnly 只移除增删、拖拽等列表操作，单元格仍可编辑；这与 [ReadOnly] 会禁用整个属性的 GUI 不同。",
+                "IsReadOnly only removes list operations such as add, remove and drag, leaving cells editable, unlike [ReadOnly] which disables all GUI for the property."),
+            new BilingualData("元素成员上的其他特性（如 [Button]、[PreviewField]、[TextArea]）在单元格内仍会正常绘制。",
+                "Other attributes on element members, such as [Button], [PreviewField] and [TextArea], are still drawn normally inside the table cells.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

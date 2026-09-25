@@ -10,10 +10,12 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("ToggleLeft 使开关绘制在标签左侧，而非默认的右侧。",
-                "ToggleLeft draws the toggle on the left side of the label, instead of the default right side."),
-            new BilingualData("常与 EnableIf、DisableIf 等条件特性组合使用，以提供更直观的交互体验。",
-                "Often combined with conditional attributes like EnableIf and DisableIf for a more intuitive interaction experience.")
+            new BilingualData("把 bool 字段或属性的复选框绘制在标签左侧，而不是 Odin 默认的右侧。",
+                "Draws the checkbox of a bool field or property before the label instead of Odin's default position after it."),
+            new BilingualData("只对 bool 类型生效，并且没有参数。",
+                "Only works on bool values and takes no parameters."),
+            new BilingualData("常与 EnableIf、DisableIf 等条件特性组合，用开关联动控制其他字段的可编辑状态。",
+                "Often combined with conditional attributes such as EnableIf and DisableIf to drive other fields' editability from the toggle.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } = null;

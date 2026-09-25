@@ -15,12 +15,10 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("组路径可以作为条件判断的成员名，无需单独设置 Condition 参数。",
-                "The group path can serve as the condition member name without needing a separate Condition parameter."),
-            new BilingualData("支持通过 Condition 参数指定成员名、方法名或表达式来控制组的隐藏。",
-                "Supports specifying a member name, method name, or expression via the Condition parameter to control group visibility."),
-            new BilingualData("配合 Value 参数，可以根据枚举或其他值进行匹配隐藏。",
-                "With the Value parameter, visibility can be controlled based on matches with enums or other values.")
+            new BilingualData("组路径默认也作为条件成员名使用（如 [HideIfGroup(\"Toggle\")] 表示 Toggle 为 true 时隐藏该组），可用 Condition 参数覆盖。", "The group path is also used as the condition member name by default (so [HideIfGroup(\"Toggle\")] hides the group while Toggle is true); the Condition parameter overrides it."),
+            new BilingualData("Condition 支持成员名、属性、方法或 @ 表达式；配合 Value 参数可以按枚举等值匹配隐藏。", "Condition accepts a member name, property, method or an @ expression; with the Value parameter the group is hidden when the condition equals that value, which is handy for enums."),
+            new BilingualData("它是组特性，可以和其他组特性（如 BoxGroup）组合，也可以串联多个 HideIfGroup 表达更复杂的条件。", "It is a group attribute, so it can be combined with other group attributes (such as BoxGroup) and multiple HideIfGroup attributes can be chained for more complex conditions."),
+            new BilingualData("可见性变化默认带淡入淡出动画（animate 参数可关闭）；若只需控制单个组的可见性，官方更推荐使用其他组特性自带的 VisibleIf 参数。", "Visibility changes are animated with a fade by default (turn it off with the animate parameter); to control the visibility of a single group, Odin recommends the VisibleIf parameter that all group attributes already have.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

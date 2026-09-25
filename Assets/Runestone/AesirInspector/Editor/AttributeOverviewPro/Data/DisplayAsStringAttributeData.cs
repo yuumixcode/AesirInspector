@@ -15,12 +15,10 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("适用于只需要展示而不需要在 Inspector 中修改的字符串、数字或其他对象。",
-                "Ideal for displaying strings, numbers, or other objects that should be visible but not editable in the Inspector."),
-            new BilingualData("支持富文本、自定义字体大小以及对齐方式。",
-                "Supports rich text, custom font sizes, and text alignment."),
-            new BilingualData("配合 overflow 参数可以控制长文本的截断或换行显示。",
-                "Use the overflow parameter to control whether long text should be truncated or wrapped.")
+            new BilingualData("使用属性值的 ToString() 绘制为纯文本标签且不可编辑，适用于字符串、数字、Color 等任意类型；配合 [HideLabel] 可作为提示信息展示。", "Draws the property value as a plain, non-editable text label using its ToString(), and works for any type such as strings, numbers or Colors; combined with [HideLabel] it can display a message."),
+            new BilingualData("overflow 默认为 true：文本过长时溢出并在控件边界被裁剪；设为 false 时会自动换行展开为多行。", "overflow defaults to true, so long text overflows and is clipped at the control bounds; set it to false to let the text wrap onto multiple lines."),
+            new BilingualData("富文本默认关闭，需要显式开启 enableRichText；字号与对齐分别由 fontSize 和 alignment 控制。", "Rich text is off by default and must be enabled explicitly with enableRichText; font size and alignment are controlled by fontSize and alignment."),
+            new BilingualData("作用于集合时不会替换为文本，而是交给后续 Drawer 正常绘制集合。", "On collections it does not replace the drawing with text; the collection is drawn normally by the following drawer.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

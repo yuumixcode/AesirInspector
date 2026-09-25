@@ -15,10 +15,12 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("无参数，作用于成员本身。",
-                "Takes no parameters and applies to the member itself."),
-            new BilingualData("隐藏后该属性只能保持当前类型，无法在 Inspector 中切换派生类型。",
-                "Once hidden, the property keeps its current type and can no longer switch derived types in the inspector.")
+            new BilingualData("无参数，隐藏非 Unity 序列化引用类型成员上方的多态对象选择器，隐藏后无法在 Inspector 中切换派生类型。",
+                "Takes no parameters and hides the polymorphic object picker above non-Unity-serialized reference members; once hidden, derived types can no longer be switched in the inspector."),
+            new BilingualData("仍可右键将实例置空以重新赋值；若不希望被修改，可配合 DisableContextMenu 使用。",
+                "You can still right-click to set the instance to null and assign a new value; combine with DisableContextMenu if you want to prevent that."),
+            new BilingualData("主要面向 Odin 序列化的引用类型（如 SerializedMonoBehaviour 中的字段），Unity 原生序列化的引用类型不会出现该选择器。",
+                "Mainly relevant to Odin-serialized reference types (e.g. fields in SerializedMonoBehaviour); Unity-serialized reference types never show this picker.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } = Array.Empty<ParameterValue>();

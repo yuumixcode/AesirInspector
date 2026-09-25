@@ -12,11 +12,9 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("通过组名将属性归入同一个盒子中。如果组名包含路径（如 'Parent/Child'），则会创建嵌套组。",
-                "Groups properties into a box by group name. Path-based names (e.g., 'Parent/Child') create nested groups."),
-            new BilingualData("可以控制是否显示标题、标题是否居中显示。",
-                "Supports showing or hiding the title, and centering the title."),
-            new BilingualData("常用于将功能相关的属性进行视觉上的归类。", "Commonly used to visually group related properties.")
+            new BilingualData("通过组名把属性归入同一个盒子；组名包含路径（如 \"Parent/Child\"）时会创建嵌套组。", "Groups properties into a box by group name; path-based names (e.g. \"Parent/Child\") create nested groups."),
+            new BilingualData("不指定组名时使用默认组 \"_DefaultBoxGroup\" 且不显示标题；组名支持 $ 成员引用与 @ 表达式。", "When no group name is given, the default group \"_DefaultBoxGroup\" is used and no title is shown; group names support $ member references and @ expressions."),
+            new BilingualData("showLabel 控制是否显示标题（带组名的构造函数默认 true），centerLabel 使标题居中，LabelText 可自定义标题文本。", "showLabel controls whether the title is drawn (true by default in the constructor taking a group name), centerLabel centers it, and LabelText overrides the title text.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

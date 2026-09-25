@@ -13,12 +13,10 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("可以配置为绝对路径或相对于项目根目录/指定文件夹的相对路径。",
-                "Can be configured to use absolute paths or relative paths from the project root or a specified folder."),
-            new BilingualData("通过 RequireExistingPath 参数可以强制要求路径必须存在。",
-                "The RequireExistingPath parameter can force the selected path to exist."),
-            new BilingualData("与 FilePath 特性类似，但专门用于选择文件夹。",
-                "Similar to the FilePath attribute, but specifically for selecting folders.")
+            new BilingualData("默认绘制相对于 Unity 项目根目录的路径，并强制使用正斜杠；AbsolutePath 可改为绝对路径，UseBackslashes 可改用反斜杠。", "By default the path is drawn relative to the Unity project root and forward slashes are enforced; AbsolutePath switches to absolute paths and UseBackslashes switches to backslashes."),
+            new BilingualData("ParentFolder 支持 $ 成员引用（例如 ParentFolder = \"$DynamicParent\"），可以动态改变相对基准目录。", "ParentFolder supports $ member references (for example ParentFolder = \"$DynamicParent\"), so the base folder can change dynamically."),
+            new BilingualData("支持从 Project 窗口直接拖放文件夹到该字段，也可以用于 string[] 等集合的元素。", "Folders can be dragged and dropped from the Project window onto the field, and the attribute also works on elements of collections such as string[]."),
+            new BilingualData("RequireExistingPath 为 true 时，路径不存在会报校验错误；与 FilePath 的区别是它只提供文件夹选择器。", "With RequireExistingPath set to true, a non-existing path raises a validation error; unlike FilePath it only offers a folder picker.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

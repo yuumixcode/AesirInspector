@@ -15,10 +15,9 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("无参数，作用于成员本身。",
-                "Takes no parameters and applies to the member itself."),
-            new BilingualData("若值递归引用自身，则无论是否标注该特性都会绘制引用框。",
-                "If the value references itself recursively, the reference box is drawn regardless of this attribute.")
+            new BilingualData("当同一个引用值被重复绘制时，Odin 会把后续引用包进引用框，该特性用于隐藏这个引用框。", "When the same reference value is drawn more than once, Odin wraps the later references in a reference box; this attribute hides that box."),
+            new BilingualData("第一个引用本来就不会显示引用框，只有后续的重复引用才会被包裹。", "The first reference is never wrapped in a reference box; only the subsequent duplicate references are."),
+            new BilingualData("若值递归引用自身，则无论是否标注该特性都会绘制引用框，以避免无限深度的绘制循环。", "If the value references itself recursively, the reference box is drawn regardless of this attribute, to avoid an infinitely deep draw loop.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } = Array.Empty<ParameterValue>();

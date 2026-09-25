@@ -15,12 +15,14 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("可以在一个属性上应用多个 InlineButton，它们会按顺序排列。",
-                "You can apply multiple InlineButton attributes to a single property; they will be arranged in order."),
-            new BilingualData("支持指定图标、自定义文本以及根据条件显示按钮。",
-                "Supports specifying icons, custom labels, and conditional visibility."),
-            new BilingualData("可以通过 ButtonColor 和 TextColor 自定义按钮的颜色。",
-                "Button and text colors can be customized via ButtonColor and TextColor parameters.")
+            new BilingualData("在属性值右侧绘制按钮，点击时执行 action 指定的方法或表达式。",
+                "Draws a button to the right of the property value; clicking it invokes the method or expression specified by action."),
+            new BilingualData("action 支持成员引用（$）与表达式（@）；Label 省略时默认使用方法名拆分后的文本。",
+                "action supports member references ($) and expressions (@); when Label is omitted, the split PascalCase form of the method name is used."),
+            new BilingualData("可通过 ShowIf 控制按钮的显示条件，用 Icon、ButtonColor、TextColor 自定义外观。",
+                "ShowIf controls when the button appears, while Icon, ButtonColor and TextColor customize its appearance."),
+            new BilingualData("允许在同一属性上标注多个 InlineButton，按钮会依次排列。",
+                "Multiple InlineButton attributes can be applied to one property, and the buttons are laid out in order.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

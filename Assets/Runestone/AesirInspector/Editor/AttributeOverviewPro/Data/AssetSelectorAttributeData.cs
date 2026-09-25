@@ -8,7 +8,13 @@ namespace Runestone.AesirInspector.Editor
                 "The AssetSelector attribute adds a small button next to the field selector to show a dropdown picker, supporting both single fields and lists.",
                 "https://odininspector.com/attributes/asset-selector-attribute");
 
-        public override BilingualData[] UsageTips { get; set; } = { };
+        public override BilingualData[] UsageTips { get; set; } =
+        {
+            new BilingualData("在对象字段旁增加一个下拉选择按钮，单个字段与列表都支持；列表默认会为每个元素也附加下拉（DrawDropdownForListElements）。", "Prepends a dropdown picker button next to the object field, for both single fields and lists; on lists every element also gets a dropdown by default (DrawDropdownForListElements)."),
+            new BilingualData("列表默认不允许重复（IsUniqueList = true）；同时开启 ExcludeExistingValuesInList 时，已存在的值会直接从下拉中剔除且不显示勾选框。", "Lists disallow duplicates by default (IsUniqueList = true); when ExcludeExistingValuesInList is also enabled, existing values are removed from the dropdown instead of being shown with checkboxes."),
+            new BilingualData("Filter 使用 AssetDatabase.FindAssets 的过滤语法（如 \"name t:type l:label\"），Paths 用 | 分隔多个相对路径，等价于 SearchInFolders。", "Filter uses AssetDatabase.FindAssets filter syntax (e.g. \"name t:type l:label\"); Paths separates multiple relative paths with | and is equivalent to SearchInFolders."),
+            new BilingualData("下拉框默认展开全部节点并保持树形结构，可用 ExpandAllMenuItems 与 FlattenTreeView 改变该行为。", "The dropdown expands all nodes and keeps a tree structure by default; ExpandAllMenuItems and FlattenTreeView change this behavior.")
+        };
 
         public override ParameterValue[] AttributeParameters { get; set; } =
         {

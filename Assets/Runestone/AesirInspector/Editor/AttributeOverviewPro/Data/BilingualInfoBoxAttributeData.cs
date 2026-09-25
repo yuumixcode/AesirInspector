@@ -14,14 +14,10 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("中英文消息同时展示，语言切换时自动高亮当前语言。",
-                "Chinese and English messages are shown together; the highlight follows the language setting."),
-            new BilingualData("支持 Info / Warning / Error / None 四种消息类型与 SDF 图标。",
-                "Supports four message types (Info / Warning / Error / None) and SDF icons."),
-            new BilingualData("可通过 visibleIf 传入成员名或表达式，按条件控制显示。",
-                "Use visibleIf with a member name or expression to control visibility conditionally."),
-            new BilingualData("AllowMultiple，可在同一成员上叠加多个信息框。",
-                "AllowMultiple: several info boxes can be stacked on the same member.")
+            new BilingualData("在属性上方绘制消息框，同时配置中英文两套文本，只显示与当前语言设置匹配的一条，切换语言时自动更新。", "Draws a message box above the property; both Chinese and English texts are supplied, but only the one matching the current language setting is shown and it updates automatically when the language changes."),
+            new BilingualData("指定 SDF 图标时会优先绘制该图标，取代消息类型自带的图标。", "When an SDF icon is specified, that icon is drawn instead of the icon of the message type."),
+            new BilingualData("visibleIf 可传成员名或 @ 表达式（为空则始终显示），据此按条件控制消息框是否显示。", "visibleIf accepts a member name or @ expression (empty always shows), conditionally controlling whether the box is displayed."),
+            new BilingualData("AllowMultiple，可在同一成员上叠加多个信息框。", "AllowMultiple: several info boxes can be stacked on the same member.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

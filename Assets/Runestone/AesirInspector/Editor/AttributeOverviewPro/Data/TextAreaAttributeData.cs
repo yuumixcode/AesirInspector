@@ -15,12 +15,12 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("Unity 内置特性，Odin 沿用其绘制行为。",
-                "A Unity built-in attribute whose drawing behavior is kept by Odin."),
-            new BilingualData("文本域高度随内容自适应，超出最大行数时出现滚动条。",
-                "The area grows with the content and scrolls once the maximum line count is exceeded."),
-            new BilingualData("只能作用于字段（Unity 限制）。",
-                "Can only be applied to fields (a Unity limitation).")
+            new BilingualData("Unity 内置特性，Odin 沿用其绘制行为，无需额外配置。",
+                "A Unity built-in attribute whose drawing behavior Odin keeps as-is, with no extra setup needed."),
+            new BilingualData("文本域高度随内容自适应并出现滚动条；maxLines 只决定显示区域的大小，不限制用户实际输入的行数。",
+                "The area grows with the content and scrolls when needed; maxLines only limits the display area, not how many lines the user may type."),
+            new BilingualData("Unity 限制它只能作用于字段；需要在属性上使用多行字符串时，可改用 Odin 的 [MultiLineProperty]。",
+                "Unity restricts it to fields; use Odin's [MultiLineProperty] when you need a multi-line string on a property.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

@@ -11,10 +11,12 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("使用了 ShowIn 特性的 Property 所在的脚本，需要是和 Prefab 有关的，可以是预制体物体或者子物体。",
-                "The script containing a property with ShowIn must be related to a Prefab, either a prefab object or a child object."),
-            new BilingualData("当脚本所在的预制体是某一种特定类型(PrefabKind)时，被标记的 Property 将会显示。",
-                "When the prefab containing the script is of a specific type (PrefabKind), the property will be shown.")
+            new BilingualData("根据当前对象所属的 PrefabKind 决定成员是否显示，仅在预制体资源或预制体实例中的脚本上生效。",
+                "Decides whether the member is shown based on the current object's PrefabKind; it only takes effect on scripts inside prefab assets or prefab instances."),
+            new BilingualData("PrefabKind 是位标志，可用 | 组合多种状态（如 PrefabKind.InstanceInScene | PrefabKind.InstanceInPrefab）。",
+                "PrefabKind is a bit flag, so multiple states can be combined with | (for example PrefabKind.InstanceInScene | PrefabKind.InstanceInPrefab)."),
+            new BilingualData("场景中的非预制体对象需包含 PrefabKind.NonPrefabInstance 才会显示；PrefabKind.None 则永不显示。",
+                "Non-prefab scene objects must be covered by PrefabKind.NonPrefabInstance to show the member, while PrefabKind.None never shows it.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

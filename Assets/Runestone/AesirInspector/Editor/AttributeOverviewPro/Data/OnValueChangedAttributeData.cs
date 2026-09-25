@@ -15,12 +15,12 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("该特性仅在 Inspector 面板中修改值时触发，通过代码修改值不会触发。",
-                "This attribute is only triggered when the value is changed via the Inspector; changes via code will not trigger it."),
-            new BilingualData("可以引用方法名，方法可以没有参数，也可以有一个与属性类型一致的参数来接收新值。",
-                "It can reference a method name. The method can have no parameters, or a single parameter matching the property's type to receive the new value."),
-            new BilingualData("常用于动态创建资源、联动更新其他属性等场景。",
-                "Commonly used for dynamically creating assets, linking updates to other properties, etc.")
+            new BilingualData("仅在检查器中修改值时触发，脚本修改不会触发。",
+                "Only triggers when the value is changed in the inspector; changes made by script do not trigger it."),
+            new BilingualData("方法可以无参，也可以有一个与属性类型一致的参数来接收新值。",
+                "The method can take no parameters, or a single parameter matching the property's type to receive the new value."),
+            new BilingualData("includeChildren 默认为 false：引用类型的子属性变化不会触发；值类型（如 Vector3）的子值变化始终会触发。",
+                "includeChildren defaults to false, so changes to a reference type's child values do not trigger it; for value types (such as Vector3) child value changes always trigger it.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

@@ -15,10 +15,12 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("你可以自定义进度条的颜色、背景颜色，并选择是否在进度条上显示数值或自定义文本。",
-                "You can customize the color, background color of the progress bar, and choose whether to display the numeric value or custom text on the bar."),
-            new BilingualData("进度条的最大值和最小值也可以通过引用其他成员来动态确定。",
-                "The maximum and minimum values of the progress bar can also be dynamically determined by referencing other members.")
+            new BilingualData("为数值属性绘制水平进度条，可直接点击或拖拽改变数值（获得焦点后也可用左右方向键微调）。",
+                "Draws a horizontal progress bar for numeric properties that can be clicked or dragged to change the value (arrow keys adjust it once focused)."),
+            new BilingualData("默认显示数值标签；Segmented 为 true 时默认不显示，且一旦指定 CustomValueStringGetter，数值标签会被自定义文本取代。",
+                "The numeric value label is shown by default; Segmented = true hides it by default, and once CustomValueStringGetter is set the numeric label is replaced by the custom text."),
+            new BilingualData("Min/Max 可用 $ 引用成员或 @ 表达式动态取值；放在只有 getter 的属性上时只能显示，无法编辑。",
+                "Min/Max can be resolved dynamically with a $ member reference or @ expression; placed on a getter-only property, the bar is display-only and cannot be edited.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } = new ParameterValue[4]

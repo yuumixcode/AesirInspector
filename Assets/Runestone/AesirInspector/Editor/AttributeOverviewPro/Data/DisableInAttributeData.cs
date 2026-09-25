@@ -11,10 +11,10 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("使用了 DisableIn 特性的 Property 所在的脚本，需要是和 Prefab 有关的，可以是预制体物体或者子物体。",
-                "The script containing a property with DisableIn must be related to a Prefab, either a prefab object or a child object."),
-            new BilingualData("当脚本所在的预制体是某一种特定类型(PrefabKind)时，被标记的 Property 将失去焦点，无法选中。",
-                "When the prefab containing the script is of a specific type (PrefabKind), the property will lose focus and be unselectable.")
+            new BilingualData("只有当属性所在对象的 PrefabKind 与参数位掩码有交集时才会被禁用，无交集时保持可编辑。", "The property is disabled only when the PrefabKind of its object intersects the parameter bitmask; with no intersection it stays editable."),
+            new BilingualData("PrefabKind 由目标对象解析，因此只对 GameObject 或 Component 上的成员有意义；ScriptableObject 等对象始终视为 PrefabKind.None。", "The PrefabKind is resolved from the target object, so it only makes sense for members on a GameObject or Component; other objects such as ScriptableObjects always resolve to PrefabKind.None."),
+            new BilingualData("被禁用后属性仍然绘制，只是失去焦点、无法修改；HideIn 则是直接隐藏属性。", "A disabled property is still drawn, but cannot be focused or modified; HideIn hides it outright instead."),
+            new BilingualData("标注在集合上时作用于整个集合，不会逐个作用于列表元素。", "Applied to a collection it affects the collection as a whole rather than each list element.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

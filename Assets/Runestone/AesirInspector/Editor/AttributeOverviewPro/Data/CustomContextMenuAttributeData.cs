@@ -15,12 +15,9 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("右键点击字段标签即可看到自定义菜单项。",
-                "Right-click the field label to see the custom menu item."),
-            new BilingualData("action 支持方法名（成员引用）与 @ 表达式。",
-                "The action supports a method name (member reference) and @ expressions."),
-            new BilingualData("可在同一属性上叠加多个 CustomContextMenu。",
-                "Several CustomContextMenu items can be stacked on the same property.")
+            new BilingualData("右键点击字段标签即可看到自定义菜单项，点击后执行指定的方法或表达式。", "Right-click the field label to see the custom menu item; clicking it runs the specified method or expression."),
+            new BilingualData("MenuItem 与 Action 都是解析字符串，支持 $ 成员引用与 @ 表达式。", "Both MenuItem and Action are resolved strings supporting $ member references and @ expressions."),
+            new BilingualData("不支持静态方法；同一属性可叠加多个 CustomContextMenu。", "Static methods are not supported; several CustomContextMenu items can be stacked on the same property.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

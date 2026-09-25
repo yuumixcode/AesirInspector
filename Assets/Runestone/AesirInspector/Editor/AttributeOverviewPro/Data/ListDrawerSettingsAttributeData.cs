@@ -13,14 +13,14 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("可以控制列表是否只读（禁止增删，但元素本身可能仍可编辑）。",
-                "Can make the list read-only (preventing adding/removing, though elements themselves might remain editable)."),
-            new BilingualData("支持分页显示（NumberOfItemsPerPage），适合处理超长列表。",
-                "Supports paging (NumberOfItemsPerPage), ideal for very long lists."),
-            new BilingualData("支持拖拽排序（DraggableItems）和隐藏添加/移除按钮。",
-                "Supports draggable reordering (DraggableItems) and hiding add/remove buttons."),
-            new BilingualData("可以使用 ListElementLabelName 来指定元素结构中的某个字段作为该元素的标签。",
-                "Use ListElementLabelName to specify a field within the element structure to use as its label.")
+            new BilingualData("IsReadOnly 只移除增删与拖拽等编辑能力，不像 [ReadOnly] 那样禁用每个元素的 GUI。",
+                "IsReadOnly only removes editing capabilities such as add, remove and drag; unlike [ReadOnly], it does not disable the GUI of each element."),
+            new BilingualData("分页（NumberOfItemsPerPage）、拖拽（DraggableItems）等默认行为取自 Odin 偏好设置，可在此显式覆盖。",
+                "Defaults such as paging (NumberOfItemsPerPage) and dragging (DraggableItems) come from Odin preferences and can be explicitly overridden here."),
+            new BilingualData("ListElementLabelName 指定元素内某个成员作为该元素的标签，便于识别条目。",
+                "ListElementLabelName selects a member inside each element as its label, making entries easier to identify."),
+            new BilingualData("可通过 CustomAddFunction、OnTitleBarGUI、OnBeginListElementGUI / OnEndListElementGUI 等回调注入自定义增删与绘制逻辑。",
+                "Callbacks such as CustomAddFunction, OnTitleBarGUI and OnBeginListElementGUI / OnEndListElementGUI let you inject custom add/remove and drawing logic.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

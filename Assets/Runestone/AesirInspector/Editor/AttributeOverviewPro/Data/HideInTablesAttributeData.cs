@@ -15,10 +15,10 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("无参数，作用于成员本身。",
-                "Takes no parameters and applies to the member itself."),
-            new BilingualData("仅在 TableList 表格中生效，普通 Inspector 绘制不受影响。",
-                "Only takes effect inside TableList tables; regular inspector drawing is unaffected.")
+            new BilingualData("无参数，直接标注在成员上，仅在 TableList 绘制的表格中生效。",
+                "Takes no parameters, is applied directly to a member, and only takes effect inside tables drawn by TableList."),
+            new BilingualData("同一成员在普通 Inspector 中仍会显示，该特性只隐藏表格中的列。",
+                "The same member is still shown in a regular inspector; this attribute only hides the column in the table.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } = Array.Empty<ParameterValue>();

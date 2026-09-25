@@ -12,12 +12,12 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("通常用于在 HorizontalGroup 中创建子列。",
-                "Commonly used to create sub-columns within a HorizontalGroup."),
-            new BilingualData("可以设置 Padding 来调整组内的上下边距。",
-                "Supports setting Padding to adjust top and bottom margins within the group."),
-            new BilingualData("与 HorizontalGroup 配合使用可以构建复杂的布局。",
-                "Used in conjunction with HorizontalGroup to build complex layouts.")
+            new BilingualData("将多个属性在检查器中垂直堆叠为一组；单独使用作用有限，主要用于把 HorizontalGroup 的水平区域拆成多列。",
+                "Stacks multiple properties vertically in the inspector; on its own it does little, and it is mainly used to split a HorizontalGroup into columns."),
+            new BilingualData("组名支持路径嵌套（如 \"Split/Left\"），可据此在同一 HorizontalGroup 下建立多列。",
+                "The group name supports path nesting (e.g. \"Split/Left\"), which is how several columns are created under one HorizontalGroup."),
+            new BilingualData("可用 PaddingTop / PaddingBottom 调整组的上下边距；在 TableList 中也可用它把多个成员合并到同一列。",
+                "PaddingTop and PaddingBottom adjust the group's top and bottom spacing, and inside a TableList the group can merge several members into a single column.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =

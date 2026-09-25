@@ -13,8 +13,12 @@ namespace Runestone.AesirInspector.Editor
 
         public override BilingualData[] UsageTips { get; set; } =
         {
-            new BilingualData("主要是用于修改类型选择器中的样式，属于编辑器美化类型。",
-                "Primarily used to style types in the type selector for editor aesthetics.")
+            new BilingualData("为类型在 Odin 类型选择器中自定义显示名称、分组路径、图标与排序，属于编辑器美化。",
+                "Customizes how a type appears in Odin's type selector - display name, category path, icon and order - for editor aesthetics."),
+            new BilingualData("只能标注在类、结构体、枚举或接口上；CategoryPath 用 \"/\" 建立多级分组（如 \"Demo/Painting Tools\"），Name 会覆盖默认类型名。",
+                "Can only be applied to classes, structs, enums or interfaces; CategoryPath builds nested groups with \"/\" (e.g. \"Demo/Painting Tools\") and Name overrides the default type name."),
+            new BilingualData("图标颜色分 LightIconColor 与 DarkIconColor，分别作用于浅色与深色编辑器皮肤，Priority 决定同组内的排序。",
+                "Icon colors are split into LightIconColor and DarkIconColor for the light and dark editor skins, and Priority controls the order within a group.")
         };
 
         public override ParameterValue[] AttributeParameters { get; set; } =
