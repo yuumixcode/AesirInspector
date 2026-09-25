@@ -72,16 +72,6 @@ namespace Runestone.AesirInspector.Editor
         public const int MiniToolsOrder = -885;
 
         /// <summary>
-        /// 打开 Extension Package Manager 窗口的菜单路径。
-        /// </summary>
-        public const string ExtensionPackageManager = ToolsAesirInspectorRoot + "/Extension Package Manager";
-
-        /// <summary>
-        /// Extension Package Manager 菜单项优先级。
-        /// </summary>
-        public const int ExtensionPackageManagerOrder = -890;
-
-        /// <summary>
         /// 打开 Plugin Config Solutions 示例窗口的菜单路径。
         /// </summary>
         public const string SamplePluginConfigSolutions =
