@@ -121,7 +121,7 @@ namespace Runestone.AesirInspector.Editor
                 new SummaryDetailGroup
                 {
                     summary = "Mini Tools",
-                    details = "提供语法高亮处理器、菜单项检查器等便捷小工具。"
+                    details = "提供语法高亮处理器、菜单项查看器等便捷小工具。"
                 }
             };
         }
