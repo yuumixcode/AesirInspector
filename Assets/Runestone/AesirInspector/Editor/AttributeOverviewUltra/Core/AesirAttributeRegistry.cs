@@ -4,6 +4,7 @@ using System.Linq;
 using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor.Examples;
 using Sirenix.Utilities;
+using UnityEngine;
 
 namespace Runestone.AesirInspector.Editor
 {
@@ -56,7 +57,7 @@ namespace Runestone.AesirInspector.Editor
 
         /// <summary>
         /// Aesir 面板类型 → Odin 特性类型。目录结构（分类、显示名）以官方注册表为准。
-        /// 未映射的面板归入 <see cref="AesirCustomsCategory"/>。
+        /// 未映射的面板归入 <see cref="AesirCustomsCategory" />。
         /// </summary>
         static readonly Dictionary<Type, Type> PanelToOdinAttribute = new Dictionary<Type, Type>
         {
@@ -101,7 +102,10 @@ namespace Runestone.AesirInspector.Editor
             { typeof(HideInTablesAttributePanelSO), typeof(HideInTablesAttribute) },
             { typeof(HideLabelAttributePanelSO), typeof(HideLabelAttribute) },
             { typeof(HideMonoScriptAttributePanelSO), typeof(HideMonoScriptAttribute) },
-            { typeof(HideNetworkBehaviourFieldsAttributePanelSO), typeof(HideNetworkBehaviourFieldsAttribute) },
+            {
+                typeof(HideNetworkBehaviourFieldsAttributePanelSO),
+                typeof(HideNetworkBehaviourFieldsAttribute)
+            },
             { typeof(HideReferenceObjectPickerAttributePanelSO), typeof(HideReferenceObjectPickerAttribute) },
             { typeof(HorizontalGroupAttributePanelSO), typeof(HorizontalGroupAttribute) },
             { typeof(ImageAttributePanelSO), typeof(ImageAttribute) },
@@ -117,7 +121,7 @@ namespace Runestone.AesirInspector.Editor
             { typeof(MinMaxSliderAttributePanelSO), typeof(MinMaxSliderAttribute) },
             { typeof(MinValueAttributePanelSO), typeof(MinValueAttribute) },
             { typeof(MultiLinePropertyAttributePanelSO), typeof(MultiLinePropertyAttribute) },
-            { typeof(MultilineAttributePanelSO), typeof(UnityEngine.MultilineAttribute) },
+            { typeof(MultilineAttributePanelSO), typeof(MultilineAttribute) },
             { typeof(OnCollectionChangedAttributePanelSO), typeof(OnCollectionChangedAttribute) },
             { typeof(OnInspectorDisposeAttributePanelSO), typeof(OnInspectorDisposeAttribute) },
             { typeof(OnInspectorGUIAttributePanelSO), typeof(OnInspectorGUIAttribute) },
@@ -131,7 +135,7 @@ namespace Runestone.AesirInspector.Editor
             { typeof(PropertyRangeAttributePanelSO), typeof(PropertyRangeAttribute) },
             { typeof(PropertySpaceAttributePanelSO), typeof(PropertySpaceAttribute) },
             { typeof(PropertyTooltipAttributePanelSO), typeof(PropertyTooltipAttribute) },
-            { typeof(RangeAttributePanelSO), typeof(UnityEngine.RangeAttribute) },
+            { typeof(RangeAttributePanelSO), typeof(RangeAttribute) },
             { typeof(ReadOnlyAttributePanelSO), typeof(ReadOnlyAttribute) },
             { typeof(RequiredAttributePanelSO), typeof(RequiredAttribute) },
             { typeof(RequiredInAttributePanelSO), typeof(RequiredInAttribute) },
@@ -146,14 +150,17 @@ namespace Runestone.AesirInspector.Editor
             { typeof(ShowInInlineEditorsAttributePanelSO), typeof(ShowInInlineEditorsAttribute) },
             { typeof(ShowInInspectorAttributePanelSO), typeof(ShowInInspectorAttribute) },
             { typeof(ShowPropertyResolverAttributePanelSO), typeof(ShowPropertyResolverAttribute) },
-            { typeof(SpaceAttributePanelSO), typeof(UnityEngine.SpaceAttribute) },
+            { typeof(SpaceAttributePanelSO), typeof(SpaceAttribute) },
             { typeof(SuffixLabelAttributePanelSO), typeof(SuffixLabelAttribute) },
-            { typeof(SuppressInvalidAttributeErrorAttributePanelSO), typeof(SuppressInvalidAttributeErrorAttribute) },
+            {
+                typeof(SuppressInvalidAttributeErrorAttributePanelSO),
+                typeof(SuppressInvalidAttributeErrorAttribute)
+            },
             { typeof(TabGroupAttributePanelSO), typeof(TabGroupAttribute) },
             { typeof(TableColumnWidthAttributePanelSO), typeof(TableColumnWidthAttribute) },
             { typeof(TableListAttributePanelSO), typeof(TableListAttribute) },
             { typeof(TableMatrixAttributePanelSO), typeof(TableMatrixAttribute) },
-            { typeof(TextAreaAttributePanelSO), typeof(UnityEngine.TextAreaAttribute) },
+            { typeof(TextAreaAttributePanelSO), typeof(TextAreaAttribute) },
             { typeof(TitleAttributePanelSO), typeof(TitleAttribute) },
             { typeof(TitleGroupAttributePanelSO), typeof(TitleGroupAttribute) },
             { typeof(ToggleAttributePanelSO), typeof(ToggleAttribute) },

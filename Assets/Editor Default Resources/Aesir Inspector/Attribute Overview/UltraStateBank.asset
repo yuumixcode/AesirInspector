@@ -263,23 +263,9 @@ MonoBehaviour:
       - Name: WideMultilineTextField
         Entry: 1
         Data: 
-  - key: PanelSelection/DetailInfoBoxAttributePanelSO
-    typeName: DetailInfoBoxBilingualExampleSO
-    checksum: 
-    kind: 0
-    selectionValue: DetailInfoBoxBilingualExampleSO
-    state:
-      SerializedFormat: 0
-      SerializedBytes: 
-      ReferencedUnityObjects: []
-      SerializedBytesString: 
-      Prefab: {fileID: 0}
-      PrefabModificationsReferencedUnityObjects: []
-      PrefabModifications: []
-      SerializationNodes: []
   - key: ExampleState/DetailInfoBoxBilingualExampleSO
     typeName: Runestone.AesirInspector.Editor.DetailInfoBoxBilingualExampleSO
-    checksum: F2D80A7A811C45FC53AD8094100FD5632EA1514954018F4E6C2155B83AD42FE5
+    checksum: A176C5BA1BB53C2EB56F1FDC6C39C416114B9E8974068551894123645E9592DF
     kind: 1
     selectionValue: 
     state:
@@ -303,6 +289,24 @@ MonoBehaviour:
       - Name: dynamicDetailsEnglish
         Entry: 1
         Data: Detailed content from field
+      - Name: infoMessageTypeExample
+        Entry: 3
+        Data: 0
+      - Name: warningMessageTypeExample
+        Entry: 3
+        Data: 0
+      - Name: errorMessageTypeExample
+        Entry: 3
+        Data: 0
+      - Name: noneMessageTypeExample
+        Entry: 3
+        Data: 0
+      - Name: showInfoBox
+        Entry: 5
+        Data: true
+      - Name: visibleIfExample
+        Entry: 3
+        Data: 0
   - key: PanelSelection/DelayedPropertyAttributePanelSO
     typeName: DelayedPropertyExampleSO
     checksum: 
@@ -645,7 +649,7 @@ MonoBehaviour:
       SerializationNodes: []
   - key: ExampleState/ReadOnlyExampleSO
     typeName: Runestone.AesirInspector.Editor.ReadOnlyExampleSO
-    checksum: 75E2C299145742144CBC3579B79FA4CFD3C34CE863800D3C72588B65C0115920
+    checksum: D642B4CDEF4BB37040D837DA2AC9D060793D1F2CECAE42D3F31A50E7E043658F
     kind: 1
     selectionValue: 
     state:
@@ -657,12 +661,48 @@ MonoBehaviour:
       PrefabModificationsReferencedUnityObjects: []
       PrefabModifications: []
       SerializationNodes:
-      - Name: readOnlyField
+      - Name: MyString
         Entry: 1
-        Data: This field is read-only in the inspector
+        Data: This is displayed as text
+      - Name: MyInt
+        Entry: 3
+        Data: 9001
+      - Name: MyIntList
+        Entry: 7
+        Data: 0|System.Int32[], mscorlib
+      - Name: 
+        Entry: 14
+        Data: 7
+      - Name: 
+        Entry: 3
+        Data: 1
+      - Name: 
+        Entry: 3
+        Data: 2
+      - Name: 
+        Entry: 3
+        Data: 3
+      - Name: 
+        Entry: 3
+        Data: 4
+      - Name: 
+        Entry: 3
+        Data: 5
+      - Name: 
+        Entry: 3
+        Data: 6
+      - Name: 
+        Entry: 3
+        Data: 7
+      - Name: 
+        Entry: 13
+        Data: 
+      - Name: 
+        Entry: 8
+        Data: 
       - Name: readOnlyList
         Entry: 7
-        Data: 0|System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib
+        Data: 1|System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib
       - Name: 
         Entry: 12
         Data: 3
@@ -5420,3 +5460,251 @@ MonoBehaviour:
       - Name: DynamicMin
         Entry: 4
         Data: 10
+  - key: PanelSelection/ImageAttributePanelSO
+    typeName: ImageExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: ImageExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/ImageExampleSO
+    typeName: Runestone.AesirInspector.Editor.ImageExampleSO
+    checksum: 54919072C1F380938E94B6FD631499E8907A557BAA78FF7CAB8641F985605867
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: texture
+        Entry: 6
+        Data: 
+      - Name: sprite
+        Entry: 6
+        Data: 
+      - Name: decoratedTexture
+        Entry: 6
+        Data: 
+      - Name: memberBanner
+        Entry: 6
+        Data: 
+  - key: ExampleState/ImageLayoutExampleSO
+    typeName: Runestone.AesirInspector.Editor.ImageLayoutExampleSO
+    checksum: A31843B1F5D2C0F4B21C3035B818156B74DF55BFA15CD9F9EEFBE15D78745D00
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: naturalSize
+        Entry: 6
+        Data: 
+      - Name: availableWidth
+        Entry: 6
+        Data: 
+      - Name: heightPreview
+        Entry: 6
+        Data: 
+      - Name: widthAndHeightPreview
+        Entry: 6
+        Data: 
+      - Name: alignLeft
+        Entry: 6
+        Data: 
+      - Name: alignCenter
+        Entry: 6
+        Data: 
+      - Name: alignRight
+        Entry: 6
+        Data: 
+      - Name: useIgnorePadding
+        Entry: 5
+        Data: true
+      - Name: ignorePaddingOn
+        Entry: 6
+        Data: 
+      - Name: ignorePaddingOff
+        Entry: 6
+        Data: 
+  - key: ExampleState/ImageRenderingExampleSO
+    typeName: Runestone.AesirInspector.Editor.ImageRenderingExampleSO
+    checksum: 2494FC051EE7A33E9023A351DBCA0E6FCF0EE229572F063A7F973FCA9824EFB7
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: useScaleAndCrop
+        Entry: 5
+        Data: false
+      - Name: scaleToFit
+        Entry: 6
+        Data: 
+      - Name: scaleAndCrop
+        Entry: 6
+        Data: 
+      - Name: usePointFiltering
+        Entry: 5
+        Data: true
+      - Name: bilinear
+        Entry: 6
+        Data: 
+      - Name: point
+        Entry: 6
+        Data: 
+      - Name: alphaBlend
+        Entry: 5
+        Data: true
+      - Name: alphaBlendOn
+        Entry: 6
+        Data: 
+      - Name: alphaBlendOff
+        Entry: 6
+        Data: 
+  - key: ExampleState/ImageClassExampleSO
+    typeName: Runestone.AesirInspector.Editor.ImageClassExampleSO
+    checksum: 99026A0972A51EDA18456B8FD868A515E0E80654334AD5970DADF97451CF507B
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: classAttribute
+        Entry: 1
+        Data: '[Image("typeBanner", 72f, IgnorePadding = true)]'
+      - Name: typeBanner
+        Entry: 6
+        Data: 
+  - key: ExampleState/ImageDrawPropertyExampleSO
+    typeName: Runestone.AesirInspector.Editor.ImageDrawPropertyExampleSO
+    checksum: 2786A2A82CA7EAB849FDD146BEE4C63985E3A85E1A586B07D9A0CF54A85A28E4
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: drawProperty
+        Entry: 5
+        Data: true
+      - Name: drawPropertyOn
+        Entry: 6
+        Data: 
+      - Name: drawPropertyOff
+        Entry: 6
+        Data: 
+      - Name: drawAfterProperty
+        Entry: 6
+        Data: 
+  - key: PanelSelection/PropertyOrderAttributePanelSO
+    typeName: PropertyOrderExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: PropertyOrderExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/PropertyOrderExampleSO
+    typeName: Runestone.AesirInspector.Editor.PropertyOrderExampleSO
+    checksum: 7F88FB5545FC3FB1F7D7D602D794ADD0CDC3226FC4A09212F847E8C90CCE2A41
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: second
+        Entry: 1
+        Data: I am drawn second (Order = 1)
+      - Name: first
+        Entry: 1
+        Data: I am drawn first, even though I'm defined later in code (Order = -1)
+      - Name: third
+        Entry: 1
+        Data: I am drawn last (Order = 10)
+  - key: PanelSelection/PropertySpaceAttributePanelSO
+    typeName: PropertySpaceExampleSO
+    checksum: 
+    kind: 0
+    selectionValue: PropertySpaceExampleSO
+    state:
+      SerializedFormat: 0
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes: []
+  - key: ExampleState/PropertySpaceExampleSO
+    typeName: Runestone.AesirInspector.Editor.PropertySpaceExampleSO
+    checksum: F03D55ADB58A28E23406C515826C646809EEAC52ABC273D4189247E59A556650
+    kind: 1
+    selectionValue: 
+    state:
+      SerializedFormat: 2
+      SerializedBytes: 
+      ReferencedUnityObjects: []
+      SerializedBytesString: 
+      Prefab: {fileID: 0}
+      PrefabModificationsReferencedUnityObjects: []
+      PrefabModifications: []
+      SerializationNodes:
+      - Name: noSpace
+        Entry: 3
+        Data: 0
+      - Name: spaceBefore
+        Entry: 3
+        Data: 0
+      - Name: spaceBeforeAndAfter
+        Entry: 3
+        Data: 0
+      - Name: BeforeAndAfter
+        Entry: 3
+        Data: 0

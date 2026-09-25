@@ -33,9 +33,12 @@ namespace Runestone.AesirInspector.Editor
         /// </summary>
         const float MinMenuWidth = 150f;
 
+        /// <summary>
+        /// 已订阅示例选中事件的面板集合（DrawEditor 首帧触发，幂等防护）。
+        /// </summary>
+        readonly HashSet<AbstractAttributePanelSO> _swappedPanels = new HashSet<AbstractAttributePanelSO>();
+
         UltraStateBankSO _bank;
-        UltraPanelDatabase _database;
-        float _menuWidth = NormalMenuWidth;
 
         /// <summary>
         /// 右侧内容整体宽度缓存。只在 Layout 事件重算，Repaint 等其余事件复用，
@@ -43,36 +46,8 @@ namespace Runestone.AesirInspector.Editor
         /// </summary>
         float _contentWidthCache = MinContentWidth;
 
-        /// <summary>
-        /// 已订阅示例选中事件的面板集合（DrawEditor 首帧触发，幂等防护）。
-        /// </summary>
-        readonly HashSet<AbstractAttributePanelSO> _swappedPanels =
-            new HashSet<AbstractAttributePanelSO>();
-
-        [MenuItem(AesirInspectorMenuItems.AttributeOverviewUltra, false,
-            AesirInspectorMenuItems.AttributeOverviewUltraOrder)]
-        public static void OpenWindow()
-        {
-            var window = GetWindow<AttributeOverviewUltraWindow>(
-                AesirInspectorMenuItems.AttributeOverviewUltraWindowName);
-            window.position = GUIHelper.GetEditorWindowRect().AlignCenter(1050, 750);
-            window.Show();
-        }
-
-        protected override void OnEnable()
-        {
-            base.OnEnable();
-            _bank = UltraStateBankSO.LoadOrCreateBank();
-            _database = new UltraPanelDatabase(_bank);
-            WindowPadding = new Vector4(15, 15, 15, 5);
-
-            // 窗口允许自由缩窄：内容区不足 MinContentWidth 时由整体横向滚动兜底，
-            // 菜单宽度由 MenuWidth getter 自动收缩到 MinMenuWidth
-            minSize = new Vector2(MinMenuWidth + 30f + 240f, 320f);
-
-            AesirInspectorLanguageSettingsSO.LanguageChanged -= OnLanguageChanged;
-            AesirInspectorLanguageSettingsSO.LanguageChanged += OnLanguageChanged;
-        }
+        UltraPanelDatabase _database;
+        float _menuWidth = NormalMenuWidth;
 
         /// <summary>
         /// 菜单列宽度：可自由拖拽（真 setter），下限 MinMenuWidth；
@@ -97,6 +72,21 @@ namespace Runestone.AesirInspector.Editor
             set { }
         }
 
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+            _bank = UltraStateBankSO.LoadOrCreateBank();
+            _database = new UltraPanelDatabase(_bank);
+            WindowPadding = new Vector4(15, 15, 15, 5);
+
+            // 窗口允许自由缩窄：内容区不足 MinContentWidth 时由整体横向滚动兜底，
+            // 菜单宽度由 MenuWidth getter 自动收缩到 MinMenuWidth
+            minSize = new Vector2(MinMenuWidth + 30f + 240f, 320f);
+
+            AesirInspectorLanguageSettingsSO.LanguageChanged -= OnLanguageChanged;
+            AesirInspectorLanguageSettingsSO.LanguageChanged += OnLanguageChanged;
+        }
+
         protected override void OnDisable()
         {
             AesirInspectorLanguageSettingsSO.LanguageChanged -= OnLanguageChanged;
@@ -104,6 +94,16 @@ namespace Runestone.AesirInspector.Editor
             base.OnDisable();
             _database?.ReleaseAll();
             _swappedPanels.Clear();
+        }
+
+        [MenuItem(AesirInspectorMenuItems.AttributeOverviewUltra, false,
+            AesirInspectorMenuItems.AttributeOverviewUltraOrder)]
+        public static void OpenWindow()
+        {
+            var window = GetWindow<AttributeOverviewUltraWindow>(
+                AesirInspectorMenuItems.AttributeOverviewUltraWindowName);
+            window.position = GUIHelper.GetEditorWindowRect().AlignCenter(1050, 750);
+            window.Show();
         }
 
         void OnLanguageChanged()
@@ -145,8 +145,7 @@ namespace Runestone.AesirInspector.Editor
             // 分类按官方 CategoryComparer 权重排序（同级字母序），分类内保持官方注册表顺序。
             var entries = AesirAttributeRegistry.BuildMenuEntries(_database.Panels);
 
-            foreach (var categoryGroup in entries
-                         .GroupBy(e => e.Category)
+            foreach (var categoryGroup in entries.GroupBy(e => e.Category)
                          .OrderBy(g => AesirAttributeRegistry.GetCategorySortOrder(g.Key))
                          .ThenBy(g => g.Key, StringComparer.Ordinal))
             {
@@ -162,8 +161,7 @@ namespace Runestone.AesirInspector.Editor
         protected override void DrawEditor(int index)
         {
             var targets = CurrentDrawingTargets;
-            if (targets != null && index < targets.Count &&
-                targets[index] is AbstractAttributePanelSO panel)
+            if (targets != null && index < targets.Count && targets[index] is AbstractAttributePanelSO panel)
             {
                 if (Event.current.type == EventType.Layout)
                 {
@@ -210,8 +208,7 @@ namespace Runestone.AesirInspector.Editor
         void OnPanelExampleSelectionChanged(ScriptableObject selected)
         {
             // 切换示例时立即快照该面板，防止未关窗异常丢失调试状态
-            var panel = _swappedPanels.FirstOrDefault(p =>
-                p != null && p.CurrentSelectedExample == selected);
+            var panel = _swappedPanels.FirstOrDefault(p => p != null && p.CurrentSelectedExample == selected);
             if (panel != null)
             {
                 SnapshotPanel(panel);
@@ -229,9 +226,7 @@ namespace Runestone.AesirInspector.Editor
             }
 
             _bank.SavePanelSelection(panel.GetType().Name,
-                panel.CurrentSelectedExample != null
-                    ? panel.CurrentSelectedExample.GetType().Name
-                    : null);
+                panel.CurrentSelectedExample != null ? panel.CurrentSelectedExample.GetType().Name : null);
 
             var items = panel.ExamplePreviewItemsForUltra;
             if (items == null)
@@ -247,7 +242,7 @@ namespace Runestone.AesirInspector.Editor
                 }
 
                 var example = item.ExampleType == AttributeExampleType.UnitySerialized
-                    ? (ScriptableObject)item.UnitySerializedExample
+                    ? item.UnitySerializedExample
                     : item.OdinSerializedExample;
                 // 全部示例均为银行路由的内存实例，直接快照
                 if (example != null)
