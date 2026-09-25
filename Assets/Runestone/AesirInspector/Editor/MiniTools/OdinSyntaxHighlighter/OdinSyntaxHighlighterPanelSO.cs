@@ -50,12 +50,27 @@ public class Example : ScriptableObject
         [PropertyOrder(-5)]
         public BilingualDisplayAsStringControl fourthTip;
 
+        static OdinSyntaxHighlighterPanelSO _instance;
+
         /// <summary>
-        /// 获取 OdinSyntaxHighlighterPanelSO 单例
+        /// 获取 OdinSyntaxHighlighterPanelSO 单例。解析结果按域缓存：
+        /// 缺失资产的解析会执行 CreateAsset 与 AssetDatabase.Refresh，每次都重新解析会把这类重操作带进高频路径。
         /// </summary>
-        public static OdinSyntaxHighlighterPanelSO Instance =>
-            ScriptableObjectSafeEditorUtility.GetOrCreateEditorScriptableObject<OdinSyntaxHighlighterPanelSO>(
-                ConfigName, AesirInspectorPaths.MiniToolsAssetsFolderPath, "OdinSyntaxHighlighter");
+        public static OdinSyntaxHighlighterPanelSO Instance
+        {
+            get
+            {
+                if (_instance != null)
+                {
+                    return _instance;
+                }
+
+                _instance = ScriptableObjectSafeEditorUtility
+                    .GetOrCreateEditorScriptableObject<OdinSyntaxHighlighterPanelSO>(
+                        ConfigName, AesirInspectorPaths.MiniToolsAssetsFolderPath, "OdinSyntaxHighlighter");
+                return _instance;
+            }
+        }
 
         void OnEnable()
         {

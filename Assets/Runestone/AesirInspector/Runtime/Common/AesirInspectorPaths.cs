@@ -16,16 +16,16 @@ namespace Runestone.AesirInspector
         public const string PreferencesAssetsFolderPath = EditorDefaultResourcesPath + "/Preferences";
 
         /// <summary>
-        /// Attribute Overview 数据资产存放文件夹路径（仅 Ultra 状态银行，无 Pro 资产）。
+        /// Attribute Overview 数据资产存放文件夹路径（仅 Ultra 状态存储，无 Pro 资产）。
         /// </summary>
         public const string AttributeOverviewDataPath = EditorDefaultResourcesPath + "/Attribute Overview";
 
         /// <summary>
-        /// Attribute Overview Ultra 状态银行资产路径。
-        /// 存储面板选中记录与示例调试状态快照。
+        /// Attribute Overview Ultra 状态存储资产路径。
+        /// 存储面板选中记录与示例数据快照。
         /// </summary>
-        public const string AttributeOverviewUltraStateBankPath =
-            AttributeOverviewDataPath + "/UltraStateBank.asset";
+        public const string AttributeOverviewUltraStateStorePath =
+            AttributeOverviewDataPath + "/UltraStateStore.asset";
 
         /// <summary>
         /// MiniTools 资源的存放路径

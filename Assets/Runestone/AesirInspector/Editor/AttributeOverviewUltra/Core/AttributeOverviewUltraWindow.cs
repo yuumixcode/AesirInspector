@@ -12,7 +12,7 @@ namespace Runestone.AesirInspector.Editor
     /// <summary>
     /// Attribute Overview Ultra 窗口。
     /// 与 Pro 的根本差异：面板与示例均为 CreateInstance 内存实例，
-    /// 用户调试状态通过 UltraStateBankSO 快照持久化，Project 中零子资产。
+    /// 用户数据通过 UltraStateStoreSO 快照持久化，Project 中零子资产。
     /// </summary>
     public class AttributeOverviewUltraWindow : OdinMenuEditorWindow
     {
@@ -38,7 +38,7 @@ namespace Runestone.AesirInspector.Editor
         /// </summary>
         readonly HashSet<AbstractAttributePanelSO> _swappedPanels = new HashSet<AbstractAttributePanelSO>();
 
-        UltraStateBankSO _bank;
+        UltraStateStoreSO _stateStore;
 
         /// <summary>
         /// 右侧内容整体宽度缓存。只在 Layout 事件重算，Repaint 等其余事件复用，
@@ -75,8 +75,8 @@ namespace Runestone.AesirInspector.Editor
         protected override void OnEnable()
         {
             base.OnEnable();
-            _bank = UltraStateBankSO.LoadOrCreateBank();
-            _database = new UltraPanelDatabase(_bank);
+            _stateStore = UltraStateStoreSO.LoadOrCreate();
+            _database = new UltraPanelDatabase(_stateStore);
             WindowPadding = new Vector4(15, 15, 15, 5);
 
             // 窗口允许自由缩窄：内容区不足 MinContentWidth 时由整体横向滚动兜底，
@@ -166,7 +166,7 @@ namespace Runestone.AesirInspector.Editor
                 if (Event.current.type == EventType.Layout)
                 {
                     // 首帧登记订阅（幂等）；[OnInspectorInit] 重跑会把面板选中重置为初始示例，
-                    // 每个布局周期开头按银行记录恢复——本次 Layout 与配对 Repaint 看到同一状态，
+                    // 每个布局周期开头按状态存储记录恢复——本次 Layout 与配对 Repaint 看到同一状态，
                     // 遵守 IMGUI 布局契约（两遍之间换状态会报 "Getting control N's position"）
                     if (_swappedPanels.Add(panel))
                     {
@@ -207,7 +207,7 @@ namespace Runestone.AesirInspector.Editor
 
         void OnPanelExampleSelectionChanged(ScriptableObject selected)
         {
-            // 切换示例时立即快照该面板，防止未关窗异常丢失调试状态
+            // 切换示例时立即快照该面板，防止未关窗异常丢失调试数据
             var panel = _swappedPanels.FirstOrDefault(p => p != null && p.CurrentSelectedExample == selected);
             if (panel != null)
             {
@@ -216,7 +216,7 @@ namespace Runestone.AesirInspector.Editor
         }
 
         /// <summary>
-        /// 快照单个面板：选中记录 + 全部内存示例状态。
+        /// 快照单个面板：选中记录 + 全部内存示例数据。
         /// </summary>
         void SnapshotPanel(AbstractAttributePanelSO panel)
         {
@@ -225,7 +225,7 @@ namespace Runestone.AesirInspector.Editor
                 return;
             }
 
-            _bank.SavePanelSelection(panel.GetType().Name,
+            _stateStore.SavePanelSelection(panel.GetType().Name,
                 panel.CurrentSelectedExample != null ? panel.CurrentSelectedExample.GetType().Name : null);
 
             var items = panel.ExamplePreviewItemsForUltra;
@@ -244,17 +244,17 @@ namespace Runestone.AesirInspector.Editor
                 var example = item.ExampleType == AttributeExampleType.UnitySerialized
                     ? item.UnitySerializedExample
                     : item.OdinSerializedExample;
-                // 全部示例均为银行路由的内存实例，直接快照
+                // 全部示例均为状态存储路由的内存实例，直接快照
                 if (example != null)
                 {
-                    _bank.SaveExampleState(example.GetType().Name, example);
+                    _stateStore.SaveExampleState(example.GetType().Name, example);
                 }
             }
         }
 
         void SnapshotAll()
         {
-            if (_bank == null || _database?.Panels == null)
+            if (_stateStore == null || _database?.Panels == null)
             {
                 return;
             }
