@@ -12,8 +12,6 @@ namespace Runestone.AesirInspector.Editor
     {
         static readonly string ConfigName = typeof(MenuItemViewerSO).GetNiceFullName();
 
-        public static BilingualData ToolMenuPath = new BilingualData("菜单项检查器", "MenuItemViewer");
-
         public static MenuItemViewerSO Instance =>
             ScriptableObjectSafeEditorUtility.GetOrCreateEditorScriptableObject<MenuItemViewerSO>(ConfigName,
                 AesirInspectorPaths.MiniToolsAssetsFolderPath, "MenuItemViewer");
@@ -22,9 +20,9 @@ namespace Runestone.AesirInspector.Editor
 
         void OnEnable()
         {
-            bilingualHeaderControl = new BilingualHeaderControl("MenuItem 查看器", "MenuItem Viewer",
-                "查看项目内的 MenuItem 的信息，便于规划菜单项",
-                "View the information of MenuItems within the project to facilitate menu item planning",
+            bilingualHeaderControl = new BilingualHeaderControl("菜单项查看器", "MenuItem Viewer",
+                "查看项目内所有 MenuItem，便于规划菜单路径。",
+                "Browse all MenuItems in the project to help plan menu paths.",
                 AesirInspectorWebLinks.GitUrl);
         }
 
@@ -41,7 +39,7 @@ namespace Runestone.AesirInspector.Editor
         #endregion
 
         [PropertySpace(8, 8)]
-        [BilingualButton("搜集项目所有菜单项，排除筛选项", "Collect MenuItems Exclude Filter", ButtonSizes.Large)]
+        [BilingualButton("收集菜单项", "Collect MenuItems", ButtonSizes.Large, icon: SdfIconType.Search)]
         public void CollectMenuItems()
         {
             menuItemInfos = MenuItemViewerController.GetAllMenuItems(assemblyFilter);
@@ -53,7 +51,7 @@ namespace Runestone.AesirInspector.Editor
 
         [PropertySpace]
         [SerializeReference]
-        [BilingualTitle("剔除特定程序集的菜单项", "Exclude MenuItems from Specific Assembly")]
+        [BilingualTitle("程序集过滤器", "Assembly Filter")]
         [HideLabel]
         public IAssemblyFilter assemblyFilter;
 

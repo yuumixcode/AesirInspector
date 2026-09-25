@@ -45,12 +45,12 @@ namespace Runestone.AesirInspector
                 catch (Exception e)
                 {
                     // 忽略高亮异常，返回原始内容。插值字符串 ($"...") 可能导致 Odin 语法高亮器崩溃
-                    Debug.LogWarning($"[AesirCodeHighlighter] 语法高亮解析失败 (通常是因为不支持插值字符串等 C# 新语法): {e.Message}");
+                    Debug.LogWarning($"[OdinCodeHighlighter] 语法高亮解析失败 (通常是因为不支持插值字符串等 C# 新语法): {e.Message}");
                     return code;
                 }
             }
 
-            Debug.LogError("[AesirCodeHighlighter] 无法获取 Odin SyntaxHighlighter.Parse 方法");
+            Debug.LogError("[OdinCodeHighlighter] 无法获取 Odin SyntaxHighlighter.Parse 方法");
             return code;
         }
     }
