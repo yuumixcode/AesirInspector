@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.21.0] - 2026-09-27
+
+### Removed
+
+- **Removed the `RuntimeInitializeLoadType` sample**: the sample (demonstrating the execution order and best practices of the five `RuntimeInitializeOnLoadMethod` timings) is now maintained in the Aesir Architecture package and no longer ships with this one. The `package.json` samples list and the sample tables in both READMEs were updated accordingly, leaving Plugin Config Solutions as the only bundled sample. Projects that already imported the sample are unaffected and may delete the old sample folder. / 移除 `RuntimeInitializeLoadType` 示例：已迁移至 Aesir Architecture 包维护，不再随本包分发；samples 列表与双语 README 示例表已同步移除，本包自此仅保留 Plugin Config Solutions 一个示例，已导入旧示例的工程不受影响。
+
 ## [0.20.1] - 2026-09-27
 
 ### Changed

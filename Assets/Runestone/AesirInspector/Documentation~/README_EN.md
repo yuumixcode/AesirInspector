@@ -1,7 +1,7 @@
 # Aesir Inspector
 
 [中文](../README.md) | [![license](https://img.shields.io/badge/license-MIT-green.svg)](../LICENSE.md)
-[![Version](https://img.shields.io/badge/version-0.20.1-blue.svg)](../CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.21.0-blue.svg)](../CHANGELOG.md)
 [![Install via Git URL](https://img.shields.io/badge/UPM-Git%20URL-blueviolet.svg)](#installation)
 
 > 📦 **This package is published from its own repository, [AesirInspector](https://github.com/yuumixcode/AesirInspector)** (package folder `Assets/Runestone/AesirInspector`). It does **not** depend on any other Aesir package and can be installed on its own.
@@ -33,7 +33,7 @@
 3. Enter the following URL:
 
    ```
-   https://github.com/yuumixcode/AesirInspector.git?path=/Assets/Runestone/AesirInspector#v0.20.1
+   https://github.com/yuumixcode/AesirInspector.git?path=/Assets/Runestone/AesirInspector#v0.21.0
    ```
 
 ### Install via manifest.json
@@ -43,7 +43,7 @@ Add the following to your project's `Packages/manifest.json`:
 ```json
 {
   "dependencies": {
-    "cn.runestone.aesir-inspector": "https://github.com/yuumixcode/AesirInspector.git?path=/Assets/Runestone/AesirInspector#v0.20.1"
+    "cn.runestone.aesir-inspector": "https://github.com/yuumixcode/AesirInspector.git?path=/Assets/Runestone/AesirInspector#v0.21.0"
   }
 }
 ```
@@ -51,7 +51,7 @@ Add the following to your project's `Packages/manifest.json`:
 **Locking the version (recommended for production)**: append a tag to the URL to pin the version, for example
 
 ```
-https://github.com/yuumixcode/AesirInspector.git?path=/Assets/Runestone/AesirInspector#v0.20.1
+https://github.com/yuumixcode/AesirInspector.git?path=/Assets/Runestone/AesirInspector#v0.21.0
 ```
 
 Without a tag, UPM follows the latest commit on the repository's default branch, so the environment is not reproducible.
@@ -92,7 +92,6 @@ The package ships importable samples under `Samples~`. Select `Aesir Inspector` 
 | Sample | Description |
 |--------|-------------|
 | **Plugin Config Solutions** | Using `ScriptableSingleton` in Preferences and Project — best practices for persisting editor configuration |
-| **RuntimeInitializeLoadType** | Execution order and best practices for the five `RuntimeInitializeOnLoadMethod` timings |
 
 ## Requirements
 
