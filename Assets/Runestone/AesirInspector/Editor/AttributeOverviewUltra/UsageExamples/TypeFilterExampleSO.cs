@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
+using Sirenix.Serialization;
 using Sirenix.Utilities;
 using UnityEngine;
 
@@ -9,22 +10,27 @@ namespace Runestone.AesirInspector.Editor
 {
     /// <summary>
     /// TypeFilter 特性案例。
+    /// 字段类型为抽象类 BaseClass 与接口 IMyInterface，Unity 无法序列化（预览会全空），必须走 Odin 序列化。
     /// </summary>
     [AesirExample]
-    internal class TypeFilterExampleSO : AttributeExampleSO<TypeFilterExampleSO>
+    public class TypeFilterExampleSO : OdinAttributeExampleSO<TypeFilterExampleSO>
     {
+        [OdinSerialize]
         [Title("Parameter: FilterMethod")]
         [TypeFilter("GetBaseClassTypeList")]
         public BaseClass A;
 
+        [OdinSerialize]
         [Title("Array Element TypeFilter")]
         [TypeFilter("GetBaseClassTypeList")]
         public BaseClass[] Array = new BaseClass[3];
 
+        [OdinSerialize]
         [Title("Parameter: FilterMethod")]
         [TypeFilter("GetBaseClassTypeList")]
         public BaseClass B;
 
+        [OdinSerialize]
         [Title("Parameter: FilterMethod")]
         [TypeFilter("GetFilteredTypeList")]
         public IMyInterface FilteredInstance;

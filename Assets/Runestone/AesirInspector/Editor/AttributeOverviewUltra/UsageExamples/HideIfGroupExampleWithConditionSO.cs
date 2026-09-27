@@ -2,27 +2,27 @@ using Sirenix.OdinInspector;
 
 namespace Runestone.AesirInspector.Editor
 {
+    /// <summary>
+    /// HideIfGroup 特性的案例 SO：Condition 参数的四种写法（字段 / 属性 / 方法 / @ 表达式）。
+    /// </summary>
     [AesirExample]
-    public class HideIfGroupExampleWithConditionSO : AttributeExampleSO<HideIfGroupExampleWithConditionSO>
+    public class HideIfGroupExampleWithConditionSO :
+        AttributeExampleSO<HideIfGroupExampleWithConditionSO>
     {
-        [Title("Parameter: Condition (Field)")]
         public bool hideGroup = true;
 
         [HideIfGroup("Hidden", Condition = "hideGroup")]
         [FoldoutGroup("Hidden/Field")]
         public string fieldNameExample;
 
-        [Title("Parameter: Condition (Property)")]
         [HideIfGroup("Hidden", Condition = "HideGroupProperty")]
         [FoldoutGroup("Hidden/Property")]
         public string propertyNameExample;
 
-        [Title("Parameter: Condition (Method)")]
         [HideIfGroup("Hidden", Condition = "GetHiddenState")]
         [FoldoutGroup("Hidden/Method")]
         public string methodNameExample;
 
-        [Title("Expression (@)")]
         [HideIfGroup("Hidden", Condition = "@hideGroup")]
         [FoldoutGroup("Hidden/Expression")]
         public string attributeExpressionExample;

@@ -42,7 +42,15 @@ namespace Runestone.AesirInspector.Editor
         public override AttributeExamplePreviewItem[] ExamplePreviewItems { get; set; } =
         {
             new AttributeExamplePreviewItem().InitializeUnitySerializedExample("Basic Usage",
-                TabGroupExampleSO.Instance)
+                TabGroupExampleSO.Instance),
+            new AttributeExamplePreviewItem().InitializeUnitySerializedExample(
+                "Parameter: UseFixedHeight", TabGroupFixedHeightExampleSO.Instance),
+            new AttributeExamplePreviewItem().InitializeUnitySerializedExample(
+                "Parameter: SdfIcon, TextColor, TabName", TabGroupTabStyleExampleSO.Instance),
+            new AttributeExamplePreviewItem().InitializeUnitySerializedExample(
+                "Parameter: TabLayouting", TabGroupLayoutingExampleSO.Instance),
+            new AttributeExamplePreviewItem().InitializeUnitySerializedExample(
+                "Combining With Other Attributes", TabGroupCombiningExampleSO.Instance)
         };
     }
 }

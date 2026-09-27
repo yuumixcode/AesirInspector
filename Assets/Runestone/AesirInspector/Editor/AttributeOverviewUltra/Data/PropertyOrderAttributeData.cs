@@ -23,7 +23,7 @@ namespace Runestone.AesirInspector.Editor
 
         public override ParameterValue[] AttributeParameters { get; set; } =
         {
-            new ParameterValue(typeof(float).FullName, "order",
+            new ParameterValue(typeof(float).FullName + "(float)", "order",
                 new BilingualData("绘制顺序的数值。默认为 0。", "The numeric value of the drawing order. Defaults to 0."))
         };
 

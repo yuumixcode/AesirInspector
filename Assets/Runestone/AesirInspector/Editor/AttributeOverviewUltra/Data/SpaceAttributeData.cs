@@ -25,7 +25,7 @@ namespace Runestone.AesirInspector.Editor
 
         public override ParameterValue[] AttributeParameters { get; set; } =
         {
-            new ParameterValue(typeof(float).FullName, "height",
+            new ParameterValue(typeof(float).FullName + "(float)", "height",
                 new BilingualData("间距高度（像素），默认 8。", "The spacing height in pixels; defaults to 8."))
         };
 

@@ -23,9 +23,9 @@ namespace Runestone.AesirInspector.Editor
 
         public override ParameterValue[] AttributeParameters { get; set; } =
         {
-            new ParameterValue(typeof(float).FullName, "SpaceBefore",
+            new ParameterValue(typeof(float).FullName + "(float)", "SpaceBefore",
                 new BilingualData("属性上方的间距像素值。", "The pixel value for spacing before the property.")),
-            new ParameterValue(typeof(float).FullName, "SpaceAfter",
+            new ParameterValue(typeof(float).FullName + "(float)", "SpaceAfter",
                 new BilingualData("属性下方的间距像素值。", "The pixel value for spacing after the property."))
         };
 

@@ -25,14 +25,14 @@ namespace Runestone.AesirInspector.Editor
 
         public override ParameterValue[] AttributeParameters { get; set; } =
         {
-            new ParameterValue(typeof(float).FullName, "Width",
+            new ParameterValue(typeof(float).FullName + "(float)", "Width",
                 new BilingualData("组的宽度。如果小于等于 1，则视为比例；如果大于 1，则视为像素。",
                     "The width of the group. If 1 or less, it's proportional; if greater than 1, it's pixels.")),
             new ParameterValue(typeof(int).FullName, "Gap",
                 new BilingualData("组内成员之间的间距（像素）。", "The spacing between members in the group (in pixels).")),
-            new ParameterValue(typeof(float).FullName, "MarginLeft",
+            new ParameterValue(typeof(float).FullName + "(float)", "MarginLeft",
                 new BilingualData("组的左边距。", "The left margin of the group.")),
-            new ParameterValue(typeof(float).FullName, "MarginRight",
+            new ParameterValue(typeof(float).FullName + "(float)", "MarginRight",
                 new BilingualData("组的右边距。", "The right margin of the group.")),
             new ParameterValue(typeof(string).FullName, "Title",
                 new BilingualData("组的标题。", "The title of the group."))
@@ -43,7 +43,15 @@ namespace Runestone.AesirInspector.Editor
         public override AttributeExamplePreviewItem[] ExamplePreviewItems { get; set; } =
         {
             new AttributeExamplePreviewItem().InitializeUnitySerializedExample("Basic Usage",
-                HorizontalGroupExampleSO.Instance)
+                HorizontalGroupExampleSO.Instance),
+            new AttributeExamplePreviewItem().InitializeUnitySerializedExample("Parameter: Width",
+                HorizontalGroupWidthExampleSO.Instance),
+            new AttributeExamplePreviewItem().InitializeUnitySerializedExample("Parameter: MarginRight",
+                HorizontalGroupMarginRightExampleSO.Instance),
+            new AttributeExamplePreviewItem().InitializeUnitySerializedExample("Parameter: Gap",
+                HorizontalGroupGapExampleSO.Instance),
+            new AttributeExamplePreviewItem().InitializeUnitySerializedExample("Parameter: Title",
+                HorizontalGroupTitleExampleSO.Instance)
         };
     }
 }

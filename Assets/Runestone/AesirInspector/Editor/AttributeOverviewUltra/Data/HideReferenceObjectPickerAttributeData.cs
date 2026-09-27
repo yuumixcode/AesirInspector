@@ -30,7 +30,7 @@ namespace Runestone.AesirInspector.Editor
 
         public override AttributeExamplePreviewItem[] ExamplePreviewItems { get; set; } =
         {
-            new AttributeExamplePreviewItem().InitializeUnitySerializedExample("Hide Reference Object Picker",
+            new AttributeExamplePreviewItem().InitializeOdinSerializedExample("Hide Reference Object Picker",
                 HideReferenceObjectPickerExampleSO.Instance)
         };
     }

@@ -3,27 +3,22 @@ using Sirenix.OdinInspector;
 namespace Runestone.AesirInspector.Editor
 {
     /// <summary>
-    /// TitleGroup 特性的案例 SO。
+    /// TitleGroup 特性的案例 SO：组名的 $ 成员引用与 @ 表达式解析。
     /// </summary>
     [AesirExample]
     public class TitleGroupExampleWithGroupNameSO : AttributeExampleSO<TitleGroupExampleWithGroupNameSO>
     {
-        [Title("Member Reference ($)")]
         public string groupNameField = "Dynamic Group";
 
-        [Title("Member Reference ($)")]
         [TitleGroup("$groupNameField")]
         public int referenceExample;
 
-        [Title("Member Reference ($)")]
         [TitleGroup("$groupNameField", "Optional subtitle")]
         public string secondReferenceExample;
 
-        [Title("Expression (@)")]
         [TitleGroup("@GetExpressionGroupName()")]
         public int expressionExample;
 
-        [Title("Member Reference ($)")]
         [TitleGroup("$groupNameField/Buttons")]
         [Button]
         void GroupNameButton() { }

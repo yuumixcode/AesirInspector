@@ -25,7 +25,7 @@ namespace Runestone.AesirInspector.Editor
 
         public override ParameterValue[] AttributeParameters { get; set; } =
         {
-            new ParameterValue(typeof(float).FullName, "LabelWidth",
+            new ParameterValue(typeof(float).FullName + "(float)", "LabelWidth",
                 new BilingualData("内联属性的标签宽度。", "The label width of the inline properties."))
         };
 

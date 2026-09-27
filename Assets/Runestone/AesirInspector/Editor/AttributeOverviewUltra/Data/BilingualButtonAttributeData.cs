@@ -55,7 +55,7 @@ namespace Runestone.AesirInspector.Editor
             new ParameterValue(typeof(bool).FullName, "expanded",
                 new BilingualData("是否默认展开参数区域。默认 false。",
                     "Whether the parameter area starts expanded. Defaults to false.")),
-            new ParameterValue(typeof(float).FullName, "buttonAlignment",
+            new ParameterValue(typeof(float).FullName + "(float)", "buttonAlignment",
                 new BilingualData("按钮对齐位置（0-1）。默认 0.5。",
                     "The button alignment position (0-1). Defaults to 0.5.")),
             new ParameterValue(typeof(bool).FullName, "displayParameters",

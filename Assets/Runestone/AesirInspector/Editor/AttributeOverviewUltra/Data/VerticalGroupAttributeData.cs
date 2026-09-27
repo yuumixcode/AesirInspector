@@ -22,9 +22,9 @@ namespace Runestone.AesirInspector.Editor
 
         public override ParameterValue[] AttributeParameters { get; set; } =
         {
-            new ParameterValue(typeof(float).FullName, "PaddingTop",
+            new ParameterValue(typeof(float).FullName + "(float)", "PaddingTop",
                 new BilingualData("顶边距。", "The top padding of the group.")),
-            new ParameterValue(typeof(float).FullName, "PaddingBottom",
+            new ParameterValue(typeof(float).FullName + "(float)", "PaddingBottom",
                 new BilingualData("底边距。", "The bottom padding of the group."))
         };
 
@@ -33,7 +33,11 @@ namespace Runestone.AesirInspector.Editor
         public override AttributeExamplePreviewItem[] ExamplePreviewItems { get; set; } =
         {
             new AttributeExamplePreviewItem().InitializeUnitySerializedExample("Basic Usage",
-                VerticalGroupExampleSO.Instance)
+                VerticalGroupExampleSO.Instance),
+            new AttributeExamplePreviewItem().InitializeUnitySerializedExample(
+                "Parameter: PaddingTop, PaddingBottom", VerticalGroupPaddingExampleSO.Instance),
+            new AttributeExamplePreviewItem().InitializeUnitySerializedExample("Combining With BoxGroup",
+                VerticalGroupCombiningExampleSO.Instance)
         };
     }
 }
