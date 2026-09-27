@@ -72,22 +72,6 @@ namespace Runestone.AesirInspector.Editor
         /// </summary>
         public const string SamplePluginConfigSolutionsWindowName = "Plugin Config Solutions";
 
-        /// <summary>
-        /// 打开 RuntimeInitializeLoadType 示例窗口的菜单路径。
-        /// </summary>
-        public const string SampleRuntimeInitializeOnLoad =
-            ToolsAesirInspectorRoot + "/Samples/RuntimeInitializeLoadType";
-
-        /// <summary>
-        /// RuntimeInitializeLoadType 示例菜单项优先级。
-        /// </summary>
-        public const int SampleRuntimeInitializeOnLoadOrder = -795;
-
-        /// <summary>
-        /// RuntimeInitializeLoadType 示例窗口标题。
-        /// </summary>
-        public const string SampleRuntimeInitializeOnLoadWindowName = "RuntimeInitializeLoadType";
-
         #endregion
     }
 }
