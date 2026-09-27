@@ -1,7 +1,7 @@
 # Aesir Inspector
 
 [English](Documentation~/README_EN.md) | [![license](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE.md)
-[![Version](https://img.shields.io/badge/version-0.18.0-blue.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.19.0-blue.svg)](CHANGELOG.md)
 [![Install via Git URL](https://img.shields.io/badge/UPM-Git%20URL-blueviolet.svg)](#安装说明)
 
 > 📦 **本包在独立仓库 [AesirInspector](https://github.com/yuumixcode/AesirInspector) 中发布**（包目录 `Assets/Runestone/AesirInspector`），**不依赖**其他 Aesir 包，可单独安装。
@@ -14,7 +14,7 @@
 
 `Aesir Inspector` 是一个 Unity 编辑器扩展库，旨在提供双语 Inspector UI、安全编辑器工具集等功能。基于 Odin Inspector 提供增强的 Inspector 渲染和样式优化。
 
-> 📤 **脚本文档生成器（Script Doc Generator）与 Summary 工具已迁移**：自 0.15.0 起迁移至本仓库的独立工具 [`Assets/ScriptDocGenerator`](../../ScriptDocGenerator/README.md)，不再属于本包。
+> 📤 **脚本文档生成器（Script Doc Generator）与 Summary 工具已迁出本包**：自 0.15.0 起不再属于本包，现位于 [Aesir Modules](https://github.com/yuumixcode/AesirFramework) 包的 `Editor/ScriptDocGenerator/`（`Assets/Runestone/AesirModules/`）。
 
 ## 适用人群
 
