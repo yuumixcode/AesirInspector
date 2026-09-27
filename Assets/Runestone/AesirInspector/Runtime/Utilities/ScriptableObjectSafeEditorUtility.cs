@@ -40,16 +40,31 @@ namespace Runestone.AesirInspector
         }
 
         /// <summary>
+        /// Aesir Inspector 编辑器配置对象的配置键前缀。
+        /// 键不含命名空间，因此命名空间调整不会让已注册的配置对象失效。
+        /// </summary>
+        public const string EditorConfigKeyPrefix = "AesirInspector/";
+
+        /// <summary>
+        /// 按资产名生成稳定的 EditorBuildSettings 配置键（与命名空间无关）。
+        /// </summary>
+        public static string GetEditorConfigKey(string assetName) => EditorConfigKeyPrefix + assetName;
+
+        /// <summary>
         /// 根据配置名称获取或创建编辑器 ScriptableObject 资源。
         /// 如果资源不存在则自动创建并保存到指定路径，同时将资源注册到 EditorBuildSettings 中。
+        /// <paramref name="legacyConfigNames" /> 用于迁移历史配置键（如含命名空间的旧键）：
+        /// 命中旧键时把同一资产重新注册到 <paramref name="configName" /> 并移除旧键，只剩空引用的旧键也会被清理。
         /// 打包后此方法将失效，返回 null。
         /// </summary>
         public static T GetOrCreateEditorScriptableObject<T>(string configName,
             string folderPath,
-            string assetName) where T : ScriptableObject
+            string assetName,
+            params string[] legacyConfigNames) where T : ScriptableObject
         {
 #if UNITY_EDITOR
-            return Internal_GetOrCreateEditorScriptableObject<T>(configName, folderPath, assetName);
+            return Internal_GetOrCreateEditorScriptableObject<T>(configName, folderPath, assetName,
+                legacyConfigNames);
 #else
             return null;
 #endif
@@ -150,9 +165,36 @@ namespace Runestone.AesirInspector
 
         static T Internal_GetOrCreateEditorScriptableObject<T>(string configName,
             string folderPath,
-            string assetName) where T : ScriptableObject
+            string assetName,
+            string[] legacyConfigNames) where T : ScriptableObject
         {
-            if (EditorBuildSettings.TryGetConfigObject(configName, out T instance))
+            var found = EditorBuildSettings.TryGetConfigObject(configName, out T instance);
+
+            // 清理并迁移历史配置键：无论稳定键是否命中都要执行，否则旧键（含只剩空引用的条目）
+            // 会长期残留在 ProjectSettings 中。候选键全部遍历完，不提前返回。
+            if (legacyConfigNames != null)
+            {
+                foreach (var legacyConfigName in legacyConfigNames)
+                {
+                    if (string.IsNullOrEmpty(legacyConfigName) || legacyConfigName == configName)
+                    {
+                        continue;
+                    }
+
+                    if (!found
+                        && EditorBuildSettings.TryGetConfigObject(legacyConfigName, out T legacyInstance)
+                        && legacyInstance != null)
+                    {
+                        instance = legacyInstance;
+                        found = true;
+                        EditorBuildSettings.AddConfigObject(configName, instance, true);
+                    }
+
+                    EditorBuildSettings.RemoveConfigObject(legacyConfigName);
+                }
+            }
+
+            if (found && instance != null)
             {
                 return instance;
             }

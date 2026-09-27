@@ -9,10 +9,12 @@ namespace Runestone.AesirInspector.Editor
     /// </summary>
     public class OdinSyntaxHighlighterPanelSO : ScriptableObject
     {
-        /// <summary>
-        /// EditorBuildSettings 存储引用的 Key
-        /// </summary>
-        static readonly string ConfigName = typeof(OdinSyntaxHighlighterPanelSO).GetNiceFullName();
+        /// <summary>EditorBuildSettings 中的稳定配置键（与命名空间无关）。</summary>
+        static readonly string ConfigName =
+            ScriptableObjectSafeEditorUtility.GetEditorConfigKey("OdinSyntaxHighlighter");
+
+        /// <summary>历史配置键：早期版本使用类型的可读全名，命名空间调整后已失效。</summary>
+        static readonly string LegacyConfigName = typeof(OdinSyntaxHighlighterPanelSO).GetNiceFullName();
 
         [PropertyOrder(-100)]
         public BilingualHeaderControl bilingualHeader;
@@ -67,7 +69,8 @@ public class Example : ScriptableObject
 
                 _instance = ScriptableObjectSafeEditorUtility
                     .GetOrCreateEditorScriptableObject<OdinSyntaxHighlighterPanelSO>(
-                        ConfigName, AesirInspectorPaths.MiniToolsAssetsFolderPath, "OdinSyntaxHighlighter");
+                        ConfigName, AesirInspectorPaths.MiniToolsAssetsFolderPath, "OdinSyntaxHighlighter",
+                        LegacyConfigName, typeof(OdinSyntaxHighlighterPanelSO).FullName);
                 return _instance;
             }
         }
