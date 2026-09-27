@@ -27,7 +27,7 @@ namespace Runestone.AesirInspector.Editor
             new ParameterValue(typeof(string).FullName, "previewGetter",
                 new BilingualData("可以渲染一个 Object 的 Preview 预览框，主要是用于渲染 Texture。",
                     "A getter that renders an Object preview, primarily used for rendering Textures.")),
-            new ParameterValue(typeof(float).FullName, "height",
+            new ParameterValue(typeof(float).FullName + "(float)", "height",
                 new BilingualData("渲染框的高度。", "The height of the preview box.")),
             new ParameterValue(typeof(ObjectFieldAlignment).FullName, "alignment",
                 new BilingualData("对齐样式。", "The alignment style.")),

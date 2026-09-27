@@ -41,8 +41,13 @@ namespace Runestone.AesirInspector.Editor
 
         public override AttributeExamplePreviewItem[] ExamplePreviewItems { get; set; } =
         {
-            new AttributeExamplePreviewItem().InitializeUnitySerializedExample("Responsive Button Group",
-                ResponsiveButtonGroupExampleSO.Instance)
+            new AttributeExamplePreviewItem().InitializeUnitySerializedExample("Basic Usage",
+                ResponsiveButtonGroupExampleSO.Instance),
+            new AttributeExamplePreviewItem().InitializeUnitySerializedExample(
+                "Parameter: UniformLayout, DefaultButtonSize",
+                ResponsiveButtonGroupParameterExampleSO.Instance),
+            new AttributeExamplePreviewItem().InitializeUnitySerializedExample(
+                "Combining With Groups", ResponsiveButtonGroupCombiningExampleSO.Instance)
         };
     }
 }

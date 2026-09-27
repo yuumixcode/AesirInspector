@@ -22,7 +22,7 @@ namespace Runestone.AesirInspector.Editor
 
         public override ParameterValue[] AttributeParameters { get; set; } =
         {
-            new ParameterValue(typeof(float).FullName, "width",
+            new ParameterValue(typeof(float).FullName + "(float)", "width",
                 new BilingualData("标签宽度：正数为绝对像素值，负数为在当前标签宽度基础上的相对增减（例如 -50 表示减少 50 像素）。",
                     "The label width: a positive value is an absolute pixel width, while a negative value is a relative change from the current label width (for example -50 reduces it by 50 pixels)."))
         };

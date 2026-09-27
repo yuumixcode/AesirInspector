@@ -2,10 +2,12 @@ using Sirenix.OdinInspector;
 
 namespace Runestone.AesirInspector.Editor
 {
+    /// <summary>
+    /// HideIfGroup 特性的案例 SO：组名的 $ 成员引用与 @ 表达式解析。
+    /// </summary>
     [AesirExample]
     public class HideIfGroupExampleWithGroupNameSO : AttributeExampleSO<HideIfGroupExampleWithGroupNameSO>
     {
-        [Title("Member Reference ($)")]
         public bool toggle = true;
 
         public string groupName = "DynamicGroup";
@@ -17,7 +19,6 @@ namespace Runestone.AesirInspector.Editor
         [BoxGroup("$groupName/Content")]
         public int value;
 
-        [Title("Expression (@)")]
         [HideIfGroup("@\"Group_\" + groupName", Condition = "toggle")]
         public int expressionValue;
 

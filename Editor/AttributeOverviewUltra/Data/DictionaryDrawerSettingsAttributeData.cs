@@ -31,7 +31,7 @@ namespace Runestone.AesirInspector.Editor
                 new BilingualData("键列的标签文本。", "The label for the key column.")),
             new ParameterValue(typeof(string).FullName, "ValueLabel",
                 new BilingualData("值列的标签文本。", "The label for the value column.")),
-            new ParameterValue(typeof(float).FullName, "KeyColumnWidth",
+            new ParameterValue(typeof(float).FullName + "(float)", "KeyColumnWidth",
                 new BilingualData("键列的宽度。", "The width of the key column.")),
             new ParameterValue(typeof(DictionaryDisplayOptions).FullName, "DisplayMode",
                 new BilingualData("字典的显示模式。", "The display mode for the dictionary.")),

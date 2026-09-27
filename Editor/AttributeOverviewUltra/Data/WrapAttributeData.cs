@@ -19,9 +19,9 @@ namespace Runestone.AesirInspector.Editor
 
         public override ParameterValue[] AttributeParameters { get; set; } =
         {
-            new ParameterValue(typeof(float).FullName, "min",
+            new ParameterValue(typeof(float).FullName + "(float)", "min",
                 new BilingualData("范围的最小值。", "The minimum value of the range.")),
-            new ParameterValue(typeof(float).FullName, "max",
+            new ParameterValue(typeof(float).FullName + "(float)", "max",
                 new BilingualData("范围的最大值。", "The maximum value of the range."))
         };
 

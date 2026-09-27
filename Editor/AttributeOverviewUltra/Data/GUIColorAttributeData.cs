@@ -26,13 +26,13 @@ namespace Runestone.AesirInspector.Editor
 
         public override ParameterValue[] AttributeParameters { get; set; } = new ParameterValue[5]
         {
-            new ParameterValue(typeof(float).FullName, "r",
+            new ParameterValue(typeof(float).FullName + "(float)", "r",
                 new BilingualData("红色通道 (0-1)。", "Red channel (0-1).")),
-            new ParameterValue(typeof(float).FullName, "g",
+            new ParameterValue(typeof(float).FullName + "(float)", "g",
                 new BilingualData("绿色通道 (0-1)。", "Green channel (0-1).")),
-            new ParameterValue(typeof(float).FullName, "b",
+            new ParameterValue(typeof(float).FullName + "(float)", "b",
                 new BilingualData("蓝色通道 (0-1)。", "Blue channel (0-1).")),
-            new ParameterValue(typeof(float).FullName, "a",
+            new ParameterValue(typeof(float).FullName + "(float)", "a",
                 new BilingualData("Alpha 通道 (0-1)。", "Alpha channel (0-1).")),
             new ParameterValue(typeof(string).FullName, "getColor",
                 new BilingualData(

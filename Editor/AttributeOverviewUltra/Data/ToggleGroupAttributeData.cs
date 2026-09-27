@@ -30,7 +30,7 @@ namespace Runestone.AesirInspector.Editor
             new ParameterValue(typeof(string).FullName, "toggleGroupTitle",
                 new BilingualData("组的标题文本（默认与字段名相同）。",
                     "The title text of the group (defaults to the field name).")),
-            new ParameterValue(typeof(float).FullName, "order",
+            new ParameterValue(typeof(float).FullName + "(float)", "order",
                 new BilingualData("组在 Inspector 中的显示顺序。",
                     "The display order of the group in the Inspector.")),
             new ParameterValue(typeof(bool).FullName, "collapseOthersOnExpand",
@@ -52,8 +52,16 @@ namespace Runestone.AesirInspector.Editor
         {
             new AttributeExamplePreviewItem().InitializeUnitySerializedExample("Basic Usage",
                 ToggleGroupExampleSO.Instance),
-            new AttributeExamplePreviewItem().InitializeUnitySerializedExample("ToggleGroupTitle",
-                ToggleGroupExampleWithToggleGroupTitleSO.Instance)
+            new AttributeExamplePreviewItem().InitializeUnitySerializedExample("Member Reference ($)",
+                ToggleGroupMemberReferenceExampleSO.Instance),
+            new AttributeExamplePreviewItem().InitializeUnitySerializedExample(
+                "Parameter: ToggleGroupTitle", ToggleGroupTitleExampleSO.Instance),
+            new AttributeExamplePreviewItem().InitializeUnitySerializedExample(
+                "Parameter: Order, CollapseOthersOnExpand", ToggleGroupOrderExampleSO.Instance),
+            new AttributeExamplePreviewItem().InitializeUnitySerializedExample(
+                "ToggleGroupTitle ($ / @)", ToggleGroupExampleWithToggleGroupTitleSO.Instance),
+            new AttributeExamplePreviewItem().InitializeUnitySerializedExample(
+                "Combining With Other Attributes", ToggleGroupCombiningExampleSO.Instance)
         };
     }
 }

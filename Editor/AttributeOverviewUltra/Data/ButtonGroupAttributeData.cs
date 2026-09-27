@@ -24,7 +24,7 @@ namespace Runestone.AesirInspector.Editor
             new ParameterValue(typeof(string).FullName, "groupName",
                 new BilingualData("组的名称。不指定时默认使用 \"_DefaultGroup\"。",
                     "The name of the group. Defaults to \"_DefaultGroup\" when not specified.")),
-            new ParameterValue(typeof(float).FullName, "order",
+            new ParameterValue(typeof(float).FullName + "(float)", "order",
                 new BilingualData("组内按钮的显示顺序。", "The display order of buttons within the group.")),
             new ParameterValue(typeof(int).FullName, "buttonHeight",
                 new BilingualData("按钮的高度（像素）。", "The height of the button (in pixels)."))
@@ -43,10 +43,15 @@ namespace Runestone.AesirInspector.Editor
 
         public override AttributeExamplePreviewItem[] ExamplePreviewItems { get; set; } =
         {
-            new AttributeExamplePreviewItem().InitializeUnitySerializedExample("Basic Usage",
+            new AttributeExamplePreviewItem().InitializeUnitySerializedExample("Default Group",
                 ButtonGroupExampleSO.Instance),
-            new AttributeExamplePreviewItem().InitializeUnitySerializedExample("GroupName",
-                ButtonGroupExampleWithGroupNameSO.Instance)
+            new AttributeExamplePreviewItem().InitializeUnitySerializedExample("Named Group",
+                ButtonGroupNamedGroupExampleSO.Instance),
+            new AttributeExamplePreviewItem().InitializeUnitySerializedExample("Parameter: Order, ButtonHeight",
+                ButtonGroupParameterExampleSO.Instance),
+            new AttributeExamplePreviewItem()
+                .InitializeUnitySerializedExample("Member Reference ($), Expression (@)",
+                    ButtonGroupResolvedStringExampleSO.Instance)
         };
     }
 }

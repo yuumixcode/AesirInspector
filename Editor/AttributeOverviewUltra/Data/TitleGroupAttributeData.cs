@@ -36,7 +36,7 @@ namespace Runestone.AesirInspector.Editor
                 new BilingualData("标题是否加粗显示。", "Whether the title should be displayed in bold.")),
             new ParameterValue(typeof(bool).FullName, "indent",
                 new BilingualData("标题内容是否缩进。", "Whether the title content should be indented.")),
-            new ParameterValue(typeof(float).FullName, "order",
+            new ParameterValue(typeof(float).FullName + "(float)", "order",
                 new BilingualData("标题组在检查器中的显示顺序。", "The display order of the title group in the inspector."))
         };
 
@@ -62,10 +62,16 @@ namespace Runestone.AesirInspector.Editor
         {
             new AttributeExamplePreviewItem().InitializeUnitySerializedExample("Basic Usage",
                 TitleGroupExampleSO.Instance),
-            new AttributeExamplePreviewItem().InitializeUnitySerializedExample("GroupName",
+            new AttributeExamplePreviewItem().InitializeUnitySerializedExample(
+                "Parameter: Subtitle, TitleAlignments", TitleGroupExampleWithSubtitleSO.Instance),
+            new AttributeExamplePreviewItem().InitializeUnitySerializedExample(
+                "Parameter: HorizontalLine, BoldTitle, Indent", TitleGroupStyleExampleSO.Instance),
+            new AttributeExamplePreviewItem().InitializeUnitySerializedExample("Parameter: Order",
+                TitleGroupOrderExampleSO.Instance),
+            new AttributeExamplePreviewItem().InitializeUnitySerializedExample("Member Reference ($)",
                 TitleGroupExampleWithGroupNameSO.Instance),
-            new AttributeExamplePreviewItem().InitializeUnitySerializedExample("Subtitle",
-                TitleGroupExampleWithSubtitleSO.Instance)
+            new AttributeExamplePreviewItem().InitializeUnitySerializedExample(
+                "Combining With Other Attributes", TitleGroupCombiningExampleSO.Instance)
         };
     }
 }

@@ -3,31 +3,26 @@ using Sirenix.OdinInspector;
 namespace Runestone.AesirInspector.Editor
 {
     /// <summary>
-    /// ToggleGroup 特性的案例 SO。
+    /// ToggleGroup 特性的案例 SO：组标题的 $ 成员引用（字段 / 属性）与 @ 表达式解析。
     /// </summary>
     [AesirExample]
-    public class
-        ToggleGroupExampleWithToggleGroupTitleSO : AttributeExampleSO<
+    public class ToggleGroupExampleWithToggleGroupTitleSO : AttributeExampleSO<
         ToggleGroupExampleWithToggleGroupTitleSO>
     {
-        [Title("Member Reference ($) : Field")]
         public string toggleTitleField = "Dynamic Toggle Title";
 
-        [Title("Member Reference ($) : Field")]
         [ToggleGroup(nameof(Toggle1), "$toggleTitleField")]
         public bool Toggle1;
 
         [ToggleGroup(nameof(Toggle1))]
         public int referenceExample;
 
-        [Title("Member Reference ($) : Property")]
         [ToggleGroup(nameof(Toggle3), "$TitleFromProperty")]
         public bool Toggle3;
 
         [ToggleGroup(nameof(Toggle3))]
         public float Test;
 
-        [Title("Expression (@)")]
         [ToggleGroup(nameof(Toggle2), "@\"Dynamic_\" + System.DateTime.Now.DayOfWeek")]
         public bool Toggle2;
 

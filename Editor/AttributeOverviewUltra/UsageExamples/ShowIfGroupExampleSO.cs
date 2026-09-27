@@ -3,10 +3,12 @@ using UnityEngine;
 
 namespace Runestone.AesirInspector.Editor
 {
+    /// <summary>
+    /// ShowIfGroup 特性的案例 SO：基础用法（开关字段控制整个组的显示）与与 BoxGroup 组合。
+    /// </summary>
     [AesirExample]
     public class ShowIfGroupExampleSO : AttributeExampleSO<ShowIfGroupExampleSO>
     {
-        [Title("No Parameters")]
         public bool toggle = true;
 
         [ShowIfGroup("toggle")]
@@ -16,7 +18,6 @@ namespace Runestone.AesirInspector.Editor
         [BoxGroup("toggle/Shown Box")]
         public int b;
 
-        [Title("Parameter: Value")]
         public InfoMessageType messageType = InfoMessageType.Info;
 
         [ShowIfGroup("toggle/messageType", Value = InfoMessageType.Info)]
@@ -26,7 +27,6 @@ namespace Runestone.AesirInspector.Editor
         [BoxGroup("toggle/messageType/Border")]
         public Vector3 vector;
 
-        [Title("Combining With BoxGroup")]
         [ShowIfGroup("Box/toggle")]
         [BoxGroup("Box")]
         public Vector3 x;
@@ -34,10 +34,6 @@ namespace Runestone.AesirInspector.Editor
         [ShowIfGroup("Box/toggle")]
         [BoxGroup("Box")]
         public Vector3 y;
-
-        [Title("Parameter: Condition")]
-        [ShowIfGroup("DemoGroup", Condition = "toggle")]
-        public GameObject gameObject;
 
         public override void AesirInspectorReset()
         {
@@ -49,7 +45,6 @@ namespace Runestone.AesirInspector.Editor
             vector = Vector3.zero;
             x = Vector3.zero;
             y = Vector3.zero;
-            gameObject = null;
         }
     }
 }

@@ -31,7 +31,7 @@ namespace Runestone.AesirInspector.Editor
             new ParameterValue(typeof(double).FullName, "Max",
                 new BilingualData("进度条的最大值。支持使用 $ 引用成员。",
                     "The maximum value of the progress bar. Supports $ for member reference.")),
-            new ParameterValue(typeof(float).FullName, "R, G, B",
+            new ParameterValue(typeof(float).FullName + "(float)", "R, G, B",
                 new BilingualData("进度条的颜色（0-1 范围）。", "The color of the progress bar (0-1 range).")),
             new ParameterValue(typeof(string).FullName, "CustomValueStringGetter",
                 new BilingualData("显示在进度条上的自定义文本。支持使用 $ 引用成员。",
