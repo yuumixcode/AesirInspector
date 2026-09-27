@@ -1,7 +1,7 @@
 # Aesir Inspector
 
 [中文](../README.md) | [![license](https://img.shields.io/badge/license-MIT-green.svg)](../LICENSE.md)
-[![Version](https://img.shields.io/badge/version-0.19.0-blue.svg)](../CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.20.0-blue.svg)](../CHANGELOG.md)
 [![Install via Git URL](https://img.shields.io/badge/UPM-Git%20URL-blueviolet.svg)](#installation)
 
 > 📦 **This package is published from its own repository, [AesirInspector](https://github.com/yuumixcode/AesirInspector)** (package folder `Assets/Runestone/AesirInspector`). It does **not** depend on any other Aesir package and can be installed on its own.
@@ -33,7 +33,7 @@
 3. Enter the following URL:
 
    ```
-   https://github.com/yuumixcode/AesirInspector.git?path=/Assets/Runestone/AesirInspector
+   https://github.com/yuumixcode/AesirInspector.git?path=/Assets/Runestone/AesirInspector#v0.20.0
    ```
 
 ### Install via manifest.json
@@ -43,10 +43,39 @@ Add the following to your project's `Packages/manifest.json`:
 ```json
 {
   "dependencies": {
-    "cn.runestone.aesir-inspector": "https://github.com/yuumixcode/AesirInspector.git?path=/Assets/Runestone/AesirInspector"
+    "cn.runestone.aesir-inspector": "https://github.com/yuumixcode/AesirInspector.git?path=/Assets/Runestone/AesirInspector#v0.20.0"
   }
 }
 ```
+
+**Locking the version (recommended for production)**: append a tag to the URL to pin the version, for example
+
+```
+https://github.com/yuumixcode/AesirInspector.git?path=/Assets/Runestone/AesirInspector#v0.20.0
+```
+
+Without a tag, UPM follows the latest commit on the repository's default branch, so the environment is not reproducible.
+
+### UPM vs. Assets Installation
+
+When installed via UPM the package lives in the read-only `Packages/cn.runestone.aesir-inspector/`. Compared with placing it directly under `Assets/Runestone/AesirInspector/`:
+
+| Aspect | Assets installation | UPM installation |
+|--------|--------------------|------------------|
+| Package example assets (`Editor/ExampleAssets/`) | Read/write, editable in place | Read-only; copy into `Assets/` before editing |
+| "Ping Script File" button | Locates and pings the example script in the Project window | Opens the example script source directly in the code editor (independent of whether the Project window shows Packages; falls back to revealing the file in the file manager) |
+| Package folders used by AssetSelector examples | Match the real folders inside the package | Resolved from a fixed GUID and injected, still pointing at the real folders inside the package |
+| Editor data assets | Created on first use under `Assets/Editor Default Resources/AesirInspectorData/AttributeOverviewPro/` | Same (data always lands in the project's `Assets/`, never in the read-only package folder) |
+
+### Odin Dependency Check
+
+This package hard-depends on Odin Inspector. Without it the package assemblies are skipped entirely by the
+`ODIN_INSPECTOR` constraint (no errors, no functionality), so an explicit entry point is provided.
+
+- Menu **`Tools → Aesir → Inspector → Check Odin Dependency`**, provided by the bootstrap assembly
+  `Runestone.AesirInspector.Bootstrap`, which carries no `ODIN_INSPECTOR` constraint and therefore still compiles without Odin;
+- The dialog reports either "Odin Inspector detected" or "Aesir Inspector is installed but Odin Inspector was not detected, so it will not be compiled", and shows the current install mode (UPM or Assets);
+- The check is install-mode agnostic: it works for both UPM and Assets installations.
 
 ### Installation Mode Detection
 
@@ -72,7 +101,7 @@ The package ships importable samples under `Samples~`. Select `Aesir Inspector` 
 
 ## Core Features
 
-### 1. Attribute Overview Ultra
+### 1. Attribute Overview Pro
 
 A searchable tree menu that shows all registered Odin Inspector and Aesir Inspector attribute panels, with live previews and sample code for each attribute.
 
@@ -80,8 +109,8 @@ A searchable tree menu that shows all registered Odin Inspector and Aesir Inspec
 - **Search**: fuzzy search to quickly locate an attribute.
 - **Live preview**: selecting an attribute shows its effect and parameter configuration in the right panel.
 - **Code preview**: selecting an attribute also shows the corresponding sample source code.
-- **Zero asset pollution**: panels and examples are in-memory instances; user debug state persists via the `UltraStateStore`, no sub-assets are generated in the Project.
-- Open via `Tools → Aesir → Inspector → Attribute Overview Ultra`.
+- **Zero asset pollution**: panels and examples are in-memory instances; user debug state persists via the `ProStateStore`, no sub-assets are generated in the Project.
+- Open via `Tools → Aesir → Inspector → Attribute Overview Pro`.
 
 ### 2. Mini Tools
 
@@ -117,7 +146,7 @@ Available decorators and controls:
 Odin Inspector is a hard dependency — the package uses Sirenix (Odin) APIs directly for all of its enhanced capabilities:
 
 - Bilingual attributes, Inspector controls, attribute drawers, and processors are built directly on Odin's attribute/drawer system.
-- Attribute Overview Ultra is built on Odin's menu editor window and editor window infrastructure.
+- Attribute Overview Pro is built on Odin's menu editor window and editor window infrastructure.
 - Without Odin Inspector the assemblies are skipped entirely (no errors) and the features are unavailable; install Odin 3.3.x+ from [odininspector.com](https://odininspector.com/) first.
 
 ### 5. Safe Editor Utilities

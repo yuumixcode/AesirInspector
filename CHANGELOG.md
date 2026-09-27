@@ -8,6 +8,30 @@
 
 ---
 
+## [0.20.0] - 2026-09-27
+
+### Added
+
+- **启动程序集 `Runestone.AesirInspector.Bootstrap` 与 `Check Odin Dependency` 菜单**：此前未安装 Odin 时包内全部程序集被 `ODIN_INSPECTOR` 约束静默跳过编译，用户只会拿到一个「装了却毫无反应」的包。该程序集刻意不带该约束、也不引用包内其它程序集，所以未装 Odin 时仍会编译，并在 `Tools → Aesir → Inspector → Check Odin Dependency` 弹窗说明情况（已检测到 Odin / 未检测到 Odin 因而不会参与编译），同时显示当前安装方式（UPM 或 Assets）；检测与安装方式无关。 / **Bootstrap assembly and the "Check Odin Dependency" menu**: without Odin every package assembly used to be skipped silently by the `ODIN_INSPECTOR` constraint, leaving a package that appeared to do nothing. The new assembly deliberately carries no such constraint and references no other package assembly, so it still compiles without Odin and reports the situation from the menu, including the current install mode (UPM or Assets).
+- **包位置锚点资产 `AesirPathLookup.asset` 与 `AesirPackagePaths`**：通过固定 GUID 定位包安装位置（`Assets/…` 或 `Packages/…`），机制对齐 Odin 的 `SirenixAssetPaths`；AssetSelector 示例的包内目录改由 `AesirExampleAssetSelectorProcessor` 在属性树构建期注入，示例源码中的字面量路径保持不变。 / **Package-location anchor asset and `AesirPackagePaths`**: the install location is resolved through a fixed GUID, mirroring Odin's `SirenixAssetPaths`; AssetSelector example folders are injected by a processor while the property tree is built.
+
+### Changed
+
+- **Attribute Overview Ultra → Attribute Overview Pro（破坏性）**：目录、类型、状态存储与菜单项统一更名（`AttributeOverviewUltra*` → `AttributeOverviewPro*`、`UltraStateStoreSO` → `ProStateStoreSO`、`UltraPanelDatabase` → `ProPanelDatabase`、资产 `UltraStateStore.asset` → `ProStateStore.asset`），菜单项为 `Tools → Aesir → Inspector → Attribute Overview Pro`；数据子目录 `Attribute Overview` 一并改为无空格的 `AttributeOverviewPro`；升级由 `AesirInspectorDataFolderMigration` 逐步自动迁移，GUID、用户状态与 `EditorBuildSettings` 引用均无损。 / **Attribute Overview Ultra → Attribute Overview Pro (breaking)**: folders, types, state store, asset and menu entry are renamed consistently, the data subfolder becomes the space-free `AttributeOverviewPro`, and the migration helper moves each step automatically with GUIDs, user state and `EditorBuildSettings` references preserved.
+- **编辑器数据目录更名为 `AesirInspectorData`（破坏性路径变更）**：`Assets/Editor Default Resources/Aesir Inspector/` → `Assets/Editor Default Resources/AesirInspectorData/`（对齐 Unity Addressables 的 `AddressableAssetsData`），自动迁移且 GUID 不变；该目录位于 `Editor Default Resources` 特殊文件夹下，只在编辑器阶段可用、不会打包进构建。 / **Editor data folder renamed to `AesirInspectorData` (breaking path change)**: migrated automatically with GUIDs preserved; it lives inside Unity's editor-only `Editor Default Resources` folder and is never included in builds.
+- **移除 `com.unity.test-framework` 硬依赖**：消费工程不再被强制引入测试框架；包内测试程序集保留 `UNITY_INCLUDE_TESTS` + `ODIN_INSPECTOR` 约束且 `autoReferenced: false`，未启用测试框架的工程不会编译它，也不会产生噪音。 / **Removed the hard `com.unity.test-framework` dependency**: consumer projects no longer get the test framework forced in; the packaged test assembly keeps its constraints and `autoReferenced: false`, so it is never compiled or surfaced otherwise.
+- **移除 Getting Started 窗口**：窗口与菜单项删除，安装方式检测与 Odin 依赖提示改由 `Check Odin Dependency` 菜单承担。 / **Removed the Getting Started window**: the window and its menu entry are gone; install-mode detection and the Odin notice now live in the `Check Odin Dependency` menu.
+- **`EnsureAesirInspectorDefine` 改为显式枚举构建目标**：不再反射 `NamedBuildTarget` 的静态字段，改为遍历 `BuildTargetGroup` 经 `NamedBuildTarget.FromBuildTargetGroup` 构造并按目标名去重，保留「所有平台都写入 `AESIR_INSPECTOR`」的语义（Aesir Architecture 的 `#if !AESIR_INSPECTOR` 是编译期判断，只写当前平台会在切换平台后导致功能重复）。 / **`EnsureAesirInspectorDefine` now enumerates build targets explicitly** instead of reflecting `NamedBuildTarget`'s static fields, keeping the "write the define for every platform" semantic.
+- **安装文档改用版本标签**：中英双语 README 与仓库 README 的 Git URL 安装地址带 `#v0.20.0`，并说明 `main` 为开发分支、生产环境请锁定标签。 / **Install docs now pin a version tag**: the Git URL addresses carry `#v0.20.0`, noting that `main` is the development branch.
+- **「Ping 脚本文件」在 UPM 安装下的行为**：改为在代码编辑器中打开示例脚本源码（不依赖 Project 窗口是否显示 Packages），找不到 MonoScript 时退化为在文件管理器中揭示磁盘文件；Assets 安装行为不变。 / **"Ping Script File" under a UPM installation** now opens the example script source in the code editor, falling back to revealing the file on disk; Assets installations are unchanged.
+- **首次创建编辑器数据目录的行为修正**：新增 `PathSafeEditorUtility.EnsureAssetFolderExists`（`AssetDatabase.CreateFolder` 逐级创建，创建后即可作为 `CreateAsset` 的父目录，不再触发全项目 `AssetDatabase.Refresh`）；状态存储、Preferences 与 MiniTools 的首次自动创建均改走该方法。 / **Fixed first-time folder creation** with a new level-by-level `AssetDatabase.CreateFolder` helper.
+- **文档**：双语 README 增加「Odin 依赖检查」「UPM 安装与 Assets 安装的差异」小节与锁定版本说明。 / **Docs**: new README sections ("Odin Dependency Check", "UPM vs. Assets installation") plus tag-pinning notes.
+
+### Fixed
+
+- **UPM 安装且 Project 窗口隐藏 Packages 时「Ping 脚本文件」完全失效**：原实现拼出的 `Assets/../Library/PackageCache/...` 路径必然解析失败并静默返回 null；现按文件名反查 MonoScript 后直接打开源码。 / **"Ping Script File" failed entirely under a UPM installation when the Project window hid Packages**: the previous path could never resolve; the button now resolves the MonoScript by file name and opens its source.
+- **AssetSelector 示例下拉为空、FolderPath 示例指向不存在的目录（UPM 安装）**：硬编码包内路径在 `Packages/` 下不存在；`FolderPathExampleSO` 的 `ParentFolder` 改为 `Assets`。 / **AssetSelector examples were empty and a FolderPath example pointed at a missing folder (UPM install)**.
+
 ## [0.19.0] - 2026-09-27
 
 ### Changed
