@@ -1,0 +1,46 @@
+# 常驻 latest 分支 —— Git URL 一次输入、永不失效、持续指向最新版：
+#   - 分支名永久固定 AesirInspector-latest，不随发版轮换、永不删除
+#   - 每次推送 main，把包目录 subtree split 到该分支（分支根目录 = 包根目录，
+#     package.json 位于根），消费者升级无需修改 URL
+#   - 滚动安装地址（分支根即包内容，无需 ?path=）：
+#       https://github.com/yuumixcode/AesirInspector.git#AesirInspector-latest
+#   - 钉旧版本用 Release tag（tag 永久保留；tag 在仓库根，必须带 ?path=）：
+#       https://github.com/yuumixcode/AesirInspector.git?path=Assets/Runestone/AesirInspector#v<版本>
+#
+# 实现说明：
+#   - 包位于仓库子目录（Unity 工程根），因此不能直接 push main:AesirInspector-latest，
+#     必须 subtree split；subtree split 依赖完整历史，checkout 必须 fetch-depth: 0
+#   - 强推是必须的：split 产物的历史是重写的，与远端旧分支不存在快进关系
+#   - concurrency 防止多次 push 并发执行导致旧内容覆盖新内容（保留最新一次推送）
+name: Update Latest Branch
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-latest-branch
+  cancel-in-progress: true
+
+env:
+  PACKAGE_DIR: Assets/Runestone/AesirInspector
+  LATEST_BRANCH: AesirInspector-latest
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Sync package subtree to latest branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git subtree split --prefix="$PACKAGE_DIR" --branch "$LATEST_BRANCH"
+          git push origin "$LATEST_BRANCH" --force

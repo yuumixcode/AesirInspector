@@ -44,10 +44,10 @@ AesirInspector/                        # 仓库根目录 = Unity 工程根目录
 
 1. 打开 Unity Package Manager 窗口。
 2. 点击左上角 `+` 按钮，选择 `Add package from git URL...`。
-3. 输入以下地址：
+3. 输入以下地址（常驻 `AesirInspector-latest` 分支，由 CI 随 `main` 自动滚动更新，一次输入、永不失效）：
 
    ```
-   https://github.com/yuumixcode/AesirInspector.git?path=Assets/Runestone/AesirInspector#v0.21.0
+   https://github.com/yuumixcode/AesirInspector.git#AesirInspector-latest
    ```
 
 或在项目的 `Packages/manifest.json` 中添加：
@@ -55,10 +55,18 @@ AesirInspector/                        # 仓库根目录 = Unity 工程根目录
 ```json
 {
   "dependencies": {
-    "cn.runestone.aesir-inspector": "https://github.com/yuumixcode/AesirInspector.git?path=Assets/Runestone/AesirInspector#v0.21.0"
+    "cn.runestone.aesir-inspector": "https://github.com/yuumixcode/AesirInspector.git#AesirInspector-latest"
   }
 }
 ```
+
+**锁定版本（推荐用于生产）**：改用发版 tag（tag 永久保留），例如：
+
+```
+https://github.com/yuumixcode/AesirInspector.git?path=Assets/Runestone/AesirInspector#v0.21.0
+```
+
+`AesirInspector-latest` 分支的根目录即包内容（CI 用 `git subtree split` 同步），无需 `?path=`；tag 指向仓库根，必须带 `?path=`。不锁定版本时内容持续跟随最新提交，环境无法复现。
 
 `Samples~` 与 `Documentation~` 为 UPM 隐藏目录，不会随包导入；示例可通过 Package Manager 中该包的 **Samples** 标签页按需导入。
 
@@ -84,6 +92,7 @@ AesirInspector/                        # 仓库根目录 = Unity 工程根目录
 - 首次运行自动安装 .NET 8 SDK 到 `~/.dotnet`（用户目录，免 sudo），并缓存导出工具（固定 commit）
 - 版本号取自包内 `package.json`
 - 发布 Release：推送 `v*` 标签（如 `git tag v0.21.0 && git push origin v0.21.0`），GitHub Actions 自动导出并创建 GitHub Release（Release Notes 取自包内 CHANGELOG）
+- 常驻 latest 分支：每次推送 `main`，GitHub Actions 自动把包目录 subtree split 强推到 `AesirInspector-latest`（滚动安装地址 `https://github.com/yuumixcode/AesirInspector.git#AesirInspector-latest`）
 
 ## 包文档
 

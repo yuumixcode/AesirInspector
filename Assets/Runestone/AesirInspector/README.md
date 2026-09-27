@@ -30,9 +30,9 @@
 
 1. 打开 Unity Package Manager 窗口。
 2. 点击左上角的 `+` 按钮，选择 `Add package from git URL...`。
-3. 输入以下地址：
+3. 输入以下地址（常驻 `AesirInspector-latest` 分支，由 CI 随仓库 `main` 自动滚动更新，一次输入、永不失效）：
    ```
-   https://github.com/yuumixcode/AesirInspector.git?path=/Assets/Runestone/AesirInspector#v0.21.0
+   https://github.com/yuumixcode/AesirInspector.git#AesirInspector-latest
    ```
 
 ### 通过 manifest.json 安装
@@ -42,18 +42,18 @@
 ```json
 {
   "dependencies": {
-    "cn.runestone.aesir-inspector": "https://github.com/yuumixcode/AesirInspector.git?path=/Assets/Runestone/AesirInspector#v0.21.0"
+    "cn.runestone.aesir-inspector": "https://github.com/yuumixcode/AesirInspector.git#AesirInspector-latest"
   }
 }
 ```
 
-**锁定版本（推荐用于生产）**：在地址末尾追加标签即可固定版本，例如
+**锁定版本（推荐用于生产）**：改用发版 tag（tag 永久保留），例如
 
 ```
 https://github.com/yuumixcode/AesirInspector.git?path=/Assets/Runestone/AesirInspector#v0.21.0
 ```
 
-不锁定标签时，UPM 会跟随仓库默认分支的最新提交，环境无法复现。
+`AesirInspector-latest` 分支的根目录即包内容（CI 用 `git subtree split` 同步），无需 `?path=`；tag 指向仓库根，必须带 `?path=`。不锁定版本时内容持续跟随最新提交，环境无法复现。
 
 ### UPM 安装与 Assets 安装的差异
 
