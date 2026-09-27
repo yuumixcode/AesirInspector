@@ -1,7 +1,7 @@
 # Aesir Inspector
 
 [English](Documentation~/README_EN.md) | [![license](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE.md)
-[![Version](https://img.shields.io/badge/version-0.20.1-blue.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.21.0-blue.svg)](CHANGELOG.md)
 [![Install via Git URL](https://img.shields.io/badge/UPM-Git%20URL-blueviolet.svg)](#安装说明)
 
 > 📦 **本包在独立仓库 [AesirInspector](https://github.com/yuumixcode/AesirInspector) 中发布**（包目录 `Assets/Runestone/AesirInspector`），**不依赖**其他 Aesir 包，可单独安装。
@@ -32,7 +32,7 @@
 2. 点击左上角的 `+` 按钮，选择 `Add package from git URL...`。
 3. 输入以下地址：
    ```
-   https://github.com/yuumixcode/AesirInspector.git?path=/Assets/Runestone/AesirInspector#v0.20.1
+   https://github.com/yuumixcode/AesirInspector.git?path=/Assets/Runestone/AesirInspector#v0.21.0
    ```
 
 ### 通过 manifest.json 安装
@@ -42,7 +42,7 @@
 ```json
 {
   "dependencies": {
-    "cn.runestone.aesir-inspector": "https://github.com/yuumixcode/AesirInspector.git?path=/Assets/Runestone/AesirInspector#v0.20.1"
+    "cn.runestone.aesir-inspector": "https://github.com/yuumixcode/AesirInspector.git?path=/Assets/Runestone/AesirInspector#v0.21.0"
   }
 }
 ```
@@ -50,7 +50,7 @@
 **锁定版本（推荐用于生产）**：在地址末尾追加标签即可固定版本，例如
 
 ```
-https://github.com/yuumixcode/AesirInspector.git?path=/Assets/Runestone/AesirInspector#v0.20.1
+https://github.com/yuumixcode/AesirInspector.git?path=/Assets/Runestone/AesirInspector#v0.21.0
 ```
 
 不锁定标签时，UPM 会跟随仓库默认分支的最新提交，环境无法复现。
@@ -89,7 +89,6 @@ Aesir Inspector 会在编辑器加载时自动检测安装方式（UPM / Assets 
 | 示例 | 说明 |
 |------|------|
 | **Plugin Config Solutions** | ScriptableSingleton 在 Preferences 和 Project 中的使用示例，演示编辑器配置持久化的最佳实践 |
-| **RuntimeInitializeLoadType** | RuntimeInitializeOnLoadMethod 五个初始化时机的执行顺序与最佳实践示例 |
 
 ## 环境依赖
 
