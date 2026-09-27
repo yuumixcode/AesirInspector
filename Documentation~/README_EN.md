@@ -1,7 +1,7 @@
 # Aesir Inspector
 
 [中文](../README.md) | [![license](https://img.shields.io/badge/license-MIT-green.svg)](../LICENSE.md)
-[![Version](https://img.shields.io/badge/version-0.18.0-blue.svg)](../CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.19.0-blue.svg)](../CHANGELOG.md)
 [![Install via Git URL](https://img.shields.io/badge/UPM-Git%20URL-blueviolet.svg)](#installation)
 
 > 📦 **This package is published from its own repository, [AesirInspector](https://github.com/yuumixcode/AesirInspector)** (package folder `Assets/Runestone/AesirInspector`). It does **not** depend on any other Aesir package and can be installed on its own.
@@ -14,7 +14,7 @@
 
 `Aesir Inspector` is a Unity editor extension library designed to provide bilingual Inspector UI, safe editor tooling, and more. It builds on Odin Inspector for enhanced Inspector rendering and styling.
 
-> 📤 **The Script Doc Generator and Summary Tool have moved out of this package**: since 0.15.0 they live in the standalone in-repo tool [`Assets/ScriptDocGenerator`](../../../ScriptDocGenerator/README.md) and no longer belong to this package.
+> 📤 **The Script Doc Generator and Summary Tool are no longer part of this package**: since 0.15.0 they live in the [Aesir Modules](https://github.com/yuumixcode/AesirFramework) package under `Editor/ScriptDocGenerator/` (`Assets/Runestone/AesirModules/`).
 
 ## Who Is This For
 
