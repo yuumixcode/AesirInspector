@@ -30,10 +30,10 @@
 
 1. Open the Unity Package Manager window.
 2. Click the `+` button in the top-left corner and choose `Add package from git URL...`.
-3. Enter the following URL:
+3. Enter the following URL (the resident `AesirInspector-latest` branch, automatically kept up to date with `main` by CI — enter it once and it never breaks):
 
    ```
-   https://github.com/yuumixcode/AesirInspector.git?path=/Assets/Runestone/AesirInspector#v0.21.0
+   https://github.com/yuumixcode/AesirInspector.git#AesirInspector-latest
    ```
 
 ### Install via manifest.json
@@ -43,18 +43,18 @@ Add the following to your project's `Packages/manifest.json`:
 ```json
 {
   "dependencies": {
-    "cn.runestone.aesir-inspector": "https://github.com/yuumixcode/AesirInspector.git?path=/Assets/Runestone/AesirInspector#v0.21.0"
+    "cn.runestone.aesir-inspector": "https://github.com/yuumixcode/AesirInspector.git#AesirInspector-latest"
   }
 }
 ```
 
-**Locking the version (recommended for production)**: append a tag to the URL to pin the version, for example
+**Locking the version (recommended for production)**: use a release tag instead (tags are kept forever), for example
 
 ```
 https://github.com/yuumixcode/AesirInspector.git?path=/Assets/Runestone/AesirInspector#v0.21.0
 ```
 
-Without a tag, UPM follows the latest commit on the repository's default branch, so the environment is not reproducible.
+The root of the `AesirInspector-latest` branch is the package itself (synced by CI via `git subtree split`), so no `?path=` is needed; tags point at the repository root, so `?path=` is required. Without a version lock the installed content keeps tracking the latest commits, so the environment is not reproducible.
 
 ### UPM vs. Assets Installation
 
