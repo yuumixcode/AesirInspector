@@ -1,10 +1,10 @@
 # Aesir Inspector
 
 [English](Assets/Runestone/AesirInspector/Documentation~/README_EN.md) | [![license](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE.md)
-[![Version](https://img.shields.io/badge/version-0.19.0-blue.svg)](Assets/Runestone/AesirInspector/CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.20.0-blue.svg)](Assets/Runestone/AesirInspector/CHANGELOG.md)
 [![Install via Git URL](https://img.shields.io/badge/UPM-Git%20URL-blueviolet.svg)](#通过-git-url-安装)
 
-本仓库是一个 **Unity 工程项目仓库**，托管编辑器扩展包 **Aesir Inspector** —— 提供双语 Inspector 特性、Attribute Overview Ultra 特性总览与安全编辑器工具集，基于 Odin Inspector（硬依赖）实现增强能力。
+本仓库是一个 **Unity 工程项目仓库**，托管编辑器扩展包 **Aesir Inspector** —— 提供双语 Inspector 特性、Attribute Overview Pro 特性总览与安全编辑器工具集，基于 Odin Inspector（硬依赖）实现增强能力。
 
 原先仓库内另有的独立工具 **Script Doc Generator**（脚本文档生成器与 XML Summary 同步工具）已并入 **Aesir Modules** 包的 `Editor/ScriptDocGenerator/`（`Assets/Runestone/AesirModules/`），本仓库不再包含其源码。
 
@@ -26,8 +26,9 @@ AesirInspector/                        # 仓库根目录 = Unity 工程根目录
 │   └── Runestone/
 │       └── AesirInspector/            # Aesir Inspector 自定义包
 │           ├── Editor/                # 编辑器程序集（Runestone.AesirInspector.Editor）
+│           ├── Bootstrap/             # 启动程序集（不依赖 Odin，未安装时给出依赖提示）
 │           ├── Runtime/               # 运行时程序集（Runestone.AesirInspector）
-│           ├── Tests/                 # 单元测试（Editor / Runtime）
+│           ├── Tests/                 # 单元测试（Runtime，受 UNITY_INCLUDE_TESTS 约束）
 │           ├── Samples~/              # 示例（UPM Samples 标签页按需导入）
 │           ├── Documentation~/        # 包文档（英文 README / CHANGELOG、开发者指南等）
 │           └── package.json           # UPM 包描述（cn.runestone.aesir-inspector）
@@ -46,7 +47,7 @@ AesirInspector/                        # 仓库根目录 = Unity 工程根目录
 3. 输入以下地址：
 
    ```
-   https://github.com/yuumixcode/AesirInspector.git?path=Assets/Runestone/AesirInspector
+   https://github.com/yuumixcode/AesirInspector.git?path=Assets/Runestone/AesirInspector#v0.20.0
    ```
 
 或在项目的 `Packages/manifest.json` 中添加：
@@ -54,7 +55,7 @@ AesirInspector/                        # 仓库根目录 = Unity 工程根目录
 ```json
 {
   "dependencies": {
-    "cn.runestone.aesir-inspector": "https://github.com/yuumixcode/AesirInspector.git?path=Assets/Runestone/AesirInspector"
+    "cn.runestone.aesir-inspector": "https://github.com/yuumixcode/AesirInspector.git?path=Assets/Runestone/AesirInspector#v0.20.0"
   }
 }
 ```
@@ -82,7 +83,7 @@ AesirInspector/                        # 仓库根目录 = Unity 工程根目录
 
 - 首次运行自动安装 .NET 8 SDK 到 `~/.dotnet`（用户目录，免 sudo），并缓存导出工具（固定 commit）
 - 版本号取自包内 `package.json`
-- 发布 Release：推送 `v*` 标签（如 `git tag v0.19.0 && git push origin v0.19.0`），GitHub Actions 自动导出并创建 GitHub Release（Release Notes 取自包内 CHANGELOG）
+- 发布 Release：推送 `v*` 标签（如 `git tag v0.20.0 && git push origin v0.20.0`），GitHub Actions 自动导出并创建 GitHub Release（Release Notes 取自包内 CHANGELOG）
 
 ## 包文档
 

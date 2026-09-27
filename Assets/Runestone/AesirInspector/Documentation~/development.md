@@ -96,9 +96,9 @@ sequenceDiagram
 以下模块为展示/示例用途，不适用通用注释规范，使用 `//` 单行/多行注释进行特殊性补充即可：
 
 - `Runtime/CodeStyle/` — 代码风格示例文件
-- `Editor/AttributeOverviewUltra/Data/` — 属性数据类
-- `Editor/AttributeOverviewUltra/AttributePanels/` — Panel SO 定义
-- `Editor/AttributeOverviewUltra/UsageExamples/` — 示例 SO
+- `Editor/AttributeOverviewPro/Data/` — 属性数据类
+- `Editor/AttributeOverviewPro/AttributePanels/` — Panel SO 定义
+- `Editor/AttributeOverviewPro/UsageExamples/` — 示例 SO
 
 ### Methods
 
@@ -174,11 +174,12 @@ AesirInspectorLanguageSettingsSO.OnLanguageChanged -= Internal_OnLanguageChanged
 |-----------|-----------|-----------|
 | Core | `Core/` | `AesirInspectorInstallationChecker`, `AesirInspectorMenuItems`, `EnsureAesirInspectorDefine` |
 | MiniTools | `MiniTools/` | `QuickCreateSOMenuItem`, MenuItem Viewer, Syntax Highlighter, `WrappedTextAttribute`（按可用宽度换行的只读文本特性，`MenuItemViewer/` 内定义） |
-| AttributeOverviewUltra | `AttributeOverviewUltra/` | Data-Panel-Example 三件套架构 + 内存面板（`UltraPanelDatabase`）与状态存储（`UltraStateStoreSO`） |
+| AttributeOverviewPro | `AttributeOverviewPro/` | Data-Panel-Example 三件套架构 + 内存面板（`ProPanelDatabase`）与状态存储（`ProStateStoreSO`） |
 | AttributeProcessors | `AttributeProcessors/` | OdinAttributeProcessor 实现 |
 | Drawers | `Drawers/` | 双语 Drawer |
 | ExampleAssets | `ExampleAssets/` | 需指向真实资产的案例占位资产（`AesirExampleAssetSO`、ScriptableObject、材质） |
-| Windows | `Windows/` | Getting Started, Preferences |
+| Bootstrap | `Bootstrap/` | 启动程序集：`Check Odin Dependency` 菜单（未安装 Odin 时仍会编译，不携带 `ODIN_INSPECTOR` 约束） |
+| Windows | `Windows/` | Preferences |
 
 ---
 
@@ -267,7 +268,7 @@ Runtime 工具类使用 `XxxSafeEditorUtility` 模式：`void` 方法加 `[Condi
 1. **Attribute**: `Runtime/Attributes/Bilingual{Name}Attribute.cs` — 命名 `Bilingual{OdinOriginalName}Attribute`，必须 `[DontApplyToListElements]`，公共类必须 `[Summary]`，禁止 XML 注释
 2. **Drawer**: `Editor/Drawers/Bilingual{Name}AttributeDrawer.cs` — 继承 `OdinAttributeDrawer<TAttribute>`，读取 `AesirInspectorLanguageSettingsSO.CurrentLanguage`，无需 XML / `[Summary]`
 3. **Processor** (可选): 与被处理类同文件，`internal sealed`，无需 XML / `[Summary]`
-4. **AttributeOverviewUltra** (可选): 创建 Data-Panel-Example 三件套
+4. **AttributeOverviewPro** (可选): 创建 Data-Panel-Example 三件套
 
 ### Add Inspector Control
 

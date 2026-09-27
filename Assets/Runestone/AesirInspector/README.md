@@ -1,7 +1,7 @@
 # Aesir Inspector
 
 [English](Documentation~/README_EN.md) | [![license](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE.md)
-[![Version](https://img.shields.io/badge/version-0.19.0-blue.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.20.0-blue.svg)](CHANGELOG.md)
 [![Install via Git URL](https://img.shields.io/badge/UPM-Git%20URL-blueviolet.svg)](#安装说明)
 
 > 📦 **本包在独立仓库 [AesirInspector](https://github.com/yuumixcode/AesirInspector) 中发布**（包目录 `Assets/Runestone/AesirInspector`），**不依赖**其他 Aesir 包，可单独安装。
@@ -32,7 +32,7 @@
 2. 点击左上角的 `+` 按钮，选择 `Add package from git URL...`。
 3. 输入以下地址：
    ```
-   https://github.com/yuumixcode/AesirInspector.git?path=/Assets/Runestone/AesirInspector
+   https://github.com/yuumixcode/AesirInspector.git?path=/Assets/Runestone/AesirInspector#v0.20.0
    ```
 
 ### 通过 manifest.json 安装
@@ -42,10 +42,37 @@
 ```json
 {
   "dependencies": {
-    "cn.runestone.aesir-inspector": "https://github.com/yuumixcode/AesirInspector.git?path=/Assets/Runestone/AesirInspector"
+    "cn.runestone.aesir-inspector": "https://github.com/yuumixcode/AesirInspector.git?path=/Assets/Runestone/AesirInspector#v0.20.0"
   }
 }
 ```
+
+**锁定版本（推荐用于生产）**：在地址末尾追加标签即可固定版本，例如
+
+```
+https://github.com/yuumixcode/AesirInspector.git?path=/Assets/Runestone/AesirInspector#v0.20.0
+```
+
+不锁定标签时，UPM 会跟随仓库默认分支的最新提交，环境无法复现。
+
+### UPM 安装与 Assets 安装的差异
+
+同一个包通过 UPM 安装时位于只读的 `Packages/cn.runestone.aesir-inspector/`，与直接放在 `Assets/Runestone/AesirInspector/` 相比有以下差异：
+
+| 差异点 | Assets 安装 | UPM 安装 |
+|-------|------------|----------|
+| 包内示例资产（`Editor/ExampleAssets/`） | 可读写，可直接修改 | 只读，需先复制到 `Assets/` 再修改 |
+| 「Ping 脚本文件」按钮 | 在 Project 窗口中定位示例脚本并 Ping | 直接在代码编辑器中打开示例脚本源码（不依赖 Project 窗口是否显示 Packages；找不到 MonoScript 时退化为在文件管理器中揭示文件） |
+| AssetSelector 示例的包内目录 | 与包内真实目录一致 | 由固定 GUID 解析包位置后注入，仍指向包内真实目录 |
+| 编辑器数据资产 | 首次使用时在 `Assets/Editor Default Resources/AesirInspectorData/AttributeOverviewPro/` 下自动生成 | 同上（数据始终写入工程 `Assets/`，不会写入只读的包目录） |
+
+### Odin 依赖检查
+
+本包强依赖 Odin Inspector：未安装 Odin 时包内程序集会被整体跳过编译（不报错、也不可用），因此提供一个显式入口。
+
+- 菜单 **`Tools → Aesir → Inspector → Check Odin Dependency`**，由**不携带** `ODIN_INSPECTOR` 约束的启动程序集 `Runestone.AesirInspector.Bootstrap` 提供，因此未安装 Odin 时它依然会被编译；
+- 点击后弹窗告知「已检测到 Odin Inspector」或「已安装 Aesir Inspector 但未检测到 Odin Inspector，因此不会参与编译」，并显示本包当前的安装方式（UPM 或 Assets）；
+- 该检测与安装方式无关，UPM 与 Assets 两种模式都适用。
 
 ### 安装方式检测
 
@@ -71,7 +98,7 @@ Aesir Inspector 会在编辑器加载时自动检测安装方式（UPM / Assets 
 
 ## 核心功能
 
-### 1. 特性总览 (Attribute Overview Ultra)
+### 1. 特性总览 (Attribute Overview Pro)
 
 以可搜索的树形菜单展示所有已注册的 Odin Inspector 与 Aesir Inspector 特性面板，每个特性提供实时预览与示例代码。
 
@@ -79,8 +106,8 @@ Aesir Inspector 会在编辑器加载时自动检测安装方式（UPM / Assets 
 - **搜索定位**：支持模糊搜索，快速找到目标特性。
 - **实时预览**：选中特性即可在右侧面板查看效果与参数配置。
 - **代码预览**：选中特性即可查看对应的示例源代码，快速了解用法。
-- **零资产污染**：面板与示例均为内存实例，用户调试状态经状态存储（`UltraStateStore`）持久化，Project 中不生成任何子资产。
-- 通过 `Tools → Aesir → Inspector → Attribute Overview Ultra` 菜单打开。
+- **零资产污染**：面板与示例均为内存实例，用户调试状态经状态存储（`ProStateStore`）持久化，Project 中不生成任何子资产。
+- 通过 `Tools → Aesir → Inspector → Attribute Overview Pro` 菜单打开。
 
 ### 2. 迷你工具集 (Mini Tools)
 
@@ -116,7 +143,7 @@ Aesir Inspector 会在编辑器加载时自动检测安装方式（UPM / Assets 
 Odin Inspector 为硬依赖，本包直接使用 Sirenix（Odin）API 提供全部增强能力：
 
 - 双语特性、Inspector Control、Attribute Drawer 与 Processor 直接基于 Odin Attribute/Drawer 体系实现。
-- 特性总览（Attribute Overview Ultra）基于 Odin MenuEditorWindow / EditorWindow 构建。
+- 特性总览（Attribute Overview Pro）基于 Odin MenuEditorWindow / EditorWindow 构建。
 - 未安装 Odin Inspector 时程序集整体跳过编译（不报错），功能不可用，请先通过 [odininspector.com](https://odininspector.com/) 安装 Odin 3.3.x+。
 
 ### 5. 安全编辑器工具 (Safe Editor Utilities)
