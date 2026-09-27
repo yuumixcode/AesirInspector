@@ -17,21 +17,6 @@ namespace Runestone.AesirInspector.Editor
         #region Tools Menu
 
         /// <summary>
-        /// 打开 Getting Started 窗口的菜单路径。
-        /// </summary>
-        public const string GettingStarted = ToolsAesirRoot + "/Getting Started";
-
-        /// <summary>
-        /// Getting Started 菜单项优先级。
-        /// </summary>
-        public const int GettingStartedOrder = -980;
-
-        /// <summary>
-        /// Getting Started 窗口标题。
-        /// </summary>
-        public const string GettingStartedWindowName = "Getting Started";
-
-        /// <summary>
         /// 打开 Preferences 窗口的菜单路径。
         /// </summary>
         public const string Preferences = ToolsAesirInspectorRoot + "/Preferences";
@@ -47,19 +32,19 @@ namespace Runestone.AesirInspector.Editor
         public const string PreferencesWindowName = "Preferences";
 
         /// <summary>
-        /// 打开 Attribute Overview Ultra 窗口的菜单路径。
+        /// 打开 Attribute Overview Pro 窗口的菜单路径。
         /// </summary>
-        public const string AttributeOverviewUltra = ToolsAesirInspectorRoot + "/Attribute Overview Ultra";
+        public const string AttributeOverviewPro = ToolsAesirInspectorRoot + "/Attribute Overview Pro";
 
         /// <summary>
-        /// Attribute Overview Ultra 菜单项优先级。
+        /// Attribute Overview Pro 菜单项优先级。
         /// </summary>
-        public const int AttributeOverviewUltraOrder = -900;
+        public const int AttributeOverviewProOrder = -900;
 
         /// <summary>
-        /// Attribute Overview Ultra 窗口标题。
+        /// Attribute Overview Pro 窗口标题。
         /// </summary>
-        public const string AttributeOverviewUltraWindowName = "Attribute Overview Ultra";
+        public const string AttributeOverviewProWindowName = "Attribute Overview Pro";
 
         /// <summary>
         /// 打开 Mini Tools 窗口的菜单路径。

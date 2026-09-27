@@ -1,3 +1,4 @@
+using System.IO;
 using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
 using Sirenix.Utilities;
@@ -155,7 +156,7 @@ namespace Runestone.AesirInspector.Editor
                     GUIHelper.TempContent(" " + _pingMonoScriptButtonLabel, pingTexture),
                     SirenixGUIStyles.ToolbarButton))
             {
-                EditorGUIUtility.PingObject(GetCurrentExampleMonoScript());
+                HandlePingMonoScript();
             }
 
             var rightButtonRect = headerButtonRect.Split(1, 2);
@@ -178,7 +179,92 @@ namespace Runestone.AesirInspector.Editor
             }
         }
 
-        Object GetCurrentExampleMonoScript()
+        /// <summary>
+        /// 「Ping 脚本文件」按钮：
+        /// Assets 安装时在 Project 窗口中定位脚本；UPM 安装时脚本位于只读的 Packages 目录，
+        /// 且用户可能隐藏了 Project 窗口的 Packages 区域，因此改为直接打开源码（定位磁盘文件兜底）。
+        /// </summary>
+        void HandlePingMonoScript()
+        {
+            var markAttribute = GetCurrentExampleMarkAttribute();
+            if (markAttribute == null)
+            {
+                return;
+            }
+
+            if (AesirInspectorInstallationChecker.IsUpm)
+            {
+                OpenOrRevealExampleSource(markAttribute.FilePath);
+                return;
+            }
+
+            var monoScriptAbsolutepath = markAttribute.FilePath;
+            var assetRelativePath =
+                "Assets/" + PathUtilities.MakeRelative(Application.dataPath, monoScriptAbsolutepath);
+            var monoScript = AssetDatabase.LoadAssetAtPath<Object>(assetRelativePath);
+            if (monoScript)
+            {
+                EditorGUIUtility.PingObject(monoScript);
+            }
+        }
+
+        /// <summary>
+        /// UPM 安装下的处理：优先在代码编辑器中打开示例脚本源码（不依赖 Project 窗口是否显示 Packages），
+        /// 找不到 MonoScript 时退化为在文件管理器中揭示磁盘文件。
+        /// </summary>
+        void OpenOrRevealExampleSource(string monoScriptAbsolutePath)
+        {
+            var monoScript = FindMonoScriptByAbsolutePath(monoScriptAbsolutePath);
+            if (monoScript)
+            {
+                AssetDatabase.OpenAsset(monoScript);
+                Debug.Log(AesirInspectorLanguageSettingsSO.CurrentIsEnglish
+                    ? "[Aesir Inspector] UPM installation: the example script source was opened in the code " +
+                      "editor (the package lives in the read-only Packages folder, so it cannot be pinged from " +
+                      "the Project window)."
+                    : "[Aesir Inspector] 当前为 UPM 安装：已在代码编辑器中打开示例脚本源码" +
+                      "（包位于只读的 Packages 目录，无法在 Project 窗口中 Ping）。");
+                return;
+            }
+
+            EditorUtility.RevealInFinder(monoScriptAbsolutePath);
+            Debug.Log(AesirInspectorLanguageSettingsSO.CurrentIsEnglish
+                ? "[Aesir Inspector] UPM installation: the example script was revealed in the file manager: " +
+                  monoScriptAbsolutePath
+                : "[Aesir Inspector] 当前为 UPM 安装：已在文件管理器中定位示例脚本：" + monoScriptAbsolutePath);
+        }
+
+        /// <summary>
+        /// 按文件名反查 MonoScript：UPM 安装时 [AesirExample] 捕获的是磁盘绝对路径，
+        /// 无法直接作为 AssetDatabase 路径使用，这里改用文件名（示例脚本名唯一）反查。
+        /// </summary>
+        static Object FindMonoScriptByAbsolutePath(string monoScriptAbsolutePath)
+        {
+            var fileName = Path.GetFileNameWithoutExtension(monoScriptAbsolutePath);
+            if (string.IsNullOrEmpty(fileName))
+            {
+                return null;
+            }
+
+            foreach (var guid in AssetDatabase.FindAssets(fileName + " t:MonoScript"))
+            {
+                var assetPath = AssetDatabase.GUIDToAssetPath(guid);
+                if (Path.GetFileNameWithoutExtension(assetPath) != fileName)
+                {
+                    continue;
+                }
+
+                var monoScript = AssetDatabase.LoadAssetAtPath<Object>(assetPath);
+                if (monoScript)
+                {
+                    return monoScript;
+                }
+            }
+
+            return null;
+        }
+
+        AesirExampleAttribute GetCurrentExampleMarkAttribute()
         {
             var currentSelected = _panel.CurrentSelectedExample;
             if (!currentSelected)
@@ -186,17 +272,7 @@ namespace Runestone.AesirInspector.Editor
                 return null;
             }
 
-            var markAttribute =
-                AttributeOverviewEditorUtility.GetAttributeInExampleType(currentSelected.GetType());
-            if (markAttribute == null)
-            {
-                return null;
-            }
-
-            var monoScriptAbsolutePath = markAttribute.FilePath;
-            var assetRelativePath =
-                "Assets/" + PathUtilities.MakeRelative(Application.dataPath, monoScriptAbsolutePath);
-            return AssetDatabase.LoadAssetAtPath<Object>(assetRelativePath);
+            return AttributeOverviewEditorUtility.GetAttributeInExampleType(currentSelected.GetType());
         }
     }
 }

@@ -13,7 +13,7 @@ namespace Runestone.AesirInspector.Editor
     /// <summary>
     /// 状态存储条目类型。
     /// </summary>
-    internal enum UltraStateStoreEntryKind
+    internal enum ProStateStoreEntryKind
     {
         /// <summary>面板当前选中的示例类型名（轻量 string 记录，无序列化数据）。</summary>
         PanelSelection = 0,
@@ -26,7 +26,7 @@ namespace Runestone.AesirInspector.Editor
     /// 状态存储条目。
     /// </summary>
     [Serializable]
-    internal class UltraStateStoreEntry
+    internal class ProStateStoreEntry
     {
         public string key;
 
@@ -43,49 +43,97 @@ namespace Runestone.AesirInspector.Editor
     }
 
     /// <summary>
-    /// Attribute Overview Ultra 的状态存储：持久化 Attribute Overview Ultra 的用户状态与数据。
-    /// 面板与示例在 Ultra 中均为 CreateInstance 的内存实例，用户数据以快照形式持久化于此：
+    /// Attribute Overview Pro 的状态存储：持久化 Attribute Overview Pro 的用户状态与数据。
+    /// 面板与示例在 Pro 中均为 CreateInstance 的内存实例，用户数据以快照形式持久化于此：
     /// 面板选中记录（UI 状态，轻量 string）+ 示例数据快照（Odin 序列化数据，SHA256 校验和 + 类型名双校验）。
     /// 单文件资产，条目类别编码在 key 前缀（PanelSelection/、ExampleState/）中。
     /// </summary>
-    public class UltraStateStoreSO : ScriptableObject
+    public class ProStateStoreSO : ScriptableObject
     {
-        static UltraStateStoreSO _cachedStore;
+        /// <summary>0.19.0 及以前的状态存储资产 GUID（目录/文件改名时保持不变）。</summary>
+        const string LegacyStoreAssetGuid = "82d6eb60a28d8484b98b9ca86e284bad";
+
+        static ProStateStoreSO _cachedStore;
 
         [SerializeField]
-        List<UltraStateStoreEntry> entries = new List<UltraStateStoreEntry>();
+        List<ProStateStoreEntry> entries = new List<ProStateStoreEntry>();
 
         public int EntryCount => entries.Count;
 
         /// <summary>
         /// 获取或创建全局状态存储实例（静态缓存，Domain Reload 后自动重载）。
-        /// 示例单例路由（GetMemoryExample）与 Ultra 窗口共用同一状态存储。
+        /// 示例单例路由（GetMemoryExample）与 Attribute Overview Pro 窗口共用同一状态存储。
         /// </summary>
-        public static UltraStateStoreSO LoadOrCreate()
+        public static ProStateStoreSO LoadOrCreate()
         {
             if (_cachedStore)
             {
                 return _cachedStore;
             }
 
-            _cachedStore = AssetDatabase.LoadAssetAtPath<UltraStateStoreSO>(
-                AesirInspectorPaths.AttributeOverviewUltraStateStorePath);
+            _cachedStore = AssetDatabase.LoadAssetAtPath<ProStateStoreSO>(
+                AesirInspectorPaths.AttributeOverviewProStateStorePath);
             if (_cachedStore != null)
             {
                 return _cachedStore;
             }
 
-            var folder = Path.GetDirectoryName(AesirInspectorPaths.AttributeOverviewUltraStateStorePath);
-            if (!Directory.Exists(folder))
+            // 升级兜底：旧版本的状态存储资产（GUID 固定）可能仍停留在历史路径上，
+            // 若此时直接创建新资产，用户的面板选中记录与示例快照会被空资产取代。
+            TryMigrateLegacyStoreAsset();
+            _cachedStore = AssetDatabase.LoadAssetAtPath<ProStateStoreSO>(
+                AesirInspectorPaths.AttributeOverviewProStateStorePath);
+            if (_cachedStore != null)
             {
-                Directory.CreateDirectory(folder);
+                return _cachedStore;
             }
 
-            _cachedStore = CreateInstance<UltraStateStoreSO>();
-            AssetDatabase.CreateAsset(_cachedStore, AesirInspectorPaths.AttributeOverviewUltraStateStorePath);
+            var folder = Path.GetDirectoryName(AesirInspectorPaths.AttributeOverviewProStateStorePath);
+            // 父目录必须先存在于 AssetDatabase 中，CreateAsset 才能成功；逐级 CreateFolder 也避免了全项目 Refresh。
+            PathSafeEditorUtility.EnsureAssetFolderExists(folder);
+
+            _cachedStore = CreateInstance<ProStateStoreSO>();
+            AssetDatabase.CreateAsset(_cachedStore, AesirInspectorPaths.AttributeOverviewProStateStorePath);
             AssetDatabase.SaveAssets();
-            AssetDatabase.Refresh();
             return _cachedStore;
+        }
+
+        /// <summary>
+        /// 升级兜底迁移：按固定 GUID 定位状态存储资产，若它仍停在历史路径上则移动到当前路径。
+        /// 与 <c>AesirInspectorDataFolderMigration</c> 的区别是执行时机——这里发生在真正使用状态存储之前，
+        /// 此时 AssetDatabase 的路径映射一定是最新的（迁移器在 [InitializeOnLoad] 中执行，路径映射可能滞后）。
+        /// </summary>
+        static void TryMigrateLegacyStoreAsset()
+        {
+            var targetPath = AesirInspectorPaths.AttributeOverviewProStateStorePath;
+            var currentPath = AssetDatabase.GUIDToAssetPath(LegacyStoreAssetGuid);
+            if (string.IsNullOrEmpty(currentPath) || string.Equals(currentPath, targetPath, StringComparison.Ordinal))
+            {
+                return;
+            }
+
+            if (AssetDatabase.LoadAssetAtPath<ProStateStoreSO>(targetPath) != null)
+            {
+                // 目标路径已有可用的状态存储，不去覆盖它。
+                return;
+            }
+
+            // 目标位置可能是失效残留（资产文件已不在但 .meta 仍在），先清理再迁移。
+            if (!string.IsNullOrEmpty(AssetDatabase.AssetPathToGUID(targetPath)))
+            {
+                AssetDatabase.DeleteAsset(targetPath);
+                AssetDatabase.Refresh();
+            }
+
+            var error = AssetDatabase.MoveAsset(currentPath, targetPath);
+            if (!string.IsNullOrEmpty(error))
+            {
+                Debug.LogWarning(
+                    $"[Aesir Inspector] 状态存储迁移失败（{currentPath} → {targetPath}）：{error}。用户状态不会被删除，但不会被加载。");
+                return;
+            }
+
+            Debug.Log($"[Aesir Inspector] 状态存储已迁移：{currentPath} → {targetPath}");
         }
 
         /// <summary>
@@ -109,7 +157,7 @@ namespace Runestone.AesirInspector.Editor
         public void SavePanelSelection(string panelKey, string exampleTypeName)
         {
             var entry = FindOrCreateEntry(PanelSelectionPrefix + panelKey);
-            entry.kind = (int)UltraStateStoreEntryKind.PanelSelection;
+            entry.kind = (int)ProStateStoreEntryKind.PanelSelection;
             entry.typeName = exampleTypeName;
             entry.selectionValue = exampleTypeName;
             entry.state = default;
@@ -124,7 +172,7 @@ namespace Runestone.AesirInspector.Editor
         {
             exampleTypeName = null;
             var entry = FindEntry(PanelSelectionPrefix + panelKey);
-            if (entry == null || entry.kind != (int)UltraStateStoreEntryKind.PanelSelection)
+            if (entry == null || entry.kind != (int)ProStateStoreEntryKind.PanelSelection)
             {
                 return false;
             }
@@ -150,7 +198,7 @@ namespace Runestone.AesirInspector.Editor
             }
 
             var entry = FindOrCreateEntry(ExampleStatePrefix + exampleKey);
-            entry.kind = (int)UltraStateStoreEntryKind.ExampleState;
+            entry.kind = (int)ProStateStoreEntryKind.ExampleState;
             entry.typeName = instance.GetType().FullName;
             entry.selectionValue = null;
             entry.state = new SerializationData();
@@ -166,7 +214,7 @@ namespace Runestone.AesirInspector.Editor
         public bool TryRestoreExampleState(string exampleKey, Object instance)
         {
             var entry = FindEntry(ExampleStatePrefix + exampleKey);
-            if (entry == null || instance == null || entry.kind != (int)UltraStateStoreEntryKind.ExampleState)
+            if (entry == null || instance == null || entry.kind != (int)ProStateStoreEntryKind.ExampleState)
             {
                 return false;
             }
@@ -189,7 +237,7 @@ namespace Runestone.AesirInspector.Editor
             }
             catch (Exception e)
             {
-                Debug.LogWarning($"[AttributeOverviewUltra] 恢复 '{exampleKey}' 失败，回落默认值: {e.Message}");
+                Debug.LogWarning($"[AttributeOverviewPro] 恢复 '{exampleKey}' 失败，回落默认值: {e.Message}");
                 return false;
             }
         }
@@ -222,7 +270,7 @@ namespace Runestone.AesirInspector.Editor
 
         #region --- Internal ---
 
-        UltraStateStoreEntry FindEntry(string fullKey)
+        ProStateStoreEntry FindEntry(string fullKey)
         {
             foreach (var e in entries)
             {
@@ -235,12 +283,12 @@ namespace Runestone.AesirInspector.Editor
             return null;
         }
 
-        UltraStateStoreEntry FindOrCreateEntry(string fullKey)
+        ProStateStoreEntry FindOrCreateEntry(string fullKey)
         {
             var entry = FindEntry(fullKey);
             if (entry == null)
             {
-                entry = new UltraStateStoreEntry { key = fullKey };
+                entry = new ProStateStoreEntry { key = fullKey };
                 entries.Add(entry);
             }
 

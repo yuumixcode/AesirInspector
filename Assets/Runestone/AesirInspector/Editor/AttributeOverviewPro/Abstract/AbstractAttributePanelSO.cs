@@ -10,7 +10,7 @@ namespace Runestone.AesirInspector.Editor
 {
     /// <summary>
     /// 特性面板 SO 泛型基类。
-    /// 面板由 Ultra 窗口的 UltraPanelDatabase 以 CreateInstance 内存实例化，不再是资产单例。
+    /// 面板由 Pro 窗口的 ProPanelDatabase 以 CreateInstance 内存实例化，不再是资产单例。
     /// </summary>
     public abstract class AttributeOverviewPanelSO<T> : SerializedScriptableObject, IAesirInspectorReset
         where T : AttributeOverviewPanelSO<T>
@@ -59,9 +59,9 @@ namespace Runestone.AesirInspector.Editor
         }
 
         /// <summary>
-        /// Ultra 使用的示例预览项访问器。
+        /// Pro 使用的示例预览项访问器。
         /// </summary>
-        internal AttributeExamplePreviewItem[] ExamplePreviewItemsForUltra { get; private set; }
+        internal AttributeExamplePreviewItem[] ExamplePreviewItemsForPro { get; private set; }
 
         /// <summary>
         /// 顶部说明控件引用。
@@ -74,13 +74,13 @@ namespace Runestone.AesirInspector.Editor
         }
 
         /// <summary>
-        /// 选中示例变化时触发。Ultra 窗口订阅此事件在切换示例时同步快照，防止未关窗异常丢状态。
+        /// 选中示例变化时触发。Pro 窗口订阅此事件在切换示例时同步快照，防止未关窗异常丢状态。
         /// </summary>
         internal event Action<ScriptableObject> ExampleSelectionChanged;
 
         /// <summary>
         /// 释放语言变更订阅。资产面板由 OnDestroy 触发；
-        /// Ultra 内存面板由数据库 ReleaseAll 时显式调用，防止静态事件持有已卸载实例。
+        /// Pro 内存面板由数据库 ReleaseAll 时显式调用，防止静态事件持有已卸载实例。
         /// </summary>
         internal void ReleaseLanguageSubscription()
         {
@@ -114,9 +114,9 @@ namespace Runestone.AesirInspector.Editor
                 }
             }
 
-            if (ExamplePreviewItemsForUltra is { Length: > 0 })
+            if (ExamplePreviewItemsForPro is { Length: > 0 })
             {
-                foreach (var item in ExamplePreviewItemsForUltra)
+                foreach (var item in ExamplePreviewItemsForPro)
                 {
                     item.Reset();
                 }
@@ -173,8 +173,8 @@ namespace Runestone.AesirInspector.Editor
             _usageTips = _data.UsageTips;
             _attributeParameters = _data.AttributeParameters;
             _resolvedStringParameters = _data.ResolvedStringParameters;
-            ExamplePreviewItemsForUltra = _data.ExamplePreviewItems;
-            if (ExamplePreviewItemsForUltra is { Length: > 0 })
+            ExamplePreviewItemsForPro = _data.ExamplePreviewItems;
+            if (ExamplePreviewItemsForPro is { Length: > 0 })
             {
                 currentSelectedExample = _data.GetInitialExample();
                 UpdateExampleCode();
@@ -256,7 +256,7 @@ namespace Runestone.AesirInspector.Editor
         #region Usage Example
 
         bool UsageExampleItemsIsEmpty =>
-            ExamplePreviewItemsForUltra == null || ExamplePreviewItemsForUltra.Length == 0;
+            ExamplePreviewItemsForPro == null || ExamplePreviewItemsForPro.Length == 0;
 
         [SerializeField]
         [HideIf(nameof(UsageExampleItemsIsEmpty))]

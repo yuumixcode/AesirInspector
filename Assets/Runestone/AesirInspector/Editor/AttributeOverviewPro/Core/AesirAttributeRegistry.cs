@@ -9,7 +9,7 @@ using UnityEngine;
 namespace Runestone.AesirInspector.Editor
 {
     /// <summary>
-    /// Ultra 菜单的一个条目：面板实例 + 所属分类 + 显示名。
+    /// Pro 菜单的一个条目：面板实例 + 所属分类 + 显示名。
     /// 同一个面板可因官方多分类注册而出现多个条目（如 ButtonGroup 同时在 Buttons 与 Groups）。
     /// </summary>
     internal readonly struct AesirAttributeMenuEntry
@@ -31,7 +31,7 @@ namespace Runestone.AesirInspector.Editor
     /// <summary>
     /// Aesir 面板 ↔ Odin 官方特性注册表的映射与目录结构数据源。
     /// 分类归属、显示名、排序规则全部取自 Odin 官方注册表（AttributeExampleUtilities）与
-    /// 官方 AttributesExampleWindow 的实现，保证 Ultra 左侧目录结构与官方逐字一致，且随 Odin 升级零维护。
+    /// 官方 AttributesExampleWindow 的实现，保证 Pro 左侧目录结构与官方逐字一致，且随 Odin 升级零维护。
     /// </summary>
     internal static class AesirAttributeRegistry
     {

@@ -6,9 +6,10 @@ namespace Runestone.AesirInspector
     public static class AesirInspectorPaths
     {
         /// <summary>
-        /// Aesir Inspector 的编辑器阶段资源的文件夹路径
+        /// Aesir Inspector 的编辑器阶段资源的文件夹路径。
+        /// 位于 Unity 特殊文件夹 Editor Default Resources 下：其中的资产只在编辑器阶段可用，不会包含在构建中。
         /// </summary>
-        public const string EditorDefaultResourcesPath = "Assets/Editor Default Resources/Aesir Inspector";
+        public const string EditorDefaultResourcesPath = "Assets/Editor Default Resources/AesirInspectorData";
 
         /// <summary>
         /// Preferences 配置资产路径
@@ -16,16 +17,16 @@ namespace Runestone.AesirInspector
         public const string PreferencesAssetsFolderPath = EditorDefaultResourcesPath + "/Preferences";
 
         /// <summary>
-        /// Attribute Overview 数据资产存放文件夹路径（仅 Ultra 状态存储，无 Pro 资产）。
+        /// Attribute Overview 数据资产存放文件夹路径（仅 Pro 状态存储，无 Pro 资产）。
         /// </summary>
-        public const string AttributeOverviewDataPath = EditorDefaultResourcesPath + "/Attribute Overview";
+        public const string AttributeOverviewDataPath = EditorDefaultResourcesPath + "/AttributeOverviewPro";
 
         /// <summary>
-        /// Attribute Overview Ultra 状态存储资产路径。
+        /// Attribute Overview Pro 状态存储资产路径。
         /// 存储面板选中记录与示例数据快照。
         /// </summary>
-        public const string AttributeOverviewUltraStateStorePath =
-            AttributeOverviewDataPath + "/UltraStateStore.asset";
+        public const string AttributeOverviewProStateStorePath =
+            AttributeOverviewDataPath + "/ProStateStore.asset";
 
         /// <summary>
         /// MiniTools 资源的存放路径
