@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.20.1] - 2026-09-27
+
+### Changed
+
+- **Namespace-independent editor config keys**: `AesirInspectorSettings<T>`, `MenuItemViewerSO` and `OdinSyntaxHighlighterPanelSO` used the type's full name (including its namespace) as their `EditorBuildSettings` config key, so any namespace change (e.g. `RunLab` → `Runestone`) invalidated the key and made every resolution call `AddConfigObject` again, leaving `ProjectSettings/EditorBuildSettings.asset` permanently dirty. Keys are now the stable `AesirInspector/<assetName>` form (for example `AesirInspector/AesirInspectorProjectSettingsSO`); resolution migrates legacy keys (`RunLab.*`, `Runestone.*` full names and the readable full names used by the two MiniTools assets) to the new key and removes them — including entries left with a null reference. `ScriptableObjectSafeEditorUtility.GetOrCreateEditorScriptableObject<T>` gains an optional `legacyConfigNames` parameter (the previous signature keeps working) / 编辑器配置键改为与命名空间无关的稳定字符串 `AesirInspector/资产名`，并自动迁移与清理历史键；`GetOrCreateEditorScriptableObject<T>` 新增可选参数 `legacyConfigNames`。
+
 ## [0.20.0] - 2026-09-27
 
 ### Added

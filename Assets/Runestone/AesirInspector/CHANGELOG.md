@@ -8,6 +8,12 @@
 
 ---
 
+## [0.20.1] - 2026-09-27
+
+### Changed
+
+- **编辑器配置键改为与命名空间无关的稳定字符串**：`AesirInspectorSettings<T>`、`MenuItemViewerSO`、`OdinSyntaxHighlighterPanelSO` 原先以「类型全名（含命名空间）」作为 `EditorBuildSettings` 的配置键，命名空间一旦调整（如 `RunLab` → `Runestone`）旧键就会失效，导致每次解析都重新执行 `AddConfigObject` 写一遍 `ProjectSettings/EditorBuildSettings.asset`，使该文件长期处于 dirty 状态。现统一为 `AesirInspector/资产名`（如 `AesirInspector/AesirInspectorProjectSettingsSO`）；解析时会自动把历史键（`RunLab.*`、`Runestone.*` 类型全名与 `MenuItemViewerSO` / `OdinSyntaxHighlighterPanelSO` 的可读全名）迁移到新键并清理，只剩空引用的旧键条目也会被移除。`ScriptableObjectSafeEditorUtility.GetOrCreateEditorScriptableObject<T>` 新增可选参数 `legacyConfigNames`（原签名继续可用）。 / **Namespace-independent editor config keys**: `AesirInspectorSettings<T>`, `MenuItemViewerSO` and `OdinSyntaxHighlighterPanelSO` used the type's full name (including its namespace) as their `EditorBuildSettings` config key, so any namespace change (e.g. `RunLab` → `Runestone`) invalidated the key and made every resolution call `AddConfigObject` again, leaving `ProjectSettings/EditorBuildSettings.asset` permanently dirty. Keys are now the stable `AesirInspector/<assetName>` form, and resolution migrates legacy keys (`RunLab.*`, `Runestone.*` full names and the readable full names used by the two MiniTools assets) to the new key while removing them — including entries left with a null reference. `ScriptableObjectSafeEditorUtility.GetOrCreateEditorScriptableObject<T>` gains an optional `legacyConfigNames` parameter (the previous signature keeps working).
+
 ## [0.20.0] - 2026-09-27
 
 ### Added
