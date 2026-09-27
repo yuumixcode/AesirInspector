@@ -9,6 +9,9 @@ namespace Runestone.AesirInspector
     /// <typeparam name="T">设置项类型</typeparam>
     public abstract class AesirInspectorSettings<T> : ScriptableObject where T : AesirInspectorSettings<T>
     {
+        /// <summary>更早版本使用的命名空间前缀（当时配置键等于类型全名）。</summary>
+        const string LegacyNamespacePrefix = "RunLab.AesirInspector.";
+
         static T _instance;
 
         public static T Instance
@@ -21,11 +24,14 @@ namespace Runestone.AesirInspector
                 }
 
                 var type = typeof(T);
-                var configName = type.FullName;
                 var assetName = type.Name;
+                // 配置键使用与命名空间无关的稳定字符串：否则命名空间调整会让已注册的配置对象失效，
+                // 并且每次解析都要重新写一遍 ProjectSettings。
+                var configName = ScriptableObjectSafeEditorUtility.GetEditorConfigKey(assetName);
 
                 _instance = ScriptableObjectSafeEditorUtility.GetOrCreateEditorScriptableObject<T>(configName,
-                    AesirInspectorPaths.PreferencesAssetsFolderPath, assetName);
+                    AesirInspectorPaths.PreferencesAssetsFolderPath, assetName,
+                    type.FullName, LegacyNamespacePrefix + assetName);
 
                 return _instance;
             }
