@@ -42,6 +42,9 @@
 /[Aa]ssets/Plugins/Sirenix/
 /[Aa]ssets/Plugins/Sirenix.meta
 
+# Odin Inspector 本地研究资料（体积大且含第三方原件，仅限本机使用，不入库）
+/OdinInspectorReverse/
+
 # Visual Studio cache directory
 .vs/
 
