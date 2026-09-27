@@ -10,11 +10,11 @@ using UnityEngine;
 namespace Runestone.AesirInspector.Editor
 {
     /// <summary>
-    /// Attribute Overview Ultra 窗口。
+    /// Attribute Overview Pro 窗口。
     /// 与 Pro 的根本差异：面板与示例均为 CreateInstance 内存实例，
-    /// 用户数据通过 UltraStateStoreSO 快照持久化，Project 中零子资产。
+    /// 用户数据通过 ProStateStoreSO 快照持久化，Project 中零子资产。
     /// </summary>
-    public class AttributeOverviewUltraWindow : OdinMenuEditorWindow
+    public class AttributeOverviewProWindow : OdinMenuEditorWindow
     {
         /// <summary>
         /// 右侧内容区最小宽度：保证参数表格（最小列宽合计 540px）不被迫压窄。
@@ -38,7 +38,7 @@ namespace Runestone.AesirInspector.Editor
         /// </summary>
         readonly HashSet<AbstractAttributePanelSO> _swappedPanels = new HashSet<AbstractAttributePanelSO>();
 
-        UltraStateStoreSO _stateStore;
+        ProStateStoreSO _stateStore;
 
         /// <summary>
         /// 右侧内容整体宽度缓存。只在 Layout 事件重算，Repaint 等其余事件复用，
@@ -46,7 +46,7 @@ namespace Runestone.AesirInspector.Editor
         /// </summary>
         float _contentWidthCache = MinContentWidth;
 
-        UltraPanelDatabase _database;
+        ProPanelDatabase _database;
         float _menuWidth = NormalMenuWidth;
 
         /// <summary>
@@ -75,8 +75,8 @@ namespace Runestone.AesirInspector.Editor
         protected override void OnEnable()
         {
             base.OnEnable();
-            _stateStore = UltraStateStoreSO.LoadOrCreate();
-            _database = new UltraPanelDatabase(_stateStore);
+            _stateStore = ProStateStoreSO.LoadOrCreate();
+            _database = new ProPanelDatabase(_stateStore);
             WindowPadding = new Vector4(15, 15, 15, 5);
 
             // 窗口允许自由缩窄：内容区不足 MinContentWidth 时由整体横向滚动兜底，
@@ -96,12 +96,12 @@ namespace Runestone.AesirInspector.Editor
             _swappedPanels.Clear();
         }
 
-        [MenuItem(AesirInspectorMenuItems.AttributeOverviewUltra, false,
-            AesirInspectorMenuItems.AttributeOverviewUltraOrder)]
+        [MenuItem(AesirInspectorMenuItems.AttributeOverviewPro, false,
+            AesirInspectorMenuItems.AttributeOverviewProOrder)]
         public static void OpenWindow()
         {
-            var window = GetWindow<AttributeOverviewUltraWindow>(
-                AesirInspectorMenuItems.AttributeOverviewUltraWindowName);
+            var window = GetWindow<AttributeOverviewProWindow>(
+                AesirInspectorMenuItems.AttributeOverviewProWindowName);
             window.position = GUIHelper.GetEditorWindowRect().AlignCenter(1050, 750);
             window.Show();
         }
@@ -228,7 +228,7 @@ namespace Runestone.AesirInspector.Editor
             _stateStore.SavePanelSelection(panel.GetType().Name,
                 panel.CurrentSelectedExample != null ? panel.CurrentSelectedExample.GetType().Name : null);
 
-            var items = panel.ExamplePreviewItemsForUltra;
+            var items = panel.ExamplePreviewItemsForPro;
             if (items == null)
             {
                 return;
@@ -283,7 +283,7 @@ namespace Runestone.AesirInspector.Editor
                 }
                 catch (Exception e)
                 {
-                    Debug.LogWarning($"[AttributeOverviewUltra] 快照落盘失败: {e.Message}");
+                    Debug.LogWarning($"[AttributeOverviewPro] 快照落盘失败: {e.Message}");
                 }
             }
         }

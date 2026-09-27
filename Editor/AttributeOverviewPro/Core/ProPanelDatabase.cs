@@ -6,19 +6,19 @@ using UnityEngine;
 namespace Runestone.AesirInspector.Editor
 {
     /// <summary>
-    /// Attribute Overview Ultra 的内存面板注册中心。
+    /// Attribute Overview Pro 的内存面板注册中心。
     /// 替代 Pro 时代的面板资产集合（Pro 已移除）：TypeCache 扫描面板类型 → CreateInstance 内存实例化；
-    /// 示例由各 Data 构造器经 UltraStateStoreSO 状态存储路由取得内存单例（含用户数据恢复）。
+    /// 示例由各 Data 构造器经 ProStateStoreSO 状态存储路由取得内存单例（含用户数据恢复）。
     /// 目录结构（分类/显示名/排序）由 AesirAttributeRegistry 从 Odin 官方注册表提供。
     /// 全程零 AssetDatabase 写操作。
     /// </summary>
-    public class UltraPanelDatabase
+    public class ProPanelDatabase
     {
-        readonly UltraStateStoreSO _stateStore;
+        readonly ProStateStoreSO _stateStore;
 
         List<AbstractAttributePanelSO> _panels;
 
-        public UltraPanelDatabase(UltraStateStoreSO stateStore) => _stateStore = stateStore;
+        public ProPanelDatabase(ProStateStoreSO stateStore) => _stateStore = stateStore;
 
         /// <summary>
         /// 已实例化的全部内存面板（未构建时为 null）。
@@ -51,7 +51,7 @@ namespace Runestone.AesirInspector.Editor
         }
 
         /// <summary>
-        /// 示例 SO 的 Instance 后端已直接经 UltraStateStoreSO 状态存储路由返回内存单例（含数据恢复），
+        /// 示例 SO 的 Instance 后端已直接经 ProStateStoreSO 状态存储路由返回内存单例（含数据恢复），
         /// 面板无需再替换示例引用。但 [OnInspectorInit] 重跑时 Internal_SetData 会把面板选中重置为初始示例，
         /// 因此选中恢复由本方法承担：状态存储有记录且与当前选中不一致时，恢复为记录的示例。
         /// </summary>
@@ -80,7 +80,7 @@ namespace Runestone.AesirInspector.Editor
                 return;
             }
 
-            var items = panel.ExamplePreviewItemsForUltra;
+            var items = panel.ExamplePreviewItemsForPro;
             if (items != null)
             {
                 foreach (var item in items)

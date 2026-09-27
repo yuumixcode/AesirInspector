@@ -25,7 +25,7 @@ namespace Runestone.AesirInspector.Editor
         public string ResourcePath;
 
         [FoldoutGroup("Parameter: ParentFolder")]
-        [FolderPath(ParentFolder = "Assets/Runestone")]
+        [FolderPath(ParentFolder = "Assets")]
         public string relativePath;
 
         [FoldoutGroup("Parameter: RequireExistingPath")]

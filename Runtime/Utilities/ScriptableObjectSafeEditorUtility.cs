@@ -92,7 +92,7 @@ namespace Runestone.AesirInspector
                 relativeFolderPath = AesirInspectorPaths.EditorDefaultResourcesPath + "/SingletonAssets";
             }
 
-            PathSafeEditorUtility.EnsureDirectoryExists(relativeFolderPath);
+            PathSafeEditorUtility.EnsureAssetFolderExists(relativeFolderPath);
             singletonAsset = ScriptableObject.CreateInstance<T>();
             var fileNameWithoutExtension = typeof(T).Name.EndsWith("SO")
                 ? typeof(T).Name.Remove(typeof(T).Name.Length - 2)
@@ -134,7 +134,7 @@ namespace Runestone.AesirInspector
                 relativeFolderPath = AesirInspectorPaths.EditorDefaultResourcesPath + "/SingletonAssets";
             }
 
-            PathSafeEditorUtility.EnsureDirectoryExists(relativeFolderPath);
+            PathSafeEditorUtility.EnsureAssetFolderExists(relativeFolderPath);
             singletonAsset = ScriptableObject.CreateInstance<T>();
             var fileNameWithoutExtension = typeof(T).Name.EndsWith("SO")
                 ? typeof(T).Name.Remove(typeof(T).Name.Length - 2)
@@ -157,7 +157,7 @@ namespace Runestone.AesirInspector
                 return instance;
             }
 
-            PathSafeEditorUtility.EnsureDirectoryExists(folderPath);
+            PathSafeEditorUtility.EnsureAssetFolderExists(folderPath);
             var assetPath = folderPath + "/" + assetName + ".asset";
             var asset = AssetDatabase.LoadAssetAtPath<T>(assetPath);
             if (asset != null)
