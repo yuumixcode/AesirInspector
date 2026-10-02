@@ -1,7 +1,7 @@
 # Aesir Inspector
 
 [English](Documentation~/README_EN.md) | [![license](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE.md)
-[![Version](https://img.shields.io/badge/version-0.21.0-blue.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.21.1-blue.svg)](CHANGELOG.md)
 [![Install via Git URL](https://img.shields.io/badge/UPM-Git%20URL-blueviolet.svg)](#安装说明)
 
 > 📦 **本包在独立仓库 [AesirInspector](https://github.com/yuumixcode/AesirInspector) 中发布**（包目录 `Assets/Runestone/AesirInspector`），**不依赖**其他 Aesir 包，可单独安装。
@@ -50,7 +50,7 @@
 **锁定版本（推荐用于生产）**：改用发版 tag（tag 永久保留），例如
 
 ```
-https://github.com/yuumixcode/AesirInspector.git?path=/Assets/Runestone/AesirInspector#v0.21.0
+https://github.com/yuumixcode/AesirInspector.git?path=/Assets/Runestone/AesirInspector#v0.21.1
 ```
 
 `AesirInspector-latest` 分支的根目录即包内容（CI 用 `git subtree split` 同步），无需 `?path=`；tag 指向仓库根，必须带 `?path=`。不锁定版本时内容持续跟随最新提交，环境无法复现。
@@ -192,6 +192,14 @@ public class ExampleMonoBehaviour : MonoBehaviour
     }
 }
 ```
+
+## 第三方参考
+
+本包在设计上参考了以下开源项目，在此致谢（完整署名与用途说明见 [Third Party Notices.md](Third%20Party%20Notices.md)）：
+
+| 项目 | 作者 | 许可证 | 参考内容 |
+|------|------|--------|----------|
+| [Odin-Resolved-Parameters-Overview](https://github.com/schwapo/Odin-Resolved-Parameters-Overview) | schwapo | MIT | Attribute Overview Pro 的「参数 / 解析字符串参数」表格的呈现方式：列出每个参数的所属特性、解析器类型、解析结果与回退值，并附示例代码与预览 |
 
 ## 许可协议
 

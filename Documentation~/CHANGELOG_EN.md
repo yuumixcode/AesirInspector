@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [0.21.1] - 2026-10-02
+
+### Added
+
+- **Third-party attribution**: `Third Party Notices.md` now credits [Odin-Resolved-Parameters-Overview](https://github.com/schwapo/Odin-Resolved-Parameters-Overview) (by schwapo, MIT), whose parameter listing informed how the parameter and resolved-string-parameter tables of Attribute Overview Pro present their information; the third-party tables in both package READMEs and the repository README were updated accordingly. / 第三方参考署名：`Third Party Notices.md` 新增对 Odin-Resolved-Parameters-Overview（作者 schwapo，MIT）的引用说明——Attribute Overview Pro 的「参数 / 解析字符串参数」表格参考了该项目的信息组织与呈现方式；包内中英 README 与仓库根 README 的第三方参考表已同步补充。
+
+### Fixed
+
+- **`Check Odin Dependency` menu ordering**: the item used to sit at the top of the `Tools/Aesir/Inspector` submenu; it is now fixed at the bottom (priority `-975` → `-789`, i.e. after Attribute Overview Pro `-900`, Mini Tools `-885`, Preferences `-880` and Samples `-800`), separated from the previous item by more than 10 so Unity draws a separator. Comments now also record that this value determines where the `Tools/Aesir` root menu sits in the top-level `Tools` menu. / `Check Odin Dependency` 菜单排序：该菜单项由子菜单最上方移到最下方（优先级 `-975` → `-789`），并与上一项拉开大于 10 的间隔以画出分割线；注释同时说明该值会决定 `Tools/Aesir` 根菜单在 `Tools` 顶层菜单中的位置。
+
 ## [0.21.0] - 2026-09-27
 
 ### Removed
