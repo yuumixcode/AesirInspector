@@ -1,7 +1,7 @@
 # Aesir Inspector
 
 [English](Assets/Runestone/AesirInspector/Documentation~/README_EN.md) | [![license](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE.md)
-[![Version](https://img.shields.io/badge/version-0.21.0-blue.svg)](Assets/Runestone/AesirInspector/CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.21.1-blue.svg)](Assets/Runestone/AesirInspector/CHANGELOG.md)
 [![Install via Git URL](https://img.shields.io/badge/UPM-Git%20URL-blueviolet.svg)](#通过-git-url-安装)
 
 本仓库是一个 **Unity 工程项目仓库**，托管编辑器扩展包 **Aesir Inspector** —— 提供双语 Inspector 特性、Attribute Overview Pro 特性总览与安全编辑器工具集，基于 Odin Inspector（硬依赖）实现增强能力。
@@ -63,7 +63,7 @@ AesirInspector/                        # 仓库根目录 = Unity 工程根目录
 **锁定版本（推荐用于生产）**：改用发版 tag（tag 永久保留），例如：
 
 ```
-https://github.com/yuumixcode/AesirInspector.git?path=Assets/Runestone/AesirInspector#v0.21.0
+https://github.com/yuumixcode/AesirInspector.git?path=Assets/Runestone/AesirInspector#v0.21.1
 ```
 
 `AesirInspector-latest` 分支的根目录即包内容（CI 用 `git subtree split` 同步），无需 `?path=`；tag 指向仓库根，必须带 `?path=`。不锁定版本时内容持续跟随最新提交，环境无法复现。
@@ -91,7 +91,7 @@ https://github.com/yuumixcode/AesirInspector.git?path=Assets/Runestone/AesirInsp
 
 - 首次运行自动安装 .NET 8 SDK 到 `~/.dotnet`（用户目录，免 sudo），并缓存导出工具（固定 commit）
 - 版本号取自包内 `package.json`
-- 发布 Release：推送 `v*` 标签（如 `git tag v0.21.0 && git push origin v0.21.0`），GitHub Actions 自动导出并创建 GitHub Release（Release Notes 取自包内 CHANGELOG）
+- 发布 Release：推送 `v*` 标签（如 `git tag v0.21.1 && git push origin v0.21.1`），GitHub Actions 自动导出并创建 GitHub Release（Release Notes 取自包内 CHANGELOG）
 - 常驻 latest 分支：每次推送 `main`，GitHub Actions 自动把包目录 subtree split 强推到 `AesirInspector-latest`（滚动安装地址 `https://github.com/yuumixcode/AesirInspector.git#AesirInspector-latest`）
 
 ## 包文档
@@ -117,6 +117,7 @@ https://github.com/yuumixcode/AesirInspector.git?path=Assets/Runestone/AesirInsp
 |------|------|------|------|
 | [JakePineOdinTools](https://github.com/JakePineGames/JakePineOdinTools) | Jake Pine | MIT | Odin 自动 Tooltip 与源码文件分析工具（`SourceFileAnalyzerUtility`，现位于 Aesir Modules 的 Script Doc Generator 模块）的来源，集成时已简化 |
 | [public-unity-package-exporter](https://github.com/Guardingpearsoftware/public-unity-package-exporter) | Guarding Pear Software | MIT | `.unitypackage` 导出工具，供 `Scripts/export-package.sh` 与 CI 使用 |
+| [Odin-Resolved-Parameters-Overview](https://github.com/schwapo/Odin-Resolved-Parameters-Overview) | schwapo | MIT | Attribute Overview Pro 的「参数 / 解析字符串参数」表格的呈现方式参考（列出参数的所属特性、解析器类型、解析结果与回退值，并附示例代码与预览） |
 
 包内第三方组件的许可声明另见 [Third Party Notices.md](Assets/Runestone/AesirInspector/Third%20Party%20Notices.md)。
 

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 78c5dcf34f1aa463c84e11b3bd2aacda, type: 3}
-  m_Name: UltraStateStore
+  m_Name: ProStateStore
   m_EditorClassIdentifier: 
   entries:
   - key: PanelSelection/BilingualButtonAttributePanelSO

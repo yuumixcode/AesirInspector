@@ -1,7 +1,7 @@
 # Aesir Inspector
 
 [中文](../README.md) | [![license](https://img.shields.io/badge/license-MIT-green.svg)](../LICENSE.md)
-[![Version](https://img.shields.io/badge/version-0.21.0-blue.svg)](../CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.21.1-blue.svg)](../CHANGELOG.md)
 [![Install via Git URL](https://img.shields.io/badge/UPM-Git%20URL-blueviolet.svg)](#installation)
 
 > 📦 **This package is published from its own repository, [AesirInspector](https://github.com/yuumixcode/AesirInspector)** (package folder `Assets/Runestone/AesirInspector`). It does **not** depend on any other Aesir package and can be installed on its own.
@@ -51,7 +51,7 @@ Add the following to your project's `Packages/manifest.json`:
 **Locking the version (recommended for production)**: use a release tag instead (tags are kept forever), for example
 
 ```
-https://github.com/yuumixcode/AesirInspector.git?path=/Assets/Runestone/AesirInspector#v0.21.0
+https://github.com/yuumixcode/AesirInspector.git?path=/Assets/Runestone/AesirInspector#v0.21.1
 ```
 
 The root of the `AesirInspector-latest` branch is the package itself (synced by CI via `git subtree split`), so no `?path=` is needed; tags point at the repository root, so `?path=` is required. Without a version lock the installed content keeps tracking the latest commits, so the environment is not reproducible.
@@ -195,6 +195,15 @@ public class ExampleMonoBehaviour : MonoBehaviour
     }
 }
 ```
+
+## Third-Party References
+
+This package draws on the following open-source projects — thanks to their authors (see
+[Third Party Notices.md](../Third%20Party%20Notices.md) for the full attribution):
+
+| Project | Author | License | Referenced for |
+|---------|--------|---------|----------------|
+| [Odin-Resolved-Parameters-Overview](https://github.com/schwapo/Odin-Resolved-Parameters-Overview) | schwapo | MIT | The presentation of the parameter and resolved-string-parameter tables in Attribute Overview Pro: each parameter is listed with its owning attribute, resolver type, resolved value and fallback value, alongside example code and a preview |
 
 ## License
 
