@@ -4,6 +4,10 @@ namespace Runestone.AesirInspector.Editor
     /// Aesir Inspector 所有 MenuItem 菜单路径和优先级的统一管理。
     /// Unity 中 MenuItem 的顺序由 priority 参数（一个整数）决定，核心规则是：数字越小，位置越靠上。若不设置，默认值为 1000。
     /// 父菜单的 priority 由首次被编译的子菜单项决定。
+    /// <para>
+    /// 例外：Bootstrap 程序集里的 <c>Check Odin Dependency</c> 不能引用本类（未安装 Odin 时本程序集不存在），
+    /// 其路径与优先级内联在 <c>AesirInspectorOdinDependencyMenu</c> 中，并固定排在 Inspector 子菜单最下方。
+    /// </para>
     /// </summary>
     public static class AesirInspectorMenuItems
     {

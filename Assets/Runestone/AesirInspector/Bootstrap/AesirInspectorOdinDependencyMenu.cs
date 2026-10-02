@@ -21,7 +21,17 @@ namespace Runestone.AesirInspector.Bootstrap
         // 本程序集不能引用 AesirInspectorMenuItems（它所在的程序集带 ODIN_INSPECTOR 约束，
         // 未安装 Odin 时并不存在），因此这里内联菜单路径与优先级。
         const string MenuPath = "Tools/Aesir/Inspector/Check Odin Dependency";
-        const int MenuOrder = -975;
+
+        // 依赖检查固定排在 Inspector 子菜单的最下方：其余 Aesir 菜单项在 -900 ~ -800 区间
+        // （Preferences -880、Samples -800），这里取 -800 + 11，既排到最后，
+        // 又与上一个菜单项拉开大于 10 的间隔——Unity 正是以「相邻项 priority 相差大于 10」
+        // 为界画出分割线。
+        //
+        // 注意：父菜单 Tools/Aesir/Inspector 的 priority 取本程序集首个注册的子菜单项
+        // （Bootstrap 先于 Editor 程序集编译），因此这个值同时决定 Tools/Aesir 在 Tools
+        // 顶层菜单里的位置。不要为了「更靠后」而改用正值，否则整个 Aesir 根菜单会掉到
+        // 工具菜单中部（原先的 -975 正是让 Aesir 紧跟在 Tools/Odin 之后）。
+        const int MenuOrder = -789;
 
         const string OdinAttributesAssemblyName = "Sirenix.OdinInspector.Attributes";
         const string SirenixUtilitiesAssemblyName = "Sirenix.Utilities";
